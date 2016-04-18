@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  url_name: MyText
+  url_value: MyText
+  url_response: MyText
+  spider_name: MyText
+
+two:
+  url_name: MyText
+  url_value: MyText
+  url_response: MyText
+  spider_name: MyText

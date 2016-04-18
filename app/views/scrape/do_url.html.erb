@@ -1,0 +1,32 @@
+<% if @is_error %>
+    <br/>
+    <%=	 @error_content %>
+<% else %>
+
+    <%= javascript_tag do %>
+        window.url_name = "<%= @url_name %>";
+    <% end %>
+
+    <% content_for :css do %>
+        <style type="text/css">
+            <%= @css.html_safe %>
+        </style>
+    <% end %>
+
+
+    <h1>url is get.</h1>
+    <h3><%= @url_name %></h3>
+    url : <%= @url_value %>
+    <div style=" height: 30px; position: fixed">
+      <input id="reSelect" type="button" style="height:200px;width:200px;font-size: 30px" value="重新开始选取" />
+    </div>
+
+
+    <div id="modified_page">
+      <%= @modified_page.html_safe %>
+    </div>
+
+
+
+
+<% end %>

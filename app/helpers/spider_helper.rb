@@ -1,0 +1,2 @@
+module SpiderHelper
+end

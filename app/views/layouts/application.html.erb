@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Blog</title>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= yield :css %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<a href="http://localhost:3000/" >http://localhost:3000/</a>
+
+<%= yield %>
+
+</body>
+</html>

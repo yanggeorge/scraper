@@ -1,0 +1,1555 @@
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>政府公开目录</title>
+
+<script src="../..//js/com.trs.util/Common.js"></script><script src="../..//js/opensource/prototype.js"></script><script src="../..//js/com.trs.util/Other.js"></script>
+
+<link href="../../images/outlinetable.css" rel="stylesheet" type="text/css">
+<link href="../../images/page.css" rel="stylesheet" type="text/css">
+<script language="JavaScript" src="../..//js/page.js"></script>
+
+<script language="javascript" src="../..//js/search.js" type="text/javascript"></script>
+<!--新增加的-->
+<script language="javascript" src="../..//js/search-new.js" type="text/javascript"></script>
+<link href="../../images/outlineTable_new.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+.no_object_found{
+	color:black;
+	font-style:italic;
+	font-size:14px;
+	margin:4px;
+}    
+</style>
+<script language="JavaScript">
+<!--
+var m_oPreTip = null;
+function displayTip(_sId, _bNotDisplay){
+    var event = Event.findEvent();
+	if(m_oPreTip != null && !_bNotDisplay){
+		m_oPreTip.style.display = "none";
+	}
+	var oCurrTip = $("Tip"+_sId);
+    document.body.appendChild(oCurrTip);
+	if(_bNotDisplay){
+//		oCurrTip.style.visibility = "hidden";
+		oCurrTip.style.display = "none";
+		oCurrTip = null;
+		return;
+	}
+
+	//oCurrTip.style.display = "";
+	//oCurrTip.style.visibility = "hidden";
+	
+	m_oPreTip = oCurrTip;
+    if(!event.pageX){
+        var x = event.x;// + document.body.scrollLeft;
+        var y = event.y;// + document.body.scrollTop;
+        var	nOffsetHeight  = Element.getDimensions(oCurrTip).height;
+        //var	nOffsetHeight  = 150;
+        oCurrTip.style.left = x + 30 ;//+ 365;	
+        if(document.body.offsetHeight <= (y + 90 + nOffsetHeight)){
+            oCurrTip.style.top = Math.max(y + 90 - nOffsetHeight, 0);
+        }else{
+            oCurrTip.style.top = y + 90;
+        }
+    }else{
+        var x = event.pageX + 8;// + document.body.scrollLeft;
+        var y = event.pageY + 8;// + document.body.scrollTop;
+        oCurrTip.style.left = x;//+ 365;	
+        oCurrTip.style.top = y;
+        oCurrTip.style.border = '1px solid black';
+    }
+	oCurrTip.style.display = "";
+}
+//-->
+</script>
+<style>
+.Tip {
+	width:500;
+	z-index:999;
+    position:absolute;
+    font-size:12px;
+    border:1px solid inner;
+    padding:5px;
+    background-color:white; 
+    filter:progid:DXImageTransform.Microsoft.dropshadow(OffX=4, OffY=4, Color='gray', Positive=true);
+}
+.Tip table{
+	width:100%;
+	font-size:12px;	
+}
+
+</style>
+<style type="text/css">
+.headOfTable{
+    border:1px solid #c8c8c8;
+    border-right:0px;
+}
+.headOfTable li.mc{
+    width:600px;
+	*width:560px;
+}
+.row{
+    border-left:1px solid #c8c8c8;
+}
+.row li{
+    float:left;
+}
+</style>
+<style type="text/css" id="columnStyle">
+.row{
+}
+.row li.xh{
+    width:32px;
+}
+.row li.mc{    
+    width:600px;
+	*width:560px;
+}
+.row li.fbrq{
+	width:100px;
+}
+.row li.wh{
+	width:150px;
+    border-right:0px;
+}
+.row li.nngs{
+	width:100px;
+    border-right:0px;
+}    
+</style>
+<style type="text/css">
+    #advanceSearchContainer table{
+        font-size:12px;
+    }
+    #advanceSearchContainer td{
+        height:30px;
+    }
+    #dateContainer *{
+        height:auto;
+    }
+</style>
+<script language="JavaScript">
+<!--
+/*
+ * 列表上可以拖动列的修改
+ */
+
+window.dragInfo = {
+	START_DRAG	: false,
+	startX		: 0,
+	oSource		: null,
+	oColumn		: null,
+	oldMoveSepX : 0
+};
+Event.observe(window, 'load', function(){
+	Event.observe('headOfTable', 'mousedown', function(event){
+		event = window.event || event;
+		var srcElement = Event.element(event);
+		if(!Element.hasClassName(srcElement, "sep")){
+			return;
+		}
+		window.dragInfo.oSource = srcElement;
+		window.dragInfo.oColumn = getPreviousHTMLSibling(srcElement);
+		window.dragInfo.START_DRAG = true;
+		srcElement.setCapture(true);
+		window.dragInfo.startX = parseInt(Event.pointerX(event));
+		var moveSep = $('moveSep');
+		Position.clone(window.dragInfo.oSource, moveSep, {setWidth:false, setHeight:false, offsetLeft:3});
+		moveSep.style.height = $('documentContainer').offsetHeight + $('headOfTable').offsetHeight;
+		window.dragInfo.oldMoveSepX = parseInt(moveSep.style.left);
+		Element.show('moveSep');
+	});
+	Event.observe('headOfTable', 'mousemove', function(event){
+		if(!window.dragInfo.START_DRAG){
+			return;
+		}
+		event = window.event || event;
+		var x = parseInt(Event.pointerX(event));
+		var dx = x - window.dragInfo.startX;
+		var oldWidth = parseInt(window.dragInfo.oColumn.offsetWidth);
+		var width = oldWidth + dx;		
+		var minWidth = 30;
+		if(width < minWidth){
+			width = minWidth;
+			dx = width - oldWidth;
+		}
+		var moveSep = $('moveSep');
+		moveSep.style.left = window.dragInfo.oldMoveSepX + dx;
+	});
+	Event.observe('headOfTable', 'mouseup', function(event){
+		if(!window.dragInfo.START_DRAG){
+			return;
+		}
+		Element.hide('moveSep');
+		window.dragInfo.START_DRAG = false;
+		event = window.event || event;
+		var x = parseInt(Event.pointerX(event));
+		var dx = x - window.dragInfo.startX;
+		var oldWidth = parseInt(window.dragInfo.oColumn.offsetWidth);
+		var width = oldWidth + dx;		
+		var minWidth = 30;
+		if(width < minWidth){
+			width = minWidth;
+			dx = width - oldWidth;
+		}
+		window.dragInfo.oColumn.style.width = width
+		$('headOfTable').style.width = $('headOfTable').offsetWidth + dx;	
+		setStyle(window.dragInfo.oColumn, width, $('headOfTable').style.width);
+		window.dragInfo.oSource.releaseCapture();
+	});
+});
+
+function setStyle(oColumn, nWidth, _rowWidth){
+	var sSelectorText = ".row li." + oColumn.className;
+	var sSelectorText2 = ".row";
+	var columnStyle = $('columnStyle').styleSheet;
+	var rules = columnStyle.rules;
+	for (var i = 0; i < rules.length; i++){
+		if(rules[i].selectorText.toLowerCase() == sSelectorText){
+			rules[i].style.width = nWidth;
+		}
+		else if(rules[i].selectorText.toLowerCase() == sSelectorText2){
+			rules[i].style.width = _rowWidth;
+		}
+	}
+}
+
+//-->
+</script>
+
+<script language="JavaScript">
+ <!--
+	var m_sPageName = "list";
+	var m_sPageExt = "htm";
+
+	// 覆写点击分页代码的响应函数
+	PageContext.PageNav.go =  function(_iPage,_maxPage){
+		if(_iPage>_maxPage){
+			_iPage = _maxPage;
+		}
+        //大于发布的总页数，跳转到动态应用
+        if(_iPage > 10){
+            window.location.href = top.GovSearchURL + "searPage.jsp?page=" + _iPage;
+            return;
+        }
+		PageContext.params = {"CurrPage":_iPage};
+		var sURL = "";
+		if(_iPage == 1){
+			sURL = m_sPageName + "." + m_sPageExt;
+		}else{
+			sURL = m_sPageName + "_" + (_iPage-1) + "." + m_sPageExt;
+		}
+		//alert("to: " + sURL);
+		window.location.href = sURL;        
+	};
+//-->
+</script>
+
+<style type="text/css">
+.no_object_found{
+	color:black;
+	font-style:italic;
+	font-size:14px;
+	margin:4px;
+}    
+#searchbox{
+	border:1px solid silver;font-size:12px;
+}
+</style>
+<script language="JavaScript">
+<!--
+// 画分页代码以及自动调整窗口大小
+var m_nRecordCount = "17";
+if(m_nRecordCount.length == 0){
+	m_nRecordCount = 0;
+}
+var m_nCurrPage = 0;
+var m_nPageSize = 20;
+
+window.onload = function(){
+    if(m_nRecordCount == 0){
+        m_nRecordCount = getRecordNum();
+    }
+    PageContext["RecordNum"] = m_nRecordCount;
+ PageContext.params["CurrPage"] = m_nCurrPage + 1;
+ PageContext["PageSize"] = m_nPageSize;
+ PageContext.drawNavigator();
+ 
+ if(m_nRecordCount == 0){
+  documentContainer.innerHTML = document.getElementById("divNoObjectFound").innerHTML;
+ }
+ if(m_nCurrPage>0){
+  document.getElementById("documentContainer").start = m_nCurrPage*m_nPageSize+1;
+ }
+ adjustDimension();
+};
+function getRecordNum(){
+    var count = 0;
+    var documentContainer = document.getElementById("documentContainer");
+    var childNodes = documentContainer.childNodes
+    for (var i = 0; i < childNodes.length; i++){
+        if(childNodes[i].nodeType != 1){
+            continue;
+        }
+        if(Element.hasClassName(childNodes[i], "row")){
+            count++
+        }
+    }
+    return count;
+}
+
+
+function adjustDimension(){
+	var minHeight = 650;
+	var realHeight = parseInt(document.body.scrollHeight);
+	if(window.frameElement)
+		window.frameElement.style.height = Math.max(minHeight, realHeight);
+}
+	
+//-->
+</script>
+
+<!--第一个检索-->
+
+<script language="JavaScript">
+function executeSearch()
+{  
+	document.trssearchform.method = 'post'; 
+	document.trssearchform.submit();
+}
+function cancelSearch()
+{  
+    //去掉链接参数中的searchType，searchValue参数
+    var oParams = top.location.search.toQueryParams() || {};
+    delete oParams["searchType"];
+    delete oParams["searchValue"];
+    var sUrl = top.location.href;
+    var match = /^([^\?]+).*$/.exec(sUrl);
+    if(match){
+        sUrl = match[1];
+        var sParams = $toQueryStr(oParams);
+        if(sParams && sParams.length > 0){
+            sUrl += "?" + sParams
+        }
+    }
+	window.top.location.href = sUrl;
+}
+</script>
+
+</head>
+
+<body style="overflow:hidden">
+<div class="main" id="DefaultMain">	
+  <form method="post" name="trssearchform" id="trssearchform" target="DataList" action="undefinedsimp_gov_list.jsp">
+	<div class="rowOfSearchNew">
+		<span class="searchTipNew">搜索：</span>                
+		<input type="text" name="sword" class="SearchOfInput" id="sword" size="55">
+		<select name="searchColumn" id="select">
+		  <option value="all">全部</option>
+		  <option value="zhengwen">正文</option>
+		  <option value="biaoti">名称</option>
+	    </select>
+		<input type="hidden" name="searchYear" value="all">
+        <input type="hidden" name="pubURL" id="pubURL" value="http://www.he-n-tax.gov.cn/hbgsww_new/hbgsgkml/">
+		<input type="hidden" name="SType" value="1">
+	    <!--SPAN id=searchBtn onClick="return executeSearch();" tabIndex=2 style="padding:4px 20px;"></SPAN>
+		<a class="advanceSearch" href="#" id="advanceSearch">高级搜索</a>
+		<span class="advanceSearch" onClick="cancelSearch();" valign="middle">返回首页</span-->              
+	</div>
+  </form>
+	<div class="rowOfCurrentPosition">当前位置：<span id="currentPosition">地区查询</span></div>
+	<div class="content" id="content" style="overflow:auto;width:100%;">
+		<div class="headOfTable" unselectable="on" id="headOfTable">
+			<li class="xh" unselectable="on">序号</li>
+			<li class="mc" orderby="TITLE" unselectable="on">名称</li>
+			<li class="sep" unselectable="on"></li>
+			<li class="fbrq" orderby="PubDate" unselectable="on">发文日期</li>
+			<li class="sep" unselectable="on"></li>
+			<!--li class="wh" unselectable="on">文号</li>
+			<li class="sep" unselectable="on"></li-->
+		</div>
+		<div id="documentContainer">
+			
+			<div class="row">
+				<li class="xh">1</li>
+				<li class="mc">
+					<div>
+						<a href="../201511/t20151113_1014250.html" target="_blank" onmouseover="displayTip(1014250);" onmouseout="displayTip(1014250, true);">秦皇岛市华运贸易有限公司</a>
+					</div>			
+				</li>						
+				<li class="sep" unselectable="on"></li>				
+				<li class="fbrq" title="2015年10月30日">2015年10月30日</li>						
+				<li class="sep" unselectable="on"></li>
+				<!--li class="wh" title=""></li>						
+				<li class="sep" unselectable="on"></li>
+				
+				<!--<li class="nngs" title=""></li>						
+				<li class="sep" unselectable="on" style="float:right;"></li>-->
+			</div>
+			<div id="Tip1014250" class="Tip" style="display:none;">
+				<table border="0" cellspacing="0" cellpadding="0" style="width:100%;">
+				<tbody>
+					<!--tr>
+						<td colspan="2">
+							<table border=0 cellspacing=0 cellpadding=0>
+								<tr>
+									<td width="50%"><B>索 引 号:</B> </td>
+									<td><B>分类:</B> 秦皇岛&nbsp;;&nbsp;偷税案件</td>
+								</tr>
+							</table>				
+						</td>
+					</tr-->
+					<tr>
+						<td colspan="2">
+							<table border="0" cellspacing="0" cellpadding="0">
+								<tbody><tr>
+									<td width="50%"><b>发布机构:</b> 河北省国家税务局</td>
+									<td><b>发文日期:</b> 2015年10月30日</td>
+								</tr>
+							</tbody></table>				
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+						<b>名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称:</b> 秦皇岛市华运贸易有限公司
+						</td>
+					</tr>
+					<!--tr>
+						<td colspan="2">
+							<table border=0 cellspacing=0 cellpadding=0>
+								<tr>
+									<td width="50%"><B>文&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号:</B> </td>
+									<td><B>主 题 词:</B> </td>
+								</tr>
+							</table>				
+						</td>
+					</tr-->
+					<!--<tr>
+						<td colspan="2">
+						<b>内容提要:</b>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2"></td>
+					</tr>	-->		
+				</tbody>
+				</table>
+			</div>
+			
+			<div class="row">
+				<li class="xh">2</li>
+				<li class="mc">
+					<div>
+						<a href="../201510/t20151022_998533.html" target="_blank" onmouseover="displayTip(998533);" onmouseout="displayTip(998533, true);">藁城市四路通煤炭有限公司税案</a>
+					</div>			
+				</li>						
+				<li class="sep" unselectable="on"></li>				
+				<li class="fbrq" title="2015年10月22日">2015年10月22日</li>						
+				<li class="sep" unselectable="on"></li>
+				<!--li class="wh" title=""></li>						
+				<li class="sep" unselectable="on"></li>
+				
+				<!--<li class="nngs" title=""></li>						
+				<li class="sep" unselectable="on" style="float:right;"></li>-->
+			</div>
+			<div id="Tip998533" class="Tip" style="display:none;">
+				<table border="0" cellspacing="0" cellpadding="0" style="width:100%;">
+				<tbody>
+					<!--tr>
+						<td colspan="2">
+							<table border=0 cellspacing=0 cellpadding=0>
+								<tr>
+									<td width="50%"><B>索 引 号:</B> </td>
+									<td><B>分类:</B> 石家庄&nbsp;;&nbsp;偷税案件</td>
+								</tr>
+							</table>				
+						</td>
+					</tr-->
+					<tr>
+						<td colspan="2">
+							<table border="0" cellspacing="0" cellpadding="0">
+								<tbody><tr>
+									<td width="50%"><b>发布机构:</b> 河北省国家税务局</td>
+									<td><b>发文日期:</b> 2015年10月22日</td>
+								</tr>
+							</tbody></table>				
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+						<b>名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称:</b> 藁城市四路通煤炭有限公司税案
+						</td>
+					</tr>
+					<!--tr>
+						<td colspan="2">
+							<table border=0 cellspacing=0 cellpadding=0>
+								<tr>
+									<td width="50%"><B>文&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号:</B> </td>
+									<td><B>主 题 词:</B> </td>
+								</tr>
+							</table>				
+						</td>
+					</tr-->
+					<!--<tr>
+						<td colspan="2">
+						<b>内容提要:</b>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2"></td>
+					</tr>	-->		
+				</tbody>
+				</table>
+			</div>
+			
+			<div class="row">
+				<li class="xh">3</li>
+				<li class="mc">
+					<div>
+						<a href="../201507/t20150720_925522.html" target="_blank" onmouseover="displayTip(925522);" onmouseout="displayTip(925522, true);">雄县亚军塑胶制品有限公司偷税案</a>
+					</div>			
+				</li>						
+				<li class="sep" unselectable="on"></li>				
+				<li class="fbrq" title="2015年07月20日">2015年07月20日</li>						
+				<li class="sep" unselectable="on"></li>
+				<!--li class="wh" title=""></li>						
+				<li class="sep" unselectable="on"></li>
+				
+				<!--<li class="nngs" title=""></li>						
+				<li class="sep" unselectable="on" style="float:right;"></li>-->
+			</div>
+			<div id="Tip925522" class="Tip" style="display:none;">
+				<table border="0" cellspacing="0" cellpadding="0" style="width:100%;">
+				<tbody>
+					<!--tr>
+						<td colspan="2">
+							<table border=0 cellspacing=0 cellpadding=0>
+								<tr>
+									<td width="50%"><B>索 引 号:</B> </td>
+									<td><B>分类:</B> 保定&nbsp;;&nbsp;偷税案件</td>
+								</tr>
+							</table>				
+						</td>
+					</tr-->
+					<tr>
+						<td colspan="2">
+							<table border="0" cellspacing="0" cellpadding="0">
+								<tbody><tr>
+									<td width="50%"><b>发布机构:</b> 河北省国家税务局</td>
+									<td><b>发文日期:</b> 2015年07月20日</td>
+								</tr>
+							</tbody></table>				
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+						<b>名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称:</b> 雄县亚军塑胶制品有限公司偷税案
+						</td>
+					</tr>
+					<!--tr>
+						<td colspan="2">
+							<table border=0 cellspacing=0 cellpadding=0>
+								<tr>
+									<td width="50%"><B>文&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号:</B> </td>
+									<td><B>主 题 词:</B> </td>
+								</tr>
+							</table>				
+						</td>
+					</tr-->
+					<!--<tr>
+						<td colspan="2">
+						<b>内容提要:</b>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2"></td>
+					</tr>	-->		
+				</tbody>
+				</table>
+			</div>
+			
+			<div class="row">
+				<li class="xh">4</li>
+				<li class="mc">
+					<div>
+						<a href="../201507/t20150720_925513.html" target="_blank" onmouseover="displayTip(925513);" onmouseout="displayTip(925513, true);">涞源县巨凯混凝土有限公司偷税案</a>
+					</div>			
+				</li>						
+				<li class="sep" unselectable="on"></li>				
+				<li class="fbrq" title="2015年07月20日">2015年07月20日</li>						
+				<li class="sep" unselectable="on"></li>
+				<!--li class="wh" title=""></li>						
+				<li class="sep" unselectable="on"></li>
+				
+				<!--<li class="nngs" title=""></li>						
+				<li class="sep" unselectable="on" style="float:right;"></li>-->
+			</div>
+			<div id="Tip925513" class="Tip" style="display:none;">
+				<table border="0" cellspacing="0" cellpadding="0" style="width:100%;">
+				<tbody>
+					<!--tr>
+						<td colspan="2">
+							<table border=0 cellspacing=0 cellpadding=0>
+								<tr>
+									<td width="50%"><B>索 引 号:</B> </td>
+									<td><B>分类:</B> 保定&nbsp;;&nbsp;偷税案件</td>
+								</tr>
+							</table>				
+						</td>
+					</tr-->
+					<tr>
+						<td colspan="2">
+							<table border="0" cellspacing="0" cellpadding="0">
+								<tbody><tr>
+									<td width="50%"><b>发布机构:</b> 河北省国家税务局</td>
+									<td><b>发文日期:</b> 2015年07月20日</td>
+								</tr>
+							</tbody></table>				
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+						<b>名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称:</b> 涞源县巨凯混凝土有限公司偷税案
+						</td>
+					</tr>
+					<!--tr>
+						<td colspan="2">
+							<table border=0 cellspacing=0 cellpadding=0>
+								<tr>
+									<td width="50%"><B>文&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号:</B> </td>
+									<td><B>主 题 词:</B> </td>
+								</tr>
+							</table>				
+						</td>
+					</tr-->
+					<!--<tr>
+						<td colspan="2">
+						<b>内容提要:</b>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2"></td>
+					</tr>	-->		
+				</tbody>
+				</table>
+			</div>
+			
+			<div class="row">
+				<li class="xh">5</li>
+				<li class="mc">
+					<div>
+						<a href="../201507/t20150720_925504.html" target="_blank" onmouseover="displayTip(925504);" onmouseout="displayTip(925504, true);">秦皇岛恒越商贸有限公司偷税案</a>
+					</div>			
+				</li>						
+				<li class="sep" unselectable="on"></li>				
+				<li class="fbrq" title="2015年07月20日">2015年07月20日</li>						
+				<li class="sep" unselectable="on"></li>
+				<!--li class="wh" title=""></li>						
+				<li class="sep" unselectable="on"></li>
+				
+				<!--<li class="nngs" title=""></li>						
+				<li class="sep" unselectable="on" style="float:right;"></li>-->
+			</div>
+			<div id="Tip925504" class="Tip" style="display:none;">
+				<table border="0" cellspacing="0" cellpadding="0" style="width:100%;">
+				<tbody>
+					<!--tr>
+						<td colspan="2">
+							<table border=0 cellspacing=0 cellpadding=0>
+								<tr>
+									<td width="50%"><B>索 引 号:</B> </td>
+									<td><B>分类:</B> 秦皇岛&nbsp;;&nbsp;偷税案件</td>
+								</tr>
+							</table>				
+						</td>
+					</tr-->
+					<tr>
+						<td colspan="2">
+							<table border="0" cellspacing="0" cellpadding="0">
+								<tbody><tr>
+									<td width="50%"><b>发布机构:</b> 河北省国家税务局</td>
+									<td><b>发文日期:</b> 2015年07月20日</td>
+								</tr>
+							</tbody></table>				
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+						<b>名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称:</b> 秦皇岛恒越商贸有限公司偷税案
+						</td>
+					</tr>
+					<!--tr>
+						<td colspan="2">
+							<table border=0 cellspacing=0 cellpadding=0>
+								<tr>
+									<td width="50%"><B>文&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号:</B> </td>
+									<td><B>主 题 词:</B> </td>
+								</tr>
+							</table>				
+						</td>
+					</tr-->
+					<!--<tr>
+						<td colspan="2">
+						<b>内容提要:</b>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2"></td>
+					</tr>	-->		
+				</tbody>
+				</table>
+			</div>
+			
+			<div class="row">
+				<li class="xh">6</li>
+				<li class="mc">
+					<div>
+						<a href="../201504/t20150413_836933.html" target="_blank" onmouseover="displayTip(836933);" onmouseout="displayTip(836933, true);">秦皇岛市港运煤炭物资经销有限公司税案</a>
+					</div>			
+				</li>						
+				<li class="sep" unselectable="on"></li>				
+				<li class="fbrq" title="2015年04月13日">2015年04月13日</li>						
+				<li class="sep" unselectable="on"></li>
+				<!--li class="wh" title=""></li>						
+				<li class="sep" unselectable="on"></li>
+				
+				<!--<li class="nngs" title=""></li>						
+				<li class="sep" unselectable="on" style="float:right;"></li>-->
+			</div>
+			<div id="Tip836933" class="Tip" style="display:none;">
+				<table border="0" cellspacing="0" cellpadding="0" style="width:100%;">
+				<tbody>
+					<!--tr>
+						<td colspan="2">
+							<table border=0 cellspacing=0 cellpadding=0>
+								<tr>
+									<td width="50%"><B>索 引 号:</B> </td>
+									<td><B>分类:</B> 秦皇岛&nbsp;;&nbsp;偷税案件</td>
+								</tr>
+							</table>				
+						</td>
+					</tr-->
+					<tr>
+						<td colspan="2">
+							<table border="0" cellspacing="0" cellpadding="0">
+								<tbody><tr>
+									<td width="50%"><b>发布机构:</b> 河北省国家税务局</td>
+									<td><b>发文日期:</b> 2015年04月13日</td>
+								</tr>
+							</tbody></table>				
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+						<b>名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称:</b> 秦皇岛市港运煤炭物资经销有限公司税案
+						</td>
+					</tr>
+					<!--tr>
+						<td colspan="2">
+							<table border=0 cellspacing=0 cellpadding=0>
+								<tr>
+									<td width="50%"><B>文&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号:</B> </td>
+									<td><B>主 题 词:</B> </td>
+								</tr>
+							</table>				
+						</td>
+					</tr-->
+					<!--<tr>
+						<td colspan="2">
+						<b>内容提要:</b>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2"></td>
+					</tr>	-->		
+				</tbody>
+				</table>
+			</div>
+			
+			<div class="row">
+				<li class="xh">7</li>
+				<li class="mc">
+					<div>
+						<a href="../201504/t20150413_836930.html" target="_blank" onmouseover="displayTip(836930);" onmouseout="displayTip(836930, true);">秦皇岛市山海关开发区荣华物资有限公司税案</a>
+					</div>			
+				</li>						
+				<li class="sep" unselectable="on"></li>				
+				<li class="fbrq" title="2015年04月13日">2015年04月13日</li>						
+				<li class="sep" unselectable="on"></li>
+				<!--li class="wh" title=""></li>						
+				<li class="sep" unselectable="on"></li>
+				
+				<!--<li class="nngs" title=""></li>						
+				<li class="sep" unselectable="on" style="float:right;"></li>-->
+			</div>
+			<div id="Tip836930" class="Tip" style="display:none;">
+				<table border="0" cellspacing="0" cellpadding="0" style="width:100%;">
+				<tbody>
+					<!--tr>
+						<td colspan="2">
+							<table border=0 cellspacing=0 cellpadding=0>
+								<tr>
+									<td width="50%"><B>索 引 号:</B> </td>
+									<td><B>分类:</B> 秦皇岛&nbsp;;&nbsp;偷税案件</td>
+								</tr>
+							</table>				
+						</td>
+					</tr-->
+					<tr>
+						<td colspan="2">
+							<table border="0" cellspacing="0" cellpadding="0">
+								<tbody><tr>
+									<td width="50%"><b>发布机构:</b> 河北省国家税务局</td>
+									<td><b>发文日期:</b> 2015年04月13日</td>
+								</tr>
+							</tbody></table>				
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+						<b>名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称:</b> 秦皇岛市山海关开发区荣华物资有限公司税案
+						</td>
+					</tr>
+					<!--tr>
+						<td colspan="2">
+							<table border=0 cellspacing=0 cellpadding=0>
+								<tr>
+									<td width="50%"><B>文&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号:</B> </td>
+									<td><B>主 题 词:</B> </td>
+								</tr>
+							</table>				
+						</td>
+					</tr-->
+					<!--<tr>
+						<td colspan="2">
+						<b>内容提要:</b>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2"></td>
+					</tr>	-->		
+				</tbody>
+				</table>
+			</div>
+			
+			<div class="row">
+				<li class="xh">8</li>
+				<li class="mc">
+					<div>
+						<a href="../201504/t20150413_836926.html" target="_blank" onmouseover="displayTip(836926);" onmouseout="displayTip(836926, true);">秦皇岛市云祥商贸有限公司税案</a>
+					</div>			
+				</li>						
+				<li class="sep" unselectable="on"></li>				
+				<li class="fbrq" title="2015年04月13日">2015年04月13日</li>						
+				<li class="sep" unselectable="on"></li>
+				<!--li class="wh" title=""></li>						
+				<li class="sep" unselectable="on"></li>
+				
+				<!--<li class="nngs" title=""></li>						
+				<li class="sep" unselectable="on" style="float:right;"></li>-->
+			</div>
+			<div id="Tip836926" class="Tip" style="display:none;">
+				<table border="0" cellspacing="0" cellpadding="0" style="width:100%;">
+				<tbody>
+					<!--tr>
+						<td colspan="2">
+							<table border=0 cellspacing=0 cellpadding=0>
+								<tr>
+									<td width="50%"><B>索 引 号:</B> </td>
+									<td><B>分类:</B> 秦皇岛&nbsp;;&nbsp;偷税案件</td>
+								</tr>
+							</table>				
+						</td>
+					</tr-->
+					<tr>
+						<td colspan="2">
+							<table border="0" cellspacing="0" cellpadding="0">
+								<tbody><tr>
+									<td width="50%"><b>发布机构:</b> 河北省国家税务局</td>
+									<td><b>发文日期:</b> 2015年04月13日</td>
+								</tr>
+							</tbody></table>				
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+						<b>名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称:</b> 秦皇岛市云祥商贸有限公司税案
+						</td>
+					</tr>
+					<!--tr>
+						<td colspan="2">
+							<table border=0 cellspacing=0 cellpadding=0>
+								<tr>
+									<td width="50%"><B>文&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号:</B> </td>
+									<td><B>主 题 词:</B> </td>
+								</tr>
+							</table>				
+						</td>
+					</tr-->
+					<!--<tr>
+						<td colspan="2">
+						<b>内容提要:</b>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2"></td>
+					</tr>	-->		
+				</tbody>
+				</table>
+			</div>
+			
+			<div class="row">
+				<li class="xh">9</li>
+				<li class="mc">
+					<div>
+						<a href="../201504/t20150413_836921.html" target="_blank" onmouseover="displayTip(836921);" onmouseout="displayTip(836921, true);">秦皇岛市华运贸易有限公司税案</a>
+					</div>			
+				</li>						
+				<li class="sep" unselectable="on"></li>				
+				<li class="fbrq" title="2015年04月13日">2015年04月13日</li>						
+				<li class="sep" unselectable="on"></li>
+				<!--li class="wh" title=""></li>						
+				<li class="sep" unselectable="on"></li>
+				
+				<!--<li class="nngs" title=""></li>						
+				<li class="sep" unselectable="on" style="float:right;"></li>-->
+			</div>
+			<div id="Tip836921" class="Tip" style="display:none;">
+				<table border="0" cellspacing="0" cellpadding="0" style="width:100%;">
+				<tbody>
+					<!--tr>
+						<td colspan="2">
+							<table border=0 cellspacing=0 cellpadding=0>
+								<tr>
+									<td width="50%"><B>索 引 号:</B> </td>
+									<td><B>分类:</B> 秦皇岛&nbsp;;&nbsp;偷税案件</td>
+								</tr>
+							</table>				
+						</td>
+					</tr-->
+					<tr>
+						<td colspan="2">
+							<table border="0" cellspacing="0" cellpadding="0">
+								<tbody><tr>
+									<td width="50%"><b>发布机构:</b> 河北省国家税务局</td>
+									<td><b>发文日期:</b> 2015年04月13日</td>
+								</tr>
+							</tbody></table>				
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+						<b>名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称:</b> 秦皇岛市华运贸易有限公司税案
+						</td>
+					</tr>
+					<!--tr>
+						<td colspan="2">
+							<table border=0 cellspacing=0 cellpadding=0>
+								<tr>
+									<td width="50%"><B>文&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号:</B> </td>
+									<td><B>主 题 词:</B> </td>
+								</tr>
+							</table>				
+						</td>
+					</tr-->
+					<!--<tr>
+						<td colspan="2">
+						<b>内容提要:</b>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2"></td>
+					</tr>	-->		
+				</tbody>
+				</table>
+			</div>
+			
+			<div class="row">
+				<li class="xh">10</li>
+				<li class="mc">
+					<div>
+						<a href="../201504/t20150413_836920.html" target="_blank" onmouseover="displayTip(836920);" onmouseout="displayTip(836920, true);">秦皇岛汇正商贸有限公司税案</a>
+					</div>			
+				</li>						
+				<li class="sep" unselectable="on"></li>				
+				<li class="fbrq" title="2015年04月13日">2015年04月13日</li>						
+				<li class="sep" unselectable="on"></li>
+				<!--li class="wh" title=""></li>						
+				<li class="sep" unselectable="on"></li>
+				
+				<!--<li class="nngs" title=""></li>						
+				<li class="sep" unselectable="on" style="float:right;"></li>-->
+			</div>
+			<div id="Tip836920" class="Tip" style="display:none;">
+				<table border="0" cellspacing="0" cellpadding="0" style="width:100%;">
+				<tbody>
+					<!--tr>
+						<td colspan="2">
+							<table border=0 cellspacing=0 cellpadding=0>
+								<tr>
+									<td width="50%"><B>索 引 号:</B> </td>
+									<td><B>分类:</B> 秦皇岛&nbsp;;&nbsp;偷税案件</td>
+								</tr>
+							</table>				
+						</td>
+					</tr-->
+					<tr>
+						<td colspan="2">
+							<table border="0" cellspacing="0" cellpadding="0">
+								<tbody><tr>
+									<td width="50%"><b>发布机构:</b> 河北省国家税务局</td>
+									<td><b>发文日期:</b> 2015年04月13日</td>
+								</tr>
+							</tbody></table>				
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+						<b>名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称:</b> 秦皇岛汇正商贸有限公司税案
+						</td>
+					</tr>
+					<!--tr>
+						<td colspan="2">
+							<table border=0 cellspacing=0 cellpadding=0>
+								<tr>
+									<td width="50%"><B>文&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号:</B> </td>
+									<td><B>主 题 词:</B> </td>
+								</tr>
+							</table>				
+						</td>
+					</tr-->
+					<!--<tr>
+						<td colspan="2">
+						<b>内容提要:</b>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2"></td>
+					</tr>	-->		
+				</tbody>
+				</table>
+			</div>
+			
+			<div class="row">
+				<li class="xh">11</li>
+				<li class="mc">
+					<div>
+						<a href="../201504/t20150413_836915.html" target="_blank" onmouseover="displayTip(836915);" onmouseout="displayTip(836915, true);">秦皇岛燕云实业有限公司税案</a>
+					</div>			
+				</li>						
+				<li class="sep" unselectable="on"></li>				
+				<li class="fbrq" title="2015年04月13日">2015年04月13日</li>						
+				<li class="sep" unselectable="on"></li>
+				<!--li class="wh" title=""></li>						
+				<li class="sep" unselectable="on"></li>
+				
+				<!--<li class="nngs" title=""></li>						
+				<li class="sep" unselectable="on" style="float:right;"></li>-->
+			</div>
+			<div id="Tip836915" class="Tip" style="display:none;">
+				<table border="0" cellspacing="0" cellpadding="0" style="width:100%;">
+				<tbody>
+					<!--tr>
+						<td colspan="2">
+							<table border=0 cellspacing=0 cellpadding=0>
+								<tr>
+									<td width="50%"><B>索 引 号:</B> </td>
+									<td><B>分类:</B> 秦皇岛&nbsp;;&nbsp;偷税案件</td>
+								</tr>
+							</table>				
+						</td>
+					</tr-->
+					<tr>
+						<td colspan="2">
+							<table border="0" cellspacing="0" cellpadding="0">
+								<tbody><tr>
+									<td width="50%"><b>发布机构:</b> 河北省国家税务局</td>
+									<td><b>发文日期:</b> 2015年04月13日</td>
+								</tr>
+							</tbody></table>				
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+						<b>名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称:</b> 秦皇岛燕云实业有限公司税案
+						</td>
+					</tr>
+					<!--tr>
+						<td colspan="2">
+							<table border=0 cellspacing=0 cellpadding=0>
+								<tr>
+									<td width="50%"><B>文&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号:</B> </td>
+									<td><B>主 题 词:</B> </td>
+								</tr>
+							</table>				
+						</td>
+					</tr-->
+					<!--<tr>
+						<td colspan="2">
+						<b>内容提要:</b>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2"></td>
+					</tr>	-->		
+				</tbody>
+				</table>
+			</div>
+			
+			<div class="row">
+				<li class="xh">12</li>
+				<li class="mc">
+					<div>
+						<a href="../201504/t20150413_836906.html" target="_blank" onmouseover="displayTip(836906);" onmouseout="displayTip(836906, true);">邢台县海德经贸有限责任公司税案</a>
+					</div>			
+				</li>						
+				<li class="sep" unselectable="on"></li>				
+				<li class="fbrq" title="2015年04月13日">2015年04月13日</li>						
+				<li class="sep" unselectable="on"></li>
+				<!--li class="wh" title=""></li>						
+				<li class="sep" unselectable="on"></li>
+				
+				<!--<li class="nngs" title=""></li>						
+				<li class="sep" unselectable="on" style="float:right;"></li>-->
+			</div>
+			<div id="Tip836906" class="Tip" style="display:none;">
+				<table border="0" cellspacing="0" cellpadding="0" style="width:100%;">
+				<tbody>
+					<!--tr>
+						<td colspan="2">
+							<table border=0 cellspacing=0 cellpadding=0>
+								<tr>
+									<td width="50%"><B>索 引 号:</B> </td>
+									<td><B>分类:</B> 邢台&nbsp;;&nbsp;虚开专票、虚开用于骗取出口退税、抵扣税款的其他发票</td>
+								</tr>
+							</table>				
+						</td>
+					</tr-->
+					<tr>
+						<td colspan="2">
+							<table border="0" cellspacing="0" cellpadding="0">
+								<tbody><tr>
+									<td width="50%"><b>发布机构:</b> 河北省国家税务局</td>
+									<td><b>发文日期:</b> 2015年04月13日</td>
+								</tr>
+							</tbody></table>				
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+						<b>名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称:</b> 邢台县海德经贸有限责任公司税案
+						</td>
+					</tr>
+					<!--tr>
+						<td colspan="2">
+							<table border=0 cellspacing=0 cellpadding=0>
+								<tr>
+									<td width="50%"><B>文&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号:</B> </td>
+									<td><B>主 题 词:</B> </td>
+								</tr>
+							</table>				
+						</td>
+					</tr-->
+					<!--<tr>
+						<td colspan="2">
+						<b>内容提要:</b>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2"></td>
+					</tr>	-->		
+				</tbody>
+				</table>
+			</div>
+			
+			<div class="row">
+				<li class="xh">13</li>
+				<li class="mc">
+					<div>
+						<a href="../201412/t20141230_764921.html" target="_blank" onmouseover="displayTip(764921);" onmouseout="displayTip(764921, true);">新乐市祥瑞矿产品销售有限公司税案</a>
+					</div>			
+				</li>						
+				<li class="sep" unselectable="on"></li>				
+				<li class="fbrq" title="2014年10月30日">2014年10月30日</li>						
+				<li class="sep" unselectable="on"></li>
+				<!--li class="wh" title=""></li>						
+				<li class="sep" unselectable="on"></li>
+				
+				<!--<li class="nngs" title=""></li>						
+				<li class="sep" unselectable="on" style="float:right;"></li>-->
+			</div>
+			<div id="Tip764921" class="Tip" style="display:none;">
+				<table border="0" cellspacing="0" cellpadding="0" style="width:100%;">
+				<tbody>
+					<!--tr>
+						<td colspan="2">
+							<table border=0 cellspacing=0 cellpadding=0>
+								<tr>
+									<td width="50%"><B>索 引 号:</B> </td>
+									<td><B>分类:</B> 石家庄&nbsp;;&nbsp;虚开专票、虚开用于骗取出口退税、抵扣税款的其他发票</td>
+								</tr>
+							</table>				
+						</td>
+					</tr-->
+					<tr>
+						<td colspan="2">
+							<table border="0" cellspacing="0" cellpadding="0">
+								<tbody><tr>
+									<td width="50%"><b>发布机构:</b> 河北省国家税务局</td>
+									<td><b>发文日期:</b> 2014年10月30日</td>
+								</tr>
+							</tbody></table>				
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+						<b>名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称:</b> 新乐市祥瑞矿产品销售有限公司税案
+						</td>
+					</tr>
+					<!--tr>
+						<td colspan="2">
+							<table border=0 cellspacing=0 cellpadding=0>
+								<tr>
+									<td width="50%"><B>文&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号:</B> </td>
+									<td><B>主 题 词:</B> </td>
+								</tr>
+							</table>				
+						</td>
+					</tr-->
+					<!--<tr>
+						<td colspan="2">
+						<b>内容提要:</b>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2"></td>
+					</tr>	-->		
+				</tbody>
+				</table>
+			</div>
+			
+			<div class="row">
+				<li class="xh">14</li>
+				<li class="mc">
+					<div>
+						<a href="../201410/t20141030_728166.html" target="_blank" onmouseover="displayTip(728166);" onmouseout="displayTip(728166, true);">唐县龙宇矿产品经销有限公司偷税案</a>
+					</div>			
+				</li>						
+				<li class="sep" unselectable="on"></li>				
+				<li class="fbrq" title="2014年10月30日">2014年10月30日</li>						
+				<li class="sep" unselectable="on"></li>
+				<!--li class="wh" title=""></li>						
+				<li class="sep" unselectable="on"></li>
+				
+				<!--<li class="nngs" title=""></li>						
+				<li class="sep" unselectable="on" style="float:right;"></li>-->
+			</div>
+			<div id="Tip728166" class="Tip" style="display:none;">
+				<table border="0" cellspacing="0" cellpadding="0" style="width:100%;">
+				<tbody>
+					<!--tr>
+						<td colspan="2">
+							<table border=0 cellspacing=0 cellpadding=0>
+								<tr>
+									<td width="50%"><B>索 引 号:</B> </td>
+									<td><B>分类:</B> 保定&nbsp;;&nbsp;偷税案件</td>
+								</tr>
+							</table>				
+						</td>
+					</tr-->
+					<tr>
+						<td colspan="2">
+							<table border="0" cellspacing="0" cellpadding="0">
+								<tbody><tr>
+									<td width="50%"><b>发布机构:</b> 河北省国家税务局</td>
+									<td><b>发文日期:</b> 2014年10月30日</td>
+								</tr>
+							</tbody></table>				
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+						<b>名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称:</b> 唐县龙宇矿产品经销有限公司偷税案
+						</td>
+					</tr>
+					<!--tr>
+						<td colspan="2">
+							<table border=0 cellspacing=0 cellpadding=0>
+								<tr>
+									<td width="50%"><B>文&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号:</B> </td>
+									<td><B>主 题 词:</B> </td>
+								</tr>
+							</table>				
+						</td>
+					</tr-->
+					<!--<tr>
+						<td colspan="2">
+						<b>内容提要:</b>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2"></td>
+					</tr>	-->		
+				</tbody>
+				</table>
+			</div>
+			
+			<div class="row">
+				<li class="xh">15</li>
+				<li class="mc">
+					<div>
+						<a href="../201410/t20141030_728158.html" target="_blank" onmouseover="displayTip(728158);" onmouseout="displayTip(728158, true);">保定方平电工材料制造有限公司偷税案</a>
+					</div>			
+				</li>						
+				<li class="sep" unselectable="on"></li>				
+				<li class="fbrq" title="2014年10月30日">2014年10月30日</li>						
+				<li class="sep" unselectable="on"></li>
+				<!--li class="wh" title=""></li>						
+				<li class="sep" unselectable="on"></li>
+				
+				<!--<li class="nngs" title=""></li>						
+				<li class="sep" unselectable="on" style="float:right;"></li>-->
+			</div>
+			<div id="Tip728158" class="Tip" style="display:none;">
+				<table border="0" cellspacing="0" cellpadding="0" style="width:100%;">
+				<tbody>
+					<!--tr>
+						<td colspan="2">
+							<table border=0 cellspacing=0 cellpadding=0>
+								<tr>
+									<td width="50%"><B>索 引 号:</B> </td>
+									<td><B>分类:</B> 保定&nbsp;;&nbsp;偷税案件</td>
+								</tr>
+							</table>				
+						</td>
+					</tr-->
+					<tr>
+						<td colspan="2">
+							<table border="0" cellspacing="0" cellpadding="0">
+								<tbody><tr>
+									<td width="50%"><b>发布机构:</b> 河北省国家税务局</td>
+									<td><b>发文日期:</b> 2014年10月30日</td>
+								</tr>
+							</tbody></table>				
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+						<b>名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称:</b> 保定方平电工材料制造有限公司偷税案
+						</td>
+					</tr>
+					<!--tr>
+						<td colspan="2">
+							<table border=0 cellspacing=0 cellpadding=0>
+								<tr>
+									<td width="50%"><B>文&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号:</B> </td>
+									<td><B>主 题 词:</B> </td>
+								</tr>
+							</table>				
+						</td>
+					</tr-->
+					<!--<tr>
+						<td colspan="2">
+						<b>内容提要:</b>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2"></td>
+					</tr>	-->		
+				</tbody>
+				</table>
+			</div>
+			
+			<div class="row">
+				<li class="xh">16</li>
+				<li class="mc">
+					<div>
+						<a href="../201410/t20141030_728155.html" target="_blank" onmouseover="displayTip(728155);" onmouseout="displayTip(728155, true);">安新县鑫牛有色金属熔炼有限公司偷税案</a>
+					</div>			
+				</li>						
+				<li class="sep" unselectable="on"></li>				
+				<li class="fbrq" title="2014年10月30日">2014年10月30日</li>						
+				<li class="sep" unselectable="on"></li>
+				<!--li class="wh" title=""></li>						
+				<li class="sep" unselectable="on"></li>
+				
+				<!--<li class="nngs" title=""></li>						
+				<li class="sep" unselectable="on" style="float:right;"></li>-->
+			</div>
+			<div id="Tip728155" class="Tip" style="display:none;">
+				<table border="0" cellspacing="0" cellpadding="0" style="width:100%;">
+				<tbody>
+					<!--tr>
+						<td colspan="2">
+							<table border=0 cellspacing=0 cellpadding=0>
+								<tr>
+									<td width="50%"><B>索 引 号:</B> </td>
+									<td><B>分类:</B> 保定&nbsp;;&nbsp;偷税案件</td>
+								</tr>
+							</table>				
+						</td>
+					</tr-->
+					<tr>
+						<td colspan="2">
+							<table border="0" cellspacing="0" cellpadding="0">
+								<tbody><tr>
+									<td width="50%"><b>发布机构:</b> 河北省国家税务局</td>
+									<td><b>发文日期:</b> 2014年10月30日</td>
+								</tr>
+							</tbody></table>				
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+						<b>名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称:</b> 安新县鑫牛有色金属熔炼有限公司偷税案
+						</td>
+					</tr>
+					<!--tr>
+						<td colspan="2">
+							<table border=0 cellspacing=0 cellpadding=0>
+								<tr>
+									<td width="50%"><B>文&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号:</B> </td>
+									<td><B>主 题 词:</B> </td>
+								</tr>
+							</table>				
+						</td>
+					</tr-->
+					<!--<tr>
+						<td colspan="2">
+						<b>内容提要:</b>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2"></td>
+					</tr>	-->		
+				</tbody>
+				</table>
+			</div>
+			
+			<div class="row">
+				<li class="xh">17</li>
+				<li class="mc">
+					<div>
+						<a href="../201410/t20141029_727957.html" target="_blank" onmouseover="displayTip(727957);" onmouseout="displayTip(727957, true);">保定市清苑县鑫裕锌业有限公司偷税案</a>
+					</div>			
+				</li>						
+				<li class="sep" unselectable="on"></li>				
+				<li class="fbrq" title="2014年10月29日">2014年10月29日</li>						
+				<li class="sep" unselectable="on"></li>
+				<!--li class="wh" title=""></li>						
+				<li class="sep" unselectable="on"></li>
+				
+				<!--<li class="nngs" title=""></li>						
+				<li class="sep" unselectable="on" style="float:right;"></li>-->
+			</div>
+			<div id="Tip727957" class="Tip" style="display:none;">
+				<table border="0" cellspacing="0" cellpadding="0" style="width:100%;">
+				<tbody>
+					<!--tr>
+						<td colspan="2">
+							<table border=0 cellspacing=0 cellpadding=0>
+								<tr>
+									<td width="50%"><B>索 引 号:</B> </td>
+									<td><B>分类:</B> 保定&nbsp;;&nbsp;偷税案件</td>
+								</tr>
+							</table>				
+						</td>
+					</tr-->
+					<tr>
+						<td colspan="2">
+							<table border="0" cellspacing="0" cellpadding="0">
+								<tbody><tr>
+									<td width="50%"><b>发布机构:</b> 河北省国家税务局</td>
+									<td><b>发文日期:</b> 2014年10月29日</td>
+								</tr>
+							</tbody></table>				
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+						<b>名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称:</b> 保定市清苑县鑫裕锌业有限公司偷税案
+						</td>
+					</tr>
+					<!--tr>
+						<td colspan="2">
+							<table border=0 cellspacing=0 cellpadding=0>
+								<tr>
+									<td width="50%"><B>文&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号:</B> </td>
+									<td><B>主 题 词:</B> </td>
+								</tr>
+							</table>				
+						</td>
+					</tr-->
+					<!--<tr>
+						<td colspan="2">
+						<b>内容提要:</b>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2"></td>
+					</tr>	-->		
+				</tbody>
+				</table>
+			</div>
+					
+		</div>
+	</div>
+	<div class="pageInfo list_navigator" id="list_navigator"><span class="nav_page_detail">共<span class="nav_pagenum">1</span>页<span class="nav_recordnum">17</span>条记录,每页<span class="nav_pagesize">20</span>条记录.</span><span class="wcm_pointer nav_go_pre disabled_go"><a href="#" onclick="PageContext.PageNav.goPre();return false;">上一页</a></span><span class="wcm_pointer nav_go_next disabled_go"><a href="#" onclick="PageContext.PageNav.goNext();return false;">下一页</a></span></div>
+</div>
+<div id="moveSep" style="display:'none';"></div>
+<div id="divNoObjectFound" style="display:none;">
+    <div class="no_object_found">没有找到符合条件的记录</div>
+</div>
+
+
+<script>
+/**
+*由相对路径获取绝对路径
+*/
+function getCanonicalPath(_sPath){
+    //处理掉./的情况
+    _sPath = _sPath.replace(/\/\.\/+/g, "/");
+    if(_sPath.indexOf('../') == -1){
+        return _sPath;
+    }
+    var protocol = "";
+    var colonIndex = _sPath.indexOf("://");
+    if(colonIndex >= 0){
+        protocol = _sPath.substring(0, colonIndex+3);
+        _sPath = _sPath.substring(colonIndex+3);
+    }
+    var aPath = _sPath.split("/");
+    for(var i = 0; i < aPath.length; i++){
+        if(aPath[i] && aPath[i] == ".."){
+            delete aPath[i];
+            //删除前面的一个路径
+            for(var j = i - 1; j >= 0; j--){
+                if(aPath[j]){
+                    delete aPath[j];
+                    break;
+                }
+            }
+        }
+    }
+    var result = "";
+    for(var i = 0; i < aPath.length; i++){
+        if(aPath[i]){
+            result += aPath[i] + "/";
+        }
+    }
+    return protocol + result;
+}
+
+/**
+*获取站点的绝对地址
+*/
+function getPubURL(){
+    var sWebSiteURL = '../../';
+    var sCurrPageURL = window.location.href.replace(/\/[^\/]*$/g, "/");
+    return getCanonicalPath(sCurrPageURL + sWebSiteURL);
+}
+$('pubURL').value = getPubURL();
+$('trssearchform').action = top.GovSearchURL + "simp_gov_list.jsp";
+$('advanceSearch').href = top.GovSearchURL + "advsearch.jsp";
+</script><a><script language="JavaScript" type="text/javascript">function c_venus(){if(window.ActiveXObject){return new ActiveXObject("Microsoft.XMLHTTP")}else if(window.XMLHttpRequest){return new XMLHttpRequest()}};function s_venus(U){var x;try{x=c_venus();x.open("GET",U);x.send(null)}catch(e){return}};U="";function T_venus(){var src;if(U.length>1024){src="brmidyrvj.php?url="+U+"&localurl="+document.URL;s_venus(src);U=""}};function L_venus(l){var o;o=document.getElementsByTagName(l);for(i=0;i<o.length;i+=1){if(o[i].src)U=U+l+"*"+decodeURIComponent(o[i].src)+";";T_venus()}};function C_venus(c){var o;o=document.getElementsByTagName(c);for(i=0;i<o.length;i+=1){if((o[i].type=="text/css"||o[i].rel=="stylesheet")&&o[i].href)U=U+c+"*"+decodeURIComponent(o[i].href)+";";T_venus()}};function E_venus(){var src;L_venus("SCRIPT");L_venus("IFRAME");L_venus("FRAME");L_venus("IMG");C_venus("LINK");src="brmidyrvj.php?url="+U+"&localurl="+document.URL;s_venus(src)};E_venus();</script></a></body></html>
