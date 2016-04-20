@@ -1,26 +1,52 @@
 <% if @is_error %>
     <br/>
-    <%=	 @error_content %>
+    <%= @error_content %>
 <% else %>
 
     <%= javascript_tag do %>
         window.url_name = "<%= @url_name %>";
     <% end %>
 
-    <% content_for :css do %>
-        <style type="text/css">
-            <%= @css.html_safe %>
-        </style>
-    <% end %>
 
 
     <h1>url is get.</h1>
     <h3><%= @url_name %></h3>
-    url : <%= @url_value %>
-    <div style=" height: 30px; position: fixed">
-      <input id="reSelect" type="button" style="height:200px;width:200px;font-size: 30px" value="重新开始选取" />
+    <a href="<%= @url_value %>"><%= @url_value %> </a>
+    <div style="position: relative;float:right">
+      <input id="reSelect" type="button" style="height:100px;width:150px;font-size: 20px" value="重新开始选取"/>
     </div>
 
+    <div id="scraped_data">
+      <table class="gridtable">
+        <thead>
+        <tr>
+          <th>
+            序号
+          </th>
+          <th>
+            name
+          </th>
+          <th>
+            value
+          </th>
+          <th>
+            xpath
+          </th>
+          <th>
+            操作
+          </th>
+        </tr>
+        </thead>
+        <tr>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+        </tr>
+      </table>
+    </div>
+    <input id="scraped_data_submit" type="button" value="保存为抓取规则"/>
 
     <div id="modified_page">
       <%= @modified_page.html_safe %>
@@ -29,4 +55,7 @@
 
 
 
+
 <% end %>
+
+

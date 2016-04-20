@@ -258,9 +258,9 @@ if __FILE__==$0
   #s =  HtmlAnalysis.instance.page_source
 
   #puts HtmlAnalysis.instance.fetch_css_style
-  url = "https://www.so.com/"
+  url = "http://www.baidu.com/"
 
   HtmlAnalysis.instance.analyze(url)
-  modified_page = HtmlAnalysis.instance.modified_page
-  puts modified_page
+  page_source = HtmlAnalysis.instance.page_source
+  puts page_source
 end

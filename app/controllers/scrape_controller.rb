@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + '/../../lib/web_analysis'
+require File.dirname(__FILE__) + '/../../lib/nokogiri_parse'
 require 'uri'
 require File.dirname(__FILE__) + "/../models/item"
 
@@ -19,7 +19,7 @@ class ScrapeController < ApplicationController
       @error_content = "请加上http://或者https://"
     end
     begin
-      HtmlAnalysis.instance.analyze(@url_value)
+      doc = NokogiriParse.instance.get_doc(@url_value)
     rescue
       puts $!
       puts $@
@@ -28,31 +28,46 @@ class ScrapeController < ApplicationController
       return @is_error, @error_content
     end
 
-    @css =HtmlAnalysis.instance.css_file
-    @modified_page = HtmlAnalysis.instance.modified_page
-    return @url_name, @url_value, @modified_page, @css
+
+    @modified_page = doc.to_html
+    puts doc.to_html
+    return @url_name, @url_value, @modified_page
   end
 
   def valid?(url)
-    uri = URI.parse(url)
-    uri.kind_of?(URI::HTTP)
-  rescue URI::InvalidURIError
-    false
+    begin
+      uri = URI.parse(url)
+      uri.kind_of?(URI::HTTP)
+    rescue URI::InvalidURIError
+      false
+    end
   end
 
   def save
     puts params
     @status = "true"
+
+    spider_name = params[:spider_name].strip
+    puts "spider_name" + spider_name
     begin
-      item =  Item.new
-      item.item_name = params[:name].strip
-      item.item_xpath = params[:xpath].strip
-      item.spider_name = "test"
-      item.save
+      list = params[:list]
+      list.each do |k,v|
+        puts v
+        item = Item.new
+        item.spider_name = spider_name
+        item.item_xpath = v[:xpath]
+        item.item_name = v[:name]
+        item.item_example = v[:value]
+        item.save
+      end
     rescue
+      puts "!!!!!!!!!! 保存出错 !!!!!!!!!!!"
+      puts $!
+      puts $@
+      puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
       @status = "false"
     end
-    render :json => { :status => @status}
+    render :json => {:status => @status}
   end
 
 end

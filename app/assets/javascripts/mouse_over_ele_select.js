@@ -30,12 +30,18 @@ window.ym.mos = (function () {
     //SetupDOMSelection();
 
     //(Section 1) Element Selection
-    function SetupDOMSelection() {
+    function SetupDOMSelection(container) {
         {
 
             //setup event listeners
-            //var pathx="//div | //span | //table | //td | //tr | //ul | //ol | //li | //p";
-            var pathx = "//div | //span | //table | //th | //td | //tr | //ul | //ol | //li | //p | //iframe";
+            container = container || "";
+            var pathx="//div | //span | //table | //td | //tr | //ul | //ol | //li | //p";
+            var items = pathx.split("|");
+            for (var i = 0 ; item = items[i]; i++){
+                items[i] = container + item.trim();
+            }
+            pathx = items.join("|");
+            console.log(pathx);
             var selection = $XPathSelect(pathx);
             for (var element, i = 0; element = selection(i); i++) {
                 if (element.tagName.match(/^(div|span|table|td|tr|ul|ol|li|p)$/i))	//redundant check.
@@ -243,6 +249,12 @@ window.ym.mos = (function () {
             id > 1 ? (id = '[' + id + ']') : (id = '');
             xpath = '/' + element.tagName.toLowerCase() + id + xpath;
         }
+
+        parts = xpath.split("/");
+        parts.shift()  // 弹出 html
+        parts.shift()  // 弹出 body
+        parts.shift()  //  弹出 div[]
+        xpath = "//" + parts.join("/")   // 使用相对路径
         return xpath;
     }
 
