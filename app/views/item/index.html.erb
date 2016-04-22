@@ -1,0 +1,21 @@
+<h1>所有的数据项列表</h1>
+
+<table class="gridtable">
+  <tr>
+    <th>爬虫规则名称</th>
+    <th>数据项名称</th>
+    <th>xpath规则</th>
+    <th>目标网页</th>
+    <th>操作</th>
+  </tr>
+
+  <% @items.each do |item| %>
+      <tr>
+        <td><%= item.spider_name %></td>
+        <td><%= item.item_name %></td>
+        <td><%= item.item_xpath %></td>
+        <td><a href="<%= item.start_url %>" > <%= item.start_url %></a></td>
+        <td><%= link_to 'show', item_show_path(item) %></td>
+      </tr>
+  <% end %>
+</table>

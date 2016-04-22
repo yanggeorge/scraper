@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160415095645) do
+ActiveRecord::Schema.define(version: 20160422075905) do
 
   create_table "items", force: :cascade do |t|
     t.text "spider_name",  limit: 65535
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20160415095645) do
     t.text "item_reg",     limit: 65535
     t.text "item_type",    limit: 65535
     t.text "item_example", limit: 65535
+    t.text "start_url",    limit: 65535
   end
 
   create_table "start_urls", force: :cascade do |t|

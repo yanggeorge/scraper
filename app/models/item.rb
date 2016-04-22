@@ -5,6 +5,7 @@ class Item < ActiveRecord::Base
   validates :item_reg,length: {:maximum => 100}
   validates :item_type,length: {:maximum => 10}
   validates :item_example,length: {:maximum => 1000}
+  validates :start_url,length: {:maximum => 100}
 end
 
 if __FILE__==$0 then

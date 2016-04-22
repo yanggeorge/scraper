@@ -1,4 +1,4 @@
-class CreateItem < ActiveRecord::Migration
+class CreateItemsTable < ActiveRecord::Migration
   def change
     create_table :items do |t|
       t.text  'spider_name'
@@ -7,6 +7,7 @@ class CreateItem < ActiveRecord::Migration
       t.text 'item_reg'
       t.text 'item_type'
       t.text 'item_example'
+      t.text 'start_url'
     end
   end
 end

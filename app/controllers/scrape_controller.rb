@@ -55,6 +55,7 @@ class ScrapeController < ApplicationController
         puts v
         item = Item.new
         item.spider_name = spider_name
+        item.start_url = params[:start_url]
         item.item_xpath = v[:xpath]
         item.item_name = v[:name]
         item.item_example = v[:value]

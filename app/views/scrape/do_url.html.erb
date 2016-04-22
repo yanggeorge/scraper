@@ -4,15 +4,17 @@
 <% else %>
 
     <%= javascript_tag do %>
-        window.url_name = "<%= @url_name %>";
+        window.ym.url_value = "<%= @url_value %>";
         window.ym.modified_page = '<%= j @modified_page.html_safe %>'
     <% end %>
     <div class="fancy">
+
       <div id="reSelectDiv" style="position: fixed;bottom:0; right: 0;z-index: 4">
         <input id="reSelect" type="button" style="height:100px;width:150px;font-size: 20px" value="重新开始选取"/>
       </div>
       <div>
         <span><h3>抓取的数据项列表</h3></span>
+        <a href="<%= @url_value%>" ><%= @url_value %></a><br/>
 
         <div id="scraped_data">
           <table class="gridtable">

@@ -87,6 +87,7 @@ _submit_scraped_data = (spider_name) ->
   tbl_data = window.ym.tbl.to_list()
   data =
     "spider_name" : spider_name
+    "start_url" : window.ym.url_value
     "list" : tbl_data
 
   option =

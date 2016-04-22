@@ -8,6 +8,12 @@ Rails.application.routes.draw do
   post 'scrape/do_url' => 'scrape#do_url'
   get 'scrape/do_url' => 'scrape#do_url'
   post 'scrape/save' => 'scrape#save'
+  get 'item/index' => 'item#index'
+  post 'item/index' => 'item#index'
+  get 'item/show/:id' => 'item#show' , as: :item_show
+  post 'item/update/:id' => 'item#update' , as: :item_update
+
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
