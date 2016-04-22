@@ -30,19 +30,13 @@ window.ym.mos = (function () {
     //SetupDOMSelection();
 
     //(Section 1) Element Selection
-    function SetupDOMSelection(container) {
+    function SetupDOMSelection(iframe) {
         {
 
             //setup event listeners
-            container = container || "";
             var pathx="//div | //span | //table | //td | //tr | //ul | //ol | //li | //p";
-            var items = pathx.split("|");
-            for (var i = 0 ; item = items[i]; i++){
-                items[i] = container + item.trim();
-            }
-            pathx = items.join("|");
-            console.log(pathx);
-            var selection = $XPathSelect(pathx);
+
+            var selection = $XPathSelectInIframe(pathx , iframe);
             for (var element, i = 0; element = selection(i); i++) {
                 if (element.tagName.match(/^(div|span|table|td|tr|ul|ol|li|p)$/i))	//redundant check.
                 {
@@ -225,7 +219,15 @@ window.ym.mos = (function () {
         return i;
     }
 
-
+    function $XPathSelectInIframe(p , ifrm) {
+        ifrm = (ifrm.contentWindow) ? ifrm.contentWindow : (ifrm.contentDocument.document) ? ifrm.contentDocument.document : ifrm.contentDocument;
+        var doc = ifrm.document;
+        var context = doc;
+        var i, arr = [], xpr = doc.evaluate(p, context, null, XPathResult.UNORDERED_NODE_SNAPSHOT_TYPE, null);
+        return function (x) {
+            return xpr.snapshotItem(x);
+        };	//closure.  wooot!  returns function-type array of elements (usually elements, or something else depending on the xpath expression).
+    }
     //support
     function $XPathSelect(p, context) {
         if (!context) context = document;
@@ -246,7 +248,7 @@ window.ym.mos = (function () {
         for ( ; element && element.nodeType == 1; element = element.parentNode )
         {
             var id = $(element.parentNode).children(element.tagName).index(element) + 1;
-            id > 1 ? (id = '[' + id + ']') : (id = '');
+            id >= 1 ? (id = '[' + id + ']') : (id = '');
             xpath = '/' + element.tagName.toLowerCase() + id + xpath;
         }
 

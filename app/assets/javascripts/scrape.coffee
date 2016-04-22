@@ -2,13 +2,12 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-window.ym.xpath_container="//div[@id='modified_page']";
-
 jQuery(document).ready ->
+  document.getElementById('modified_page').contentWindow.document.write(window.ym.modified_page);
   init_scraped_table()
   window.ym.mos.SetCallback(dealXpathValue)
   jQuery("#reSelect").click =>
-    window.ym.mos.SetupDOMSelection(window.ym.xpath_container)
+    window.ym.mos.SetupDOMSelection(document.getElementById("modified_page"))
   jQuery("#scraped_data_submit").click =>
     submit_scraped_data()
 
@@ -19,7 +18,7 @@ init_scraped_table = ->
 
 rerender_scraped_table = (tbl)->
   jQuery("#scraped_data").html(tbl.to_html())
-  window.ym.mos.SetupDOMSelection(window.ym.xpath_container)
+  window.ym.mos.SetupDOMSelection(document.getElementById("modified_page"))
 
 window.ym.deleteItem = (id) ->
   console.log("deleteItem")
@@ -53,9 +52,9 @@ dealXpathValue = (xpath ,value) ->
         if v == 1
           item = new window.ym.ScrapedItem(f.name,f.value,f.xpath)
           window.ym.addItem(item)
-          window.ym.mos.SetupDOMSelection(window.ym.xpath_container)
+          window.ym.mos.SetupDOMSelection(document.getElementById("modified_page"))
         else
-          window.ym.mos.SetupDOMSelection(window.ym.xpath_container)
+          window.ym.mos.SetupDOMSelection(document.getElementById("modified_page"))
         e.preventDefault()
         $.prompt.close()
 
@@ -69,7 +68,7 @@ submit_scraped_data = ->
 
   state =
     state0 :
-      title : '填写爬虫的英文名称'
+      title : '填写规则的英文名称'
       html : '<div style="vertical-align: middle"><label>spider_name :</label><br/><input type="text" name="spider_name" size="30" value=""><br /></div>'
       buttons :
         "保存" : 1
@@ -78,7 +77,7 @@ submit_scraped_data = ->
         if v == 1
           _submit_scraped_data(f.spider_name)
         else
-          window.ym.mos.SetupDOMSelection(window.ym.xpath_container)
+          window.ym.mos.SetupDOMSelection(document.getElementById("modified_page"))
         e.preventDefault()
         $.prompt.close()
 

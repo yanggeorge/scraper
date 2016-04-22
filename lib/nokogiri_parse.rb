@@ -76,7 +76,8 @@ class NokogiriParse
         'img' => 'src',
         'script' => 'src',
         'link' => 'href',
-        'iframe' => 'src'
+        'iframe' => 'src',
+        'meta' => 'url'
     }
 
     doc.search(tags.keys.join(',')).each do |node|
@@ -225,8 +226,9 @@ if __FILE__== $0
 </html>
 EOF
 
-  url = "http://www.baidu.com"
-  doc = Nokogiri::HTML(WebAnalysis.instance.get_response(url))
+  url = "http://www.sd-n-tax.gov.cn/col/col47711/index.html"
+  #doc = Nokogiri::HTML(WebAnalysis.instance.get_response(url))
+  doc = Nokogiri::HTML(open(url))
   puts doc.to_html
 
 end

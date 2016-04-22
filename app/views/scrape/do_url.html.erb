@@ -5,57 +5,51 @@
 
     <%= javascript_tag do %>
         window.url_name = "<%= @url_name %>";
+        window.ym.modified_page = '<%= j @modified_page.html_safe %>'
     <% end %>
+    <div class="fancy">
+      <div id="reSelectDiv" style="position: fixed;bottom:0; right: 0;z-index: 4">
+        <input id="reSelect" type="button" style="height:100px;width:150px;font-size: 20px" value="重新开始选取"/>
+      </div>
+      <div>
+        <span><h3>抓取的数据项列表</h3></span>
 
-
-
-    <h1>url is get.</h1>
-    <h3><%= @url_name %></h3>
-    <a href="<%= @url_value %>"><%= @url_value %> </a>
-    <div style="position: relative;float:right">
-      <input id="reSelect" type="button" style="height:100px;width:150px;font-size: 20px" value="重新开始选取"/>
+        <div id="scraped_data">
+          <table class="gridtable">
+            <thead>
+            <tr>
+              <th>
+                序号
+              </th>
+              <th>
+                name
+              </th>
+              <th>
+                value
+              </th>
+              <th>
+                xpath
+              </th>
+              <th>
+                操作
+              </th>
+            </tr>
+            </thead>
+            <tr>
+              <td>1</td>
+              <td>1</td>
+              <td>1</td>
+              <td>1</td>
+              <td>1</td>
+            </tr>
+          </table>
+        </div>
+        <input id="scraped_data_submit" type="button" value="保存为抓取规则"/>
+      </div>
     </div>
 
-    <div id="scraped_data">
-      <table class="gridtable">
-        <thead>
-        <tr>
-          <th>
-            序号
-          </th>
-          <th>
-            name
-          </th>
-          <th>
-            value
-          </th>
-          <th>
-            xpath
-          </th>
-          <th>
-            操作
-          </th>
-        </tr>
-        </thead>
-        <tr>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-        </tr>
-      </table>
-    </div>
-    <input id="scraped_data_submit" type="button" value="保存为抓取规则"/>
-
-    <div id="modified_page">
-      <%= @modified_page.html_safe %>
-    </div>
-
-
-
-
+    <iframe id="modified_page" class="iframe_class">
+    </iframe>
 
 <% end %>
-
 
