@@ -41,3 +41,13 @@ table.gridtable td {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
+
+.side_pane {
+  position: absolute;
+  right: 0;
+  top: 42px;
+  width: 260px;
+  height: 300px;
+  background-color: #287ade;
+
+}

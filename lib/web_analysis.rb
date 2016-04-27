@@ -9,6 +9,7 @@ class WebAnalysis
   attr_accessor :url , :body , :driver
 
   def initialize
+    Thread.new {`"d:\\work\\bin\\phantomjs.exe" --webdriver=9134`} # 首先运行phantomjs
     @driver = Selenium::WebDriver.for(:remote, :url => "http://localhost:9134")
   end
 
