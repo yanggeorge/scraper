@@ -27,7 +27,7 @@ module RPA
       s += indent + outputs_to_s(indent + INDENT) + ",\n"
       s += indent + name_to_s + ",\n"
       s += indent + id_to_s + ",\n"
-      s += indent + deleted_to_s + "\n" # <--- ���һ��û�ж���
+      s += indent + deleted_to_s + "\n" # <--- 最后一个没有逗号
       s += "}\n"
     end
 
@@ -135,7 +135,7 @@ module RPA
       step
     end
 
-    # stepֻ��һ����
+    # step只是一部分
     def to_s(indent=INDENT)
       s = %Q("#{@id}":{\n)
       s += indent + id_to_s + ",\n"
@@ -191,8 +191,8 @@ module RPA
         s += %Q("options":[\n)
         i = 1
         @options.each do |option|
-          s += %Q("#{option}")
-          if i == options.length
+          s += indent + %Q("#{option}")
+          if i == @options.length
             s += "\n"
           else
             s += ",\n"
@@ -282,13 +282,15 @@ module RPA
 
   end
 
-############################################ ����Ϊtest #################
+############################################ 以下为test #################
   def self.test
     robot = Robot.new("test")
     puts robot.to_s
     puts JSON(robot.to_s)
 
     step1 = Step.new(ACTION_VISIT)
+    step1.options << "bbbb"
+    step1.options << "bbbb"
     step2 = Step.new(ACTION_EXTRACT)
     step3 = Step.new(ACTION_CLICK)
     step4 = Step.new(ACTION_FLUSH)
@@ -302,6 +304,8 @@ module RPA
     robot.steps[step4.id] = step4
 
     output = Output.new("test")
+    output.options << "aaaa"
+    output.options << "aaaa"
     robot.outputs[output.id] = output
     robot.first_step = step1.id
     puts robot.to_s
@@ -317,7 +321,6 @@ module RPA
 
   if __FILE__==$0
     test
-
 
   end
 
