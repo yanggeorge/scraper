@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
-  root 'index#index'
+ # root 'index#index'
   post 'scrape/do_url' => 'scrape#do_url'
   get 'scrape/do_url' => 'scrape#do_url'
   post 'scrape/save' => 'scrape#save'
@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get 'item/show/:id' => 'item#show' , as: :item_show
   post 'item/update/:id' => 'item#update' , as: :item_update
 
-
+  root 'home#index'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

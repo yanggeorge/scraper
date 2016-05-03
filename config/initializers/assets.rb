@@ -7,7 +7,7 @@ Rails.application.config.assets.version = '1.0'
 # Rails.application.config.assets.paths << Emoji.images_path
 
 # Precompile additional assets.
-# application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
+# application.js, application.css.scss, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )
 Rails.application.config.assets.precompile += %w( mouse_over_ele_select.js )
 Rails.application.config.assets.precompile += %w( Math.uuid.js )

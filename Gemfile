@@ -51,3 +51,5 @@ gem 'selenium-webdriver'
 
 gem 'nokogiri'
 
+gem 'bower-rails'
+
