@@ -11,7 +11,7 @@ class DocManager
     @links =[]
     @link_doc = {}
     @total_num = 0
-    @max_num = 20
+    @max_num = 50
     @clear_num = 5
   end
 
@@ -108,6 +108,19 @@ class NokogiriParse
 
   def get_full_path(base_url, path)
     URI.join(base_url, path).to_s
+  end
+
+  def click(url, ele_xpath)
+    doc,current_url = Nokogiri::HTML(WebAnalysis.instance.click(url, ele_xpath))
+    doc = complete_path(current_url, doc)
+    doc = delete_tag(doc)
+    DocManager.instance.add(current_url,doc)
+    doc
+  end
+
+  def extract(url, xpath)
+
+
   end
 
 end

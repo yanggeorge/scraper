@@ -30,6 +30,19 @@ class WebAnalysis
     @driver.page_source
   end
 
+  def click(url , ele_xpath)
+    @driver.navigate.to url
+    element = @driver.find_element(:xpath,ele_xpath)
+    element.click
+    return @driver.page_source, @driver.current_url
+  end
+
+  def extract(url, ele_xpath)
+    @driver.navigate.to url
+    element = @driver.find_element(:xpath,ele_xpath)
+    element.text
+  end
+
 end
 
 class PageSourceManager
