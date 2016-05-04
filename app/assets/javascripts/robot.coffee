@@ -97,6 +97,18 @@ class Robot
   deleted_to_s : ->
     "\"deleted\":\"#{@deleted}\""
 
+  add_step : (step)->
+    @steps[step.id] = step
+
+  remove_step : (step) ->
+    delete @steps[step.id]
+
+  add_output : (output) ->
+    @outputs[output.id] = output
+
+  remove_output : (output) ->
+    delete @outputs[output.id]
+
 class Step
   id: ""
   action: ""

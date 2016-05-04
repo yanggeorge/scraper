@@ -1,4 +1,3 @@
-
 require File.dirname(__FILE__) + "/robot"
 require File.dirname(__FILE__) + "/nokogiri_parse"
 require File.dirname(__FILE__) + "/../app/models/output"
@@ -6,7 +5,7 @@ require File.dirname(__FILE__) + "/../app/models/output"
 module RPA
   class RobotEngine
     attr_accessor :parse_engine, :doc,:robot, :step_id, :url
-    attr_accessor
+    attr_accessor :is_end, :pre_step_id
     attr_accessor :outputs
 
     # @param [NokogiriParse] parse_engine
@@ -15,6 +14,7 @@ module RPA
       @parse_engine = parse_engine
       @robot = robot
       @step_id = robot.first_step
+      @is_end = false
     end
 
     def run
@@ -22,17 +22,14 @@ module RPA
         raise "step_id is not a uuid string."
       end
 
-      step = @robot.steps[@step_id]
-      while step
-        next_step(step)
-        @step_id = step.next[0]
-        step = @robot.steps[@step_id]
+      while @is_end == false
+        next_step
       end
 
     end
 
-    # @param [Step] step
-    def next_step(step)
+    def next_step
+      step = @robot.steps[@step_id]
       action = step.action
       case action
         when RPA::ACTION_VISIT
@@ -55,6 +52,13 @@ module RPA
           flush
         else
           raise("action type is wrong.")
+      end
+      @pre_step_id = @step_id
+      if step.next.length > 0
+        @step_id = step.next[0]
+      else
+        @step_id = nil
+        @is_end = true
       end
 
     end
