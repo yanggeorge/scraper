@@ -6,9 +6,11 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-<%=	 link_to '首页', root_path %>
-<%=	 link_to '数据项列表', item_index_path %>
+<body onresize="size();return false;">
+<% if controller_name != "scrape" %>
+    <%= link_to '首页', root_path %>
+    <%= link_to '数据项列表', item_index_path %>
+<% end %>
 <%= yield %>
 
 </body>

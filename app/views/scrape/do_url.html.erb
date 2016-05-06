@@ -7,57 +7,96 @@
         window.ym.url_value = "<%= @url_value %>";
         window.ym.modified_page = '<%= j @modified_page.html_safe %>'
     <% end %>
-    <div class="fancy">
 
-      <div id="reSelectDiv" style="position: fixed;bottom:0; right: 0;z-index: 4">
-        <input id="reSelect" type="button" style="height:100px;width:150px;font-size: 20px" value="重新开始选取"/>
-      </div>
-      <div>
-        <a href="<%= @url_value%>" ><%= @url_value %></a><br/>
-        <span><h3>抓取的数据项列表</h3></span>
-
-
-        <div id="scraped_data">
-          <table class="gridtable">
-            <thead>
-            <tr>
-              <th>
-                序号
-              </th>
-              <th>
-                name
-              </th>
-              <th>
-                value
-              </th>
-              <th>
-                xpath
-              </th>
-              <th>
-                操作
-              </th>
-            </tr>
-            </thead>
-            <tr>
-              <td>1</td>
-              <td>1</td>
-              <td>1</td>
-              <td>1</td>
-              <td>1</td>
-            </tr>
-          </table>
+    <div class="p1">
+      <div id="p0" class="p2-1 main">
+        <div id="p2" class="p3-1 sidepane">
         </div>
-        <input id="scraped_data_submit" type="button" value="保存为抓取规则"/>
+        <div id="p1" class="p3-2 page">
+          <div class="p4-1 inner">
+            <iframe id="modified_page" class="iframe_class">
+            </iframe>
+          </div>
+        </div>
+      </div>
+      <div class="p2-2  mainpane">
+        <div id="p4" class="p3-3 sidepane">
+
+        </div>
+        <div id="p3" class="p3-4 main ">
+          <input onclick="toggle();return false;" value="sidepane1" type="button">
+          <input onclick="toggle_sidepane2();return false;" value="sidepane2" type="button">
+        </div>
       </div>
     </div>
 
-    <iframe id="modified_page" class="iframe_class">
-    </iframe>
+    <script type="text/javascript">
+        function size() {
+            if (window.innerWidth)
+                winWidth = window.innerWidth;
+            else if ((document.body) && (document.body.clientWidth))
+                winWidth = document.body.clientWidth;
+            if (window.innerHeight)
+                winHeight = window.innerHeight;
+            else if ((document.body) && (document.body.clientHeight))
+                winHeight = document.body.clientHeight;
 
-    <!-- 右侧窗口 -->
-    <div id="side_pane_view" class="side_pane">
+            var p0 = document.getElementById("p0");
+            var p1 = document.getElementById("p1");
+            var p2 = document.getElementById("p2");
+            p0.style.width = String(winWidth) + "px";
+            p0.style.height = String(winHeight - 300) + "px";
+            var p2_width = $("#p2").width();
+            p1.style.width = String(winWidth - p2_width) + "px";
 
-    </div>
+
+            var p4_width = $("#p4").width();
+            $('#p3').css("width", String(winWidth - p4_width) + "px");
+        }
+
+        jQuery(document).ready(function () {
+            size();
+            window.sidepane_speed = 50;
+            window.sidepane_state = 1;
+            window.sidepane2_state = 1;
+
+        });
+
+        var toggle = function () {
+            var state = window.sidepane_state;
+            if (state == 0) {
+                window.sidepane_state = 1;
+                sidepane_pop("#p1", "#p2");
+            } else {
+                window.sidepane_state = 0;
+                sidepane_shut("#p1", "#p2");
+            }
+        };
+        var sidepane_shut = function (main_id, sidepane_id) {
+            var speed = window.sidepane_speed;
+            $(sidepane_id).animate({width: '0'}, speed);
+            var w = $(main_id).width() + 270;
+            $(main_id).animate({width: w + "px", right: 0}, speed)
+
+        }
+
+        var sidepane_pop = function (main_id, sidepane_id) {
+            var speed = window.sidepane_speed;
+            $(sidepane_id).animate({width: '270px'}, speed);
+            var w = $(main_id).width() - 270;
+            $(main_id).animate({width: w + "px", right: "270px"}, speed)
+        }
+        var toggle_sidepane2 = function () {
+            var state = window.sidepane2_state;
+            if (state == 0) {
+                window.sidepane2_state = 1;
+                sidepane_pop("#p3", "#p4");
+            } else {
+                window.sidepane2_state = 0;
+                sidepane_shut("#p3", "#p4");
+            }
+        }
+    </script>
+
 
 <% end %>
-
