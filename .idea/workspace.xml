@@ -32,7 +32,7 @@
     <SUITE FILE_PATH="coverage/blog@runner.coverage" NAME="runner Coverage Results" MODIFIED="1460351352131" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="blog" />
     <SUITE FILE_PATH="coverage/blog@test__blog.coverage" NAME="test: blog Coverage Results" MODIFIED="1460432410839" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="blog" />
     <SUITE FILE_PATH="coverage/blog@db_migrate__blog.coverage" NAME="db:migrate: blog Coverage Results" MODIFIED="1462329222013" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="blog" />
-    <SUITE FILE_PATH="coverage/blog@Development__blog.coverage" NAME="Development: blog Coverage Results" MODIFIED="1462329375809" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="blog" />
+    <SUITE FILE_PATH="coverage/blog@Development__blog.coverage" NAME="Development: blog Coverage Results" MODIFIED="1462866469929" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="blog" />
     <SUITE FILE_PATH="coverage/blog@web_analysis.coverage" NAME="web_analysis Coverage Results" MODIFIED="1461062296831" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/lib" MODULE_NAME="blog" />
   </component>
   <component name="CreatePatchCommitExecutor">
@@ -43,7 +43,7 @@
     <favorites_list name="blog" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.56278366">
+    <splitter split-orientation="horizontal" split-proportion="0.5544629">
       <split-first>
         <leaf>
           <file leaf-file-name="web_analysis.rb" pinned="false" current-in-tab="false">
@@ -51,16 +51,6 @@
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
                   <caret line="27" column="29" selection-start-line="27" selection-start-column="29" selection-end-line="27" selection-end-column="29" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="robot.rb" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/lib/robot.rb">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="278" column="23" selection-start-line="278" selection-start-column="23" selection-end-line="278" selection-end-column="23" />
                   <folding />
                 </state>
               </provider>
@@ -79,7 +69,7 @@
           <file leaf-file-name="robot.coffee" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/assets/javascripts/robot.coffee">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-14.451612">
+                <state vertical-scroll-proportion="0.0">
                   <caret line="321" column="0" selection-start-line="321" selection-start-column="0" selection-end-line="321" selection-end-column="0" />
                   <folding />
                 </state>
@@ -89,9 +79,15 @@
           <file leaf-file-name="do_url.html.erb" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/views/scrape/do_url.html.erb">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.7633803">
-                  <caret line="94" column="43" selection-start-line="94" selection-start-column="43" selection-end-line="94" selection-end-column="43" />
-                  <folding />
+                <state vertical-scroll-proportion="0.54404145">
+                  <caret line="112" column="56" selection-start-line="112" selection-start-column="56" selection-end-line="112" selection-end-column="56" />
+                  <folding>
+                    <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#div#2;n#div#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#div#3;n#div#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -99,7 +95,7 @@
           <file leaf-file-name="scrape.coffee" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/assets/javascripts/scrape.coffee">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-16.548388">
+                <state vertical-scroll-proportion="0.0">
                   <caret line="176" column="0" selection-start-line="176" selection-start-column="0" selection-end-line="176" selection-end-column="0" />
                   <folding>
                     <marker date="1461312523259" expanded="true" signature="1269:1291" placeholder="..." />
@@ -121,7 +117,7 @@
           <file leaf-file-name="application.html.erb" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-5.677419">
+                <state vertical-scroll-proportion="0.0">
                   <caret line="8" column="36" selection-start-line="8" selection-start-column="36" selection-end-line="8" selection-end-column="36" />
                   <folding />
                 </state>
@@ -155,8 +151,8 @@
           <file leaf-file-name="scrape.scss" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/scrape.scss">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.7605634">
-                  <caret line="65" column="25" selection-start-line="65" selection-start-column="25" selection-end-line="65" selection-end-column="25" />
+                <state vertical-scroll-proportion="0.46804836">
+                  <caret line="119" column="29" selection-start-line="119" selection-start-column="29" selection-end-line="119" selection-end-column="29" />
                   <folding />
                 </state>
               </provider>
@@ -165,8 +161,28 @@
           <file leaf-file-name="application.css.scss" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/application.css.scss">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-0.0">
-                  <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+                <state vertical-scroll-proportion="-3.548387">
+                  <caret line="5" column="35" selection-start-line="5" selection-start-column="35" selection-end-line="5" selection-end-column="35" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="assets.rb" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/config/initializers/assets.rb">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="font-awesome-rails.rb" pinned="false" current-in-tab="false">
+            <entry file="file://D:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/font-awesome-rails-4.6.2.0/lib/font-awesome-rails.rb">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -193,6 +209,8 @@
         <option value="Erb File.html" />
         <option value="Ruby Class Template" />
         <option value="CoffeeScript File" />
+        <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -203,7 +221,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/test/test_helper.rb" />
         <option value="$PROJECT_DIR$/test/models/item_test.rb" />
         <option value="$PROJECT_DIR$/script/test.rb" />
         <option value="$PROJECT_DIR$/bin/test.rb" />
@@ -228,9 +245,7 @@
         <option value="$PROJECT_DIR$/app/models/item.rb" />
         <option value="$PROJECT_DIR$/app/models/robot_db.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20160427083521_create_robot_data_base.rb" />
-        <option value="$PROJECT_DIR$/config/initializers/assets.rb" />
         <option value="$PROJECT_DIR$/lib/robot.rb" />
-        <option value="$PROJECT_DIR$/Gemfile" />
         <option value="$PROJECT_DIR$/Bowerfile" />
         <option value="$PROJECT_DIR$/config/application.rb" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/application.js" />
@@ -248,6 +263,13 @@
         <option value="$PROJECT_DIR$/config/routes.rb" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/scrape.coffee" />
         <option value="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
+        <option value="$PROJECT_DIR$/app/assets/stylesheets/font-awsome-min.css" />
+        <option value="$PROJECT_DIR$/app/assets/stylesheets/font-awsome.min.css" />
+        <option value="$PROJECT_DIR$/app/assets/stylesheets/test.css" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/test.js" />
+        <option value="$PROJECT_DIR$/config/initializers/assets.rb" />
+        <option value="$PROJECT_DIR$/Gemfile" />
+        <option value="$PROJECT_DIR$/app/assets/stylesheets/application.css.scss" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/scrape.scss" />
         <option value="$PROJECT_DIR$/app/views/scrape/do_url.html.erb" />
       </list>
@@ -408,6 +430,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="blog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="blog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="initializers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -592,31 +632,10 @@
               <option name="myItemId" value="assets" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="javascripts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="blog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="blog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
       <pane id="RailsProjectView">
         <subPane>
           <PATH>
@@ -674,7 +693,6 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -692,6 +710,7 @@
     <property name="byebug.present.asked" value="true" />
     <property name="editor.config.accepted" value="true" />
     <property name="RakeTaksPopup.undocumentedIncluded" value="false" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -987,8 +1006,8 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Rake.db:migrate: blog" />
-        <item index="1" class="java.lang.String" itemvalue="Rake.db:rollback: blog" />
+        <item index="0" class="java.lang.String" itemvalue="Rake.db:rollback: blog" />
+        <item index="1" class="java.lang.String" itemvalue="Rake.db:migrate: blog" />
         <item index="2" class="java.lang.String" itemvalue="Ruby.robot_engine" />
         <item index="3" class="java.lang.String" itemvalue="Ruby.robot" />
         <item index="4" class="java.lang.String" itemvalue="Ruby.nokogiri_parse" />
@@ -1014,6 +1033,7 @@
     <layout>
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31722054" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3286385" sideWeight="0.48828697" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24963397" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1026,7 +1046,6 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3286385" sideWeight="0.48828697" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24963397" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1035,8 +1054,8 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31722054" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3286385" sideWeight="0.48828697" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.42900303" sideWeight="0.8191801" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -1046,9 +1065,9 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24963397" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24281392" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24963397" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25037822" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24963397" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.35054773" sideWeight="0.5878477" order="2" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
@@ -1070,22 +1089,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/lib/web_analysis.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="19" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/robot.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="278" column="23" selection-start-line="278" selection-start-column="23" selection-end-line="278" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/robot_engine.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1288,21 +1291,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/initializers/assets.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.76943004">
-          <caret line="14" column="43" selection-start-line="14" selection-start-column="43" selection-end-line="14" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Gemfile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="51" column="14" selection-start-line="51" selection-start-column="14" selection-end-line="51" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/application.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1371,7 +1359,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/robot.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.451612">
+        <state vertical-scroll-proportion="0.0">
           <caret line="321" column="0" selection-start-line="321" selection-start-column="0" selection-end-line="321" selection-end-column="0" />
           <folding />
         </state>
@@ -1393,14 +1381,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/application.css.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/mouse_over_ele_select.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1411,7 +1391,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/scrape.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-16.548388">
+        <state vertical-scroll-proportion="0.0">
           <caret line="176" column="0" selection-start-line="176" selection-start-column="0" selection-end-line="176" selection-end-column="0" />
           <folding>
             <marker date="1461312523259" expanded="true" signature="1269:1291" placeholder="..." />
@@ -1431,24 +1411,70 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.677419">
+        <state vertical-scroll-proportion="0.0">
           <caret line="8" column="36" selection-start-line="8" selection-start-column="36" selection-end-line="8" selection-end-column="36" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/scrape.scss">
+    <entry file="file://D:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/font-awesome-rails-4.6.2.0/lib/font-awesome-rails/engine.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7605634">
-          <caret line="65" column="25" selection-start-line="65" selection-start-column="25" selection-end-line="65" selection-end-column="25" />
+        <state vertical-scroll-proportion="0.22797927">
+          <caret line="4" column="5" selection-start-line="4" selection-start-column="5" selection-end-line="4" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/font-awesome-rails-4.6.2.0/lib/font-awesome-rails.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/application.css.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.548387">
+          <caret line="5" column="35" selection-start-line="5" selection-start-column="35" selection-end-line="5" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Gemfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.747541">
+          <caret line="55" column="13" selection-start-line="55" selection-start-column="13" selection-end-line="55" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/initializers/assets.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/scrape/do_url.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7633803">
-          <caret line="94" column="43" selection-start-line="94" selection-start-column="43" selection-end-line="94" selection-end-column="43" />
+        <state vertical-scroll-proportion="0.54404145">
+          <caret line="112" column="56" selection-start-line="112" selection-start-column="56" selection-end-line="112" selection-end-column="56" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#3;n#div#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/scrape.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.46804836">
+          <caret line="119" column="29" selection-start-line="119" selection-start-column="29" selection-end-line="119" selection-end-column="29" />
           <folding />
         </state>
       </provider>
