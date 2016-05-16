@@ -245,3 +245,182 @@ div {
   -webkit-transform: translate(0, 0);
   -moz-transform: translate(0, 0)
 }
+
+.tab-pane {
+
+}
+
+.tab-pane > .tab-buttons {
+  user-select: none;
+  box-sizing: border-box;
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 38px
+}
+
+.tab-pane > .tab-buttons > .button {
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+  border-radius: 0;
+  vertical-align: bottom;
+  background-color: #EFEFEF;
+  z-index: 0;
+  position: relative;
+  top: 1px;
+  border: 1px solid transparent;
+  color: #666;
+  padding: 5px 10px;
+  line-height: 27px;
+  box-sizing: border-box;
+  margin: 0;
+  display: inline-block;
+  font-size: 12px;
+  white-space: nowrap
+}
+
+.tab-pane > .tab-buttons > .button i.collapsed {
+  display: none
+}
+
+.tab-pane > .tab-buttons > .button.active, .tab-pane > .tab-buttons > .button:hover {
+  color: #333;
+  top: 1px;
+  z-index: 2;
+  border-top: 1px solid #E4E7EA;
+  border-left: 1px solid #E4E7EA;
+  border-right: 1px solid #E4E7EA;
+  border-bottom: 1px solid #fff;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.tab-pane > .tab-buttons > .button.highlight {
+  border: 1px solid #3276b1
+}
+
+.tab-pane > .tab-buttons > .button > .close {
+  padding-left: 5px;
+  cursor: pointer
+}
+
+.tab-pane > .tab-buttons > .button > .close:hover {
+  color: #3276b1;
+}
+
+.tab-pane > .tab-buttons > .actions {
+  -ms-box-shadow: 0 0 5px 1px rgba(0, 0, 0, .2);
+  -moz-box-shadow: 0 0 5px 1px rgba(0, 0, 0, .2);
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, .2);
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #fff;
+  padding: 3px 10px 8px
+}
+
+.lightbox img, .tab-pane.collapsed > .tab-buttons > .tab-down {
+  -webkit-box-shadow: 0 0 5px 1px rgba(0, 0, 0, .2);
+  -ms-box-shadow: 0 0 5px 1px rgba(0, 0, 0, .2);
+  -moz-box-shadow: 0 0 5px 1px rgba(0, 0, 0, .2);
+  -o-box-shadow: 0 0 5px 1px rgba(0, 0, 0, .2)
+}
+
+.tab-pane > .tab-page {
+  background-color: #fff;
+  overflow: auto;
+  box-sizing: border-box;
+  position: absolute;
+  top: 38px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: none;
+  z-index: 1
+}
+
+.tab-pane > .tab-page.active {
+  display: block
+}
+
+.tab-pane > .tab-page.filled {
+  background-color: #fff;
+  padding: 15px
+}
+
+.tab-pane > .tab-page .boxed, .tab-pane > .tab-page > form {
+  margin-top: 0 !important;
+  padding-top: 10px
+}
+
+.tab-pane.boxed > .tab-page {
+  border: 1px solid #E4E7EA
+}
+
+.tab-pane.filled > .tab-page {
+  background-color: #fff;
+  padding: 15px
+}
+
+.tab-pane.collapsed > .tab-buttons > .button {
+  display: none;
+  font-size: 14px
+}
+
+.tab-pane.collapsed > .tab-buttons > .button i.collapsed {
+  display: inline-block;
+  margin-top: 3px;
+  margin-right: 10px
+}
+
+.tab-pane.collapsed > .tab-buttons > .button i.close {
+  display: none
+}
+
+.tab-pane.collapsed > .tab-buttons > .button.active {
+  display: inline-block;
+  width: 184px
+}
+
+.accordion > .pane > h3 .open, .tab-pane.collapsed > .tab-buttons > .tab-down > li i.collapsed {
+  display: none
+}
+
+.tab-pane.collapsed > .tab-buttons > .tab-down {
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, .2);
+  position: relative;
+  top: 0;
+  left: 2px;
+  z-index: 100;
+  width: 200px;
+  border: 1px solid #E4E7EA;
+  overflow-y: auto
+}
+
+.tab-pane.collapsed > .tab-buttons > .tab-down > li {
+  background-color: #fff;
+  color: #666;
+  padding: 5px 20px;
+  line-height: 31px;
+  box-sizing: border-box;
+  margin: 0;
+  cursor: pointer
+}
+
+.tab-pane.collapsed > .tab-buttons > .tab-down > li:hover {
+  background-color: #EFEFEF
+}
+
+.tab-pane.collapsed > .tab-buttons > .tab-down > li.active {
+  background-color: #3276b1;
+  color: #fff
+}
+
+.tab-pane.collapsed > .tab-buttons > .tab-down > li > .close {
+  float: right;
+  margin-top: 8px
+}

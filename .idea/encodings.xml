@@ -4,7 +4,6 @@
     <file url="file://$PROJECT_DIR$/app/assets/javascripts/Math.uuid.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/assets/javascripts/robot.coffee" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/assets/javascripts/scrape.coffee" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/assets/stylesheets/font-awsome.min.css" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/controllers/scrape_controller.rb" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/views/item/index.html.erb" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/views/item/show.html.erb" charset="UTF-8" />
