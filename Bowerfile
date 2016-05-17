@@ -1,2 +1,3 @@
 asset 'angular'
 asset 'bootstrap-sass-official'
+asset 'lodash'
