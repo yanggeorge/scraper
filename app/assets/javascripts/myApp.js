@@ -1,7 +1,7 @@
 /**
  * Created by ym on 2016/5/16 0016.
  */
-var app = angular.module('myApp',[])
+var app = angular.module('myApp',['templates']);
 
 app.directive("tabPane",function(){
     return {
@@ -35,3 +35,16 @@ app.directive("tabPane",function(){
     }
 });
 
+app.controller('MainCtrl', function($scope){
+    $scope.closeSidePane = function(){
+        toggle();
+    };
+    $scope.sidePaneView = 'contextmenu.html';
+
+    var menu = {'name':'Extract from element', 'invoke':function(){
+        $scope.sidePaneView = 'fields.html';
+    } };
+    var contextMenu = [menu];
+    $scope.contextMenu = contextMenu;
+
+});

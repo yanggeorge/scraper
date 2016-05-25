@@ -11,6 +11,19 @@
     <div class="p1">
       <div id="p0" class="p2-1 main">
         <div id="p2" class="p3-1 sidepane">
+          <div class="content">
+            <h3>
+              <span >1 element selected</span>
+              <div class="actions">
+                <a href="javascript:;" ng-click="closeSidePane()" class="button mini">
+                  <i class="fa fa-remove"></i>
+                </a>
+              </div>
+            </h3>
+            <div  class="body"  ng-include="sidePaneView">
+
+            </div>
+          </div>
         </div>
         <div id="p1" class="p3-2 page">
           <div class="p4-1 inner">
@@ -208,7 +221,6 @@
 
         jQuery(document).ready(function () {
             size();
-            window.sidepane_speed = 50;
             window.sidepane_state = 1;
             window.sidepane2_state = 1;
 
@@ -218,36 +230,122 @@
             var state = window.sidepane_state;
             if (state == 0) {
                 window.sidepane_state = 1;
-                sidepane_pop("#p1", "#p2");
+                toggle_state(1,"#p1", "#p2");
             } else {
                 window.sidepane_state = 0;
-                sidepane_shut("#p1", "#p2");
+                toggle_state(0,"#p1", "#p2");
             }
         };
-        var sidepane_shut = function (main_id, sidepane_id) {
-            var speed = window.sidepane_speed;
-            $(sidepane_id).animate({width: '0'}, speed);
-            var w = $(main_id).width() + 270;
-            $(main_id).animate({width: w + "px", right: 0}, speed)
 
-        }
-
-        var sidepane_pop = function (main_id, sidepane_id) {
-            var speed = window.sidepane_speed;
-            $(sidepane_id).animate({width: '270px'}, speed);
-            var w = $(main_id).width() - 270;
-            $(main_id).animate({width: w + "px", right: "270px"}, speed)
-        }
         var toggle_sidepane2 = function () {
             var state = window.sidepane2_state;
             if (state == 0) {
                 window.sidepane2_state = 1;
-                sidepane_pop("#p3", "#p4");
+                toggle_state(1,"#p3", "#p4");
             } else {
                 window.sidepane2_state = 0;
-                sidepane_shut("#p3", "#p4");
+                toggle_state(0,"#p3", "#p4");
             }
-        }
+        };
+        // 三种状态之间进行切换。
+        var toggle_state = function(state, main_id, sidepane_id){
+            var main = $(main_id);
+            var side = $(sidepane_id);
+            var current_state ;
+            var current_sidpane_width = side.width();
+            switch (current_sidpane_width){
+                case 0 : {current_state = 0; break;}
+                case 270 : {current_state = 1; break;}
+                case 520 : {current_state = 2; break;}
+                default:{
+                    current_state = 0;
+                    console.log("current_sidepane_width = " + current_sidpane_width);
+                }
+            }
+            var sidepane_width, main_width;
+            if (current_state == 0) {
+                switch (state) {
+                    case 0 :
+                    {
+                        break;
+                    }
+                    case 1 :
+                    {
+                        sidepane_width = 270;
+                        main_width = main.width() - 270;
+                        animate_sidepane_mainpane(main, side, main_width, sidepane_width);
+                        side.show();
+                        break;
+                    }
+                    case 2:
+                    {
+                        sidepane_width = 520;
+                        main_width = main.width() - 520;
+                        animate_sidepane_mainpane(main, side, main_width, sidepane_width);
+                        side.show();
+                        break;
+                    }
+                    default:
+
+                }
+
+            } else if (current_state == 1) {
+                switch (state) {
+                    case 0 :
+                    {
+                        sidepane_width = 0;
+                        main_width = main.width() + 270;
+                        animate_sidepane_mainpane(main, side, main_width, sidepane_width);
+                        side.hide();
+                        break;
+                    }
+                    case 1 :
+                    {
+                        break;
+                    }
+                    case 2:
+                    {
+                        sidepane_width = 520;
+                        main_width = main.width() - 520 + 270;
+                        animate_sidepane_mainpane(main, side, main_width, sidepane_width);
+                        side.show();
+                        break;
+                    }
+                    default:
+
+                }
+
+            } else if (current_state == 2) {
+                switch (state) {
+                    case 0 :
+                    {
+                        sidepane_width = 0;
+                        main_width = main.width() + 520;
+                        animate_sidepane_mainpane(main, side, main_width, sidepane_width);
+                        side.hide();
+                        break;
+                    }
+                    case 1 :
+                    {
+                        sidepane_width = 270;
+                        main_width = main.width() - 270 + 520;
+                        animate_sidepane_mainpane(main, side, main_width, sidepane_width);
+                        break;
+                    }
+                    case 2:
+                    {
+                        break;
+                    }
+                    default:
+
+                }
+            }
+        };
+        var animate_sidepane_mainpane = function(main , side, target_main_width, target_side_width){
+            var speed = 50;
+            side.animate({width:target_side_width +"px"}, speed);
+            main.animate({width:target_main_width + "px", right : target_side_width + "px"},speed);
+        };
     </script>
 
 

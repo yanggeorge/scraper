@@ -88,7 +88,7 @@ jQuery.extend( {
 					// Support: IE10-11+
 					// option.text throws exceptions (#14686, #14858)
 					// Strip and collapse whitespace
-					// https://html.spec.whatwg.org/#strip-and-collapse-whitespace
+					// https://template.spec.whatwg.org/#strip-and-collapse-whitespace
 					jQuery.trim( jQuery.text( elem ) ).replace( rspaces, " " );
 			}
 		},

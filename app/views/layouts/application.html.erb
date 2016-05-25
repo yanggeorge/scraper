@@ -4,9 +4,10 @@
   <title>Blog</title>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
   <%= csrf_meta_tags %>
 </head>
-<body onload="size();return false;" onresize="size();return false;">
+<body ng-controller="MainCtrl"  onload="size();return false;" onresize="size();return false;">
 <% if controller_name != "scrape" %>
     <%= link_to '首页', root_path %>
     <%= link_to '数据项列表', item_index_path %>

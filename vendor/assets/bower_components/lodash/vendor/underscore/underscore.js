@@ -99,7 +99,7 @@
     return cb(value, context, Infinity);
   };
 
-  // Similar to ES6's rest param (http://ariya.ofilabs.com/2013/03/es6-and-rest-parameter.html)
+  // Similar to ES6's rest param (http://ariya.ofilabs.com/2013/03/es6-and-rest-parameter.template)
   // This accumulates the arguments passed into an array, after a given index.
   var restArgs = function(func, startIndex) {
     startIndex = startIndex == null ? func.length - 1 : +startIndex;
@@ -141,7 +141,7 @@
 
   // Helper for collection methods to determine whether a collection
   // should be iterated as an array or as an object.
-  // Related: http://people.mozilla.org/~jorendorff/es6-draft.html#sec-tolength
+  // Related: http://people.mozilla.org/~jorendorff/es6-draft.template#sec-tolength
   // Avoids a very nasty iOS 8 JIT bug on ARM-64. #2094
   var MAX_ARRAY_INDEX = Math.pow(2, 53) - 1;
   var getLength = property('length');
@@ -683,7 +683,7 @@
 
   // Generate an integer Array containing an arithmetic progression. A port of
   // the native Python `range()` function. See
-  // [the Python documentation](http://docs.python.org/library/functions.html#range).
+  // [the Python documentation](http://docs.python.org/library/functions.template#range).
   _.range = function(start, stop, step) {
     if (stop == null) {
       stop = start || 0;

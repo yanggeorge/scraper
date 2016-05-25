@@ -1828,7 +1828,7 @@
   /*--------------------------------------------------------------------------*/
 
   suites.push(
-    Benchmark.Suite('`_.unescape` string without html entities')
+    Benchmark.Suite('`_.unescape` string without template entities')
       .add(buildName, '\
         lodash.unescape("`&`, `<`, `>`, `\\"`, and `\'`")'
       )
@@ -1838,7 +1838,7 @@
   );
 
   suites.push(
-    Benchmark.Suite('`_.unescape` string with html entities')
+    Benchmark.Suite('`_.unescape` string with template entities')
       .add(buildName, '\
         lodash.unescape("`&amp;`, `&lt;`, `&gt;`, `&quot;`, and `&#39;`")'
       )

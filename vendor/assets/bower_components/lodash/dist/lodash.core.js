@@ -3474,7 +3474,7 @@
    * [HTML5 Security Cheatsheet](https://html5sec.org/) for more details.
    *
    * When working with HTML you should always
-   * [quote attribute values](http://wonko.com/post/html-escaping) to reduce
+   * [quote attribute values](http://wonko.com/post/template-escaping) to reduce
    * XSS vectors.
    *
    * @static
@@ -3898,7 +3898,7 @@
   // Expose Lodash on the free variable `window` or `self` when available so it's
   // globally accessible, even when bundled with Browserify, Webpack, etc. This
   // also prevents errors in cases where Lodash is loaded by a script tag in the
-  // presence of an AMD loader. See http://requirejs.org/docs/errors.html#mismatch
+  // presence of an AMD loader. See http://requirejs.org/docs/errors.template#mismatch
   // for more details. Use `_.noConflict` to remove Lodash from the global object.
   (freeWindow || freeSelf || {})._ = lodash;
 

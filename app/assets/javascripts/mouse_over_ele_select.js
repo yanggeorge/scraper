@@ -8,8 +8,8 @@
 //            also ignore self-or-descendants of head and title.
 //currently only a single, simple XPath expression is supported, this code needs more work, but on the right track.
 //tools:
-//Ruderman's javascript development environment:  https://www.squarefree.com/bookmarklets/webdevel.html#jsenv
-//Mielczarek's js to bookmarklet generator:  http://ted.mielczarek.org/code/mozilla/bookmarklet.html
+//Ruderman's javascript development environment:  https://www.squarefree.com/bookmarklets/webdevel.template#jsenv
+//Mielczarek's js to bookmarklet generator:  http://ted.mielczarek.org/code/mozilla/bookmarklet.template
 window.ym = window.ym || {};
 window.ym.mos = (function () {
     //GLOBALS
@@ -25,7 +25,7 @@ window.ym.mos = (function () {
     var hoverText;		//show information about current element that the mouse is over
     //const EXPERIMENTAL_NEW_CODE=true;	//debugging. new features.
 
-    var gCallback;  // ¶Ôprompt·µ»ØÖµ½øĞĞ´¦Àí
+    var gCallback;  // å¯¹promptè¿”å›å€¼è¿›è¡Œå¤„ç†
     //START
     //SetupDOMSelection();
 
@@ -253,10 +253,10 @@ window.ym.mos = (function () {
         }
 
         parts = xpath.split("/");
-        parts.shift()  // µ¯³ö html
-        parts.shift()  // µ¯³ö body
-        parts.shift()  //  µ¯³ö div[]
-        xpath = "//" + parts.join("/")   // Ê¹ÓÃÏà¶ÔÂ·¾¶
+        parts.shift()  // å¼¹å‡º template
+        parts.shift()  // å¼¹å‡º body
+        parts.shift()  //  å¼¹å‡º div[]
+        xpath = "//" + parts.join("/")   // ä½¿ç”¨ç›¸å¯¹è·¯å¾„
         return xpath;
     }
 

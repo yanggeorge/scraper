@@ -2,13 +2,14 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 table.gridtable {
-  font-family: verdana,arial,sans-serif;
-  font-size:11px;
-  color:#333333;
+  font-family: verdana, arial, sans-serif;
+  font-size: 11px;
+  color: #333333;
   border-width: 1px;
   border-color: #666666;
   border-collapse: collapse;
 }
+
 table.gridtable th {
   border-width: 1px;
   padding: 8px;
@@ -16,6 +17,7 @@ table.gridtable th {
   border-color: #666666;
   background-color: #dedede;
 }
+
 table.gridtable td {
   border-width: 1px;
   padding: 8px;
@@ -32,16 +34,6 @@ table.gridtable td {
   height: 100%;
 }
 
-.fancy {
-  position : relative;
-  width: 100%;
-  margin: 10px auto;
-  padding: 10px;
-  border: solid blue 10px;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
 body {
   width: 100%;
   height: 100%;
@@ -49,20 +41,24 @@ body {
   border: 0;
   font: 13px/1.231 arial, helvetica, clean, sans-serif;
 }
+
 button, input, select, textarea {
   font: 99% arial, helvetica, clean, sans-serif
 }
+
 div {
   margin: 0;
   border: 0;
   display: block;
 }
+
 .p1 {
   position: relative;
   top: 0;
   left: 0;
   width: 100%;
 }
+
 .p2-1 {
   position: relative;
   top: 0;
@@ -72,67 +68,212 @@ div {
   width: 100%;
   z-index: 2;
 }
+
 .p2-2 {
   position: relative;
   top: 0;
   left: 0;
   height: 300px;
   width: 100%;
-  background-color: #730E15 ;
+  background-color: #730E15;
   z-index: 2
 
 }
+
 .p3-1 {
   position: absolute;
   width: 270px;
   right: 0;
-  top :0 ;
+  top: 0;
   height: 100%;
   z-index: 3;
   background-color: #fff;
-  -moz-box-shadow: 5px 0 6px 0 rgba(0,0,0,.3);
-  -webkit-box-shadow: 5px 0 6px 0 rgba(0,0,0,.3);
-  box-shadow: 5px 0 6px 0 rgba(0,0,0,.3);
+  -moz-box-shadow: 5px 0 6px 0 rgba(0, 0, 0, .3);
+  -webkit-box-shadow: 5px 0 6px 0 rgba(0, 0, 0, .3);
+  box-shadow: 5px 0 6px 0 rgba(0, 0, 0, .3);
+}
 
+h3 {
+  font-size: 16px;
+}
+
+h3 > span, h4 > span, h5 > span {
+  float: left;
+}
+
+.sidepane > .content {
+  height: 43px;
+  padding: 0;
+  top: 0;
+  right: 0;
+  width: 100%
+}
+
+.sidepane h3 {
+  line-height: 43px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 0;
+  padding-bottom: 0;
+  height: 43px;
+  margin: 0;
+}
+
+.sidepane h3 .actions {
+  float: right;
+  vertical-align: top;
+  height: 43px;
+}
+
+.sidepane h3 .actions a {
+  margin-top: 10px;
+  height: 22px;
+  position: relative;
+}
+
+.button .mini {
+  font-size: 12px;
+  line-height: 16px;
+  white-space: nowrap;
+  position: relative;
+  padding: 0;
+}
+
+.button:active, .button:visited, .wb-action:active, .wb-action:visited, .wb-button:active, .wb-button:visited, .wb-form-button:active, .wb-form-button:visited, button:active, button:visited, input.button:active, input.button:visited, input.submit:active, input.submit:visited {
+  color: #636e7b;
+}
+
+.button, .wb-action, .wb-button, .wb-form-button, button, input.button, input.submit {
+  user-select: none;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -o-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -ms-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  -webkit-perspective: 1000px;
+  perspective: 1000px;
+  -webkit-transition: all 350ms ease-out;
+  -moz-transition: all 350ms ease-out;
+  -o-transition: all 350ms ease-out;
+  transition: all 350ms ease-out;
+  outline: 0;
+  display: inline-block;
+  box-sizing: border-box;
+  margin-top: 5px;
+  cursor: pointer;
+  color: #333;
+  background-color: #efefef;
+  border: 1px solid #ccc;
+  line-height: 32px;
+  text-decoration: none;
+  padding: 0 5px;
+}
+
+.button.mini i, .wb-action.mini i, .wb-button.mini i, .wb-form-button.mini i, button.mini i, input.button.mini i, input.submit.mini i {
+  padding: 0 4px;
+  height: 20px;
+}
+
+.actions i {
+  font-size: 12px;
+  line-height: 20px;
+}
+
+a, a:active, a:visited {
+  text-decoration: none;
+  color: #428bca;
+}
+
+.actions a {
+  padding: 0;
 
 }
+
+.sidepane > .content > .body {
+  position: absolute;
+  overflow: auto;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 42px;
+}
+
+.contextmenu {
+  background-color: #465a7d;
+  border: 0;
+  color: #CFCFCF;
+  min-height: 100%;
+}
+
+blockquote, body, code, dd, div, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, html, input, legend, li, menu, ol, p, pre, td, textarea, th, ul {
+  padding: 0;
+  margin: 0;
+}
+
+.contextmenu > li > a, .contextmenu > li > a:active, .contextmenu > li > a:visited {
+  padding: 10px 20px;
+  color: #CFCFCF;
+  font-size: 14px;
+  display: block;
+  text-decoration: none;
+  position: relative;
+}
+
+a, body, h4, h5, h6, input {
+  font-family: Lato, "Helvetica Neue Light", "Helvetica Neue", Verdana;
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 400
+}
+
 .p3-2 {
   position: absolute;
-  right : 270px;
+  right: 270px;
   height: 100%;
   width: 1096px;
-  top : 0;
+  top: 0;
   z-index: 3;
-  -moz-box-shadow: 5px 0 6px 0 rgba(0,0,0,.3);
-  -webkit-box-shadow: 5px 0 6px 0 rgba(0,0,0,.3);
-  box-shadow: 5px 0 6px 0 rgba(0,0,0,.3);
+  -moz-box-shadow: 5px 0 6px 0 rgba(0, 0, 0, .3);
+  -webkit-box-shadow: 5px 0 6px 0 rgba(0, 0, 0, .3);
+  box-shadow: 5px 0 6px 0 rgba(0, 0, 0, .3);
   background-color: #fff;
   overflow: auto;
 }
+
 .p3-3 {
   position: absolute;
   width: 270px;
   right: 0;
-  top :0 ;
+  top: 0;
   height: 100%;
   background-color: #fff;
-  -moz-box-shadow: 5px 0 6px 0 rgba(0,0,0,.3);
-  -webkit-box-shadow: 5px 0 6px 0 rgba(0,0,0,.3);
-  box-shadow: 5px 0 6px 0 rgba(0,0,0,.3);
+  -moz-box-shadow: 5px 0 6px 0 rgba(0, 0, 0, .3);
+  -webkit-box-shadow: 5px 0 6px 0 rgba(0, 0, 0, .3);
+  box-shadow: 5px 0 6px 0 rgba(0, 0, 0, .3);
   overflow: auto;
 }
+
 .p3-4 {
   position: absolute;
-  right : 270px;
+  right: 270px;
   height: 100%;
   width: 1096px;
-  top : 0;
-  -moz-box-shadow: 5px 0 6px 0 rgba(0,0,0,.3);
-  -webkit-box-shadow: 5px 0 6px 0 rgba(0,0,0,.3);
-  box-shadow: 5px 0 6px 0 rgba(0,0,0,.3);
+  top: 0;
+  -moz-box-shadow: 5px 0 6px 0 rgba(0, 0, 0, .3);
+  -webkit-box-shadow: 5px 0 6px 0 rgba(0, 0, 0, .3);
+  box-shadow: 5px 0 6px 0 rgba(0, 0, 0, .3);
   background-color: #eee;
   overflow: auto;
 }
+
 .p4-1 {
   position: absolute;
   top: 0;
@@ -140,7 +281,8 @@ div {
   width: 100%;
   height: 100%;
 }
-.iframe_class{
+
+.iframe_class {
   height: 100%;
   width: 100%;
   border: 0;
@@ -148,14 +290,16 @@ div {
   padding: 0;
   overflow: auto;
 }
-.flow-editor{
-  position:absolute;
+
+.flow-editor {
+  position: absolute;
 }
-.flow-step{
+
+.flow-step {
   border-radius: 5px;
   position: absolute;
   border: 1px solid #E4E7EA;
-  border-color : #666;
+  border-color: #666;
   background-color: #fff;
   line-height: 38px;
   text-align: center;
@@ -163,13 +307,16 @@ div {
   z-index: 3;
   font-size: 14px;
 }
-.title-container{
+
+.title-container {
   overflow: hidden;
 }
+
 .flow-step .title {
   border-radius: 5px;
   cursor: pointer;
 }
+
 .flow-step .step-adder {
   -webkit-user-select: none;
   -webkit-transform-style: preserve-3d;
@@ -212,8 +359,9 @@ div {
   top: 0;
   left: 0
 }
- .flow-step .step-adder.after {
-  font-family:   Lato,"Helvetica Neue Light","Helvetica Neue",Verdana;
+
+.flow-step .step-adder.after {
+  font-family: Lato, "Helvetica Neue Light", "Helvetica Neue", Verdana;
   right: -8px;
   top: 12px;
   left: auto;
@@ -224,7 +372,7 @@ div {
 }
 
 .flow-step .step-adder.before {
-  font-family:   Lato,"Helvetica Neue Light","Helvetica Neue",Verdana;
+  font-family: Lato, "Helvetica Neue Light", "Helvetica Neue", Verdana;
   left: -8px;
   top: 12px;
   transform: translate(10px, 0);
@@ -233,6 +381,7 @@ div {
   -moz-transform: translate(10px, 0);
   z-index: 51;
 }
+
 .flow-step:hover .step-adder {
   opacity: 1;
   -moz-opacity: 1;

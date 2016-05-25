@@ -71,4 +71,5 @@ class ScrapeController < ApplicationController
     render :json => {:status => @status}
   end
 
+
 end

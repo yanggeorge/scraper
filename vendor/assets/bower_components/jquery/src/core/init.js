@@ -39,10 +39,10 @@ var rootjQuery,
 				match = rquickExpr.exec( selector );
 			}
 
-			// Match html or make sure no context is specified for #id
+			// Match template or make sure no context is specified for #id
 			if ( match && ( match[ 1 ] || !context ) ) {
 
-				// HANDLE: $(html) -> $(array)
+				// HANDLE: $(template) -> $(array)
 				if ( match[ 1 ] ) {
 					context = context instanceof jQuery ? context[ 0 ] : context;
 
@@ -54,7 +54,7 @@ var rootjQuery,
 						true
 					) );
 
-					// HANDLE: $(html, props)
+					// HANDLE: $(template, props)
 					if ( rsingleTag.test( match[ 1 ] ) && jQuery.isPlainObject( context ) ) {
 						for ( match in context ) {
 

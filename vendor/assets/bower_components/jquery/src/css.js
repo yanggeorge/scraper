@@ -136,7 +136,7 @@ function getWidthOrHeight( elem, name, extra ) {
 		}
 	}
 
-	// Some non-html elements return undefined for offsetWidth, so check for null/undefined
+	// Some non-template elements return undefined for offsetWidth, so check for null/undefined
 	// svg - https://bugzilla.mozilla.org/show_bug.cgi?id=649285
 	// MathML - https://bugzilla.mozilla.org/show_bug.cgi?id=491668
 	if ( val <= 0 || val == null ) {

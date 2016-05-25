@@ -188,7 +188,7 @@ class HtmlAnalysis
   end
 
   def init_with_file
-    f = File.open(File.dirname(__FILE__) + "./sample.html" , "r:UTF-8")
+    f = File.open(File.dirname(__FILE__) + "./sample.template" , "r:UTF-8")
     puts f.path
     page_source ||= ""
     f.each do |line|
@@ -197,10 +197,10 @@ class HtmlAnalysis
     page_source.gsub!(/<!--.*?-->|<script.*?script>/m,"")
     # page_source.gsub!(/<style.*?style>/m,"")
     # page_source.gsub!(/<head.*?head>/m,"")
-    # page_source.gsub!(/<html.*?>/m,"")
+    # page_source.gsub!(/<template.*?>/m,"")
     # page_source.gsub!(/<body.*?>/m,"")
     # page_source.gsub!(/<\/body>/m,"")
-    # page_source.gsub!(/<\/html>/m,"")
+    # page_source.gsub!(/<\/template>/m,"")
     page_source
   end
 
@@ -218,8 +218,8 @@ class HtmlAnalysis
       css += "\n"
     end
 
-    css.gsub!(/<html.*?>|<head.*?>|<body.*?>|<pre.*?>/,"")
-    css.gsub!(/<\/html>|<\/head>|<\/body>|<\/pre>/,"")
+    css.gsub!(/<template.*?>|<head.*?>|<body.*?>|<pre.*?>/,"")
+    css.gsub!(/<\/template>|<\/head>|<\/body>|<\/pre>/,"")
     css.gsub!(/\/\*.*?\*\//,"")
     css
   end
@@ -277,4 +277,6 @@ if __FILE__==$0
   HtmlAnalysis.instance.analyze(url)
   page_source = HtmlAnalysis.instance.page_source
   puts page_source
+
+
 end

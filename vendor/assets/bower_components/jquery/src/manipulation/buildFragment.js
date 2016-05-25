@@ -28,11 +28,11 @@ function buildFragment( elems, context, scripts, selection, ignored ) {
 				// push.apply(_, arraylike) throws on ancient WebKit
 				jQuery.merge( nodes, elem.nodeType ? [ elem ] : elem );
 
-			// Convert non-html into a text node
+			// Convert non-template into a text node
 			} else if ( !rhtml.test( elem ) ) {
 				nodes.push( context.createTextNode( elem ) );
 
-			// Convert html into DOM nodes
+			// Convert template into DOM nodes
 			} else {
 				tmp = tmp || fragment.appendChild( context.createElement( "div" ) );
 

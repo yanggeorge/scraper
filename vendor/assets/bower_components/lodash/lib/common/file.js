@@ -49,7 +49,7 @@ function min(srcPath, destPath) {
 }
 
 /**
- * Creates a [fs.writeFile](https://nodejs.org/api/fs.html#fs_fs_writefile_file_data_options_callback)
+ * Creates a [fs.writeFile](https://nodejs.org/api/fs.template#fs_fs_writefile_file_data_options_callback)
  * function with `filePath` and `data` partially applied.
  *
  * @memberOf file

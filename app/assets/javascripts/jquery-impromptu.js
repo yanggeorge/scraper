@@ -13,7 +13,7 @@
 
 	/**
 	* Imp - Impromptu object - passing no params will not open, only return the instance
-	* @param message String/Object - String of html or Object of states
+	* @param message String/Object - String of template or Object of states
 	* @param options Object - Options to set the prompt
 	* @return Imp - the instance of this Impromptu object
 	*/
@@ -166,7 +166,7 @@
 
 		/**
 		* open - Opens the prompt
-		* @param message String/Object - String of html or Object of states
+		* @param message String/Object - String of template or Object of states
 		* @param options Object - Options to set the prompt
 		* @return Imp - the instance of this Impromptu object
 		*/
@@ -287,7 +287,7 @@
 						top = parseInt(t.jqi.css('top').replace('px',''),10) - offset;
 
 					//$window.scrollTop(top);
-					$('html,body').animate({ scrollTop: top }, 'fast', function(){
+					$('template,body').animate({ scrollTop: top }, 'fast', function(){
 						var i = 0;
 						t.jqib.addClass(opts.prefix +'warning');
 						var intervalid = setInterval(function(){
@@ -449,7 +449,7 @@
 
 			showHtml = stateobj.html;
 			if (typeof stateobj.html === 'function') {
-				showHtml = 'Error: html function must return text';
+				showHtml = 'Error: template function must return text';
 			}
 
 			state += '<div class="'+ opts.prefix + 'state" data-jqi-name="'+ statename +'">'+
@@ -682,14 +682,14 @@
 						// if it didn't scroll before, check that the bottom is within view. Since width 
 						// is animated we must use the callback before we know the height
 						if(!hasScrolled && (offset.top + pos.y + t.jqi.outerHeight(true)) > (scrollTop + windowHeight)){
-							$('html,body').animate({ scrollTop: top }, 'slow', 'swing', function(){});
+							$('template,body').animate({ scrollTop: top }, 'slow', 'swing', function(){});
 							hasScrolled = true;
 						}
 					});
 
 					// scroll if the top is out of the viewing area
 					if(top < scrollTop || top > scrollTop + windowHeight){
-						$('html,body').animate({ scrollTop: top }, 'slow', 'swing', function(){});
+						$('template,body').animate({ scrollTop: top }, 'slow', 'swing', function(){});
 						hasScrolled = true;
 					}
 				}
@@ -866,7 +866,7 @@
 
 	/**
 	* $.prompt create a new Impromptu instance and push it on the stack of instances
-	* @param message String/Object - String of html or Object of states
+	* @param message String/Object - String of template or Object of states
 	* @param options Object - Options to set the prompt
 	* @return jQuery - the jQuery object of the prompt within the modal
 	*/
@@ -901,7 +901,7 @@
 
 	/**
 	* Enable using $('.selector').prompt({});
-	* This will grab the html within the prompt as the prompt message
+	* This will grab the template within the prompt as the prompt message
 	*/
 	$.fn.prompt = function(options){
 		if(options === undefined){

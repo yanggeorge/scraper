@@ -213,7 +213,7 @@ end
 if __FILE__== $0
 
   html =<<EOF
-<html>
+<template>
 <head></head>
 <body>
 <div>
@@ -236,10 +236,10 @@ if __FILE__== $0
 <div class="aa"><span><p>大家好</p></span></div>
 </div>
 </body>
-</html>
+</template>
 EOF
 
-  url = "http://www.sd-n-tax.gov.cn/col/col47711/index.html"
+  url = "http://www.sd-n-tax.gov.cn/col/col47711/index.template"
   #doc = Nokogiri::HTML(WebAnalysis.instance.get_response(url))
   doc = Nokogiri::HTML(open(url))
   puts doc.to_html
