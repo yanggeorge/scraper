@@ -53,7 +53,7 @@ gem 'nokogiri'
 
 gem 'bower-rails'
 
-gem 'font-awesome-rails', '~> 4.6', '>= 4.6.1.0'
+#gem 'font-awesome-rails', '~> 4.6', '>= 4.6.1.0'
 
 gem 'angular-rails-templates'
 
