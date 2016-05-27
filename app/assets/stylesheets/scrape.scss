@@ -75,7 +75,7 @@ div {
   left: 0;
   height: 300px;
   width: 100%;
-  background-color: #730E15;
+  background-color: #fff;
   z-index: 2
 
 }
@@ -97,16 +97,17 @@ h3 {
   font-size: 16px;
 }
 
-h3 > span, h4 > span, h5 > span {
-  float: left;
+h3>span, h4>span, h5>span {
+    float: left;
+    font-style: normal;
+    font-variant:normal;
+    color : #000;
 }
 
 .sidepane > .content {
-  height: 43px;
-  padding: 0;
-  top: 0;
-  right: 0;
-  width: 100%
+    height : 43px;
+    padding : 0;
+    width : 100%
 }
 
 .sidepane h3 {
@@ -132,13 +133,12 @@ h3 > span, h4 > span, h5 > span {
 }
 
 .button .mini {
-  font-size: 12px;
-  line-height: 16px;
-  white-space: nowrap;
-  position: relative;
-  padding: 0;
+    font-size: 12px;
+    line-height: 16px;
+    white-space: nowrap;
+    position: relative;
+    padding: 0;
 }
-
 .button:active, .button:visited, .wb-action:active, .wb-action:visited, .wb-button:active, .wb-button:visited, .wb-form-button:active, .wb-form-button:visited, button:active, button:visited, input.button:active, input.button:visited, input.submit:active, input.submit:visited {
   color: #636e7b;
 }
@@ -176,22 +176,28 @@ h3 > span, h4 > span, h5 > span {
   text-decoration: none;
   padding: 0 5px;
 }
-
-.button.mini i, .wb-action.mini i, .wb-button.mini i, .wb-form-button.mini i, button.mini i, input.button.mini i, input.submit.mini i {
-  padding: 0 4px;
-  height: 20px;
+.button.mini {
+    font-size: 12px;
+    line-height: 16px;
+    white-space: nowrap;
+    position: relative;
+    padding: 0;
 }
 
-.actions i {
-  font-size: 12px;
-  line-height: 20px;
+.button.mini i, .wb-action.mini i, .wb-button.mini i, .wb-form-button.mini i, button.mini i, input.button.mini i, input.submit.mini i {
+    padding: 0 4px;
+    height:20px;
+}
+.button>i, .wb-action>i, .wb-button>i, .wb-form-button>i, button>i, input.button>i, input.submit>i {
+    font-style: normal!important;
+    font-size : 12px;
+    line-height: 20px;
 }
 
 a, a:active, a:visited {
-  text-decoration: none;
-  color: #428bca;
+    text-decoration: none;
+    color: #428bca;
 }
-
 .actions a {
   padding: 0;
 

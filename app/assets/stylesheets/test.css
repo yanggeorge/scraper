@@ -1,0 +1,425 @@
+
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    border: 0;
+}
+
+div {
+    margin: 0;
+    border: 0;
+    display: block;
+}
+
+.p1 {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #F6F6F6
+}
+
+.p2-1 {
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 366px;
+    width: 100%;
+    z-index: 2;
+}
+
+.p2-2 {
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 300px;
+    width: 100%;
+    z-index: 2
+
+}
+
+.p3-1 {
+    position: absolute;
+    width: 270px;
+    right: 0;
+    top: 0;
+    height: 100%;
+    z-index: 3;
+    -moz-box-shadow: 5px 0 6px 0 rgba(0, 0, 0, .3);
+    -webkit-box-shadow: 5px 0 6px 0 rgba(0, 0, 0, .3);
+    box-shadow: 5px 0 6px 0 rgba(0, 0, 0, .3);
+}
+
+h3 {
+    font-size : 16px;
+    font-weight:200;
+
+}
+h3>span, h4>span, h5>span {
+    float: left;
+    font-style: normal;
+    font-variant:normal;
+    color : #000;
+}
+.sidepane > .content {
+    height : 43px;
+    padding : 0;
+    width : 100%
+}
+.sidepane h3 {
+    line-height: 43px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 0;
+    padding-bottom:0;
+    height: 43px;
+    margin : 0;
+}
+
+.sidepane h3 .actions {
+    float: right;
+    vertical-align: top;
+    height: 43px;
+}
+
+.sidepane h3 .actions a {
+    margin-top: 10px;
+    height:22px;
+    position: relative;
+}
+
+.button .mini {
+    font-size: 12px;
+    line-height: 16px;
+    white-space: nowrap;
+    position: relative;
+    padding: 0;
+}
+.button:active, .button:visited, .wb-action:active, .wb-action:visited, .wb-button:active, .wb-button:visited, .wb-form-button:active, .wb-form-button:visited, button:active, button:visited, input.button:active, input.button:visited, input.submit:active, input.submit:visited {
+    color: #636e7b;
+}
+
+.button, .wb-action, .wb-button, .wb-form-button, button, input.button, input.submit {
+    user-select: none;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px;
+    border-radius: 2px;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -o-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -ms-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -moz-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+    -webkit-perspective: 1000px;
+    perspective: 1000px;
+    -webkit-transition: all 350ms ease-out;
+    -moz-transition: all 350ms ease-out;
+    -o-transition: all 350ms ease-out;
+    transition: all 350ms ease-out;
+    outline: 0;
+    display: inline-block;
+    box-sizing: border-box;
+    margin-top: 5px;
+    cursor: pointer;
+    color: #333;
+    background-color: #efefef;
+    border: 1px solid #ccc;
+    line-height: 32px;
+    text-decoration: none;
+    padding: 0 5px;
+}
+.button.mini {
+    font-size: 12px;
+    line-height: 16px;
+    white-space: nowrap;
+    position: relative;
+    padding: 0;
+}
+
+.button.mini i, .wb-action.mini i, .wb-button.mini i, .wb-form-button.mini i, button.mini i, input.button.mini i, input.submit.mini i {
+    padding: 0 4px;
+    height:20px;
+}
+.button>i, .wb-action>i, .wb-button>i, .wb-form-button>i, button>i, input.button>i, input.submit>i {
+    font-style: normal!important;
+    font-size : 12px;
+    line-height: 20px;
+}
+a, a:active, a:visited {
+    text-decoration: none;
+    color: #428bca;
+}
+.actions a {
+    padding : 0;
+
+}
+.sidepane > .content > .body {
+    position: absolute;
+    overflow: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 42px;
+}
+.contextmenu {
+    background-color: #465a7d;
+    border: 0;
+    color: #CFCFCF;
+    min-height: 100%;
+}
+blockquote, body, code, dd, div, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, html, input, legend, li, menu, ol, p, pre, td, textarea, th, ul {
+    padding: 0;
+    margin: 0;
+}
+
+.contextmenu>li>a, .contextmenu>li>a:active, .contextmenu>li>a:visited {
+    padding: 10px 20px;
+    color: #CFCFCF;
+    font-size: 14px;
+    display: block;
+    text-decoration: none;
+    position: relative;
+}
+a, body, h4, h5, h6, input {
+    font-family: Lato;
+    font-size: 14px;
+    line-height: 22px;
+    font-weight: 400
+}
+.p3-2 {;
+    position: absolute;
+    right: 270px;
+    height: 100%;
+    width: 1096px;
+    top: 0;
+    z-index: 3;
+    -moz-box-shadow: 5px 0 6px 0 rgba(0, 0, 0, .3);
+    -webkit-box-shadow: 5px 0 6px 0 rgba(0, 0, 0, .3);
+    box-shadow: 5px 0 6px 0 rgba(0, 0, 0, .3);
+    overflow: auto;
+}
+
+.p3-3 {
+    position: absolute;
+    width: 270px;
+    right: 0;
+    top: 0;
+    height: 100%;
+    -moz-box-shadow: 5px 0 6px 0 rgba(0, 0, 0, .3);
+    -webkit-box-shadow: 5px 0 6px 0 rgba(0, 0, 0, .3);
+    box-shadow: 5px 0 6px 0 rgba(0, 0, 0, .3);
+    overflow: auto;
+}
+
+.p3-4 {
+    position: absolute;
+    right: 270px;
+    height: 100%;
+    width: 1096;
+    top: 0;
+    -moz-box-shadow: 5px 0 6px 0 rgba(0, 0, 0, .3);
+    -webkit-box-shadow: 5px 0 6px 0 rgba(0, 0, 0, .3);
+    box-shadow: 5px 0 6px 0 rgba(0, 0, 0, .3);
+    overflow: auto;
+}
+
+.p4-1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#iframe {
+    height: 100%;
+    width: 100%;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+}
+
+.tab-pane {
+
+}
+
+.tab-pane > .tab-buttons {
+    user-select: none;
+    box-sizing: border-box;
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 38px
+}
+
+.tab-pane > .tab-buttons > .button {
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -ms-border-radius: 0;
+    -o-border-radius: 0;
+    border-radius: 0;
+    vertical-align: bottom;
+    background-color: #EFEFEF;
+    z-index: 0;
+    position: relative;
+    top: 1px;
+    border: 1px solid transparent;
+    color: #666;
+    padding: 5px 10px;
+    line-height: 27px;
+    box-sizing: border-box;
+    margin: 0;
+    display: inline-block;
+    font-size: 12px;
+    white-space: nowrap
+}
+
+.tab-pane > .tab-buttons > .button i.collapsed {
+    display: none
+}
+
+.tab-pane > .tab-buttons > .button.active, .tab-pane > .tab-buttons > .button:hover {
+    color: #333;
+    top: 1px;
+    z-index: 2;
+    border-top: 1px solid #E4E7EA;
+    border-left: 1px solid #E4E7EA;
+    border-right: 1px solid #E4E7EA;
+    border-bottom: 1px solid #fff;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.tab-pane > .tab-buttons > .button.highlight {
+    border: 1px solid #3276b1
+}
+
+.tab-pane > .tab-buttons > .button > .close {
+    padding-left: 5px;
+    cursor: pointer
+}
+
+.tab-pane > .tab-buttons > .button > .close:hover {
+    color: #3276b1;
+}
+
+.tab-pane > .tab-buttons > .actions {
+    -ms-box-shadow: 0 0 5px 1px rgba(0, 0, 0, .2);
+    -moz-box-shadow: 0 0 5px 1px rgba(0, 0, 0, .2);
+    box-shadow: 0 0 5px 1px rgba(0, 0, 0, .2);
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #fff;
+    padding: 3px 10px 8px
+}
+
+.lightbox img, .tab-pane.collapsed > .tab-buttons > .tab-down {
+    -webkit-box-shadow: 0 0 5px 1px rgba(0, 0, 0, .2);
+    -ms-box-shadow: 0 0 5px 1px rgba(0, 0, 0, .2);
+    -moz-box-shadow: 0 0 5px 1px rgba(0, 0, 0, .2);
+    -o-box-shadow: 0 0 5px 1px rgba(0, 0, 0, .2)
+}
+
+.tab-pane > .tab-page {
+    background-color: #fff;
+    overflow: auto;
+    box-sizing: border-box;
+    position: absolute;
+    top: 38px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: none;
+    z-index: 1
+}
+
+.tab-pane > .tab-page.active {
+    display: block
+}
+
+.tab-pane > .tab-page.filled {
+    background-color: #fff;
+    padding: 15px
+}
+
+.tab-pane > .tab-page .boxed, .tab-pane > .tab-page > form {
+    margin-top: 0 !important;
+    padding-top: 10px
+}
+
+.tab-pane.boxed > .tab-page {
+    border: 1px solid #E4E7EA
+}
+
+.tab-pane.filled > .tab-page {
+    background-color: #fff;
+    padding: 15px
+}
+
+.tab-pane.collapsed > .tab-buttons > .button {
+    display: none;
+    font-size: 14px
+}
+
+.tab-pane.collapsed > .tab-buttons > .button i.collapsed {
+    display: inline-block;
+    margin-top: 3px;
+    margin-right: 10px
+}
+
+.tab-pane.collapsed > .tab-buttons > .button i.close {
+    display: none
+}
+
+.tab-pane.collapsed > .tab-buttons > .button.active {
+    display: inline-block;
+    width: 184px
+}
+
+.accordion > .pane > h3 .open, .tab-pane.collapsed > .tab-buttons > .tab-down > li i.collapsed {
+    display: none
+}
+
+.tab-pane.collapsed > .tab-buttons > .tab-down {
+    box-shadow: 0 0 5px 1px rgba(0, 0, 0, .2);
+    position: relative;
+    top: 0;
+    left: 2px;
+    z-index: 100;
+    width: 200px;
+    border: 1px solid #E4E7EA;
+    overflow-y: auto
+}
+
+.tab-pane.collapsed > .tab-buttons > .tab-down > li {
+    background-color: #fff;
+    color: #666;
+    padding: 5px 20px;
+    line-height: 31px;
+    box-sizing: border-box;
+    margin: 0;
+    cursor: pointer
+}
+
+.tab-pane.collapsed > .tab-buttons > .tab-down > li:hover {
+    background-color: #EFEFEF
+}
+
+.tab-pane.collapsed > .tab-buttons > .tab-down > li.active {
+    background-color: #3276b1;
+    color: #fff
+}
+
+.tab-pane.collapsed > .tab-buttons > .tab-down > li > .close {
+    float: right;
+    margin-top: 8px
+}
