@@ -1,11 +1,20 @@
 <!DOCTYPE html>
-<html ng-app='myApp'>
+<!--[if lt IE 10 ]><html class="deprecated" xmlns:ng="http://angularjs.org" xmlns:f="http://dexi.io/ui/forms" xmlns:tab="http://dexi.io/ui/tabs" > <!--<![endif]-->
+<!--[if gt IE 10]><html class="ie-modern"> <!--<![endif]-->
+<!--[if !IE]> -->
+<html ng-app="myApp" class="non-ie"> <!--<![endif]-->
 <head>
-  <title>Scraper Web Tool</title>
-  <link href="//netdna.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>scraper</title>
+  <meta charset="utf-8" />
+  <meta name="google" value="notranslate"/>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,500' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato" />
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <!-- Include the RenderedFont rendering engine (using the #free account key) -->
+  <script type="text/javascript"  src='http://cdn.renderedfont.com/js/renderedfont-0.8.min.js#free'></script>
   <%= csrf_meta_tags %>
 </head>
 <body ng-controller="MainCtrl"  onload="size();return false;" onresize="size();return false;">
