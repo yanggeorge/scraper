@@ -12,6 +12,7 @@ Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.precompile += %w( mouse_over_ele_select.js )
 Rails.application.config.assets.precompile += %w( Math.uuid.js )
 Rails.application.config.assets.precompile += %w( myApp.js )
+Rails.application.config.assets.precompile += %w( scrape.js )
 Rails.application.config.assets.precompile += %w( robot.coffee )
 Rails.application.config.assets.precompile += %w( jquery-impromptu.js )
 Rails.application.config.assets.precompile += %w( jquery-impromptu.css )

@@ -200,7 +200,7 @@ a, a:active, a:visited {
 
 }
 
-.sidepane > .content > .body {
+.sidepane > .content > .body , .sidepane > .body {
   position: absolute;
   overflow: auto;
   bottom: 0;

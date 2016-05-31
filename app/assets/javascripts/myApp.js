@@ -36,15 +36,22 @@ app.directive("tabPane",function(){
 });
 
 app.controller('MainCtrl', function($scope){
-    $scope.closeSidePane = function(){
+    $scope.closeSidePane1 = function(){
         toggle();
     };
-    $scope.sidePaneView = 'contextmenu.html';
+    $scope.closeSidePane2 = function(){
+        toggle_sidepane2();
+    };
+    $scope.sidePaneView1 = 'contextmenu1.html';
+    $scope.sidePaneView2 = 'contextmenu2.html';
 
-    var menu = {'name':'Extract from element', 'invoke':function(){
-        $scope.sidePaneView = 'fields.html';
+    var menu1 = {'name':'Extract from element', 'invoke':function(){
+        $scope.sidePaneView1 = 'fields.html';
     } };
-    var contextMenu = [menu];
-    $scope.contextMenu = contextMenu;
+    $scope.contextMenu1 = [menu1];
+    var menu2 = {'name':'Extract from element', 'invoke':function(){
+        $scope.sidePaneView2 = 'fields.html';
+    } };
+    $scope.contextMenu2 = [menu2];
 
 });
