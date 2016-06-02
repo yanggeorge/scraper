@@ -97,11 +97,93 @@ class Robot
   deleted_to_s : ->
     "\"deleted\":\"#{@deleted}\""
 
-  add_step : (step)->
+  #在current_step之前添加step
+  add_step_before:(step, current_step)->
+    if current_step.id not in Object.keys(@steps)
+      console.log("current step is not exist.")
+      throw "add_step_before error"
+      return false
+    if step.id in Object.keys(@steps)
+      console.log("step is just in Robot.\n" + this.to_s())
+      throw "add_step_before error"
+      return false
+
+    current_step_id = current_step.id
+    before_step_id = ""
+    for id in Object.keys(@steps)
+      if current_step_id in @steps[id].next
+        before_step_id = id
+        break
+
+    if before_step_id == ""
+      @steps[step.id] = step
+      step.next.push(current_step_id)
+      @first_step = step.id
+    else
+      list = @steps[before_step_id].next
+      index = list.indexOf(current_step_id)
+      if index > -1
+        list.splice(index,1)
+      list.push(step.id)
+      @steps[step.id] = step
+      step.next.push(current_step_id)
+    return true
+
+  #在current_step之后添加step
+  add_step_after : (step, current_step) ->
+    if current_step.id not in Object.keys(@steps)
+      console.log("current step is not exist.")
+      throw "add_step_after error"
+      return false
+    if step.id in Object.keys(@steps)
+      console.log("step is just in Robot.\n" + this.to_s())
+      throw "add_step_after error"
+      return false
+
+    current_step_id = current_step.id
+    after_step_id_list = @steps[current_step_id].next
     @steps[step.id] = step
+    step.next = after_step_id_list
+    @steps[current_step_id].next = []
+    @steps[current_step_id].next.push(step.id)
+
+    return true
 
   remove_step : (step) ->
-    delete @steps[step.id]
+    if step.id not in Object.keys(@steps)
+      console.log("step is not in Robot.\n")
+      throw "remove_step error"
+      return
+
+    before_step_id = ""
+    for id1 in Object.keys(@steps)
+      if step.id in @steps[id1].next
+        before_step_id = id1
+        break
+    if before_step_id == ""
+      list = step.next
+      if list.length > 1
+        console.log("step has more than 1 next step.")
+        throw "remove_step error"
+        return false
+      else if list.length == 0
+        console.log("step has 0 next step.")
+        throw "remove_step error"
+        return false
+      @first_step = list[0]
+      delete @steps[step.id]
+    else
+      after_step_id_list = step.next
+      before_step = @steps[before_step_id]
+      list = before_step.next
+      index = list.indexOf(step.id)
+      if index > -1
+        list.splice(index, 1)
+      for id2 in after_step_id_list
+        list.push(id2)
+      delete @steps[step.id]
+
+    return true
 
   add_output : (output) ->
     @outputs[output.id] = output
@@ -278,7 +360,6 @@ test = ->
   step2 = new Step(ACTION_EXTRACT)
   step3 = new Step(ACTION_CLICK)
   step4 = new Step(ACTION_FLUSH)
-  steps = [step1, step2, step3, step4]
   step1.next.push( step2.id )
   step2.next.push( step3.id )
   step3.next.push( step4.id )
@@ -303,6 +384,47 @@ test = ->
   if s == s2
     console.log("equal.")
 
+test2 = ->
+  # 测试 add_step_before add_step_after remove_step
+  robot = new Robot("test")
+
+  step1 = new Step(ACTION_VISIT)
+  step1.options.push("aa")
+  step1.options.push("aa")
+  step2 = new Step(ACTION_EXTRACT)
+  step3 = new Step(ACTION_CLICK)
+  step4 = new Step(ACTION_FLUSH)
+  step1.next.push( step2.id )
+  step2.next.push( step3.id )
+  step3.next.push( step4.id )
+  robot.steps[step1.id] = step1
+  robot.steps[step2.id] = step2
+  robot.steps[step3.id] = step3
+  robot.steps[step4.id] = step4
+  robot.first_step = step1.id
+
+  step = new Step(ACTION_FLUSH)
+  console.log(step.id)
+  console.log(step1.id)
+#  robot.add_step_before(step, step1)
+#  console.log(robot.to_s())
+#  robot.remove_step(step)
+#  console.log(robot.to_s())
+#  robot.add_step_after(step,step1)
+#  console.log(robot.to_s())
+#  robot.remove_step(step)
+#  console.log(robot.to_s())
+#  robot.add_step_before(step, step4)
+#  console.log(robot.to_s())
+#  robot.remove_step(step)
+#  console.log(robot.to_s())
+  robot.add_step_after(step, step4)
+  console.log(robot.to_s())
+  robot.remove_step(step)
+  console.log(robot.to_s())
+
+
+
 namespace = (target, name, block) ->
   [target, name, block] = [(if typeof exports isnt 'undefined' then exports else window), arguments...] if arguments.length < 3
   top = target
@@ -318,4 +440,5 @@ namespace "ym.rpa", (exports) ->
   exports.ACTION_CLICK = ACTION_CLICK
   exports.ACTION_FLUSH = ACTION_FLUSH
   #exports.test = test
+  #exports.test2 = test2
 

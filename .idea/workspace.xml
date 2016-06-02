@@ -34,7 +34,7 @@
     <SUITE FILE_PATH="coverage/blog@test__blog.coverage" NAME="test: blog Coverage Results" MODIFIED="1460432410839" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="blog" />
     <SUITE FILE_PATH="coverage/blog@db_migrate__blog.coverage" NAME="db:migrate: blog Coverage Results" MODIFIED="1462329222013" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="blog" />
     <SUITE FILE_PATH="coverage/blog@bower_install_options___blog.coverage" NAME="bower:install[options]: blog Coverage Results" MODIFIED="1463395289486" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="blog" />
-    <SUITE FILE_PATH="coverage/blog@Development__blog.coverage" NAME="Development: blog Coverage Results" MODIFIED="1464662471917" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="blog" />
+    <SUITE FILE_PATH="coverage/blog@Development__blog.coverage" NAME="Development: blog Coverage Results" MODIFIED="1464830926540" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="blog" />
     <SUITE FILE_PATH="coverage/blog@web_analysis.coverage" NAME="web_analysis Coverage Results" MODIFIED="1461062296831" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/lib" MODULE_NAME="blog" />
   </component>
   <component name="CreatePatchCommitExecutor">
@@ -51,7 +51,7 @@
           <file leaf-file-name="do_url.html.erb" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/views/scrape/do_url.html.erb">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-15.225806">
+                <state vertical-scroll-proportion="0.0">
                   <caret line="205" column="10" selection-start-line="205" selection-start-column="10" selection-end-line="205" selection-end-column="10" />
                   <folding />
                 </state>
@@ -73,7 +73,7 @@
           <file leaf-file-name="scrape.coffee" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/assets/javascripts/scrape.coffee">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-1.7741935">
+                <state vertical-scroll-proportion="0.0">
                   <caret line="145" column="9" selection-start-line="145" selection-start-column="9" selection-end-line="145" selection-end-column="9" />
                   <folding>
                     <marker date="1464326944519" expanded="true" signature="1269:1291" placeholder="..." />
@@ -95,21 +95,9 @@
           <file leaf-file-name="contextmenu2.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/assets/javascripts/templates/contextmenu2.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-3.548387">
+                <state vertical-scroll-proportion="0.0">
                   <caret line="5" column="5" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
                   <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="application.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/assets/javascripts/application.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-                  <folding>
-                    <element signature="n#!!doc" expanded="true" />
-                  </folding>
                 </state>
               </provider>
             </entry>
@@ -124,11 +112,21 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="assets.rb" pinned="false" current-in-tab="true">
+          <file leaf-file-name="assets.rb" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/config/initializers/assets.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.4295011">
+                <state vertical-scroll-proportion="0.0">
                   <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="robot.coffee" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/app/assets/javascripts/robot.coffee">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.8006042">
+                  <caret line="444" column="0" selection-start-line="444" selection-start-column="0" selection-end-line="444" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -147,7 +145,7 @@
           <file leaf-file-name="application.html.erb" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-4.2580647">
+                <state vertical-scroll-proportion="0.0">
                   <caret line="6" column="55" selection-start-line="6" selection-start-column="55" selection-end-line="6" selection-end-column="55" />
                   <folding />
                 </state>
@@ -157,7 +155,7 @@
           <file leaf-file-name="contextmenu1.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/assets/javascripts/templates/contextmenu1.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-3.548387">
+                <state vertical-scroll-proportion="0.0">
                   <caret line="5" column="5" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
                   <folding />
                 </state>
@@ -171,7 +169,7 @@
           <file leaf-file-name="scrape.scss" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/scrape.scss">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-6.387097">
+                <state vertical-scroll-proportion="0.0">
                   <caret line="201" column="0" selection-start-line="201" selection-start-column="0" selection-end-line="201" selection-end-column="0" />
                   <folding />
                 </state>
@@ -191,8 +189,8 @@
           <file leaf-file-name="myApp.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/assets/javascripts/myApp.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.33188722">
-                  <caret line="30" column="31" selection-start-line="30" selection-start-column="31" selection-end-line="30" selection-end-column="31" />
+                <state vertical-scroll-proportion="0.791148">
+                  <caret line="54" column="34" selection-start-line="54" selection-start-column="34" selection-end-line="54" selection-end-column="34" />
                   <folding>
                     <element signature="e#0#43#0" expanded="false" />
                   </folding>
@@ -258,7 +256,6 @@
         <option value="$PROJECT_DIR$/app/models/ouput_result.rb" />
         <option value="$PROJECT_DIR$/lib/nokogiri_parse.rb" />
         <option value="$PROJECT_DIR$/lib/robot_engine.rb" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/robot.coffee" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/side_pane.coffee" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/scrape.coffee" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/font-awsome-min.css" />
@@ -280,10 +277,11 @@
         <option value="$PROJECT_DIR$/app/assets/stylesheets/scrape.scss" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/templates/contextmenu2.html" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/templates/contextmenu1.html" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/myApp.js" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/scrape.js" />
         <option value="$PROJECT_DIR$/app/views/scrape/do_url.html.erb" />
         <option value="$PROJECT_DIR$/config/initializers/assets.rb" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/myApp.js" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/robot.coffee" />
       </list>
     </option>
   </component>
@@ -349,7 +347,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -523,6 +520,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
       <pane id="RailsProjectView" />
     </panes>
   </component>
@@ -765,15 +763,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31722054" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32912722" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3270242" sideWeight="0.48828697" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24963397" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12686567" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12793177" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.42900303" sideWeight="0.8191801" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20925342" sideWeight="0.5878477" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -782,9 +779,10 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3270242" sideWeight="0.48828697" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24963397" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -802,9 +800,9 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25037822" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24963397" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.35054773" sideWeight="0.5878477" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24963397" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -965,13 +963,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/robot.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="321" column="0" selection-start-line="321" selection-start-column="0" selection-end-line="321" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://D:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/font-awesome-rails-4.6.2.0/lib/font-awesome-rails/engine.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.22797927">
@@ -1011,7 +1002,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="134" column="10" selection-start-line="134" selection-start-column="10" selection-end-line="134" selection-end-column="10" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1027,7 +1017,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="258" column="17" selection-start-line="258" selection-start-column="17" selection-end-line="258" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1071,7 +1060,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="n#!!doc" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1102,7 +1091,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="53" column="17" selection-start-line="53" selection-start-column="17" selection-end-line="53" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1123,7 +1111,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/templates/contextmenu2.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.548387">
+        <state vertical-scroll-proportion="0.0">
           <caret line="5" column="5" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
           <folding />
         </state>
@@ -1131,7 +1119,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/scrape.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.387097">
+        <state vertical-scroll-proportion="0.0">
           <caret line="201" column="0" selection-start-line="201" selection-start-column="0" selection-end-line="201" selection-end-column="0" />
           <folding />
         </state>
@@ -1139,7 +1127,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/templates/contextmenu1.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.548387">
+        <state vertical-scroll-proportion="0.0">
           <caret line="5" column="5" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
           <folding />
         </state>
@@ -1147,7 +1135,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.2580647">
+        <state vertical-scroll-proportion="0.0">
           <caret line="6" column="55" selection-start-line="6" selection-start-column="55" selection-end-line="6" selection-end-column="55" />
           <folding />
         </state>
@@ -1155,7 +1143,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/scrape/do_url.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.225806">
+        <state vertical-scroll-proportion="0.0">
           <caret line="205" column="10" selection-start-line="205" selection-start-column="10" selection-end-line="205" selection-end-column="10" />
           <folding />
         </state>
@@ -1171,7 +1159,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/scrape.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.7741935">
+        <state vertical-scroll-proportion="0.0">
           <caret line="145" column="9" selection-start-line="145" selection-start-column="9" selection-end-line="145" selection-end-column="9" />
           <folding>
             <marker date="1464326944519" expanded="true" signature="1269:1291" placeholder="..." />
@@ -1201,7 +1189,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config/initializers/assets.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4295011">
+        <state vertical-scroll-proportion="0.0">
           <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
           <folding />
         </state>
@@ -1209,11 +1197,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/myApp.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33188722">
-          <caret line="30" column="31" selection-start-line="30" selection-start-column="31" selection-end-line="30" selection-end-column="31" />
+        <state vertical-scroll-proportion="0.791148">
+          <caret line="54" column="34" selection-start-line="54" selection-start-column="34" selection-end-line="54" selection-end-column="34" />
           <folding>
             <element signature="e#0#43#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/robot.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8006042">
+          <caret line="444" column="0" selection-start-line="444" selection-start-column="0" selection-end-line="444" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
