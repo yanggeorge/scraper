@@ -151,3 +151,4 @@ var animate_sidepane_mainpane = function(main , side, target_main_width, target_
     side.animate({width:target_side_width +"px"}, speed);
     main.animate({width:target_main_width + "px", right : target_side_width + "px"},speed);
 };
+

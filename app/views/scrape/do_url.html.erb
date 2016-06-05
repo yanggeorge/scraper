@@ -13,14 +13,15 @@
         <div id="p2" class="p3-1 sidepane">
           <div class="content">
             <h3>
-              <span >1 element selected</span>
+              <span>1 element selected</span>
+
               <div class="actions">
                 <a href="javascript:;" ng-click="closeSidePane1()" class="button mini">
                   <i class="fa fa-remove"></i>
                 </a>
               </div>
             </h3>
-            <div  class="body"  ng-include="sidePaneView1">
+            <div class="body" ng-include="sidePaneView1">
 
             </div>
           </div>
@@ -35,14 +36,15 @@
       <div class="p2-2  mainpane">
         <div id="p4" class="p3-3 sidepane">
           <h3>
-            <span >1 element selected</span>
+            <span>1 element selected</span>
+
             <div class="actions">
               <a href="javascript:;" ng-click="closeSidePane2()" class="button mini">
                 <i class="fa fa-remove"></i>
               </a>
             </div>
           </h3>
-          <div  class="body"  ng-include="sidePaneView2">
+          <div class="body" ng-include="sidePaneView2">
 
           </div>
         </div>
@@ -99,95 +101,68 @@
               <svg width="1346" height="222" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
                 <g>
                   <title>Layer 1</title>
-                  <g id="svg_7" class="line-weight:22px;">
-                    <g id="svg_5">
-                      <svg id="svg_1">
-                        <defs>
-                          <marker id="svg_3" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="6" markerHeight="6" orient="auto">
-                            <path stroke="#2ecc71" fill="#2ecc71" id="svg_4" d="m0,0l10,5l-10,5l0,-10z"/>
-                          </marker>
-                        </defs>
-                        <polyline id="svg_2" points="125,45 190,45 195,45" marker-end="url(#svg_3)" stroke="#2ecc71" stroke-width="2px"/>
-                      </svg>
-                    </g>
-                    <g id="svg_51">
-                      <svg id="svg_11">
-                        <defs>
-                          <marker id="svg_31" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="6" markerHeight="6" orient="auto">
-                            <path stroke="#666" fill="#666" id="svg_41" d="m0,0l10,5l-10,5l0,-10z"/>
-                          </marker>
-                        </defs>
-                        <polyline id="svg_21" points="315,45 380,45 385,45" marker-end="url(#svg_31)" stroke="#666" stroke-width="2px"/>
-                      </svg>
-                    </g>
-                    <g id="svg_52">
-                      <svg id="svg_12">
-                        <defs>
-                          <marker id="svg_32" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="6" markerHeight="6" orient="auto">
-                            <path stroke="#666" fill="#666" id="svg_42" d="m0,0l10,5l-10,5l0,-10z"/>
-                          </marker>
-                        </defs>
-                        <polyline id="svg_22" points="505,45 570,45 575,45" marker-end="url(#svg_32)" stroke="#666" stroke-width="2px"/>
-                      </svg>
-                    </g>
-                    <g id="svg_8">
-                      <svg id="svg_6" class="flow-edge  endpoint active">
-                        <defs>
-                          <marker id="svg_10" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="6" markerHeight="6" orient="auto">
-                            <circle stroke-width="2px" fill="#666" id="svg_11" cx="5" cy="5" r="5"/>
-                          </marker>
-                        </defs>
-                        <polyline stroke-width="2px" stroke="#666" id="svg_9" points="695,45 720,45" marker-end="url(#svg_10)"/>
-                      </svg>
-                    </g>
+                  <g id="svg_7" class="line-weight:22px;" ng-include="'svg.html'">
                   </g>
                 </g>
               </svg>
-              <div   ng-class="node.style" class="flow-step tst-robot-scraper-devtools-timeline-step ng-scope  active"  title="Url address: http://www.he-n-tax.gov.cn/hbgsww_new/hbgsgkml/ajxxgk/880/list.htm" style="position:absolute; left: 25px; top: 25px; width: 90px; height: 40px;">
+
+              <div  ng-repeat="node in nodes" title="{{node.desc}}" style="position:absolute;{{node.position}}" class="flow-step tst-robot-scraper-devtools-timeline-step ng-scope  active" >
                 <div class="title-container">
-                  <div class="title ng-binding">Go to URL</div>
+                  <div class="title ng-binding">{{node.title}}</div>
                 </div>
-                <div  class="step-adder after">
+                <div class="step-adder after">
                   <i class="fa fa-plus"></i>
                 </div>
-                <div  class="step-adder before">
+                <div class="step-adder before">
                   <i class="fa fa-plus"></i>
                 </div>
               </div>
 
-              <div   ng-class="node.style" class="flow-step tst-robot-scraper-devtools-timeline-step ng-scope  active"  title="Url address: http://www.he-n-tax.gov.cn/hbgsww_new/hbgsgkml/ajxxgk/880/list.htm" style="position:absolute; left: 215px; top: 25px; width: 90px; height: 40px;">
-                <div class="title-container">
-                  <div class="title ng-binding">Click</div>
-                </div>
-                <div  class="step-adder after">
-                  <i class="fa fa-plus"></i>
-                </div>
-                <div  class="step-adder before">
-                  <i class="fa fa-plus"></i>
-                </div>
-              </div>
-              <div   ng-class="node.style" class="flow-step tst-robot-scraper-devtools-timeline-step ng-scope  active"  title="Url address: http://www.he-n-tax.gov.cn/hbgsww_new/hbgsgkml/ajxxgk/880/list.htm" style="position:absolute; left: 405px; top: 25px; width: 90px; height: 40px;">
-                <div class="title-container">
-                  <div class="title ng-binding">Extract</div>
-                </div>
-                <div  class="step-adder after">
-                  <i class="fa fa-plus"></i>
-                </div>
-                <div  class="step-adder before">
-                  <i class="fa fa-plus"></i>
-                </div>
-              </div>
-              <div   ng-class="node.style" class="flow-step tst-robot-scraper-devtools-timeline-step ng-scope  active"  title="Url address: http://www.he-n-tax.gov.cn/hbgsww_new/hbgsgkml/ajxxgk/880/list.htm" style="position:absolute; left: 595px; top: 25px; width: 90px; height: 40px;">
-                <div class="title-container">
-                  <div class="title ng-binding">Save</div>
-                </div>
-                <div  class="step-adder after">
-                  <i class="fa fa-plus"></i>
-                </div>
-                <div  class="step-adder before">
-                  <i class="fa fa-plus"></i>
-                </div>
-              </div>
+              <!--<div ng-class="node.style" class="flow-step tst-robot-scraper-devtools-timeline-step ng-scope  active" title="Url address: http://www.he-n-tax.gov.cn/hbgsww_new/hbgsgkml/ajxxgk/880/list.htm" style="position:absolute; left: 25px; top: 25px; width: 90px; height: 40px;">-->
+                <!--<div class="title-container">-->
+                  <!--<div class="title ng-binding">Go to URL</div>-->
+                <!--</div>-->
+                <!--<div class="step-adder after">-->
+                  <!--<i class="fa fa-plus"></i>-->
+                <!--</div>-->
+                <!--<div class="step-adder before">-->
+                  <!--<i class="fa fa-plus"></i>-->
+                <!--</div>-->
+              <!--</div>-->
+
+              <!--<div ng-class="node.style" class="flow-step tst-robot-scraper-devtools-timeline-step ng-scope  active" title="Url address: http://www.he-n-tax.gov.cn/hbgsww_new/hbgsgkml/ajxxgk/880/list.htm" style="position:absolute; left: 215px; top: 25px; width: 90px; height: 40px;">-->
+                <!--<div class="title-container">-->
+                  <!--<div class="title ng-binding">Click</div>-->
+                <!--</div>-->
+                <!--<div class="step-adder after">-->
+                  <!--<i class="fa fa-plus"></i>-->
+                <!--</div>-->
+                <!--<div class="step-adder before">-->
+                  <!--<i class="fa fa-plus"></i>-->
+                <!--</div>-->
+              <!--</div>-->
+              <!--<div ng-class="node.style" class="flow-step tst-robot-scraper-devtools-timeline-step ng-scope  active" title="Url address: http://www.he-n-tax.gov.cn/hbgsww_new/hbgsgkml/ajxxgk/880/list.htm" style="position:absolute; left: 405px; top: 25px; width: 90px; height: 40px;">-->
+                <!--<div class="title-container">-->
+                  <!--<div class="title ng-binding">Extract</div>-->
+                <!--</div>-->
+                <!--<div class="step-adder after">-->
+                  <!--<i class="fa fa-plus"></i>-->
+                <!--</div>-->
+                <!--<div class="step-adder before">-->
+                  <!--<i class="fa fa-plus"></i>-->
+                <!--</div>-->
+              <!--</div>-->
+              <!--<div ng-class="node.style" class="flow-step tst-robot-scraper-devtools-timeline-step ng-scope  active" title="Url address: http://www.he-n-tax.gov.cn/hbgsww_new/hbgsgkml/ajxxgk/880/list.htm" style="position:absolute; left: 595px; top: 25px; width: 90px; height: 40px;">-->
+                <!--<div class="title-container">-->
+                  <!--<div class="title ng-binding">Save</div>-->
+                <!--</div>-->
+                <!--<div class="step-adder after">-->
+                  <!--<i class="fa fa-plus"></i>-->
+                <!--</div>-->
+                <!--<div class="step-adder before">-->
+                  <!--<i class="fa fa-plus"></i>-->
+                <!--</div>-->
+              <!--</div>-->
 
 
             </div>
