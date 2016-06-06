@@ -106,7 +106,7 @@
                 </g>
               </svg>
 
-              <div  ng-repeat="node in nodes" title="{{node.desc}}" style="position:absolute;{{node.position}}" class="flow-step tst-robot-scraper-devtools-timeline-step ng-scope  active" >
+              <div  ng-repeat="node in nodes" title="{{node.desc}}" ng-style="node.position" style="position:absolute;" class="flow-step tst-robot-scraper-devtools-timeline-step ng-scope  active" >
                 <div class="title-container">
                   <div class="title ng-binding">{{node.title}}</div>
                 </div>
@@ -117,52 +117,6 @@
                   <i class="fa fa-plus"></i>
                 </div>
               </div>
-
-              <!--<div ng-class="node.style" class="flow-step tst-robot-scraper-devtools-timeline-step ng-scope  active" title="Url address: http://www.he-n-tax.gov.cn/hbgsww_new/hbgsgkml/ajxxgk/880/list.htm" style="position:absolute; left: 25px; top: 25px; width: 90px; height: 40px;">-->
-                <!--<div class="title-container">-->
-                  <!--<div class="title ng-binding">Go to URL</div>-->
-                <!--</div>-->
-                <!--<div class="step-adder after">-->
-                  <!--<i class="fa fa-plus"></i>-->
-                <!--</div>-->
-                <!--<div class="step-adder before">-->
-                  <!--<i class="fa fa-plus"></i>-->
-                <!--</div>-->
-              <!--</div>-->
-
-              <!--<div ng-class="node.style" class="flow-step tst-robot-scraper-devtools-timeline-step ng-scope  active" title="Url address: http://www.he-n-tax.gov.cn/hbgsww_new/hbgsgkml/ajxxgk/880/list.htm" style="position:absolute; left: 215px; top: 25px; width: 90px; height: 40px;">-->
-                <!--<div class="title-container">-->
-                  <!--<div class="title ng-binding">Click</div>-->
-                <!--</div>-->
-                <!--<div class="step-adder after">-->
-                  <!--<i class="fa fa-plus"></i>-->
-                <!--</div>-->
-                <!--<div class="step-adder before">-->
-                  <!--<i class="fa fa-plus"></i>-->
-                <!--</div>-->
-              <!--</div>-->
-              <!--<div ng-class="node.style" class="flow-step tst-robot-scraper-devtools-timeline-step ng-scope  active" title="Url address: http://www.he-n-tax.gov.cn/hbgsww_new/hbgsgkml/ajxxgk/880/list.htm" style="position:absolute; left: 405px; top: 25px; width: 90px; height: 40px;">-->
-                <!--<div class="title-container">-->
-                  <!--<div class="title ng-binding">Extract</div>-->
-                <!--</div>-->
-                <!--<div class="step-adder after">-->
-                  <!--<i class="fa fa-plus"></i>-->
-                <!--</div>-->
-                <!--<div class="step-adder before">-->
-                  <!--<i class="fa fa-plus"></i>-->
-                <!--</div>-->
-              <!--</div>-->
-              <!--<div ng-class="node.style" class="flow-step tst-robot-scraper-devtools-timeline-step ng-scope  active" title="Url address: http://www.he-n-tax.gov.cn/hbgsww_new/hbgsgkml/ajxxgk/880/list.htm" style="position:absolute; left: 595px; top: 25px; width: 90px; height: 40px;">-->
-                <!--<div class="title-container">-->
-                  <!--<div class="title ng-binding">Save</div>-->
-                <!--</div>-->
-                <!--<div class="step-adder after">-->
-                  <!--<i class="fa fa-plus"></i>-->
-                <!--</div>-->
-                <!--<div class="step-adder before">-->
-                  <!--<i class="fa fa-plus"></i>-->
-                <!--</div>-->
-              <!--</div>-->
 
 
             </div>

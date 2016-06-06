@@ -103,19 +103,19 @@ var init_nodes = function(){
     var nodes = [];
     var node1= {},node2={}, node3={}, node4={};
     node1.title = "Go to URL";
-    node1.position = "left: 25px; top: 25px; width: 90px; height: 40px;";
+    node1.position = {left: 25+'px', top: 25+'px', width: 90+'px', height: 40+'px'};
     node1.desc = "node1 desc";
 
     node2.title = "Click";
-    node2.position = "left: 215px; top: 25px; width: 90px; height: 40px";
+    node2.position = {left: 215+'px', top: 25+'px', width: 90+'px', height: 40+'px'};
     node2.desc = "node1 desc";
 
     node3.title = "Extract";
-    node3.position = "left: 405px; top: 25px; width: 90px; height: 40px;";
+    node3.position = {left: 405+'px', top: 25+'px', width: 90+'px', height: 40+'px'};
     node3.desc = "node1 desc";
 
     node4.title = "Save";
-    node4.position = "left: 595px; top: 25px; width: 90px; height: 40px;";
+    node4.position = {left: 595+'px', top: 25+'px', width: 90+'px', height: 40+'px'};
     node4.desc = "node1 desc";
     nodes.push(node1);
     nodes.push(node2);
