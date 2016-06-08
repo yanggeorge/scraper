@@ -17,7 +17,7 @@
   <script type="text/javascript"  src='http://cdn.renderedfont.com/js/renderedfont-0.8.min.js#free'></script>
   <%= csrf_meta_tags %>
 </head>
-<body ng-controller="MainCtrl"  onload="size();return false;" onresize="size();return false;">
+<body ng-controller="MainCtrl"  onresize="size();return false;">
 <% if controller_name != "scrape" %>
     <%= link_to '首页', root_path %>
     <%= link_to '数据项列表', item_index_path %>

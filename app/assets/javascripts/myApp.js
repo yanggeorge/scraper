@@ -54,16 +54,9 @@ app.controller('MainCtrl', function($scope){
     } };
     $scope.contextMenu2 = [menu2];
 
-    var robot = init_robot();
-    console.log(robot.to_s());
-
-    var svgs = init_svgs(robot);
-    console.log(svgs.length);
-    var nodes = init_nodes(robot);
-    console.log(svgs.length);
-    $scope.robot = robot;
-    $scope.svgs = svgs;
-    $scope.nodes = nodes;
+    $scope.robot = init_robot();
+    $scope.svgs = init_svgs($scope.robot);
+    $scope.nodes = init_nodes($scope.robot);
 });
 app.controller('nodeCtrl', function($scope){
     $scope.addStepAfter = function(node){
@@ -73,6 +66,10 @@ app.controller('nodeCtrl', function($scope){
     $scope.addStepBefore= function(node) {
         console.log(node);
     };
+
+    $scope.clickNode = function(node){
+        $scope.contextMenu2 = init_context_menu2(node);
+    }
 });
 var init_robot = function() {
     var robot = new ym.rpa.Robot("test");

@@ -107,8 +107,8 @@
               </svg>
 
               <div  ng-repeat="node in nodes" ng-controller="nodeCtrl"  title="{{node.desc}}" ng-style="node.position" style="position:absolute;" class="flow-step tst-robot-scraper-devtools-timeline-step ng-scope  active" >
-                <div class="title-container">
-                  <div class="title ng-binding">{{node.title}}</div>
+                <div class="title-container" ng-click="clickNode(node)">
+                  <div class="title">{{node.title}}</div>
                 </div>
                 <div class="step-adder after" ng-click="addStepAfter(node)" >
                   <i class="fa fa-plus" ></i>

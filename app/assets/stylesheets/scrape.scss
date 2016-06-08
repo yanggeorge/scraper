@@ -85,7 +85,9 @@ div {
 
 .p3-1 {
   position: absolute;
-  width: 270px;
+  //width: 270px;
+  width: 0;
+  display : none;
   right: 0;
   top: 0;
   height: 100%;
@@ -239,7 +241,8 @@ a, body, h4, h5, h6, input {
 
 .p3-2 {
   position: absolute;
-  right: 270px;
+  //right: 270px;
+  right: 0;
   height: 100%;
   width: 1096px;
   top: 0;
@@ -253,7 +256,9 @@ a, body, h4, h5, h6, input {
 
 .p3-3 {
   position: absolute;
-  width: 270px;
+  //width: 270px;
+  width:0;
+  display :none;
   right: 0;
   top: 0;
   height: 100%;
@@ -266,7 +271,8 @@ a, body, h4, h5, h6, input {
 
 .p3-4 {
   position: absolute;
-  right: 270px;
+  //right: 270px;
+  right:0;
   height: 100%;
   width: 1096px;
   top: 0;

@@ -14,25 +14,28 @@ function size() {
     var p0 = document.getElementById("p0");
     var p1 = document.getElementById("p1");
     var p2 = document.getElementById("p2");
+    console.log(winWidth);
     p0.style.width = String(winWidth) + "px";
     p0.style.height = String(winHeight - 300) + "px";
-    var p2_width = $("#p2").width();
-    p1.style.width = String(winWidth - p2_width) + "px";
 
+    var p2_width = $("#p2").width();
+    $('#p1').css("width", String(winWidth - p2_width) + "px");
 
     var p4_width = $("#p4").width();
     $('#p3').css("width", String(winWidth - p4_width) + "px");
+
+
 }
 
 jQuery(document).ready(function () {
+    window.sidepane_state = 0; // 0 : 关闭 ,1 : 270px, 2: 520px
+    window.sidepane2_state = 0;
     size();
-    window.sidepane_state = 1;
-    window.sidepane2_state = 1;
-
 });
 
 var toggle = function () {
     var state = window.sidepane_state;
+    console.log("state ...." + state);
     if (state == 0) {
         window.sidepane_state = 1;
         toggle_state(1,"#p1", "#p2");
@@ -45,7 +48,7 @@ var toggle = function () {
 var toggle_sidepane2 = function () {
     var state = window.sidepane2_state;
     if (state == 0) {
-        window.sidepane2_state = 1;
+        window.sidepane2_state = 2;
         toggle_state(2,"#p3", "#p4");
     } else {
         window.sidepane2_state = 0;
