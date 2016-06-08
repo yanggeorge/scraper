@@ -54,72 +54,114 @@ app.controller('MainCtrl', function($scope){
     } };
     $scope.contextMenu2 = [menu2];
 
-    $scope.svgs = init_svgs();
-    $scope.nodes = init_nodes();
+    var robot = init_robot();
+    console.log(robot.to_s());
+
+    var svgs = init_svgs(robot);
+    console.log(svgs.length);
+    var nodes = init_nodes(robot);
+    console.log(svgs.length);
+    $scope.robot = robot;
+    $scope.svgs = svgs;
+    $scope.nodes = nodes;
 });
+app.controller('nodeCtrl', function($scope){
+    $scope.addStepAfter = function(node){
+        console.log(node);
+    };
 
-var init_svgs = function(){
-    var svgs = [];
-    var svg1={},svg2={},svg3={},svg4={};
-    svg1.id = Math.uuid();
-    svg1.svg_id = Math.uuid();
-    svg1.marker_id = Math.uuid();
-    svg1.path_id = Math.uuid();
-    svg1.is_end = false;
-    svg1.color = "#2ecc71"; //表示active
-    svg1.points = "125,45 190,45 195,45";
+    $scope.addStepBefore= function(node) {
+        console.log(node);
+    };
+});
+var init_robot = function() {
+    var robot = new ym.rpa.Robot("test");
 
-    svg2.id = Math.uuid();
-    svg2.svg_id = Math.uuid();
-    svg2.marker_id = Math.uuid();
-    svg2.path_id = Math.uuid();
-    svg2.is_end = false;
-    svg2.color = "#666";
-    svg2.points = "315,45 380,45 385,45";
-
-    svg3.id = Math.uuid();
-    svg3.svg_id = Math.uuid();
-    svg3.marker_id = Math.uuid();
-    svg3.path_id = Math.uuid();
-    svg3.is_end = false;
-    svg3.color = "#666";
-    svg3.points = "505,45 570,45 575,45";
-
-    svg4.id = Math.uuid();
-    svg4.svg_id = Math.uuid();
-    svg4.marker_id = Math.uuid();
-    svg4.path_id = Math.uuid();
-    svg4.is_end = true;
-    svg4.color = "#666";
-    svg4.points = "695,45 720,45";
-    svgs.push(svg1);
-    svgs.push(svg2);
-    svgs.push(svg3);
-    svgs.push(svg4);
-    return svgs;
+    var step1 = new ym.rpa.Step(ym.rpa.ACTION_VISIT);
+    step1.options.push("aa");
+    step1.options.push("aa");
+    var step2 = new ym.rpa.Step(ym.rpa.ACTION_EXTRACT);
+    var step3 = new ym.rpa.Step(ym.rpa.ACTION_CLICK);
+    var step4 = new ym.rpa.Step(ym.rpa.ACTION_FLUSH);
+    step1.next.push( step2.id );
+    step2.next.push( step3.id );
+    step3.next.push( step4.id );
+    robot.steps[step1.id] = step1;
+    robot.steps[step2.id] = step2;
+    robot.steps[step3.id] = step3;
+    robot.steps[step4.id] = step4;
+    var output = new ym.rpa.Ouput("test");
+    output.options.push("bbb");
+    output.options.push("bbb");
+    robot.outputs[output.id] = output;
+    robot.first_step = step1.id;
+    return robot;
 };
 
-var init_nodes = function(){
+var init_svgs = function(robot) {
+    var svgs = [];
+
+    var steps = robot.steps;
+    var step_id = robot.first_step;
+    var step_ids = Object.keys(steps);
+    while (step_ids.includes(step_id) && steps[step_id] != null) {
+        var step = steps[step_id];
+        var svg = new ym.rpa.Node_svg(step_id);
+        svgs.push(svg);
+        step_id = step.next[0];
+    }
+    return compute_svg_position(svgs);
+};
+
+var compute_svg_position = function(svgs) {
+    svgs.forEach(function (svg, index, array) {
+        if (index == array.length - 1) {
+            svg.is_end = true;
+            var p1 = 125 + index * 190;
+            var p2 = p1 + 25;
+            svg.points = p1 + ",45 " + p2 + ",45";
+        } else {
+            var p1 = 125 + index * 190;
+            var p2 = 190 + index * 190;
+            var p3 = 195 + index * 190;
+            svg.points = p1 + ",45 " + p2 + ",45 " + p3 + ",45";
+        }
+
+    });
+    return svgs;
+};
+var init_nodes = function(robot) {
     var nodes = [];
-    var node1= {},node2={}, node3={}, node4={};
-    node1.title = "Go to URL";
-    node1.position = {left: 25+'px', top: 25+'px', width: 90+'px', height: 40+'px'};
-    node1.desc = "node1 desc";
 
-    node2.title = "Click";
-    node2.position = {left: 215+'px', top: 25+'px', width: 90+'px', height: 40+'px'};
-    node2.desc = "node1 desc";
+    var steps = robot.steps;
+    var step_id = robot.first_step;
+    var step_ids = Object.keys(steps);
+    while (step_ids.includes(step_id) && steps[step_id] != null) {
+        var step = steps[step_id];
+        var node = new ym.rpa.Node(step.title);
+        node.id = step.id;
+        var next = step.next;
+        if (next.length == 1) {
+            step_id = next[0];
+            nodes.push(node);
+        } else {
+            node.is_end = true;
+            nodes.push(node);
+            break;
+        }
+    }
+    nodes = compute_node_position(nodes);
+    return nodes;
+};
 
-    node3.title = "Extract";
-    node3.position = {left: 405+'px', top: 25+'px', width: 90+'px', height: 40+'px'};
-    node3.desc = "node1 desc";
+var compute_node_position = function(nodes) {
+    nodes.forEach(function(node,index,array){
+        node.left = 25 + 190 * index;
+        node.top = 25;
+        node.width = 90;
+        node.height = 40;
+        node.compute_position();
+    });
 
-    node4.title = "Save";
-    node4.position = {left: 595+'px', top: 25+'px', width: 90+'px', height: 40+'px'};
-    node4.desc = "node1 desc";
-    nodes.push(node1);
-    nodes.push(node2);
-    nodes.push(node3);
-    nodes.push(node4);
     return nodes;
 };

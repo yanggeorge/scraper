@@ -218,12 +218,22 @@ class Step
       @action = action
     else
       @action = ACTION_VISIT
-    @title = ""
+    @title = @init_title(@action)
     @value = ""
     @tags = []
     @next = []
     @options = []
     @error_message = ""
+
+  init_title : (action) ->
+    if action == ACTION_VISIT
+      return "Go to URL"
+    else if action == ACTION_EXTRACT
+      return "Extract"
+    else if action == ACTION_FLUSH
+      return "Save"
+    else if action == ACTION_CLICK
+      return "Click"
 
   # step只是一部分
   to_s: (indent = INDENT) ->
