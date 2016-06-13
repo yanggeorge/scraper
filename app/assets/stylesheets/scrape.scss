@@ -92,7 +92,7 @@ div {
   top: 0;
   height: 100%;
   z-index: 3;
-  background-color: #fff;
+  background-color: #F6F6F6;
   -moz-box-shadow: 5px 0 6px 0 rgba(0, 0, 0, .3);
   -webkit-box-shadow: 5px 0 6px 0 rgba(0, 0, 0, .3);
   box-shadow: 5px 0 6px 0 rgba(0, 0, 0, .3);
@@ -109,6 +109,8 @@ h3>span, h4>span, h5>span {
     font-variant:normal;
     color : #000;
 }
+
+
 
 .sidepane > .content {
     height : 43px;
@@ -262,7 +264,7 @@ a, body, h4, h5, h6, input {
   right: 0;
   top: 0;
   height: 100%;
-  background-color: #fff;
+  background-color: #F6F6F6;
   -moz-box-shadow: 5px 0 6px 0 rgba(0, 0, 0, .3);
   -webkit-box-shadow: 5px 0 6px 0 rgba(0, 0, 0, .3);
   box-shadow: 5px 0 6px 0 rgba(0, 0, 0, .3);
@@ -302,6 +304,7 @@ a, body, h4, h5, h6, input {
 
 .flow-editor {
   position: absolute;
+  cursor: crosshair;
 }
 
 .flow-step {
@@ -403,7 +406,11 @@ a, body, h4, h5, h6, input {
   -webkit-transform: translate(0, 0);
   -moz-transform: translate(0, 0)
 }
-
+.flow-step.selected {
+  border-color: rgba(0,0,0,.8);
+  border-width: 1px;
+  border-style: dashed;
+}
 .tab-pane {
 
 }

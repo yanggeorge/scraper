@@ -10,6 +10,7 @@ class Node
   height : 0
   position : ""
   is_end : false
+  style : ""
 
   constructor : (title) ->
     @id = ""
@@ -21,6 +22,7 @@ class Node
     @height = 0
     @position = ""
     @is_end = false
+    @style = ""
 
   to_s : ->
     @title + "," + @desc + "," + @position

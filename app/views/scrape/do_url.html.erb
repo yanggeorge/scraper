@@ -36,7 +36,7 @@
       <div class="p2-2  mainpane">
         <div id="p4" class="p3-3 sidepane">
           <h3>
-            <span>1 element selected</span>
+            <span ng-bind="sidePane2Title"></span>
 
             <div class="actions">
               <a href="javascript:;" ng-click="closeSidePane2()" class="button mini">
@@ -106,14 +106,14 @@
                 </g>
               </svg>
 
-              <div  ng-repeat="node in nodes" ng-controller="nodeCtrl"  title="{{node.desc}}" ng-style="node.position" style="position:absolute;" class="flow-step tst-robot-scraper-devtools-timeline-step ng-scope  active" >
-                <div class="title-container" ng-click="clickNode(node)">
+              <div  ng-repeat="node in nodes" title="{{node.desc}}" ng-class="node.style" ng-style="node.position" style="position:absolute;" class="flow-step tst-robot-scraper-devtools-timeline-step ng-scope  active" >
+                <div class="title-container"  ng-click="clickNode(node);$event.stopPropagation();">
                   <div class="title">{{node.title}}</div>
                 </div>
-                <div class="step-adder after" ng-click="addStepAfter(node)" >
+                <div class="step-adder after" ng-click="addStepAfter(node);$event.stopPropagation();" >
                   <i class="fa fa-plus" ></i>
                 </div>
-                <div class="step-adder before" ng-click="addStepBefore(node)">
+                <div class="step-adder before" ng-click="addStepBefore(node);$event.stopPropagation();">
                   <i class="fa fa-plus"></i>
                 </div>
               </div>

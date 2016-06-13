@@ -35,14 +35,37 @@ app.directive("tabPane",function(){
     }
 });
 
+app.directive("flowEditor",function(){
+    return {
+        restrict : 'C',
+        transclude : false,
+        scope : {},
+        controller : function(){
+
+        },
+        link : function(scope,element,attrs, ctrl){
+            element.click(function(){
+                //console.log("flowEditor ...");
+                //scope.$parent.nodes.forEach(function(n,index,array){
+                //    n.style = "";
+                //});
+                //scope.$parent.$apply();
+                //toggle_sidepane2_state(0);
+                scope.$emit("flowEditorClick");
+            });
+        }
+    }
+});
+
 app.controller('MainCtrl', function($scope){
     $scope.closeSidePane1 = function(){
-        toggle();
+        toggle_sidepane1_state(0);
     };
     $scope.closeSidePane2 = function(){
-        toggle_sidepane2();
+        toggle_sidepane2_state(0);
     };
     $scope.sidePaneView1 = 'contextmenu1.html';
+    $scope.sidePane2Title = 'sidePane2Title not set!';
     $scope.sidePaneView2 = 'contextmenu2.html';
 
     var menu1 = {'name':'Extract from element', 'invoke':function(){
@@ -57,8 +80,7 @@ app.controller('MainCtrl', function($scope){
     $scope.robot = init_robot();
     $scope.svgs = init_svgs($scope.robot);
     $scope.nodes = init_nodes($scope.robot);
-});
-app.controller('nodeCtrl', function($scope){
+
     $scope.addStepAfter = function(node){
         console.log(node);
     };
@@ -68,9 +90,74 @@ app.controller('nodeCtrl', function($scope){
     };
 
     $scope.clickNode = function(node){
-        $scope.contextMenu2 = init_context_menu2(node);
-    }
+        $scope.nodes.forEach(function(n,index,array){
+            n.style = "";
+            if (n.id == node.id){
+                n.style = "selected";
+            }
+        });
+        toggle_sidepane2_state(0);
+        setTimeout(function(){toggle_sidepane2_state(1);},100);
+        $scope.sidePane2Title='1 steps selected';
+        $scope.sidePaneView2 = 'contextmenu2.html';
+        var menus = init_context_menu2(node, $scope);
+        console.log(menus);
+        $scope.contextMenu2 = menus;
+        console.log($scope.contextMenu2);
+
+    };
+
+    // 监听事件。
+    $scope.$on("flowEditorClick",function(){
+        $scope.nodes.forEach(function(n,index,array){
+            n.style = "";
+        });
+        $scope.$apply();
+        toggle_sidepane2_state(0);
+    });
+
+
 });
+
+var init_context_menu2 = function(node , $scope){
+    var menus = [];
+    var menu1 = {'name':'Edit', 'invoke':function(){
+        $scope.sidePaneView2 = 'edit_node.html';
+        $scope.sidePane2Title = 'Edit step';
+        $scope.currentNode = node;
+    } };
+    var menu2 = {'name':'Delete', 'invoke':function(){
+        console.log($scope.robot.to_s());
+        var step = $scope.robot.steps[node.id];
+        $scope.robot.remove_step(step);
+        $scope.svgs = init_svgs($scope.robot);
+        $scope.nodes = init_nodes($scope.robot);
+        toggle_sidepane2_state(0);
+    } };
+    var menu3 = {'name':'Add step after', 'invoke':function(){
+        var new_step = new ym.rpa.Step(ym.rpa.ACTION_NOTHING);
+        var step = $scope.robot.steps[node.id];
+        $scope.robot.add_step_after(new_step,step);
+        $scope.svgs = init_svgs($scope.robot);
+        $scope.nodes = init_nodes($scope.robot);
+        $scope.sidePaneView2 = "edit_node.html";
+        $scope.sidePane2Title = 'Edit Step';
+        $scope.currentNode = new_step;
+    } };
+    var menu4 = {'name':'Add step before', 'invoke':function(){
+        var new_step = new ym.rpa.Step(ym.rpa.ACTION_NOTHING);
+        var step = $scope.robot.steps[node.id];
+        $scope.robot.add_step_before(new_step,step);
+        $scope.svgs = init_svgs($scope.robot);
+        $scope.nodes = init_nodes($scope.robot);
+        $scope.sidePaneView2 = "edit_node.html";
+        $scope.sidePane2Title = 'Edit Step';
+        $scope.currentNode = new_step;
+    } };
+    menus.push(menu1,menu2,menu3,menu4);
+    return menus;
+};
+
 var init_robot = function() {
     var robot = new ym.rpa.Robot("test");
 

@@ -4,10 +4,11 @@ ACTION_VISIT = "VISIT"
 ACTION_CLICK = "CLICK"
 ACTION_EXTRACT = "EXTRACT"
 ACTION_FLUSH = "FLUSH"
+ACTION_NOTHING = "NOTHING"
 
 #module private variable
 INDENT  = "    "
-ACTIONS = ["VISIT", "CLICK", "EXTRACT", "FLUSH"]
+ACTIONS = ["VISIT", "CLICK", "EXTRACT", "FLUSH", "NOTHING"]
 
 class Robot
   first_step: ""
@@ -234,6 +235,8 @@ class Step
       return "Save"
     else if action == ACTION_CLICK
       return "Click"
+    else if action == ACTION_NOTHING
+      return "Do Nothing"
 
   # step只是一部分
   to_s: (indent = INDENT) ->
@@ -449,6 +452,7 @@ namespace "ym.rpa", (exports) ->
   exports.ACTION_EXTRACT = ACTION_EXTRACT
   exports.ACTION_CLICK = ACTION_CLICK
   exports.ACTION_FLUSH = ACTION_FLUSH
+  exports.ACTION_NOTHING = ACTION_NOTHING
   #exports.test = test
   #exports.test2 = test2
 

@@ -48,12 +48,19 @@ var toggle = function () {
 var toggle_sidepane2 = function () {
     var state = window.sidepane2_state;
     if (state == 0) {
-        window.sidepane2_state = 2;
-        toggle_state(2,"#p3", "#p4");
+        window.sidepane2_state = 1;
+        toggle_state(1,"#p3", "#p4");
     } else {
         window.sidepane2_state = 0;
         toggle_state(0,"#p3", "#p4");
     }
+};
+
+var toggle_sidepane1_state = function(state){
+    toggle_state(state, "#p1","#p2");
+};
+var toggle_sidepane2_state = function(state){
+    toggle_state(state, "#p3","#p4");
 };
 // 三种状态之间进行切换。
 var toggle_state = function(state, main_id, sidepane_id){
