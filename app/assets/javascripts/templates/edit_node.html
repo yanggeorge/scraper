@@ -1,2 +1,134 @@
-<p>edit node.</p>
-<p>{{currentNode.title}}</p>
+<form class="step-form label-above tst-devtools-stepform ng-valid ng-scope ng-dirty ng-valid-parse ng-valid-valid-path"
+      ng-submit="save($event)">
+    <div accordion="" class="accordion">
+        <div accordion-pane="panes.general" class="pane active">
+            <div class="content">
+                <div class="form-row" label="Title" help="The steps name"><label class="field-label">Title:</label>
+                    <input class="tst-devtools-stepform-title ng-pristine ng-untouched ng-valid" type="text"
+                           name="title" ng-model="stepData.title" placeholder="Extract">
+
+                    <div class="help">The steps name</div>
+                    <div class="error" style="display: none;"></div>
+                </div>
+                <div class="form-row" label="Type" help="The steps type"><label class="field-label">Type:</label>
+                    <select name="type" class="ng-pristine ng-untouched ng-valid">
+
+                            <option value="0" selected="selected" label="Extract value" about>Extract value</option>
+                            <option value="1" label="Extract list" disabled>Extract list</option>
+                            <option value="2" label="Extract attribute" disabled>Extract attribute</option>
+                            <option value="3" label="Extract value (JS)" disabled>Extract value (JS)</option>
+                            <option value="4" label="Extract image" disabled>Extract image</option>
+                            <option value="5" label="Extract file" disabled>Extract file</option>
+                            <option value="6" label="Extract screen shot" disabled>Extract screen shot</option>
+                            <option value="7" label="Extract OCR" disabled>Extract OCR</option>
+                            <option value="8" label="Extract location" disabled>Extract location</option>
+                            <option value="9" label="Click &amp; Download" disabled>Click &amp; Download</option>
+                            <option value="10" label="Extract link destination" disabled>Extract link destination</option>
+                            <option value="11" label="Search and Grab" disabled>Search and Grab</option>
+                            <option value="12" label="Capture screen shot" disabled>Capture screen shot</option>
+                            <option value="13" label="Copy input to output" disabled>Copy input to output</option>
+                            <option value="14" label="Assign value to output" disabled>Assign value to output</option>
+                            <option value="15" label="Save current output" about>Save current output</option>
+
+                            <option value="16" label="Input value" disabled>Input value</option>
+                            <option value="17" label="Press key" disabled>Press key</option>
+                            <option value="18" label="Click element" about>Click element</option>
+                            <option value="19" label="Click element when true" disabled>Click element when true</option>
+                            <option value="20" label="Click element when false" disabled>Click element when false</option>
+                            <option value="21" label="Resolve Captcha" disabled>Resolve Captcha</option>
+                            <option value="22" label="Copy output to input" disabled>Copy output to input</option>
+
+                            <option value="23" label="Loop through elements" disabled>Loop through elements</option>
+                            <option value="24" label="Iterate options" disabled>Iterate options</option>
+                            <option value="25" label="While" disabled>While</option>
+                            <option value="26" label="Do - While" disabled>Do - While</option>
+                            <option value="27" label="Copy state to next branch" disabled>Copy state to next branch</option>
+                            <option value="28" label="Counter" disabled>Counter</option>
+
+                            <option value="29" label="Remove element" disabled>Remove element</option>
+                            <option value="30" label="Execute javascript" disabled>Execute javascript</option>
+                            <option value="31" label="HTMLify text" disabled>HTMLify text</option>
+
+                            <option value="32" label="Extract cookie" disabled>Extract cookie</option>
+                            <option value="33" label="Set cookie" disabled>Set cookie</option>
+                            <option value="34" label="Remove cookie" disabled>Remove cookie</option>
+                            <option value="35" label="Clear all cookies" disabled>Clear all cookies</option>
+
+                            <option value="36" label="Wait for" disabled>Wait for</option>
+                            <option value="37" label="Assert true" disabled>Assert true</option>
+                            <option value="38" label="Assert false" disabled>Assert false</option>
+                            <option value="39" label="HTML contains" disabled>HTML contains</option>
+                            <option value="40" label="Assert input equals" disabled>Assert input equals</option>
+                            <option value="41" label="Assert output equals" disabled>Assert output equals</option>
+
+                            <option value="42" label="Go to URL"  about>Go to URL</option>
+                            <option value="43" label="Page iteration" disabled>Page iteration</option>
+                            <option value="44" label="Scroll infinite" disabled>Scroll infinite</option>
+                            <option value="45" label="Scroll to element" disabled>Scroll to element</option>
+                            <option value="46" label="Click forever" disabled>Click forever</option>
+                            <option value="47" label="History -> Back" disabled>History -&gt; Back</option>
+                            <option value="48" label="History -> Forward" disabled>History -&gt; Forward</option>
+
+                            <option value="56" label="Do nothing" about >Do nothing</option>
+
+                    </select>
+
+                    <div class="help">The steps type</div>
+                    <div class="error" style="display: none;"></div>
+                </div>
+            </div>
+            <div class="content">
+                <div class="form-row" label="Ouput" help="The steps name"><label class="field-label">Ouput:</label>
+                    <input class="tst-devtools-stepform-title ng-pristine ng-untouched ng-valid" type="text"
+                           name="title" ng-model="stepData.title" placeholder="output1">
+
+                    <div class="help">set output field</div>
+                    <div class="error" style="display: none;"></div>
+                </div>
+
+                <div class="form-row ng-scope" help="">
+                    <label class="field-label ng-scope">
+                        <span class="ng-binding">Element paths</span>
+                        <a class="inline-help ng-scope"
+                           title="Click here to get more information" href="javascript:;"
+                           ng-click="showHelp(fieldDef)" ng-isolate="">
+                            <i class="fa fa-question-circle"></i>
+                        </a>
+                    </label>
+
+
+                    <div class="row">
+                        <a class="button mini" ng-click="selectElement($index)"
+                           ng-class="{toggled:isToggled($index)}" title="Click to select a new element"><i
+                                class="fa fa-bullseye"></i></a>
+                        <input type="text"
+                               class="validate-css-path ng-pristine ng-untouched ng-valid ng-valid-valid-path"
+                              >
+                        <!--<a class="button secondary mini"  ng-click="add()"><i
+                                class="fa fa-plus"></i></a>-->
+                    </div>
+                    <div class="error ng-binding ng-hide" ng-show="errorMsg" ng-bind="errorMsg"></div>
+
+
+                    <div class="error" style="display: none;"></div>
+                </div>
+
+                <div class="form-row" label="Ouput" help="The steps name"><label class="field-label">Url address:</label>
+                    <input class="tst-devtools-stepform-title ng-pristine ng-untouched ng-valid" type="text"
+                           name="title" ng-model="stepData.title" placeholder="http://">
+
+                    <div class="help">set url field</div>
+                    <div class="error" style="display: none;"></div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+    <div class="form-buttons">
+        <button type="submit" class="button primary">Ok</button>
+        <button type="button" class="button warning" ng-click="close()">Cancel</button>
+    </div>
+</form>

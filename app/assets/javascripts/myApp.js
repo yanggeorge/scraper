@@ -125,6 +125,7 @@ var init_context_menu2 = function(node , $scope){
         $scope.sidePaneView2 = 'edit_node.html';
         $scope.sidePane2Title = 'Edit step';
         $scope.currentNode = node;
+        toggle_sidepane2_state(2);
     } };
     var menu2 = {'name':'Delete', 'invoke':function(){
         console.log($scope.robot.to_s());

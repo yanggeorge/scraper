@@ -307,6 +307,7 @@ a, body, h4, h5, h6, input {
   cursor: crosshair;
 }
 
+
 .flow-step {
   border-radius: 5px;
   position: absolute;
@@ -318,6 +319,11 @@ a, body, h4, h5, h6, input {
   box-sizing: border-box;
   z-index: 3;
   font-size: 14px;
+}
+
+.flow-step :hover{
+  background-color: rgba(150, 150, 150, .1);
+  border-color: #666
 }
 
 .title-container {
@@ -588,4 +594,134 @@ a, body, h4, h5, h6, input {
 .tab-pane.collapsed > .tab-buttons > .tab-down > li > .close {
   float: right;
   margin-top: 8px
+}
+
+.form-row {
+  margin-bottom: 11px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.accordion, .form-row {
+  position: relative;
+}
+.form-row>.field-label {
+  width: auto;
+  display: block;
+  text-align: left;
+  padding: 0;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.form-row>.help {
+  margin-left: 0;
+}
+.form-row>.help {
+  font-size: 12px;
+  color: #999;
+}
+
+.sidepane input[type=text]{
+  width: 100%;
+}
+input, select, textarea {
+  border: 1px solid #E4E7EA;
+}
+input, select {
+  padding: 2px 5px;
+  box-sizing: border-box;
+}
+.form-row>.field-label {
+  width: auto;
+  display: block;
+  text-align: left;
+  padding: 0;
+  font-size: 12px;
+  font-weight: 500;
+}
+.sidepane select {
+  width: 100%;
+}
+select {
+  vertical-align: middle;
+  height: 30px;
+}
+button, input, select, textarea {
+  font: 99% arial,helvetica,clean,sans-serif;
+}
+
+.wb-action.primary, .wb-action.wb-success, .wb-button.primary, .wb-button.wb-success, .wb-form-button.primary, .wb-form-button.wb-success, button.primary, button.wb-success, input.button.primary, input.button.wb-success, input.submit.primary, input.submit.wb-success {
+  border-color: #2c699d;
+  background-color: #3276b1;
+  color: #fff;
+}
+.button, .wb-action, .wb-button, .wb-form-button, button, input.button, input.submit {
+  user-select: none;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-transform: translate3d(0,0,0);
+  transform: translate3d(0,0,0);
+  -webkit-perspective: 1000px;
+  -o-perspective: 1000px;
+  perspective: 1000px;
+  -webkit-transition: all 350ms ease-out;
+  -moz-transition: all 350ms ease-out;
+  -o-transition: all 350ms ease-out;
+  transition: all 350ms ease-out;
+  outline: 0;
+  display: inline-block;
+  box-sizing: border-box;
+  margin-top: 5px;
+  cursor: pointer;
+  color: #333;
+  background-color: #efefef;
+  border: 1px solid #ccc;
+  line-height: 32px;
+  text-decoration: none;
+  padding: 0 5px;
+}
+
+.editor-container .devtools .step-form .form-buttons, .editor-container .devtools .step-form .form-row {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.form-buttons {
+  margin-top: 10px;
+  padding: 10px;
+  border-top: 1px solid #E4E7EA;
+  background-color: #fff;
+}
+
+[about] {
+  background-color: #E4E7EA;
+  color: #1812ca;
+  font-weight: bolder !important;
+}
+
+.row {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-flex-direction: row;
+  -moz-box-flex-direction: row;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-flex-wrap: no-wrap;
+  -moz-box-flex-wrap: no-wrap;
+  -webkit-flex-wrap: no-wrap;
+  -ms-flex-wrap: no-wrap;
+  flex-wrap: no-wrap;
+  margin-bottom: 5px;
 }
