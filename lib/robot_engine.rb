@@ -1,6 +1,7 @@
 require File.dirname(__FILE__) + "/robot"
 require File.dirname(__FILE__) + "/nokogiri_parse"
-require File.dirname(__FILE__) + "/../app/models/output"
+require File.dirname(__FILE__) + "/../app/models/ouput_result"
+require 'singleton'
 
 module RPA
   class RobotEngine
@@ -50,6 +51,9 @@ module RPA
         when RPA::ACTION_FLUSH
           #save outputs
           flush
+        when RPA::ACTION_NOTHING
+          # do nothing ,just sleep a while
+          sleep(500)
         else
           raise("action type is wrong.")
       end
@@ -83,6 +87,56 @@ module RPA
   end
 
 
+  class RobotService
+    include Singleton
+
+    def initialize
+      @robots = {}
+      @robot_ids = []
+    end
+
+    def include?(robot)
+      @robot_ids.include? robot.id
+    end
+
+    def get_robot(id)
+      if include? id
+        return @robots[id]
+      else
+        return nil
+      end
+    end
+
+    def get_new_robot(url)
+      robot = RPA::Robot.new("test")
+      step1 = RPA::Step.new(RPA::ACTION_VISIT)
+      step1.value = url
+      step1.title = "Go to URL"
+      step2 = RPA::Step.new(RPA::ACTION_NOTHING)
+      step2.title = "Do nothing"
+      step1.next << step2.id
+      robot.first_step = step1.id
+      robot.steps[step1.id] = step1
+      robot.steps[step2.id] = step2
+      register(robot)
+      robot
+    end
+
+    def register(robot)
+      if not include? robot
+        @robot_ids.append(robot.id)
+        @robots[robot.id] = robot
+      end
+    end
+
+    def un_register(robot)
+      if include? robot
+        @robot_ids.delete(robot.id)
+        @robots.delete(robot.id)
+      end
+    end
+
+  end
 
   if __FILE__==$0
     robot = Robot.new("test")

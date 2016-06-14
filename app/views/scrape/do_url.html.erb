@@ -6,6 +6,7 @@
     <%= javascript_tag do %>
         window.ym.url_value = "<%= @url_value %>";
         window.ym.modified_page = '<%= j @modified_page.html_safe %>'
+        window.ym.robot_string = '<%= @robot_string.html_safe %>'
     <% end %>
 
     <div class="p1">

@@ -2,11 +2,12 @@ require 'securerandom'
 require 'json'
 # robotic processing automation
 module RPA
-  ACTIONS = [:VISIT, :CLICK, :EXTRACT, :FLUSH]
+  ACTIONS = [:VISIT, :CLICK, :EXTRACT, :FLUSH , :NOTHING]
   ACTION_VISIT = :VISIT
   ACTION_CLICK = :CLICK
   ACTION_EXTRACT = :EXTRACT
   ACTION_FLUSH = :FLUSH
+  ACTION_NOTHING = :NOTHING
   INDENT = "    "
 
   class Robot
@@ -29,6 +30,12 @@ module RPA
       s += indent + id_to_s + ",\n"
       s += indent + deleted_to_s + "\n" # <--- 最后一个没有逗号
       s += "}\n"
+    end
+
+    def to_one_line
+      s = to_s
+      s = s.gsub(/\n/,'')
+      s
     end
 
     def self.from_json_string(json_string)
@@ -316,6 +323,9 @@ module RPA
     if robot.to_s == robot2.to_s
       puts "equal."
     end
+
+    s = robot2.to_one_line
+    p s
 
   end
 

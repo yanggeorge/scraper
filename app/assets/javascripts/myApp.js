@@ -184,26 +184,26 @@ var init_context_menu2 = function(node , $scope){
 };
 
 var init_robot = function() {
-    var robot = new ym.rpa.Robot("test");
-
-    var step1 = new ym.rpa.Step(ym.rpa.ACTION_VISIT);
-    step1.options.push("aa");
-    step1.options.push("aa");
-    var step2 = new ym.rpa.Step(ym.rpa.ACTION_EXTRACT);
-    var step3 = new ym.rpa.Step(ym.rpa.ACTION_CLICK);
-    var step4 = new ym.rpa.Step(ym.rpa.ACTION_FLUSH);
-    step1.next.push( step2.id );
-    step2.next.push( step3.id );
-    step3.next.push( step4.id );
-    robot.steps[step1.id] = step1;
-    robot.steps[step2.id] = step2;
-    robot.steps[step3.id] = step3;
-    robot.steps[step4.id] = step4;
-    var output = new ym.rpa.Ouput("test");
-    output.options.push("bbb");
-    output.options.push("bbb");
-    robot.outputs[output.id] = output;
-    robot.first_step = step1.id;
+    //var robot = new ym.rpa.Robot("test");
+    //var step1 = new ym.rpa.Step(ym.rpa.ACTION_VISIT);
+    //step1.options.push("aa");
+    //step1.options.push("aa");
+    //var step2 = new ym.rpa.Step(ym.rpa.ACTION_EXTRACT);
+    //var step3 = new ym.rpa.Step(ym.rpa.ACTION_CLICK);
+    //var step4 = new ym.rpa.Step(ym.rpa.ACTION_FLUSH);
+    //step1.next.push( step2.id );
+    //step2.next.push( step3.id );
+    //step3.next.push( step4.id );
+    //robot.steps[step1.id] = step1;
+    //robot.steps[step2.id] = step2;
+    //robot.steps[step3.id] = step3;
+    //robot.steps[step4.id] = step4;
+    //var output = new ym.rpa.Ouput("test");
+    //output.options.push("bbb");
+    //output.options.push("bbb");
+    //robot.outputs[output.id] = output;
+    //robot.first_step = step1.id;
+    var robot = ym.rpa.Robot.from_json_string(window.ym.robot_string);
     return robot;
 };
 

@@ -1,6 +1,7 @@
 require File.dirname(__FILE__) + '/../../lib/nokogiri_parse'
 require 'uri'
 require File.dirname(__FILE__) + "/../models/item"
+require File.dirname(__FILE__) + "/../../lib/robot_engine"
 
 class ScrapeController < ApplicationController
   protect_from_forgery with: :null_session
@@ -31,7 +32,10 @@ class ScrapeController < ApplicationController
 
     @modified_page = doc.to_html
     puts doc.to_html
-    return @url_name, @url_value, @modified_page
+    new_robot = RPA::RobotService.instance.get_new_robot(@url_value)
+    @robot_string = new_robot.to_one_line
+    puts @robot_string
+    return @url_name, @url_value, @modified_page, @robot_string
   end
 
   def valid?(url)
