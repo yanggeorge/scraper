@@ -57,6 +57,24 @@ app.directive("flowEditor",function(){
     }
 });
 
+app.controller('FormCtrl',function($scope){
+    var step = {};
+    step.title = "step title";
+    step.type = "56";
+    step.output = "output_field";
+    step.tag = "//xxxx/dfadfa/";
+
+    $scope.stepData = step;
+    $scope.save = function($event){
+        //可以把更新过的robot_def存入数据库。暂时不实现。
+        console.log("save ...");
+        console.log($scope.stepData);
+        console.log($scope.$parent.currentNode);
+        var node = $scope.$parent.currentNode;
+        node.title = $scope.stepData.title;
+    }
+});
+
 app.controller('MainCtrl', function($scope){
     $scope.closeSidePane1 = function(){
         toggle_sidepane1_state(0);

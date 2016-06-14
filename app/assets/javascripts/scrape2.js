@@ -33,6 +33,7 @@ jQuery(document).ready(function () {
     size();
 });
 
+
 var toggle = function () {
     var state = window.sidepane_state;
     console.log("state ...." + state);

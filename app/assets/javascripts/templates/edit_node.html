@@ -1,4 +1,4 @@
-<form class="step-form label-above tst-devtools-stepform ng-valid ng-scope ng-dirty ng-valid-parse ng-valid-valid-path"
+<form ng-controller="FormCtrl" class="step-form label-above tst-devtools-stepform ng-valid ng-scope ng-dirty ng-valid-parse ng-valid-valid-path"
       ng-submit="save($event)">
     <div accordion="" class="accordion">
         <div accordion-pane="panes.general" class="pane active">
@@ -11,7 +11,7 @@
                     <div class="error" style="display: none;"></div>
                 </div>
                 <div class="form-row" label="Type" help="The steps type"><label class="field-label">Type:</label>
-                    <select name="type" class="ng-pristine ng-untouched ng-valid">
+                    <select name="type" ng-model="stepData.type" class="ng-pristine ng-untouched ng-valid">
 
                             <option value="0" selected="selected" label="Extract value" about>Extract value</option>
                             <option value="1" label="Extract list" disabled>Extract list</option>
@@ -80,7 +80,7 @@
             <div class="content">
                 <div class="form-row" label="Ouput" help="The steps name"><label class="field-label">Ouput:</label>
                     <input class="tst-devtools-stepform-title ng-pristine ng-untouched ng-valid" type="text"
-                           name="title" ng-model="stepData.title" placeholder="output1">
+                           name="title" ng-model="stepData.output" placeholder="output1">
 
                     <div class="help">set output field</div>
                     <div class="error" style="display: none;"></div>
@@ -101,7 +101,7 @@
                         <a class="button mini" ng-click="selectElement($index)"
                            ng-class="{toggled:isToggled($index)}" title="Click to select a new element"><i
                                 class="fa fa-bullseye"></i></a>
-                        <input type="text"
+                        <input type="text" ng-model="stepData.tag"
                                class="validate-css-path ng-pristine ng-untouched ng-valid ng-valid-valid-path"
                               >
                         <!--<a class="button secondary mini"  ng-click="add()"><i
@@ -115,7 +115,7 @@
 
                 <div class="form-row" label="Ouput" help="The steps name"><label class="field-label">Url address:</label>
                     <input class="tst-devtools-stepform-title ng-pristine ng-untouched ng-valid" type="text"
-                           name="title" ng-model="stepData.title" placeholder="http://">
+                           name="value" ng-model="stepData.value" placeholder="http://">
 
                     <div class="help">set url field</div>
                     <div class="error" style="display: none;"></div>

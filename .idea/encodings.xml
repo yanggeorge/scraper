@@ -21,7 +21,6 @@
     <file url="file://$PROJECT_DIR$/config/initializers/assets.rb" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/lib/nokogiri_parse.rb" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/lib/robot.rb" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/lib/robot_service.rb" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/lib/web_analysis.rb" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/vendor/assets/bower_components/lodash/lib/common/file.js" charset="UTF-8" />
   </component>
