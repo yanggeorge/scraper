@@ -79,14 +79,27 @@ app.controller('MainCtrl', function($scope){
 
     $scope.robot = init_robot();
     $scope.svgs = init_svgs($scope.robot);
+    $scope.svg_width = compute_svg_width($scope.svgs);
     $scope.nodes = init_nodes($scope.robot);
 
     $scope.addStepAfter = function(node){
-        console.log(node);
+
+        var new_step = new ym.rpa.Step(ym.rpa.ACTION_NOTHING);
+        var step = $scope.robot.steps[node.id];
+        $scope.robot.add_step_after(new_step,step);
+        $scope.svgs = init_svgs($scope.robot);
+        $scope.svg_width = compute_svg_width($scope.svgs);
+        $scope.nodes = init_nodes($scope.robot);
+
     };
 
     $scope.addStepBefore= function(node) {
-        console.log(node);
+        var new_step = new ym.rpa.Step(ym.rpa.ACTION_NOTHING);
+        var step = $scope.robot.steps[node.id];
+        $scope.robot.add_step_before(new_step,step);
+        $scope.svgs = init_svgs($scope.robot);
+        $scope.svg_width = compute_svg_width($scope.svgs);
+        $scope.nodes = init_nodes($scope.robot);
     };
 
     $scope.clickNode = function(node){
@@ -119,6 +132,14 @@ app.controller('MainCtrl', function($scope){
 
 });
 
+var compute_svg_width = function(svgs){
+    var svg_width = 125 + svgs.length * 190 + 30 ;
+    if(svg_width < 1200){
+        svg_width = 1200;
+    }
+    return svg_width;
+};
+
 var init_context_menu2 = function(node , $scope){
     var menus = [];
     var menu1 = {'name':'Edit', 'invoke':function(){
@@ -132,6 +153,7 @@ var init_context_menu2 = function(node , $scope){
         var step = $scope.robot.steps[node.id];
         $scope.robot.remove_step(step);
         $scope.svgs = init_svgs($scope.robot);
+        $scope.svg_width = compute_svg_width($scope.svgs);
         $scope.nodes = init_nodes($scope.robot);
         toggle_sidepane2_state(0);
     } };
@@ -140,6 +162,7 @@ var init_context_menu2 = function(node , $scope){
         var step = $scope.robot.steps[node.id];
         $scope.robot.add_step_after(new_step,step);
         $scope.svgs = init_svgs($scope.robot);
+        $scope.svg_width = compute_svg_width($scope.svgs);
         $scope.nodes = init_nodes($scope.robot);
         $scope.sidePaneView2 = "edit_node.html";
         $scope.sidePane2Title = 'Edit Step';
@@ -150,6 +173,7 @@ var init_context_menu2 = function(node , $scope){
         var step = $scope.robot.steps[node.id];
         $scope.robot.add_step_before(new_step,step);
         $scope.svgs = init_svgs($scope.robot);
+        $scope.svg_width = compute_svg_width($scope.svgs);
         $scope.nodes = init_nodes($scope.robot);
         $scope.sidePaneView2 = "edit_node.html";
         $scope.sidePane2Title = 'Edit Step';
