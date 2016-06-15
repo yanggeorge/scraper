@@ -61,8 +61,9 @@ class NokogiriParse
     if DocManager.instance.include? url
       doc = DocManager.instance.get(url)
     else
-      #doc = Nokogiri::HTML(open(url,ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE))   # https简单快速但是有问题，比如baidu的body的display是none
-      doc = Nokogiri::HTML(WebAnalysis.instance.get_response(url))
+      doc = Nokogiri::HTML(open(url,ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE))   # https简单快速但是有问题，比如baidu的body的display是none
+      puts "using http"
+      #doc = Nokogiri::HTML(WebAnalysis.instance.get_response(url))
       doc = complete_path(url, doc)
       doc = delete_tag(doc)
       DocManager.instance.add(url,doc)

@@ -14,7 +14,6 @@ function size() {
     var p0 = document.getElementById("p0");
     var p1 = document.getElementById("p1");
     var p2 = document.getElementById("p2");
-    console.log(winWidth);
     p0.style.width = String(winWidth) + "px";
     p0.style.height = String(winHeight - 300) + "px";
 
@@ -36,7 +35,6 @@ jQuery(document).ready(function () {
 
 var toggle = function () {
     var state = window.sidepane_state;
-    console.log("state ...." + state);
     if (state == 0) {
         window.sidepane_state = 1;
         toggle_state(1,"#p1", "#p2");

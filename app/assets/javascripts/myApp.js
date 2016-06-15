@@ -58,23 +58,61 @@ app.directive("flowEditor",function(){
 });
 
 app.controller('FormCtrl',function($scope){
-    var step = {};
-    step.title = "step title";
-    step.type = "56";
-    step.output = "output_field";
-    step.tag = "//xxxx/dfadfa/";
 
-    $scope.stepData = step;
     $scope.save = function($event){
         //可以把更新过的robot_def存入数据库。暂时不实现。
         console.log("save ...");
         console.log($scope.stepData);
-        console.log($scope.$parent.currentNode);
-        var node = $scope.$parent.currentNode;
+        console.log($scope.currentNode);
+        var node = $scope.currentNode;
         node.title = $scope.stepData.title;
-    }
-});
+    };
 
+});
+var set_stepData = function($scope, node){
+    var step = $scope.robot.steps[node.id];
+    $scope.has_output = false;
+    $scope.has_url = false;
+    $scope.has_tag = false;
+    $scope.stepData = {};
+    var stepData = $scope.stepData ;
+    stepData.title = step.title;
+    stepData.type = step.action;
+    switch (step.action ){
+        case  ym.rpa.ACTION_VISIT :
+        {
+            stepData.url = step.value;
+            $scope.has_url = true;
+            break;
+        }
+        case ym.rpa.ACTION_CLICK:
+        {
+            stepData.tag = step.tags[0];
+            $scope.has_tag = true;
+            break;
+        }
+        case ym.rpa.ACTION_EXTRACT:
+        {
+            stepData.tag = step.tags[0];
+            stepData.output = step.value;
+            $scope.has_tag = true;
+            $scope.has_output = true;
+            break;
+        }
+        case ym.rpa.ACTION_FLUSH:
+        {
+            break;
+        }
+        case ym.rpa.ACTION_NOTHING:
+        {
+            break;
+        }
+        default :
+        {
+            throw "editNode is error ...";
+        }
+    }
+};
 app.controller('MainCtrl', function($scope){
     $scope.closeSidePane1 = function(){
         toggle_sidepane1_state(0);
@@ -165,6 +203,8 @@ var init_context_menu2 = function(node , $scope){
         $scope.sidePane2Title = 'Edit step';
         $scope.currentNode = node;
         toggle_sidepane2_state(2);
+        set_stepData($scope, node);
+
     } };
     var menu2 = {'name':'Delete', 'invoke':function(){
         console.log($scope.robot.to_s());
