@@ -64,11 +64,104 @@ app.controller('FormCtrl',function($scope){
         console.log("save ...");
         console.log($scope.stepData);
         console.log($scope.currentNode);
-        var node = $scope.currentNode;
-        node.title = $scope.stepData.title;
+        refresh_robot($scope);
+        toggle_sidepane2_state(0);
     };
 
+    $scope.close = function(){
+        toggle_sidepane2_state(0);
+    };
+
+    $scope.$watch('stepData.type',function(){
+        console.log("stepData type change ...");
+        $scope.has_url = false;
+        $scope.has_output = false;
+        $scope.has_tag = false;
+        switch ($scope.stepData.type){
+            case "42" :
+            {
+                $scope.has_url = true;
+                $scope.stepData.title = "Go to URL";
+                break;
+            }
+            case "0":
+            {
+                $scope.has_tag = true;
+                $scope.has_output = true;
+                $scope.stepData.title = "Extract";
+                break;
+            }
+            case "18":
+            {
+                $scope.has_tag = true;
+                $scope.stepData.title = "Click";
+                break;
+            }
+            case "15":
+            {
+                $scope.stepData.title = "Save";
+                break;
+            }
+            case "49" :
+            {
+                $scope.stepData.title = "Do nothing";
+                break;
+            }
+            default :
+            {
+
+            }
+        }
+    });
+
 });
+var refresh_robot = function($scope){
+    // 根据录入的stepData 更新robot
+    var currentNode = $scope.$parent.currentNode;
+    var step = new ym.rpa.Step();
+    step.title = $scope.stepData.title;
+    console.log($scope.stepData.type);
+    switch ($scope.stepData.type ){
+        case  "42" : // VISIT
+        {
+            step.value = $scope.stepData.url;
+            step.action = ym.rpa.ACTION_VISIT ;
+            break;
+        }
+        case "18": // CLICK
+        {
+            step.tags[0] =$scope.stepData.tag ;
+            step.action = ym.rpa.ACTION_CLICK ;
+            break;
+        }
+        case "0": // EXTRACT
+        {
+            step.tags[0] =$scope.stepData.tag ;
+            step.value = $scope.stepData.output ;
+            step.action = ym.rpa.ACTION_EXTRACT ;
+            break;
+        }
+        case "15": // FLUSH
+        {
+            step.action = ym.rpa.ACTION_FLUSH ;
+            break;
+        }
+        case "49": // NOTHING
+        {
+            step.action = ym.rpa.ACTION_NOTHING ;
+            break;
+        }
+        default :
+        {
+            throw "editNode is error ...";
+        }
+    }
+    step.id = $scope.$parent.currentNode.id;
+    step.next = $scope.$parent.robot.steps[step.id].next ;
+    $scope.$parent.robot.steps[step.id] = step ;
+    console.log($scope.$parent.robot.to_s());
+};
+
 var set_stepData = function($scope, node){
     var step = $scope.robot.steps[node.id];
     $scope.has_output = false;
@@ -77,17 +170,18 @@ var set_stepData = function($scope, node){
     $scope.stepData = {};
     var stepData = $scope.stepData ;
     stepData.title = step.title;
-    stepData.type = step.action;
     switch (step.action ){
         case  ym.rpa.ACTION_VISIT :
         {
             stepData.url = step.value;
+            stepData.type = "42";
             $scope.has_url = true;
             break;
         }
         case ym.rpa.ACTION_CLICK:
         {
             stepData.tag = step.tags[0];
+            stepData.type = "18";
             $scope.has_tag = true;
             break;
         }
@@ -95,16 +189,19 @@ var set_stepData = function($scope, node){
         {
             stepData.tag = step.tags[0];
             stepData.output = step.value;
+            stepData.type = "0";
             $scope.has_tag = true;
             $scope.has_output = true;
             break;
         }
         case ym.rpa.ACTION_FLUSH:
         {
+            stepData.type = "15";
             break;
         }
         case ym.rpa.ACTION_NOTHING:
         {
+            stepData.type = "49";
             break;
         }
         default :
@@ -138,24 +235,26 @@ app.controller('MainCtrl', function($scope){
     $scope.svg_width = compute_svg_width($scope.svgs);
     $scope.nodes = init_nodes($scope.robot);
 
+    $scope.$watch("robot" , function () {
+        console.log("robot change ...");
+        $scope.nodes = init_nodes($scope.robot);
+        $scope.svgs = init_svgs($scope.robot);
+        $scope.svg_width = compute_svg_width($scope.svgs);
+    }, true);
+
+
+
     $scope.addStepAfter = function(node){
 
         var new_step = new ym.rpa.Step(ym.rpa.ACTION_NOTHING);
         var step = $scope.robot.steps[node.id];
         $scope.robot.add_step_after(new_step,step);
-        $scope.svgs = init_svgs($scope.robot);
-        $scope.svg_width = compute_svg_width($scope.svgs);
-        $scope.nodes = init_nodes($scope.robot);
-
     };
 
     $scope.addStepBefore= function(node) {
         var new_step = new ym.rpa.Step(ym.rpa.ACTION_NOTHING);
         var step = $scope.robot.steps[node.id];
         $scope.robot.add_step_before(new_step,step);
-        $scope.svgs = init_svgs($scope.robot);
-        $scope.svg_width = compute_svg_width($scope.svgs);
-        $scope.nodes = init_nodes($scope.robot);
     };
 
     $scope.clickNode = function(node){
@@ -210,32 +309,19 @@ var init_context_menu2 = function(node , $scope){
         console.log($scope.robot.to_s());
         var step = $scope.robot.steps[node.id];
         $scope.robot.remove_step(step);
-        $scope.svgs = init_svgs($scope.robot);
-        $scope.svg_width = compute_svg_width($scope.svgs);
-        $scope.nodes = init_nodes($scope.robot);
         toggle_sidepane2_state(0);
     } };
     var menu3 = {'name':'Add step after', 'invoke':function(){
         var new_step = new ym.rpa.Step(ym.rpa.ACTION_NOTHING);
         var step = $scope.robot.steps[node.id];
         $scope.robot.add_step_after(new_step,step);
-        $scope.svgs = init_svgs($scope.robot);
-        $scope.svg_width = compute_svg_width($scope.svgs);
-        $scope.nodes = init_nodes($scope.robot);
-        $scope.sidePaneView2 = "edit_node.html";
-        $scope.sidePane2Title = 'Edit Step';
-        $scope.currentNode = new_step;
+        toggle_sidepane2_state(0);
     } };
     var menu4 = {'name':'Add step before', 'invoke':function(){
         var new_step = new ym.rpa.Step(ym.rpa.ACTION_NOTHING);
         var step = $scope.robot.steps[node.id];
         $scope.robot.add_step_before(new_step,step);
-        $scope.svgs = init_svgs($scope.robot);
-        $scope.svg_width = compute_svg_width($scope.svgs);
-        $scope.nodes = init_nodes($scope.robot);
-        $scope.sidePaneView2 = "edit_node.html";
-        $scope.sidePane2Title = 'Edit Step';
-        $scope.currentNode = new_step;
+        toggle_sidepane2_state(0);
     } };
     menus.push(menu1,menu2,menu3,menu4);
     return menus;

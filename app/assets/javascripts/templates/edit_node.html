@@ -5,7 +5,7 @@
             <div class="content">
                 <div class="form-row" label="Title" help="The steps name"><label class="field-label">Title:</label>
                     <input class="tst-devtools-stepform-title ng-pristine ng-untouched ng-valid" type="text"
-                           name="title" ng-model="stepData.title" placeholder="Extract">
+                           name="title" ng-model="stepData.title" placeholder="">
 
                     <div class="help">The steps name</div>
                     <div class="error" style="display: none;"></div>
@@ -13,7 +13,7 @@
                 <div class="form-row" label="Type" help="The steps type"><label class="field-label">Type:</label>
                     <select name="type" ng-model="stepData.type" class="ng-pristine ng-untouched ng-valid">
 
-                            <option value="ACTION_EXTRACT" selected="selected" label="Extract value" about>Extract value</option>
+                            <option value="0" selected="selected" label="Extract value" about>Extract value</option>
                             <option value="1" label="Extract list" disabled>Extract list</option>
                             <option value="2" label="Extract attribute" disabled>Extract attribute</option>
                             <option value="3" label="Extract value (JS)" disabled>Extract value (JS)</option>
@@ -28,11 +28,11 @@
                             <option value="12" label="Capture screen shot" disabled>Capture screen shot</option>
                             <option value="13" label="Copy input to output" disabled>Copy input to output</option>
                             <option value="14" label="Assign value to output" disabled>Assign value to output</option>
-                            <option value="ACTION_FLUSH" label="Save current output" about>Save current output</option>
+                            <option value="15" label="Save current output" about>Save current output</option>
 
                             <option value="16" label="Input value" disabled>Input value</option>
                             <option value="17" label="Press key" disabled>Press key</option>
-                            <option value="ACTION_CLICK" label="Click element" about>Click element</option>
+                            <option value="18" label="Click element" about>Click element</option>
                             <option value="19" label="Click element when true" disabled>Click element when true</option>
                             <option value="20" label="Click element when false" disabled>Click element when false</option>
                             <option value="21" label="Resolve Captcha" disabled>Resolve Captcha</option>
@@ -61,7 +61,7 @@
                             <option value="40" label="Assert input equals" disabled>Assert input equals</option>
                             <option value="41" label="Assert output equals" disabled>Assert output equals</option>
 
-                            <option value="ACTION_VISIT" label="Go to URL"  about>Go to URL</option>
+                            <option value="42" label="Go to URL"  about>Go to URL</option>
                             <option value="43" label="Page iteration" disabled>Page iteration</option>
                             <option value="44" label="Scroll infinite" disabled>Scroll infinite</option>
                             <option value="45" label="Scroll to element" disabled>Scroll to element</option>
@@ -69,7 +69,7 @@
                             <option value="47" label="History -> Back" disabled>History -&gt; Back</option>
                             <option value="48" label="History -> Forward" disabled>History -&gt; Forward</option>
 
-                            <option value="ACTION_NOTHING" label="Do nothing" about >Do nothing</option>
+                            <option value="49" label="Do nothing" about >Do nothing</option>
 
                     </select>
 
