@@ -72,7 +72,7 @@ app.controller('FormCtrl',function($scope){
         toggle_sidepane2_state(0);
     };
 
-    $scope.$watch('stepData.type',function(){
+    $scope.change = function(){
         console.log("stepData type change ...");
         $scope.has_url = false;
         $scope.has_output = false;
@@ -112,7 +112,7 @@ app.controller('FormCtrl',function($scope){
 
             }
         }
-    });
+    };
 
 });
 var refresh_robot = function($scope){
