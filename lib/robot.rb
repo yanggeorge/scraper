@@ -332,6 +332,14 @@ module RPA
   if __FILE__==$0
     test
 
+    time = Time.new
+
+    puts time.to_s
+    puts time.ctime
+    puts time.localtime
+    puts time.strftime("%Y-%m-%d %H:%M:%S")
+    name = "test@" + time.strftime("%Y-%m-%d_%H:%M:%S")
+    puts name
   end
 
 end

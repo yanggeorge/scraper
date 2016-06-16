@@ -107,8 +107,12 @@ module RPA
       end
     end
 
-    def get_new_robot(url)
-      robot = RPA::Robot.new("test")
+    def get_new_robot(name,url)
+      if name.length == 0
+        now = Time.new
+        name = "robot@" + now.strftime("%Y-%m-%d %H:%M:%S")
+      end
+      robot = RPA::Robot.new(name)
       step1 = RPA::Step.new(RPA::ACTION_VISIT)
       step1.value = url
       step1.title = "Go to URL"
@@ -141,7 +145,6 @@ module RPA
   if __FILE__==$0
     robot = Robot.new("test")
     puts robot.to_s
-
 
   end
 end

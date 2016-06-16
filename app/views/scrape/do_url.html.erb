@@ -4,13 +4,26 @@
 <% else %>
 
     <%= javascript_tag do %>
-        window.ym.url_value = "<%= @url_value %>";
-        window.ym.modified_page = '<%= j @modified_page.html_safe %>'
         window.ym.robot_string = '<%= @robot_string.html_safe %>'
     <% end %>
 
     <div class="p1" >
       <div id="p0" class="p2-1 main">
+        <div class="loader" data-loading>
+          <span>Please wait while processing step...</span>
+
+          <div class="spinner-container">
+            <div class="sk-spinner sk-spinner-rotating-plane"></div>
+          </div>
+
+          <ul class="details ng-hide" ng-show="idleStates.length">
+            <li>Waiting for:</li>
+            <!-- ngRepeat: idleState in idleStates -->
+          </ul>
+
+          <a class="button big danger" ng-click="player.abort()">Abort execution</a>
+
+        </div>
         <div id="p2" class="p3-1 sidepane">
           <div class="content">
             <h3>

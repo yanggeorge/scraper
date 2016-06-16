@@ -751,3 +751,116 @@ button, input, select, textarea {
   animation: progress-bar-stripes 1s linear infinite;
   background-size: 40px 40px
 }
+
+.button.orange, .wb-action.orange, .wb-button.orange, .wb-form-button.orange, button.orange, input.button.orange, input.submit.orange {
+  background-color: #f38109;
+  border-color: #f38109;
+  color: #fff;
+}
+.button.orange.active,.button.orange:hover:not(.loading),.wb-action.orange.active,.wb-action.orange:hover:not(.loading),.wb-button.orange.active,.wb-button.orange:hover:not(.loading),.wb-form-button.orange.active,.wb-form-button.orange:hover:not(.loading),button.orange.active,button.orange:hover:not(.loading),input.button.orange.active,input.button.orange:hover:not(.loading),input.submit.orange.active,input.submit.orange:hover:not(.loading) {
+  background-color: #e27808;
+  border-color: #e27808
+}
+.button.small, .wb-action.small, .wb-button.small, .wb-form-button.small, button.small, input.button.small, input.submit.small {
+  font-size: 12px;
+  line-height: 22px;
+  padding: 0 5px;
+}
+.button.primary, .button.wb-success, .wb-action.primary, .wb-action.wb-success, .wb-button.primary, .wb-button.wb-success, .wb-form-button.primary, .wb-form-button.wb-success, button.primary, button.wb-success, input.button.primary, input.button.wb-success, input.submit.primary, input.submit.wb-success {
+  border-color: #2c699d;
+  background-color: #3276b1;
+  color: #fff;
+}
+.button.primary.active,.button.primary:hover:not(.loading),.button.wb-success.active,.button.wb-success:hover:not(.loading),.wb-action.primary.active,.wb-action.primary:hover:not(.loading),.wb-action.wb-success.active,.wb-action.wb-success:hover:not(.loading),.wb-button.primary.active,.wb-button.primary:hover:not(.loading),.wb-button.wb-success.active,.wb-button.wb-success:hover:not(.loading),.wb-form-button.primary.active,.wb-form-button.primary:hover:not(.loading),.wb-form-button.wb-success.active,.wb-form-button.wb-success:hover:not(.loading),button.primary.active,button.primary:hover:not(.loading),button.wb-success.active,button.wb-success:hover:not(.loading),input.button.primary.active,input.button.primary:hover:not(.loading),input.button.wb-success.active,input.button.wb-success:hover:not(.loading),input.submit.primary.active,input.submit.primary:hover:not(.loading),input.submit.wb-success.active,input.submit.wb-success:hover:not(.loading) {
+  background-color: #3883c5;
+  border-color: #3276b1
+}
+.button.mini:hover:not(.loading)>span,.wb-action.mini:hover:not(.loading)>span,.wb-button.mini:hover:not(.loading)>span,.wb-form-button.mini:hover:not(.loading)>span,button.mini:hover:not(.loading)>span,input.button.mini:hover:not(.loading)>span,input.submit.mini:hover:not(.loading)>span {
+  display: block;
+  opacity: 1
+}
+.main>.loader {
+  display: block;
+  background-color: rgba(0,0,0,.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+}
+.loader {
+  background-color: #f6f6f6;
+  padding: 15px;
+  border: 1px solid #E4E7EA;
+  text-align: center;
+  font-weight: 400;
+  font-size: 16px;
+}
+.main>.loader span {
+  font-size: 32px;
+  line-height: 60px;
+  font-weight: 200;
+  color: #fff;
+}
+.main>.loader .spinner-container {
+  display: block;
+  margin: 0 auto;
+  height: 60px;
+}
+.sk-spinner-rotating-plane.sk-spinner {
+  width: 30px;
+  height: 30px;
+  background-color: #FFF;
+  margin: 0 auto;
+  -webkit-animation: sk-rotatePlane 1.2s infinite ease-in-out;
+  animation: sk-rotatePlane 1.2s infinite ease-in-out;
+}
+@-webkit-keyframes sk-rotatePlane {
+  0% {
+    -webkit-transform: perspective(120px) rotateX(0) rotateY(0);
+    transform: perspective(120px) rotateX(0) rotateY(0)
+  }
+
+  50% {
+    -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0);
+    transform: perspective(120px) rotateX(-180.1deg) rotateY(0)
+  }
+
+  100% {
+    -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+    transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg)
+  }
+}
+
+@keyframes sk-rotatePlane {
+  0% {
+    -webkit-transform: perspective(120px) rotateX(0) rotateY(0);
+    transform: perspective(120px) rotateX(0) rotateY(0)
+  }
+
+  50% {
+    -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0);
+    transform: perspective(120px) rotateX(-180.1deg) rotateY(0)
+  }
+
+  100% {
+    -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+    transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg)
+  }
+}
+.button.danger, .button.wb-warning, .wb-action.danger, .wb-action.wb-warning, .wb-button.danger, .wb-button.wb-warning, .wb-form-button.danger, .wb-form-button.wb-warning, button.danger, button.wb-warning, input.button.danger, input.button.wb-warning, input.submit.danger, input.submit.wb-warning {
+  background-color: #d9534f;
+  border-color: #d43f3a;
+  color: #fff;
+}
+ .actions .button:hover {
+  color: #333;
+  top: 1px;
+  z-index: 2;
+  border-top: 1px solid #E4E7EA;
+  border-left: 1px solid #E4E7EA;
+  border-right: 1px solid #E4E7EA;
+  border-bottom: 1px solid #fff;
+  background-color: #fff
+}

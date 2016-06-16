@@ -2,14 +2,14 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-jQuery(document).ready ->
-  document.getElementById('modified_page').contentWindow.document.write(window.ym.modified_page);
-  init_scraped_table()
-  window.ym.mos.SetCallback(dealXpathValue)
-  jQuery("#reSelect").click =>
-    window.ym.mos.SetupDOMSelection(document.getElementById("modified_page"))
-  jQuery("#scraped_data_submit").click =>
-    submit_scraped_data()
+#jQuery(document).ready ->
+#  document.getElementById('modified_page').contentWindow.document.write(window.ym.modified_page);
+#  init_scraped_table()
+#  window.ym.mos.SetCallback(dealXpathValue)
+#  jQuery("#reSelect").click =>
+#    window.ym.mos.SetupDOMSelection(document.getElementById("modified_page"))
+#  jQuery("#scraped_data_submit").click =>
+#    submit_scraped_data()
 
 
 init_scraped_table = ->
