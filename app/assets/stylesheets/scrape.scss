@@ -864,3 +864,16 @@ button, input, select, textarea {
   border-bottom: 1px solid #fff;
   background-color: #fff
 }
+
+.ui-dialog {
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  border-radius: 10px;
+  position: absolute;
+  border: 1px solid #E4E7EA;
+  background-color: #fff;
+  z-index: 100;
+  overflow: hidden;
+}

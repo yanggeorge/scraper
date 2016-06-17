@@ -20,9 +20,9 @@ class ScrapeController < ApplicationController
   def get_page
     p params
     url = params[:url]
-    doc = NokogiriParse.instance.get_doc(url)
-    @modified_page = doc.to_html
-    puts doc.to_html
+    html = NokogiriParse.instance.get_html(url)
+    @modified_page = html
+    puts html
     render :json => {:page => @modified_page}
   end
 

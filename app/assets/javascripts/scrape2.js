@@ -26,15 +26,12 @@ function size() {
 
 }
 
-jQuery(document).ready(function () {
-    window.sidepane_state = 0; // 0 : 关闭 ,1 : 270px, 2: 520px
-    window.sidepane2_state = 0;
-    size();
-    setTimeout(function () {
-        console.log("load ....");
-        load_page();
-    }, 1000);
-});
+//jQuery(document).ready(function () {
+//    window.sidepane_state = 0; // 0 : 关闭 ,1 : 270px, 2: 520px
+//    window.sidepane2_state = 0;
+//    size();
+//
+//});
 
 var load_page =  function(){
     var option = {
@@ -43,7 +40,9 @@ var load_page =  function(){
         data: {url: 'http://www.he-n-tax.gov.cn/hbgsww_new/hbgsgkml/ajxxgk/201511/t20151113_1014250.html'},
         success: function (data) {
             console.log(data);
+            document.getElementById('modified_page').contentWindow.document.open();
             document.getElementById('modified_page').contentWindow.document.write(data.page);
+            document.getElementById('modified_page').contentWindow.document.close();
         },
         error: function (data) {
             return false;

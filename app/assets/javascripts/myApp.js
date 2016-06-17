@@ -44,14 +44,34 @@ app.directive('loading',   ['$http' ,function ($http)
                     return $http.pendingRequests.length > 0;
                 };
 
-                scope.$watch(scope.isLoading, function (v)
-                {
-                    if(v){
-                        elm.show();
-                    }else{
+                scope.data_complete = false;
+
+                scope.$on("set_data_complete_true",function(){
+                    scope.data_complete = true;
+                });
+
+                scope.$on("set_data_complete_false",function(){
+                    scope.data_complete = false;
+                });
+
+                scope.$watch(scope.data_complete, function(v){
+                    if(v && scope.isLoading == false){
                         setTimeout(function () {
                             elm.hide();
-                        },1200);
+                        }, 1200);
+                    }
+                });
+
+                scope.$watch(scope.isLoading, function (v)
+                {
+                    if(v ){
+                        elm.show();
+                    }else{
+                        if (v == false && scope.data_complete == true) {
+                            setTimeout(function () {
+                                elm.hide();
+                            }, 1200);
+                        }
                     }
                 });
             }
@@ -233,7 +253,43 @@ var set_stepData = function($scope, node){
         }
     }
 };
-app.controller('MainCtrl', function($scope){
+app.controller('MainCtrl', function($scope, $http){
+    angular.element(document).ready(function () {
+        window.sidepane_state = 0; // 0 : 关闭 ,1 : 270px, 2: 520px
+        window.sidepane2_state = 0;
+        size();
+        $scope.load_url($scope.get_visit_url());
+    });
+
+    $scope.get_visit_url = function(){
+      return $scope.robot.steps[$scope.robot.first_step].value ;
+    };
+
+    $scope.load_url = function( url){
+        var path = '/scrape/get_page' ;
+        var doc = document.getElementById('modified_page').contentWindow.document;
+        doc.open();
+        doc.write("<body></body>");
+        doc.close();
+        var ramdom = Math.uuid();
+        $scope.$broadcast("set_data_complete_false");
+        $http.post(path, {url: url, random : ramdom}, {timeout:20000})
+            .success(function(data, status, headers, config)
+            {
+                doc.open();
+                doc.write(data.page);
+                doc.close();
+                $scope.$broadcast("set_data_complete_true");
+                return false;
+            })
+            .error(function(data, status, headers, config)
+            {
+                console.log("post error ...");
+                return false;
+            }
+        );
+    };
+
     $scope.closeSidePane1 = function(){
         toggle_sidepane1_state(0);
     };
@@ -295,6 +351,7 @@ app.controller('MainCtrl', function($scope){
         console.log(menus);
         $scope.contextMenu2 = menus;
         console.log($scope.contextMenu2);
+        $scope.load_url($scope.get_visit_url());
 
     };
 
@@ -441,3 +498,7 @@ var compute_node_position = function(nodes) {
 
     return nodes;
 };
+
+app.controller('resultsCtrl',function($scope){
+
+});

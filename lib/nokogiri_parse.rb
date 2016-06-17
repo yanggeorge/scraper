@@ -4,7 +4,7 @@ require 'open-uri'
 require 'uri'
 require  File.dirname(__FILE__) + '/web_analysis'
 
-class DocManager
+class HtmlManager
   include Singleton
 
   def initialize
@@ -56,20 +56,21 @@ end
 class NokogiriParse
   include Singleton
 
-  def get_doc(url)
+  def get_html(url)
     doc = nil
-    if DocManager.instance.include? url
-      doc = DocManager.instance.get(url)
+    if HtmlManager.instance.include? url
+      html = HtmlManager.instance.get(url)
     else
-      doc = Nokogiri::HTML(open(url,ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE))   # https简单快速但是有问题，比如baidu的body的display是none
-      puts "using http"
-      #doc = Nokogiri::HTML(WebAnalysis.instance.get_response(url))
+      #doc = Nokogiri::HTML(open(url,ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE))   # https简单快速但是有问题，比如baidu的body的display是none
+      #puts "using http"
+      doc = Nokogiri::HTML(WebAnalysis.instance.get_response(url))
       doc = complete_path(url, doc)
       doc = delete_tag(doc)
-      DocManager.instance.add(url,doc)
+      html = doc.to_html
+      html = complete_other_url_path(url, html)
+      HtmlManager.instance.add(url,html)
     end
-    puts "doc classname : " + doc.class.name
-    doc
+    html
   end
 
   def complete_path(start_url, doc)
@@ -78,7 +79,8 @@ class NokogiriParse
         'script' => 'src',
         'link' => 'href',
         'iframe' => 'src',
-        'meta' => 'url'
+        'meta' => 'url',
+        'input' => 'src'
     }
 
     doc.search(tags.keys.join(',')).each do |node|
@@ -95,6 +97,23 @@ class NokogiriParse
     end
 
     doc
+  end
+
+  def complete_other_url_path(start_url, html)
+    html.gsub!(/url\((.*?)\)/){ |m|
+      tmp = $1
+      rep = get_full_path(start_url, tmp)
+      m.sub!(tmp,rep)
+      m
+    }
+    html.gsub!(/background\=\"(.*?)\"/){ |m|
+      tmp = $1
+      rep = get_full_path(start_url, tmp)
+      m.sub!(tmp,rep)
+      m
+    }
+
+    html
   end
 
   def delete_tag(doc)
@@ -115,7 +134,7 @@ class NokogiriParse
     doc,current_url = Nokogiri::HTML(WebAnalysis.instance.click(url, ele_xpath))
     doc = complete_path(current_url, doc)
     doc = delete_tag(doc)
-    DocManager.instance.add(current_url,doc)
+    HtmlManager.instance.add(current_url,doc)
     doc
   end
 
@@ -204,9 +223,9 @@ end
 class Test
 
   def test1
-    start_url = "http://www.he-n-tax.gov.cn/hbgsww_new/hbgsgkml/ajxxgk/880/list.htm"
-    doc = NokogiriParse.instance.get_doc(start_url)
-    puts doc.to_html
+    start_url = "http://xkpt.mot.gov.cn/wssq/queryWssqJggs.action?page=1&itemCode=10000704"
+    html = NokogiriParse.instance.get_html(start_url)
+    puts html
   end
 
 end
