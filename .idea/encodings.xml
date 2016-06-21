@@ -6,6 +6,8 @@
     <file url="file://$PROJECT_DIR$/app/assets/javascripts/myApp.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/assets/javascripts/node.coffee" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/assets/javascripts/node_svg.coffee" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/assets/javascripts/play_step.coffee" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/assets/javascripts/player.coffee" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/assets/javascripts/robot.coffee" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/assets/javascripts/scrape.coffee" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/assets/javascripts/scrape2.js" charset="UTF-8" />

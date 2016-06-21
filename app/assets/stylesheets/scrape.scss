@@ -725,6 +725,14 @@ button, input, select, textarea {
   flex-wrap: no-wrap;
   margin-bottom: 5px;
 }
+
+.flow-step.playing {
+  -webkit-transform-style: preserve-3d;
+  -o-transform-style: preserve-3d;
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  -o-perspective: 1000px
+}
 .flow-step.playing {
   border: 0;
   background-color: #54d98c;
@@ -751,6 +759,24 @@ button, input, select, textarea {
   animation: progress-bar-stripes 1s linear infinite;
   background-size: 40px 40px
 }
+@-webkit-keyframes progress-bar-stripes {
+  from {
+    background-position: 40px 0
+  }
+  to {
+    background-position: 0 0
+  }
+}
+
+@keyframes progress-bar-stripes {
+  from {
+    background-position: 40px 0
+  }
+  to {
+    background-position: 0 0
+  }
+}
+
 
 .button.orange, .wb-action.orange, .wb-button.orange, .wb-form-button.orange, button.orange, input.button.orange, input.submit.orange {
   background-color: #f38109;

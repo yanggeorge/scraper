@@ -44,7 +44,7 @@ app.directive('loading',   ['$http' ,function ($http)
                     return $http.pendingRequests.length > 0;
                 };
 
-                scope.data_complete = false;
+                scope.data_complete = true;
 
                 scope.$on("set_data_complete_true",function(){
                     scope.data_complete = true;
@@ -258,7 +258,8 @@ app.controller('MainCtrl', function($scope, $http){
         window.sidepane_state = 0; // 0 : 关闭 ,1 : 270px, 2: 520px
         window.sidepane2_state = 0;
         size();
-        $scope.load_url($scope.get_visit_url());
+
+       // $scope.load_url($scope.get_visit_url());
     });
 
     $scope.get_visit_url = function(){
@@ -351,8 +352,6 @@ app.controller('MainCtrl', function($scope, $http){
         console.log(menus);
         $scope.contextMenu2 = menus;
         console.log($scope.contextMenu2);
-        $scope.load_url($scope.get_visit_url());
-
     };
 
     // 监听事件。
@@ -363,6 +362,16 @@ app.controller('MainCtrl', function($scope, $http){
         $scope.$apply();
         toggle_sidepane2_state(0);
     });
+
+    var player = new ym.rpa.Player($scope.robot);
+    player.stepForward = function(){
+        console.log("step forword");
+        console.log(this.first);
+    };
+    console.log(player);
+    player.fresh_with($scope.robot);
+    console.log(player);
+    $scope.player = player ;
 
 
 });
