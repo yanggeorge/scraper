@@ -110,7 +110,7 @@ class HtmlAnalysis
     @page_source = init_with_file  if page_source == nil
     @start_url = (start_url == "" ? "http://www.he-n-tax.gov.cn/hbgsww_new/hbgsgkml/ajxxgk/880/list.htm" : start_url)
     @css_file = fetch_css_style
-    PageSourceManager.instance.add(@start_url, @page_sourcek, @css_file)
+    PageSourceManager.instance.add(@start_url, @page_source, @css_file)
   end
 
   def analyze(start_url)

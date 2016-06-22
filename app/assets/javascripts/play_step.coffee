@@ -3,18 +3,18 @@
 # pre_state 是运行该步骤钱的全局状态
 # post_state 是运行该步骤后的全局状态
 class PlayStep
-  step : ""
-  next : ""
-  pre : ""
-  pre_state : ""
-  post_state : ""
+  step : null
+  next : null
+  pre : null
+  pre_state : null
+  post_state : null
 
   constructor : ->
-    @step = ""
-    @next = ""
-    @pre = ""
-    @pre_state = ""
-    @post_state = ""
+    @step = null
+    @next = null
+    @pre = null
+    @pre_state = {}
+    @post_state = {}
 
 
 namespace = (target, name, block) ->

@@ -267,6 +267,7 @@ app.controller('MainCtrl', function($scope, $http){
     };
 
     $scope.load_url = function( url){
+        console.log("load_url");
         var path = '/scrape/get_page' ;
         var doc = document.getElementById('modified_page').contentWindow.document;
         doc.open();
@@ -286,6 +287,7 @@ app.controller('MainCtrl', function($scope, $http){
             .error(function(data, status, headers, config)
             {
                 console.log("post error ...");
+                $scope.$broadcast("set_data_complete_true");
                 return false;
             }
         );
@@ -365,8 +367,63 @@ app.controller('MainCtrl', function($scope, $http){
 
     var player = new ym.rpa.Player($scope.robot);
     player.stepForward = function(){
-        console.log("step forword");
-        console.log(this.first);
+        this.play();
+    };
+    player.play = function(){
+        if(this.current == null){
+            console.log("this is end.");
+            return;
+        }
+
+        var type = this.current.step.action ;
+        console.log(type);
+        switch (type) {
+            case ym.rpa.ACTION_VISIT :
+            {
+                this.play_action_visit();
+                break;
+            }
+            case ym.rpa.ACTION_CLICK :
+            {
+                break;
+            }
+            case ym.rpa.ACTION_EXTRACT :
+            {
+                break;
+            }
+            case ym.rpa.ACTION_FLUSH :
+            {
+                break;
+            }
+            case ym.rpa.ACTION_NOTHING :
+            {
+                break;
+            }
+            default :
+                throw("play has error.")
+        }
+
+        if (this.next != null){
+            console.log("next is not null");
+            this.next.pre_state = this.current.post_state;
+            this.current = this.next;
+            if(this.current.next != null){
+                var next_id = this.current.next.id ;
+                this.next = this.play_steps[this.play_step_ids.indexOf(next_id)] ;
+            }else{
+                this.next = null;
+            }
+        }else{
+            console.log("next step is null.");
+        }
+    };
+    player.play_action_visit = function(){
+        var env = jQuery.extend(true,{},this.current.pre_state);
+        var step = this.current.step;
+        console.log(step.to_s());
+        var url = step.value;
+        $scope.load_url(url);
+        this.current.post_state = env ;
     };
     console.log(player);
     player.fresh_with($scope.robot);

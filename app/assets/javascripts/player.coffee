@@ -12,7 +12,7 @@ class Player
   constructor : (robot)->
     @play_step_ids = []
     @play_steps = []
-    @next = ""
+    @next = null
     @current = ""
     @playing = false
     @first = ""
@@ -29,7 +29,7 @@ class Player
       play_step = new ym.rpa.PlayStep()
       play_step.step = robot.steps[id]
       if is_first
-        play_step.pre = ""
+        play_step.pre = null
         is_first = false
       else
         play_step.pre = robot.steps[pre_id]
@@ -41,11 +41,12 @@ class Player
         play_step.next = robot.steps[id]
         @play_steps.push(play_step)
       else
-        play_step.next = ""
+        play_step.next = null
         @play_steps.push(play_step)
         break
 
     @current = @play_steps[0]
+    @next = @play_steps[1]
     @first = @play_steps[0]
     for id in Object.keys(robot.outputs)
       @outputs[id] = ""
@@ -88,6 +89,11 @@ class Player
         @current = @play_steps[j]
       else
         @current = old_current
+
+    if @current.next
+      @next = @play_steps[@play_step_ids.indexOf(@current.next.id)]
+    else
+      @next = null
 
   # 需要注意的是 当一个robot的step的值进行edit，那么id未变化
   # 则current需要根据变化的step的位置进行重新定位

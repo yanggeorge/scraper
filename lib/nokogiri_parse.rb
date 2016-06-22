@@ -56,6 +56,11 @@ end
 class NokogiriParse
   include Singleton
 
+  def initialize
+    url = "http://www.baidu.com"
+    doc = Nokogiri::HTML(WebAnalysis.instance.get_response(url)) #just use to try first。
+  end
+
   def get_html(url)
     doc = nil
     if HtmlManager.instance.include? url
