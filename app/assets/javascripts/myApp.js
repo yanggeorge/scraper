@@ -3,6 +3,16 @@
  */
 var app = angular.module('myApp',['templates']);
 
+app.factory("kcSleep",function($timeout){
+    return function(ms) {
+        return function(value) {
+            return $timeout(function() {
+                return value;
+            }, ms);
+        };
+    };
+});
+
 app.directive("tabPane",function(){
     return {
         restrict : 'C',
@@ -253,7 +263,7 @@ var set_stepData = function($scope, node){
         }
     }
 };
-app.controller('MainCtrl', function($scope, $http){
+app.controller('MainCtrl', function($scope, $http, $q, kcSleep, $timeout){
     angular.element(document).ready(function () {
         window.sidepane_state = 0; // 0 : 关闭 ,1 : 270px, 2: 520px
         window.sidepane2_state = 0;
@@ -275,7 +285,7 @@ app.controller('MainCtrl', function($scope, $http){
         doc.close();
         var ramdom = Math.uuid();
         $scope.$broadcast("set_data_complete_false");
-        $http.post(path, {url: url, random : ramdom}, {timeout:20000})
+        var promise = $http.post(path, {url: url, random : ramdom}, {timeout:50000})
             .success(function(data, status, headers, config)
             {
                 doc.open();
@@ -291,6 +301,8 @@ app.controller('MainCtrl', function($scope, $http){
                 return false;
             }
         );
+
+        return promise;
     };
 
     $scope.closeSidePane1 = function(){
@@ -322,6 +334,7 @@ app.controller('MainCtrl', function($scope, $http){
         $scope.nodes = init_nodes($scope.robot);
         $scope.svgs = init_svgs($scope.robot);
         $scope.svg_width = compute_svg_width($scope.svgs);
+        $scope.player.fresh_with($scope.robot);
     }, true);
 
 
@@ -365,22 +378,97 @@ app.controller('MainCtrl', function($scope, $http){
         toggle_sidepane2_state(0);
     });
 
+    $scope.$on("play_start", function(e, node_id){
+        console.log(node_id);
+        $scope.nodes.forEach(function(n,index,array){
+            if(n.id == node_id){
+                n.style = "playing";
+            }
+        });
+        $scope.svgs.forEach(function(svg, index, array){
+            svg.is_active = false;
+            svg.init_color();
+        });
+    });
+    $scope.$on("play_stop", function(e, node_id){
+        console.log(node_id);
+        $scope.nodes.forEach(function(n,index,array){
+            if(n.id == node_id){
+               n.style = "";
+            }
+        });
+        $scope.svgs.forEach(function(svg, index, array){
+            if (svg.from_node == node_id){
+                svg.is_active = true;
+                svg.init_color();
+            }else{
+                svg.is_active = false;
+                svg.init_color();
+            }
+        });
+    });
+
+
     var player = new ym.rpa.Player($scope.robot);
     player.stepForward = function(){
-        this.play();
+        if(this.playing == false ){
+            this.playing = true;
+            this.play();
+            this.playing = false;
+        }
     };
+    player.stepBack = function(){
+      if(this.playing == false){
+          this.pre_step();
+      }
+    };
+
+    player.restart = function(){
+        this.restart_init();
+        this.togglePlay();
+    };
+    player.togglePlay = function(){
+      if(this.playing == false){
+          this.playing = true;
+          player.auto_play();
+      }else{
+          this.playing = false;
+      }
+    };
+
+    player.auto_play = function(){
+        if(this.playing && this.is_end == false){
+            var play_promise =  this.play();
+            play_promise.then(function(){
+                console.log("auto_play..");
+                if($scope.player.playing && $scope.player.is_end == false){
+                    $scope.player.auto_play();
+                }else{
+                    $scope.player.playing = false;
+                }
+            });
+        }
+    };
+
     player.play = function(){
-        if(this.current == null){
+
+        if(this.is_end == true){
             console.log("this is end.");
             return;
         }
+        console.log(this.current.pre);
+        console.log(this.current.step);
+        console.log(this.current.next);
+
+        $scope.$emit("play_start",this.current.step.id);
 
         var type = this.current.step.action ;
+        var play_promise = null;
         console.log(type);
         switch (type) {
             case ym.rpa.ACTION_VISIT :
             {
-                this.play_action_visit();
+                play_promise = this.play_action_visit();
                 break;
             }
             case ym.rpa.ACTION_CLICK :
@@ -397,33 +485,56 @@ app.controller('MainCtrl', function($scope, $http){
             }
             case ym.rpa.ACTION_NOTHING :
             {
+                play_promise = this.play_action_nothing();
                 break;
             }
             default :
                 throw("play has error.")
         }
 
-        if (this.next != null){
-            console.log("next is not null");
-            this.next.pre_state = this.current.post_state;
-            this.current = this.next;
-            if(this.current.next != null){
-                var next_id = this.current.next.id ;
-                this.next = this.play_steps[this.play_step_ids.indexOf(next_id)] ;
+        play_promise.then(function(){
+            console.log("play_promise...");
+            $scope.$emit("play_stop",$scope.player.current.step.id);
+            if ($scope.player.next != null){
+                console.log("next is not null");
+                $scope.player.next.pre_state = $scope.player.current.post_state;
+                $scope.player.current = $scope.player.next;
+                if($scope.player.next.next != null){
+                    var next_id = $scope.player.next.next.id ;
+                    $scope.player.next = $scope.player.play_steps[$scope.player.play_step_ids.indexOf(next_id)] ;
+                }else{
+                    $scope.player.next = null;
+                }
             }else{
-                this.next = null;
+                $scope.player.is_end = true;
+                console.log("next step is null.");
             }
-        }else{
-            console.log("next step is null.");
-        }
+        });
+
+        return play_promise;
+
     };
     player.play_action_visit = function(){
         var env = jQuery.extend(true,{},this.current.pre_state);
         var step = this.current.step;
         console.log(step.to_s());
         var url = step.value;
-        $scope.load_url(url);
+        var promise = $scope.load_url(url);
+
         this.current.post_state = env ;
+        return promise;
+    };
+    player.play_action_nothing = function(){
+        var env = jQuery.extend(true,{},this.current.pre_state);
+        console.log(this);
+        var defer = $q.defer();
+        var promise = defer.promise;
+
+        promise.then(function(){
+        });
+        defer.resolve("nothing");
+        this.current.post_state = env ;
+        return promise;
     };
     console.log(player);
     player.fresh_with($scope.robot);

@@ -34,7 +34,7 @@
     <SUITE FILE_PATH="coverage/blog@test__blog.coverage" NAME="test: blog Coverage Results" MODIFIED="1460432410839" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="blog" />
     <SUITE FILE_PATH="coverage/blog@db_migrate__blog.coverage" NAME="db:migrate: blog Coverage Results" MODIFIED="1462329222013" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="blog" />
     <SUITE FILE_PATH="coverage/blog@bower_install_options___blog.coverage" NAME="bower:install[options]: blog Coverage Results" MODIFIED="1463395289486" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="blog" />
-    <SUITE FILE_PATH="coverage/blog@Development__blog.coverage" NAME="Development: blog Coverage Results" MODIFIED="1466588534962" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="blog" />
+    <SUITE FILE_PATH="coverage/blog@Development__blog.coverage" NAME="Development: blog Coverage Results" MODIFIED="1467191670413" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="blog" />
     <SUITE FILE_PATH="coverage/blog@web_analysis.coverage" NAME="web_analysis Coverage Results" MODIFIED="1461062296831" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/lib" MODULE_NAME="blog" />
   </component>
   <component name="CreatePatchCommitExecutor">
@@ -59,16 +59,16 @@
   <component name="FileEditorManager">
     <splitter split-orientation="horizontal" split-proportion="0.5366605">
       <split-first>
-        <splitter split-orientation="vertical" split-proportion="0.4805468">
+        <splitter split-orientation="vertical" split-proportion="0.52155626">
           <split-first>
             <leaf>
               <file leaf-file-name="player.coffee" pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/app/assets/javascripts/player.coffee">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state vertical-scroll-proportion="-6.387097">
-                      <caret line="23" column="25" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="25" />
+                    <state vertical-scroll-proportion="0.0">
+                      <caret line="25" column="25" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
                       <folding>
-                        <marker date="1466587079266" expanded="true" signature="1396:2093" placeholder="..." />
+                        <marker date="1467196630517" expanded="true" signature="1432:2129" placeholder="..." />
                       </folding>
                     </state>
                   </provider>
@@ -94,16 +94,6 @@
                   </provider>
                 </entry>
               </file>
-              <file leaf-file-name="nokogiri_parse.rb" pinned="false" current-in-tab="true">
-                <entry file="file://$PROJECT_DIR$/lib/nokogiri_parse.rb">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state vertical-scroll-proportion="0.44147158">
-                      <caret line="60" column="88" selection-start-line="60" selection-start-column="88" selection-end-line="60" selection-end-column="88" />
-                      <folding />
-                    </state>
-                  </provider>
-                </entry>
-              </file>
               <file leaf-file-name="robot.coffee" pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/app/assets/javascripts/robot.coffee">
                   <provider selected="true" editor-type-id="text-editor">
@@ -114,11 +104,11 @@
                   </provider>
                 </entry>
               </file>
-              <file leaf-file-name="myApp.js" pinned="false" current-in-tab="false">
+              <file leaf-file-name="myApp.js" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/app/assets/javascripts/myApp.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state vertical-scroll-proportion="0.0">
-                      <caret line="274" column="20" selection-start-line="274" selection-start-column="20" selection-end-line="274" selection-end-column="20" />
+                    <state vertical-scroll-proportion="0.962963">
+                      <caret line="537" column="6" selection-start-line="537" selection-start-column="6" selection-end-line="537" selection-end-column="6" />
                       <folding>
                         <element signature="e#0#43#0" expanded="false" />
                       </folding>
@@ -149,15 +139,17 @@
             </leaf>
           </split-first>
           <split-second>
-            <splitter split-orientation="horizontal" split-proportion="0.5">
+            <splitter split-orientation="horizontal" split-proportion="0.62811565">
               <split-first>
                 <leaf>
                   <file leaf-file-name="player.coffee" pinned="false" current-in-tab="true">
                     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/player.coffee">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state vertical-scroll-proportion="0.6666667">
-                          <caret line="111" column="17" selection-start-line="111" selection-start-column="17" selection-end-line="111" selection-end-column="17" />
-                          <folding />
+                        <state vertical-scroll-proportion="0.6394052">
+                          <caret line="99" column="0" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
+                          <folding>
+                            <marker date="1467196630517" expanded="true" signature="1432:2129" placeholder="..." />
+                          </folding>
                         </state>
                       </provider>
                     </entry>
@@ -169,10 +161,10 @@
                   <file leaf-file-name="player.coffee" pinned="false" current-in-tab="false">
                     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/player.coffee">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state vertical-scroll-proportion="-5.903226">
-                          <caret line="15" column="4" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="4" />
+                        <state vertical-scroll-proportion="0.0">
+                          <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
                           <folding>
-                            <marker date="1466587079266" expanded="true" signature="1396:2093" placeholder="..." />
+                            <marker date="1467196630517" expanded="true" signature="1432:2129" placeholder="..." />
                           </folding>
                         </state>
                       </provider>
@@ -181,8 +173,8 @@
                   <file leaf-file-name="play_step.coffee" pinned="false" current-in-tab="true">
                     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/play_step.coffee">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state vertical-scroll-proportion="0.5925926">
-                          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+                        <state vertical-scroll-proportion="0.24535316">
+                          <caret line="9" column="19" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
                           <folding />
                         </state>
                       </provider>
@@ -291,10 +283,9 @@
                 <entry file="file://$PROJECT_DIR$/app/assets/javascripts/myApp.js">
                   <provider selected="true" editor-type-id="text-editor">
                     <state vertical-scroll-proportion="0.0">
-                      <caret line="356" column="6" selection-start-line="356" selection-start-column="6" selection-end-line="356" selection-end-column="6" />
+                      <caret line="369" column="6" selection-start-line="369" selection-start-column="6" selection-end-line="369" selection-end-column="6" />
                       <folding>
                         <element signature="e#0#43#0" expanded="false" />
-                        <marker date="1466587124331" expanded="true" signature="11110:11115" placeholder="{...}" />
                       </folding>
                     </state>
                   </provider>
@@ -303,8 +294,8 @@
               <file leaf-file-name="do_url.html.erb" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/app/views/scrape/do_url.html.erb">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state vertical-scroll-proportion="0.858156">
-                      <caret line="131" column="22" selection-start-line="131" selection-start-column="22" selection-end-line="131" selection-end-column="22" />
+                    <state vertical-scroll-proportion="0.4680851">
+                      <caret line="100" column="80" selection-start-line="100" selection-start-column="72" selection-end-line="100" selection-end-column="80" />
                       <folding />
                     </state>
                   </provider>
@@ -316,11 +307,31 @@
             <splitter split-orientation="horizontal" split-proportion="0.5">
               <split-first>
                 <leaf>
-                  <file leaf-file-name="robot.coffee" pinned="false" current-in-tab="true">
+                  <file leaf-file-name="robot.coffee" pinned="false" current-in-tab="false">
                     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/robot.coffee">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state vertical-scroll-proportion="0.46643108">
-                          <caret line="197" column="12" selection-start-line="197" selection-start-column="12" selection-end-line="197" selection-end-column="12" />
+                        <state vertical-scroll-proportion="-3.548387">
+                          <caret line="196" column="12" selection-start-line="196" selection-start-column="12" selection-end-line="196" selection-end-column="12" />
+                          <folding />
+                        </state>
+                      </provider>
+                    </entry>
+                  </file>
+                  <file leaf-file-name="node.coffee" pinned="false" current-in-tab="false">
+                    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/node.coffee">
+                      <provider selected="true" editor-type-id="text-editor">
+                        <state vertical-scroll-proportion="-3.548387">
+                          <caret line="5" column="11" selection-start-line="5" selection-start-column="11" selection-end-line="5" selection-end-column="11" />
+                          <folding />
+                        </state>
+                      </provider>
+                    </entry>
+                  </file>
+                  <file leaf-file-name="node_svg.coffee" pinned="false" current-in-tab="true">
+                    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/node_svg.coffee">
+                      <provider selected="true" editor-type-id="text-editor">
+                        <state vertical-scroll-proportion="0.6219081">
+                          <caret line="23" column="26" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="26" />
                           <folding />
                         </state>
                       </provider>
@@ -333,8 +344,8 @@
                   <file leaf-file-name="robot.coffee" pinned="false" current-in-tab="true">
                     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/robot.coffee">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state vertical-scroll-proportion="0.6219081">
-                          <caret line="8" column="24" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
+                        <state vertical-scroll-proportion="0.23321554">
+                          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
                           <folding />
                         </state>
                       </provider>
@@ -396,7 +407,6 @@
         <option value="$PROJECT_DIR$/app/assets/javascripts/templates/contextmenu1.html" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/scrape.js" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/templates/svg.html" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/node_svg.coffee" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/robot.coffee" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/node.coffee" />
         <option value="$PROJECT_DIR$/lib/robot_service.rb" />
@@ -414,10 +424,11 @@
         <option value="$PROJECT_DIR$/config/initializers/assets.rb" />
         <option value="$PROJECT_DIR$/app/views/scrape/do_url.html.erb" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/play_step.coffee" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/player.coffee" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/myApp.js" />
         <option value="$PROJECT_DIR$/lib/web_analysis.rb" />
         <option value="$PROJECT_DIR$/lib/nokogiri_parse.rb" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/node_svg.coffee" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/player.coffee" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/myApp.js" />
       </list>
     </option>
   </component>
@@ -942,7 +953,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32995737" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24946696" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1369936" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.13859275" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.42797056" sideWeight="0.8191801" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27129337" sideWeight="0.5878477" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32980332" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -1157,25 +1168,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/node_svg.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/templates/fields.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="14" selection-start-line="0" selection-start-column="14" selection-end-line="0" selection-end-column="14" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/node.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="15" selection-start-line="10" selection-start-column="15" selection-end-line="10" selection-end-column="15" />
         </state>
       </provider>
     </entry>
@@ -1258,14 +1255,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/ouput_result.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/scrape2.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1322,10 +1311,41 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/lib/web_analysis.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="115" column="24" selection-start-line="115" selection-start-column="24" selection-end-line="115" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/nokogiri_parse.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.78014183">
+          <caret line="75" column="40" selection-start-line="75" selection-start-column="40" selection-end-line="75" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/ouput_result.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/scrape/do_url.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.858156">
-          <caret line="131" column="22" selection-start-line="131" selection-start-column="22" selection-end-line="131" selection-end-column="22" />
+        <state vertical-scroll-proportion="0.4680851">
+          <caret line="100" column="80" selection-start-line="100" selection-start-column="72" selection-end-line="100" selection-end-column="80" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/play_step.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.24535316">
+          <caret line="9" column="19" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
           <folding />
         </state>
       </provider>
@@ -1338,45 +1358,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/myApp.js">
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/node.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="274" column="20" selection-start-line="274" selection-start-column="20" selection-end-line="274" selection-end-column="20" />
-          <folding>
-            <element signature="e#0#43#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/web_analysis.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="115" column="24" selection-start-line="115" selection-start-column="24" selection-end-line="115" selection-end-column="24" />
+        <state vertical-scroll-proportion="-3.548387">
+          <caret line="5" column="11" selection-start-line="5" selection-start-column="11" selection-end-line="5" selection-end-column="11" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/nokogiri_parse.rb">
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/node_svg.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.44147158">
-          <caret line="60" column="88" selection-start-line="60" selection-start-column="88" selection-end-line="60" selection-end-column="88" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/play_step.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5925926">
-          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.6219081">
+          <caret line="23" column="26" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/player.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6666667">
-          <caret line="111" column="17" selection-start-line="111" selection-start-column="17" selection-end-line="111" selection-end-column="17" />
-          <folding />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="25" column="25" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
+          <folding>
+            <marker date="1467196630517" expanded="true" signature="1432:2129" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/myApp.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.962963">
+          <caret line="537" column="6" selection-start-line="537" selection-start-column="6" selection-end-line="537" selection-end-column="6" />
+          <folding>
+            <element signature="e#0#43#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

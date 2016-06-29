@@ -8,6 +8,7 @@ class Player
   first : ""
   pages : []
   outputs : {}
+  is_end : false
 
   constructor : (robot)->
     @play_step_ids = []
@@ -18,6 +19,7 @@ class Player
     @first = ""
     @pages = []
     @outputs = {}
+    @is_end =false
     @init(robot)
 
   init : (robot)->
@@ -95,6 +97,8 @@ class Player
     else
       @next = null
 
+
+
   # 需要注意的是 当一个robot的step的值进行edit，那么id未变化
   # 则current需要根据变化的step的位置进行重新定位
   relocate_current : (step_id)->
@@ -115,7 +119,20 @@ class Player
       else
         @current = old_current
 
+  restart_init : ->
+    @first = @play_steps[0]
+    @next = @play_steps[1]
+    @current =  @play_steps[0]
+    @is_end = false
+    @playing = false
 
+  pre_step : ->
+    if @current == @first
+      return
+    else
+      @is_end = false
+      @next = @current
+      @current = @play_steps[@play_step_ids.indexOf(@current.step.id)-1]
 
 namespace = (target, name, block) ->
   [target, name, block] = [(if typeof exports isnt 'undefined' then exports else window), arguments...] if arguments.length < 3

@@ -21,11 +21,11 @@ class Node_svg
     @path_id = Math.uuid()
     @is_end = false
     @is_active = false
-    @color = @init_color(@is_active)
+    @color = @init_color()
     @points = ""
 
-  init_color : (is_active)->
-    if is_active
+  init_color : ->
+    if @is_active
       @color = "#2ecc71"
     else
       @color = "#666"
