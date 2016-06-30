@@ -383,6 +383,8 @@ app.controller('MainCtrl', function($scope, $http, $q, kcSleep, $timeout){
         $scope.nodes.forEach(function(n,index,array){
             if(n.id == node_id){
                 n.style = "playing";
+            }else{
+                n.style = "";
             }
         });
         $scope.svgs.forEach(function(svg, index, array){
@@ -530,9 +532,13 @@ app.controller('MainCtrl', function($scope, $http, $q, kcSleep, $timeout){
         var defer = $q.defer();
         var promise = defer.promise;
 
-        promise.then(function(){
-        });
-        defer.resolve("nothing");
+        setTimeout(function(defer, player){
+            console.log("settimout...");
+            console.log(player);
+            console.log(defer);
+            defer.resolve("nothing");
+        },2000,defer, this);
+
         this.current.post_state = env ;
         return promise;
     };
