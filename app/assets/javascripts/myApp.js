@@ -531,13 +531,12 @@ app.controller('MainCtrl', function($scope, $http, $q, kcSleep, $timeout){
         console.log(this);
         var defer = $q.defer();
         var promise = defer.promise;
+        defer.resolve("nothing");
 
-        setTimeout(function(defer, player){
-            console.log("settimout...");
-            console.log(player);
-            console.log(defer);
-            defer.resolve("nothing");
-        },2000,defer, this);
+        var player = this;
+        promise =  promise.then(function(){
+            return $timeout(2000)
+        });
 
         this.current.post_state = env ;
         return promise;
