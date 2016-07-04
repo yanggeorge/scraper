@@ -92,10 +92,14 @@ class Player
       else
         @current = old_current
 
-    if @current.next
-      @next = @play_steps[@play_step_ids.indexOf(@current.next.id)]
+    if @current.step.id != @play_steps[(@play_step_ids.length) - 1].step.id
+      @is_end = false
     else
-      @next = null
+      @is_end = true
+
+
+
+
 
 
 
@@ -127,10 +131,16 @@ class Player
     @playing = false
 
   pre_step : ->
+    # 当is_end为真的时候，current指向最后一个节点，因为无法再向下移动，也没有
+    # 指向null，因为这样不方便查找pre_step.
+    # 因此，不需要移动current的指向。
+    if @is_end == true
+      @is_end = false
+      return
+
     if @current == @first
       return
     else
-      @is_end = false
       @next = @current
       @current = @play_steps[@play_step_ids.indexOf(@current.step.id)-1]
 

@@ -339,8 +339,29 @@ app.controller('MainCtrl', function($scope, $http, $q, kcSleep, $timeout){
         $scope.svgs = init_svgs($scope.robot);
         $scope.svg_width = compute_svg_width($scope.svgs);
         $scope.player.fresh_with($scope.robot);
+        $scope.render_color_before_current_play();
     }, true);
-
+    $scope.render_color_before_current_play = function(){
+        var current_id = $scope.player.current.step.id;
+        var first_id = $scope.player.first.step.id ;
+        if(current_id != first_id){
+            var pre_id = $scope.player.current.pre.id;
+            $scope.svgs.forEach(function(svg, index, array){
+               if(svg.from_node == pre_id){
+                   svg.is_active = true;
+                   svg.init_color();
+               }else{
+                   svg.is_active = false;
+                   svg.init_color();
+               }
+            });
+        }else{
+            $scope.svgs.forEach(function(svg, index, array){
+                svg.is_active = false;
+                svg.init_color();
+            });
+        }
+    };
 
 
     $scope.addStepAfter = function(node){
@@ -426,6 +447,7 @@ app.controller('MainCtrl', function($scope, $http, $q, kcSleep, $timeout){
     player.stepBack = function(){
       if(this.playing == false){
           this.pre_step();
+          $scope.render_color_before_current_play();
       }
     };
 
