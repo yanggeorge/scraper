@@ -34,7 +34,7 @@
     <SUITE FILE_PATH="coverage/blog@test__blog.coverage" NAME="test: blog Coverage Results" MODIFIED="1460432410839" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="blog" />
     <SUITE FILE_PATH="coverage/blog@db_migrate__blog.coverage" NAME="db:migrate: blog Coverage Results" MODIFIED="1462329222013" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="blog" />
     <SUITE FILE_PATH="coverage/blog@bower_install_options___blog.coverage" NAME="bower:install[options]: blog Coverage Results" MODIFIED="1463395289486" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="blog" />
-    <SUITE FILE_PATH="coverage/blog@Development__blog.coverage" NAME="Development: blog Coverage Results" MODIFIED="1467279626300" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="blog" />
+    <SUITE FILE_PATH="coverage/blog@Development__blog.coverage" NAME="Development: blog Coverage Results" MODIFIED="1467600570539" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="blog" />
     <SUITE FILE_PATH="coverage/blog@web_analysis.coverage" NAME="web_analysis Coverage Results" MODIFIED="1461062296831" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/lib" MODULE_NAME="blog" />
   </component>
   <component name="CreatePatchCommitExecutor">
@@ -57,7 +57,7 @@
     <favorites_list name="blog" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5847548">
+    <splitter split-orientation="horizontal" split-proportion="0.6657783">
       <split-first>
         <splitter split-orientation="vertical" split-proportion="0.6645636">
           <split-first>
@@ -109,8 +109,8 @@
                   <file leaf-file-name="myApp.js" pinned="false" current-in-tab="true">
                     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/myApp.js">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state vertical-scroll-proportion="0.43137255">
-                          <caret line="538" column="11" selection-start-line="538" selection-start-column="11" selection-end-line="538" selection-end-column="11" />
+                        <state vertical-scroll-proportion="0.71895427">
+                          <caret line="545" column="24" selection-start-line="545" selection-start-column="24" selection-end-line="545" selection-end-column="24" />
                           <folding>
                             <element signature="e#0#43#0" expanded="false" />
                           </folding>
@@ -145,8 +145,8 @@
                   <file leaf-file-name="myApp.js" pinned="false" current-in-tab="true">
                     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/myApp.js">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state vertical-scroll-proportion="0.0">
-                          <caret line="411" column="0" selection-start-line="411" selection-start-column="0" selection-end-line="411" selection-end-column="0" />
+                        <state vertical-scroll-proportion="0.76034856">
+                          <caret line="307" column="11" selection-start-line="307" selection-start-column="11" selection-end-line="307" selection-end-column="11" />
                           <folding>
                             <element signature="e#0#43#0" expanded="false" />
                           </folding>
@@ -165,8 +165,8 @@
                   <file leaf-file-name="player.coffee" pinned="false" current-in-tab="true">
                     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/player.coffee">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state vertical-scroll-proportion="0.5882353">
-                          <caret line="123" column="26" selection-start-line="123" selection-start-column="26" selection-end-line="123" selection-end-column="26" />
+                        <state vertical-scroll-proportion="0.3529412">
+                          <caret line="132" column="21" selection-start-line="132" selection-start-column="21" selection-end-line="132" selection-end-column="21" />
                           <folding>
                             <marker date="1467196630517" expanded="true" signature="1432:2129" placeholder="..." />
                           </folding>
@@ -303,7 +303,7 @@
                 <entry file="file://$PROJECT_DIR$/app/assets/javascripts/myApp.js">
                   <provider selected="true" editor-type-id="text-editor">
                     <state vertical-scroll-proportion="0.0">
-                      <caret line="369" column="6" selection-start-line="369" selection-start-column="6" selection-end-line="369" selection-end-column="6" />
+                      <caret line="373" column="6" selection-start-line="373" selection-start-column="6" selection-end-line="373" selection-end-column="6" />
                       <folding>
                         <element signature="e#0#43#0" expanded="false" />
                       </folding>
@@ -1406,8 +1406,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/myApp.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.43137255">
-          <caret line="538" column="11" selection-start-line="538" selection-start-column="11" selection-end-line="538" selection-end-column="11" />
+        <state vertical-scroll-proportion="0.71895427">
+          <caret line="545" column="24" selection-start-line="545" selection-start-column="24" selection-end-line="545" selection-end-column="24" />
           <folding>
             <element signature="e#0#43#0" expanded="false" />
           </folding>

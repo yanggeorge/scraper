@@ -291,18 +291,22 @@ app.controller('MainCtrl', function($scope, $http, $q, kcSleep, $timeout){
                 doc.open();
                 doc.write(data.page);
                 doc.close();
-                $scope.$broadcast("set_data_complete_true");
+
                 return false;
             })
             .error(function(data, status, headers, config)
             {
                 console.log("post error ...");
-                $scope.$broadcast("set_data_complete_true");
                 return false;
             }
         );
-
-        return promise;
+        promise.then(function(){
+            $scope.$broadcast("set_data_complete_true");
+        });
+        var promise1 = promise.then(function(){
+           return $timeout(1200); // 与关闭 elm.hide的等待时间相同。
+        });
+        return promise1;
     };
 
     $scope.closeSidePane1 = function(){
@@ -534,12 +538,12 @@ app.controller('MainCtrl', function($scope, $http, $q, kcSleep, $timeout){
         defer.resolve("nothing");
 
         var player = this;
-        promise =  promise.then(function(){
-            return $timeout(2000)
+        var promise1 =  promise.then(function(){
+             return $timeout(2000);
         });
 
         this.current.post_state = env ;
-        return promise;
+        return promise1;
     };
     console.log(player);
     player.fresh_with($scope.robot);
