@@ -56,7 +56,7 @@ class Player
 
   #当robot更新的时候，需要刷新player
   # 对于旧的play序列 1,2,3,4,5, current=4,
-  # 当序列变为 1,2,4,5 ，则current = 2
+  # 当序列变为 1,2,4,5 ，则current = 4，并且4的pre_state = 2的post_state
   # 所以更新前，先备份play_steps ，更新后，与备份的序列从开始进行比较id，
   # 从而设置正确的current，并保留已运行state
   #
@@ -64,16 +64,26 @@ class Player
   # 则current需要根据变化的step的位置进行重新定位
   fresh_with : (robot) ->
     old_play_step_ids = @play_step_ids
+    console.log(old_play_step_ids)
     old_play_steps = @play_steps
     old_current = @current
+    console.log("old")
+    console.log(old_current.step.id)
+
 
     @play_step_ids = []
     @play_steps = []
 
     @init(robot)
+
+    if old_current.step.id in @play_step_ids
+      console.log("yes")
+    else
+      console.log("no")
+
     # 更新current并保留state
     i = 0
-    while old_play_step_ids[i] == @play_step_ids[i] and i < old_play_step_ids.length
+    while old_play_step_ids[i] == @play_step_ids[i] and i < old_play_step_ids.length and i < @play_step_ids.length
       @play_steps[i].pre_state = old_play_steps[i].pre_state
       @play_steps[i].post_state = old_play_steps[i].post_state
       i = i + 1
@@ -82,20 +92,33 @@ class Player
     if stop == 0
       # 说明说明first发生改变。
     else
-      j = 0
-      while j < stop
-        if old_play_step_ids[j] == old_current.step.id
-          break
-        j = j + 1
-      if j == stop
-        @current = @play_steps[j]
-      else
-        @current = old_current
+      n = @play_step_ids.indexOf(old_current.step.id)
+      if n > 0 and n < stop
+        @current = @play_steps[n]
+        pre = @play_steps[n - 1]
+        @current.pre_state = pre.post_state
+      else if n > 0
+        # n > 0 且 大约 stop，说明当前的node之前插入了新的node。
+        @current = @play_steps[stop]
+        pre = @play_steps[stop - 1]
+        @current.pre_state = pre.post_state
+      else if n < 0 and @is_end == false
+        # 说明删除的是current节点
+        @current = @play_steps[stop]
+        pre = @play_steps[stop - 1]
+        @current.pre_state = pre.post_state
+      else if n < 0 and @is_end == true
+        # 说明删除的是最后一个节点。
+        @current = @play_steps[stop - 1]
+        pre = @play_steps[stop - 2]
+        @current.pre_state = pre.post_state
 
-    if @current.step.id != @play_steps[(@play_step_ids.length) - 1].step.id
-      @is_end = false
-    else
-      @is_end = true
+      @next = @play_steps[@play_step_ids.indexOf(@current.step.id) + 1]
+      if @current.step.id != @play_steps[(@play_step_ids.length) - 1].step.id
+        @is_end = false
+      else
+        @is_end = true
+        @next = null
 
 
 

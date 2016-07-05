@@ -344,16 +344,28 @@ app.controller('MainCtrl', function($scope, $http, $q, kcSleep, $timeout){
     $scope.render_color_before_current_play = function(){
         var current_id = $scope.player.current.step.id;
         var first_id = $scope.player.first.step.id ;
-        if(current_id != first_id){
+        var is_end = $scope.player.is_end;
+        if(current_id != first_id && is_end != true) {
             var pre_id = $scope.player.current.pre.id;
-            $scope.svgs.forEach(function(svg, index, array){
-               if(svg.from_node == pre_id){
-                   svg.is_active = true;
-                   svg.init_color();
-               }else{
-                   svg.is_active = false;
-                   svg.init_color();
-               }
+            $scope.svgs.forEach(function (svg, index, array) {
+                if (svg.from_node == pre_id) {
+                    svg.is_active = true;
+                    svg.init_color();
+                } else {
+                    svg.is_active = false;
+                    svg.init_color();
+                }
+            });
+        }else if(is_end == true){
+            // 说明当前节点指向最后一个，并且应该显示结束。
+            $scope.svgs.forEach(function (svg, index, array) {
+                if (svg.from_node == current_id) {
+                    svg.is_active = true;
+                    svg.init_color();
+                } else {
+                    svg.is_active = false;
+                    svg.init_color();
+                }
             });
         }else{
             $scope.svgs.forEach(function(svg, index, array){
@@ -526,6 +538,8 @@ app.controller('MainCtrl', function($scope, $http, $q, kcSleep, $timeout){
             if ($scope.player.next != null){
                 console.log("next is not null");
                 $scope.player.next.pre_state = $scope.player.current.post_state;
+                console.log($scope.player.current.step.id);
+                console.log($scope.player.next.step.id);
                 $scope.player.current = $scope.player.next;
                 if($scope.player.next.next != null){
                     var next_id = $scope.player.next.next.id ;
@@ -535,6 +549,7 @@ app.controller('MainCtrl', function($scope, $http, $q, kcSleep, $timeout){
                 }
             }else{
                 $scope.player.is_end = true;
+                $scope.player.next = null;
                 console.log("next step is null.");
             }
         });
