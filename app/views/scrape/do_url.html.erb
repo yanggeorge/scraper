@@ -105,8 +105,8 @@
                 <i class="fa fa-step-forward"></i>
               </a>
               <a class="button mini" title="Start / stop" ng-click="player.togglePlay()"
-                 ng-class="{secondary:state.playing}">
-                <i class="fa fa-play"></i>
+                ng-class="{secondary : player.playing}">
+                <i ng-class="{fa : true, 'fa-play': !player.playing, 'fa-pause':player.playing}"></i>
               </a>
             </div>
           </div>

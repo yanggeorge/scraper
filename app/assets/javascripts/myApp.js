@@ -415,6 +415,8 @@ app.controller('MainCtrl', function($scope, $http, $q, kcSleep, $timeout){
         toggle_sidepane2_state(0);
     });
 
+
+
     $scope.$on("play_start", function(e, node_id){
         console.log(node_id);
         $scope.nodes.forEach(function(n,index,array){
@@ -428,6 +430,8 @@ app.controller('MainCtrl', function($scope, $http, $q, kcSleep, $timeout){
             svg.is_active = false;
             svg.init_color();
         });
+
+
     });
     $scope.$on("play_stop", function(e, node_id){
         console.log(node_id);
@@ -445,6 +449,8 @@ app.controller('MainCtrl', function($scope, $http, $q, kcSleep, $timeout){
                 svg.init_color();
             }
         });
+
+
     });
 
 
@@ -487,6 +493,8 @@ app.controller('MainCtrl', function($scope, $http, $q, kcSleep, $timeout){
                     $scope.player.playing = false;
                 }
             });
+        }else if(this.playing && this.is_end == true){
+            this.playing = false;
         }
     };
 

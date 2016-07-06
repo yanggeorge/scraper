@@ -903,3 +903,9 @@ button, input, select, textarea {
   z-index: 100;
   overflow: hidden;
 }
+
+.button.secondary, .wb-action.secondary, .wb-button.secondary, .wb-form-button.secondary, button.secondary, input.button.secondary, input.submit.secondary {
+  background-color: #2ecc71;
+  border-color: #29b765;
+  color: #fff
+}
