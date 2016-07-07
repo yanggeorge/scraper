@@ -2,7 +2,9 @@
  * Created by ym on 2016/5/16 0016.
  */
 var app = angular.module('myApp',['templates']);
-
+jQuery.fn.view = function() {
+    return this[0].ownerDocument.defaultView
+};
 app.factory("kcSleep",function($timeout){
     return function(ms) {
         return function(value) {
@@ -12,7 +14,44 @@ app.factory("kcSleep",function($timeout){
         };
     };
 });
-
+app.directive("title",function(){
+    return {
+        restrict : 'A',
+        link : function(a,b,c){
+            if (c.title) {
+                var d = $('<div class="button-hover-title" />');
+                b.on("mouseenter", function (a) {
+                    if (c.title) {
+                        try {
+                            d.html(c.title.replace("\n", "<br />")).hide()
+                        } catch (e) {
+                            d = $('<div class="button-hover-title" />'), d.html(c.title.replace("\n", "<br />")).hide()
+                        }
+                        var f = b.offset(), g = (c.title.match(/\n/g) || []).length + 1;
+                        b.hasClass("below") || f.top < 50 ? f.top += 15 + b.height() : g > 1 ? f.top -= b.height() * g - 16 * (g - 1) - 3 : f.top -= 38, b.closest("body").append(d);
+                        var h = d.width();
+                        if ("block" !== b.css("display")) {
+                            var i = (h - b.width()) / 2;
+                            f.left += -1 * i
+                        }
+                        d.css(f).show();
+                        var j = $(b.view()).width() - 10, k = d.outerWidth() + f.left;
+                        k > j && d.css("left", j - d.outerWidth());
+                        //console.log(d.css("left"));
+                    }
+                }).on("mouseleave mousewheel wheel mousedown", function (a) {
+                    d.detach()
+                }), a.$on("windowed", function () {
+                    d.detach()
+                }), a.$on("unwindowed", function () {
+                    d.detach()
+                }), a.$on("$destroy", function () {
+                    d.remove()
+                })
+            }
+        }
+    }
+});
 app.directive("tabPane",function(){
     return {
         restrict : 'C',
