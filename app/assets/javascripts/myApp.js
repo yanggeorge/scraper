@@ -35,7 +35,7 @@ app.directive("title",function(){
                             f.left += -1 * i
                         }
                         d.css(f).show();
-                        var j = $(b.view()).width() - 10, k = d.outerWidth() + f.left;
+                        var j = $(b.view()).width() + 15, k = d.outerWidth() + f.left;
                         k > j && d.css("left", j - d.outerWidth());
                         //console.log(d.css("left"));
                     }
