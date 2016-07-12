@@ -237,36 +237,9 @@ end
 
 if __FILE__== $0
 
-  html =<<EOF
-<template>
-<head></head>
-<body>
-<div>
-<div class="aa"><p>你好</p></div>
-<div class="aa"><span><p>大家好</p></span></div>
-<div class="aa"><span><p>大家好</p></span></div>
-<div class="aa"><span><p>大家好</p></span></div>
-</div>
-<p></p>
-<div>
-<div class="aa"><p>你好</p></div>
-<div class="aa"><span>
-<div class="aa"><span><p>大家好</p></span></div>
-<div class="aa"><span><p>大家好</p></span></div>
-<div class="aa"><span><p>大家好</p></span></div>
-<div class="aa"><span><p>大家好</p></span></div>
-<p>大家好</p></span></div>
-<div class="aa"><span><p>大家好</p></span></div>
-<div class="aa"><span><p>大家好</p></span></div>
-<div class="aa"><span><p>大家好</p></span></div>
-</div>
-</body>
-</template>
-EOF
-
-  url = "http://www.sd-n-tax.gov.cn/col/col47711/index.template"
+  url = "https://www.wunderground.com/history/airport/ZSHC/2016/1/1/CustomHistory.html?dayend=11&monthend=7&yearend=2016&req_city=&req_state=&req_statename=&reqdb.zip=&reqdb.magic=&reqdb.wmo=&format=1"
   #doc = Nokogiri::HTML(WebAnalysis.instance.get_response(url))
-  doc = Nokogiri::HTML(open(url))
+  doc = Nokogiri::HTML(open(url,ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE))
   puts doc.to_html
 
 end
