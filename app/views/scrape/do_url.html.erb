@@ -40,14 +40,14 @@
             </div>
           </div>
         </div>
-        <div id="p1" class="p3-2 page">
-          <div class="p4-1 inner">
-            <div class="marker-container" >
-                <div class="container scroll">
-
+        <div id="p1" class="p3-2 page" ng-controller="MarkerCtrl" >
+          <div class="p4-1 inner"   >
+            <div class="marker-container"  >
+                <div class="container scroll"  >
+                  <div class="scroller" ng-style="{height:iframe_height,width:iframe_width}"></div>
                 </div>
             </div>
-            <iframe id="modified_page" class="iframe_class">
+            <iframe id="modified_page" class="iframe_class" iframe-onload  >
             </iframe>
           </div>
         </div>

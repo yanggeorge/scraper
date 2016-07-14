@@ -14,6 +14,8 @@ app.factory("kcSleep",function($timeout){
         };
     };
 });
+
+
 app.directive("title",function(){
     return {
         restrict : 'A',
@@ -35,7 +37,7 @@ app.directive("title",function(){
                             f.left += -1 * i
                         }
                         d.css(f).show();
-                        var j = $(b.view()).width() + 15, k = d.outerWidth() + f.left;
+                        var j = $(b.view()).width(), k = d.outerWidth() + f.left;
                         k > j && d.css("left", j - d.outerWidth());
                         //console.log(d.css("left"));
                     }
@@ -147,6 +149,74 @@ app.directive("flowEditor",function(){
             });
         }
     }
+});
+
+app.directive('markerContainer', [function(){
+    return {
+        restrict : "C",
+        scope: {},
+        link: function(scope, element, attrs){
+            element.bind('scroll', function(){
+                scope.$emit("scroller_event",{left:element.scrollLeft(),top:element.scrollTop()});
+            })
+        }
+    }}]);
+app.directive('inner', ['$window', function($window){
+    return {
+        restrict : "C",
+        scope: {},
+        link: function(scope, element, attrs){
+            var w = angular.element($window);
+            scope.$watch(
+                function(){
+                    return {
+                        height : element.parent().height(),
+                        width : element.parent().width()
+                    }
+                },
+                function(obj){//监听父窗口的高宽，并设置为相等。
+                    console.log("inner ....");
+                    element.height(obj.height);
+                    element.width(obj.width);
+                },
+                true
+            );
+            w.bind('resize', function () {//监听window的resize事件。并重新检验与父窗口的高和宽。
+                scope.$apply();
+            });
+        }
+    }}]);
+app.directive('iframeOnload', [function(){
+    return {
+        scope: {},
+        link: function(scope, element, attrs){
+            element.on('load', function(){
+                var height = document.getElementById("modified_page").contentWindow.document.body.scrollHeight;
+                var width = document.getElementById("modified_page").contentWindow.document.body.scrollWidth;
+                console.log(height,width);
+                scope.$emit("iframe_onload",{height:height,width:width});
+            });
+
+        }
+    }}]);
+
+app.controller('MarkerCtrl', function($scope){
+
+    $scope.$on("iframe_onload", function(e,obj){
+       console.log(obj);
+        $scope.iframe_height = obj.height + "px";
+        $scope.iframe_width = obj.width + "px";
+        $scope.$apply(); // ng-style没有及时更新，需要强制更新。
+    });
+    // 实现iframe和上层的div联合滚动 sync scroll
+    $scope.$on("scroller_event",function(evt, obj){
+        var iframe = jQuery("#modified_page");
+        iframe.contents().scrollTop(obj.top);
+        iframe.contents().scrollLeft(obj.left);
+    });
+
+
+
 });
 
 app.controller('FormCtrl',function($scope){
@@ -311,6 +381,8 @@ app.controller('MainCtrl', function($scope, $http, $q, kcSleep, $timeout){
        // $scope.load_url($scope.get_visit_url());
     });
 
+
+
     $scope.get_visit_url = function(){
       return $scope.robot.steps[$scope.robot.first_step].value ;
     };
@@ -321,13 +393,13 @@ app.controller('MainCtrl', function($scope, $http, $q, kcSleep, $timeout){
         var doc = document.getElementById('modified_page').contentWindow.document;
         doc.open();
         doc.write("<body></body>");
-        doc.close();
+        //doc.close();
         var ramdom = Math.uuid();
         $scope.$broadcast("set_data_complete_false");
         var promise = $http.post(path, {url: url, random : ramdom}, {timeout:50000})
             .success(function(data, status, headers, config)
             {
-                doc.open();
+                //doc.open();
                 doc.write(data.page);
                 doc.close();
 
@@ -772,3 +844,6 @@ var compute_node_position = function(nodes) {
 app.controller('resultsCtrl',function($scope){
 
 });
+
+
+
