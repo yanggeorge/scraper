@@ -529,6 +529,7 @@ app.controller('MainCtrl', function($scope, $http, $q, kcSleep, $timeout){
 
 
     $scope.$on("play_start", function(e, node_id){
+        console.log($scope.player);
         console.log(node_id);
         $scope.nodes.forEach(function(n,index,array){
             if(n.id == node_id){
@@ -561,7 +562,6 @@ app.controller('MainCtrl', function($scope, $http, $q, kcSleep, $timeout){
             }
         });
 
-
     });
 
 
@@ -569,8 +569,11 @@ app.controller('MainCtrl', function($scope, $http, $q, kcSleep, $timeout){
     player.stepForward = function(){
         if(this.playing == false ){
             this.playing = true;
-            this.play();
-            this.playing = false;
+            console.log("step forward ...");
+            var play_promise =  this.play();
+            play_promise.then(function(){
+                $scope.player.playing = false;
+            });
         }
     };
     player.stepBack = function(){
@@ -608,7 +611,7 @@ app.controller('MainCtrl', function($scope, $http, $q, kcSleep, $timeout){
             this.playing = false;
         }
     };
-
+    //play()是个promise 过程，必须加 then
     player.play = function(){
 
         if(this.is_end == true){
