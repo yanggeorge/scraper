@@ -156,6 +156,8 @@ app.directive('markerContainer', ['$window', function($window){
         restrict : "C",
         scope: {},
         link: function(scope, element, attrs){
+            scope.list_div = [];
+            scope.selected_div = [];
             element.bind('scroll', function(){
                 scope.$emit("scroller_event",{left:element.scrollLeft(),top:element.scrollTop()});
             });
@@ -164,8 +166,15 @@ app.directive('markerContainer', ['$window', function($window){
                 var point = {x: e.pageX - ele.scrollLeft() , y: e.pageY - ele.scrollTop() };
                 scope.$emit("trigger",point);
             });
+            ele.bind('click',function(e){
+                var point = {x: e.pageX - ele.scrollLeft() , y: e.pageY - ele.scrollTop() };
+                scope.$emit("trigger_selected",point);
+            });
+            element.bind('mouseout',function(e){
+                scope.list_div.forEach(function(e){e.remove()});
+            });
 
-            scope.list_div = [];
+
             scope.$on("create_div",function(evt,obj){
                 console.log(obj);
                 var div = jQuery('<div></div>');
@@ -180,6 +189,21 @@ app.directive('markerContainer', ['$window', function($window){
                 var ele = element.find("> .container ,.scroll");
                 ele.append(div);
                 scope.list_div.push(div);
+            });
+            scope.$on("selected_div",function(evt,obj){
+                console.log(obj);
+                var div = jQuery('<div></div>');
+                div.width(obj.width);
+                div.height(obj.height);
+                div.css('postion', 'absolute');
+                div.css('top',obj.top);
+                div.css('left',obj.left);
+                div.css('pointer-events','none');
+                div = angular.element(div).addClass('marker suggestion selected');
+                scope.selected_div.forEach(function(e){e.remove()});
+                var ele = element.find("> .container ,.scroll");
+                ele.append(div);
+                scope.selected_div.push(div);
             });
         }
     }}]);
@@ -260,9 +284,21 @@ app.controller('MarkerCtrl', function($scope){
             $scope.$broadcast("create_div",obj);
         }
     });
-
-
-
+    $scope.selected_ele = jQuery("<div></div>");
+    $scope.$on("trigger_selected",function(evt,point){
+        var doc = document.getElementById("modified_page").contentWindow.document;
+        var ele = doc.elementFromPoint(point.x, point.y);
+        console.log(ele);
+        if ( $scope.selected_ele !== ele){ // 应该允许选择body元素。
+            //console.log(ele);
+            $scope.selected_ele = ele;
+            var offset = jQuery(ele).offset();
+            //console.log(offset);
+            var obj = {width: jQuery(ele).outerWidth(), height : jQuery(ele).outerHeight(),
+                left:offset.left, top:offset.top};
+            $scope.$broadcast("selected_div",obj);
+        }
+    });
 });
 
 app.controller('FormCtrl',function($scope){
