@@ -275,18 +275,18 @@ a, body, h4, h5, h6, input {
   background-color: #eee;
   overflow: auto;
 
-  transform-style: preserve-3d;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  -webkit-transform: translate3d(0, 0, 0);
-  -moz-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
-  -webkit-perspective: 1000px;
-  perspective: 1000px;
-  -webkit-transition: right .1s ease-out;
-  -moz-transition: right .1s ease-out;
-  -o-transition: right .1s ease-out;
-  transition: right .1s ease-out;
+  //transform-style: preserve-3d;
+  //-webkit-backface-visibility: hidden;
+  //backface-visibility: hidden;
+  //-webkit-transform: translate3d(0, 0, 0);
+  //-moz-transform: translate3d(0, 0, 0);
+  //transform: translate3d(0, 0, 0);
+  //-webkit-perspective: 1000px;
+  //perspective: 1000px;
+  //-webkit-transition: right .1s ease-out;
+  //-moz-transition: right .1s ease-out;
+  //-o-transition: right .1s ease-out;
+  //transition: right .1s ease-out;
   z-index: 2;
 
 }

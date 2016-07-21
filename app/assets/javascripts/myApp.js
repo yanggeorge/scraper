@@ -151,7 +151,7 @@ app.directive("flowEditor",function(){
     }
 });
 
-app.directive('markerContainer', [function(){
+app.directive('markerContainer', ['$window', function($window){
     return {
         restrict : "C",
         scope: {},
@@ -160,7 +160,7 @@ app.directive('markerContainer', [function(){
                 scope.$emit("scroller_event",{left:element.scrollLeft(),top:element.scrollTop()});
             });
             var ele = element.find(".scroller");
-            ele.bind('click',function(e){
+            ele.bind('mousemove',function(e){
                 var point = {x: e.pageX - ele.scrollLeft() , y: e.pageY - ele.scrollTop() };
                 scope.$emit("trigger",point);
             });
