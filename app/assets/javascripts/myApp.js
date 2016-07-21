@@ -158,7 +158,29 @@ app.directive('markerContainer', [function(){
         link: function(scope, element, attrs){
             element.bind('scroll', function(){
                 scope.$emit("scroller_event",{left:element.scrollLeft(),top:element.scrollTop()});
-            })
+            });
+            var ele = element.find(".scroller");
+            ele.bind('click',function(e){
+                var point = {x: e.pageX - ele.scrollLeft() , y: e.pageY - ele.scrollTop() };
+                scope.$emit("trigger",point);
+            });
+
+            scope.list_div = [];
+            scope.$on("create_div",function(evt,obj){
+                console.log(obj);
+                var div = jQuery('<div></div>');
+                div.width(obj.width);
+                div.height(obj.height);
+                div.css('postion', 'absolute');
+                div.css('top',obj.top);
+                div.css('left',obj.left);
+                div.css('pointer-events','none');
+                div = angular.element(div).addClass('marker suggestion');
+                scope.list_div.forEach(function(e){e.remove()});
+                var ele = element.find("> .container ,.scroll");
+                ele.append(div);
+                scope.list_div.push(div);
+            });
         }
     }}]);
 app.directive('inner', ['$window', function($window){
@@ -186,7 +208,7 @@ app.directive('inner', ['$window', function($window){
             });
         }
     }}]);
-app.directive('iframeOnload', [function(){
+app.directive('iframeOnload',  ['$window', function($window){
     return {
         scope: {},
         link: function(scope, element, attrs){
@@ -194,7 +216,14 @@ app.directive('iframeOnload', [function(){
                 var height = document.getElementById("modified_page").contentWindow.document.body.scrollHeight;
                 var width = document.getElementById("modified_page").contentWindow.document.body.scrollWidth;
                 console.log(height,width);
-                scope.$emit("iframe_onload",{height:height,width:width});
+                scope.$emit("iframe_resize",{height:height,width:width});
+            });
+            var w = angular.element($window);
+            w.bind('resize', function(){
+                var height = document.getElementById("modified_page").contentWindow.document.body.scrollHeight;
+                var width = document.getElementById("modified_page").contentWindow.document.body.scrollWidth;
+                console.log(height,width);
+                scope.$emit("iframe_resize",{height:height,width:width});
             });
 
         }
@@ -202,7 +231,7 @@ app.directive('iframeOnload', [function(){
 
 app.controller('MarkerCtrl', function($scope){
 
-    $scope.$on("iframe_onload", function(e,obj){
+    $scope.$on("iframe_resize", function(e,obj){
        console.log(obj);
         $scope.iframe_height = obj.height + "px";
         $scope.iframe_width = obj.width + "px";
@@ -213,6 +242,23 @@ app.controller('MarkerCtrl', function($scope){
         var iframe = jQuery("#modified_page");
         iframe.contents().scrollTop(obj.top);
         iframe.contents().scrollLeft(obj.left);
+    });
+
+    $scope.tmp_ele = jQuery("<div></div>");
+    $scope.$on("trigger",function(evt,point){
+        console.log(point);
+        var doc = document.getElementById("modified_page").contentWindow.document;
+        var ele = doc.elementFromPoint(point.x, point.y);
+        console.log(ele);
+        if ( $scope.tmp_ele !== ele){
+            //console.log(ele);
+            $scope.tmp_ele = ele;
+            var offset = jQuery(ele).offset();
+            //console.log(offset);
+            var obj = {width: jQuery(ele).outerWidth(), height : jQuery(ele).outerHeight(),
+                left:offset.left, top:offset.top};
+            $scope.$broadcast("create_div",obj);
+        }
     });
 
 
@@ -377,10 +423,9 @@ app.controller('MainCtrl', function($scope, $http, $q, kcSleep, $timeout){
         window.sidepane_state = 0; // 0 : 关闭 ,1 : 270px, 2: 520px
         window.sidepane2_state = 0;
         size();
-
+        window.ym.mos.SetupDOMSelection(document.getElementById("modified_page"))
        // $scope.load_url($scope.get_visit_url());
     });
-
 
 
     $scope.get_visit_url = function(){
@@ -611,7 +656,7 @@ app.controller('MainCtrl', function($scope, $http, $q, kcSleep, $timeout){
             this.playing = false;
         }
     };
-    //play()是个promise 过程，必须加 then
+    //play()是个返回一个promise
     player.play = function(){
 
         if(this.is_end == true){

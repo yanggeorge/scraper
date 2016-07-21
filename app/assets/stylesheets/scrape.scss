@@ -1003,3 +1003,34 @@ button, input, select, textarea {
   min-width: 1px;
   min-height: 1px
 }
+
+ .page .marker-container .marker {
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+  box-sizing: content-box;
+  box-shadow: 0 0 10px rgba(0,0,0,.8);
+  position: absolute;
+  z-index: 1;
+}
+
+.marker-container .marker.suggestion {
+  opacity: .8;
+}
+.marker-container .marker.selected {
+  background-color: rgba(200,200,255,.4);
+  z-index: 2002;
+}
+.page .marker-container .marker {
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+  box-sizing: content-box;
+  box-shadow: 0 0 10px rgba(0,0,0,.8);
+  position: absolute;
+  z-index: 1;
+}
