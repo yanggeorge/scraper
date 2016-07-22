@@ -166,12 +166,41 @@ app.directive('markerContainer', ['$window', function($window){
                 var point = {x: e.pageX - ele.scrollLeft() , y: e.pageY - ele.scrollTop() };
                 scope.$emit("trigger",point);
             });
-            ele.bind('click',function(e){
-                var point = {x: e.pageX - ele.scrollLeft() , y: e.pageY - ele.scrollTop() };
-                scope.$emit("trigger_selected",point);
+            ele.bind('mousedown',function(e){
+                if(is_left_click(e)) {
+                    var point = {x: e.pageX - ele.scrollLeft(), y: e.pageY - ele.scrollTop()};
+                    scope.$emit("trigger_selected", point);
+                }else if(is_right_click(e)){
+                    console.log("right click");
+                    redo();
+                }
             });
+            ele.bind("contextmenu",function(e){
+                e.preventDefault();
+            });
+            var redo = function(){
+                clean_selected();
+            };
+            var is_left_click = function(e){
+                return (e.which && e.which == 1) || (e.button && e.button == 1);
+            };
+            var is_right_click = function(e){
+                return  (e.which && e.which == 3) || (e.button && e.button == 2);
+            };
+
+            function clean_selected() {
+                scope.selected_div.forEach(function (e) {
+                    e.remove()
+                });
+            }
+            function clean_list() {
+                scope.list_div.forEach(function (e) {
+                    e.remove()
+                });
+            }
+
             element.bind('mouseout',function(e){
-                scope.list_div.forEach(function(e){e.remove()});
+                clean_list();
             });
 
 
@@ -185,7 +214,7 @@ app.directive('markerContainer', ['$window', function($window){
                 div.css('left',obj.left);
                 div.css('pointer-events','none');
                 div = angular.element(div).addClass('marker suggestion');
-                scope.list_div.forEach(function(e){e.remove()});
+                clean_list();
                 var ele = element.find("> .container ,.scroll");
                 ele.append(div);
                 scope.list_div.push(div);
@@ -200,7 +229,7 @@ app.directive('markerContainer', ['$window', function($window){
                 div.css('left',obj.left);
                 div.css('pointer-events','none');
                 div = angular.element(div).addClass('marker suggestion selected');
-                scope.selected_div.forEach(function(e){e.remove()});
+                clean_selected();
                 var ele = element.find("> .container ,.scroll");
                 ele.append(div);
                 scope.selected_div.push(div);
@@ -297,6 +326,7 @@ app.controller('MarkerCtrl', function($scope){
             var obj = {width: jQuery(ele).outerWidth(), height : jQuery(ele).outerHeight(),
                 left:offset.left, top:offset.top};
             $scope.$broadcast("selected_div",obj);
+
         }
     });
 });
