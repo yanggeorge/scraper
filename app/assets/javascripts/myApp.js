@@ -275,13 +275,20 @@ app.directive('iframeOnload',  ['$window', function($window){
                 scope.$emit("iframe_resize",{height:height,width:width});
             });
             var w = angular.element($window);
-            w.bind('resize', function(){
-                var height = document.getElementById("modified_page").contentWindow.document.body.scrollHeight;
-                var width = document.getElementById("modified_page").contentWindow.document.body.scrollWidth;
-                console.log(height,width);
-                scope.$emit("iframe_resize",{height:height,width:width});
+            w.bind('resize', function(e){
+                w.resizeEvt;
+                w.bind("resize",function(){
+                    clearTimeout(w.resizeEvt);
+                    w.resizeEvt = setTimeout(function()
+                    {
+                        //code to do after window is resized
+                        var height = document.getElementById("modified_page").contentWindow.document.body.scrollHeight;
+                        var width = document.getElementById("modified_page").contentWindow.document.body.scrollWidth;
+                        console.log("window resize ",height,width);
+                        scope.$emit("iframe_resize",{height:height,width:width});
+                    }, 250);
+                });
             });
-
         }
     }}]);
 
