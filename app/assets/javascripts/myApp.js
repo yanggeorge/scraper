@@ -95,7 +95,7 @@ app.directive('loading',   ['$http' ,function ($http)
                     return $http.pendingRequests.length > 0;
                 };
 
-                scope.data_complete = true;
+                scope.data_complete = false;
 
                 scope.$on("set_data_complete_true",function(){
                     scope.data_complete = true;
@@ -106,7 +106,7 @@ app.directive('loading',   ['$http' ,function ($http)
                 });
 
                 scope.$watch(scope.data_complete, function(v){
-                    if(v && scope.isLoading == false){
+                    if(v && scope.isLoading() == false){
                         setTimeout(function () {
                             elm.hide();
                         }, 1200);
@@ -151,7 +151,7 @@ app.directive("flowEditor",function(){
     }
 });
 
-app.directive('markerContainer', ['$window', function($window){
+app.directive('markerContainer', ['$window','$q','$timeout', function($window,$q,$timeout){
     return {
         restrict : "C",
         scope: {},
@@ -171,7 +171,6 @@ app.directive('markerContainer', ['$window', function($window){
                     var point = {x: e.pageX - ele.scrollLeft(), y: e.pageY - ele.scrollTop()};
                     scope.$emit("trigger_selected", point);
                 }else if(is_right_click(e)){
-                    console.log("right click");
                     redo();
                 }
             });
@@ -180,6 +179,10 @@ app.directive('markerContainer', ['$window', function($window){
             });
             var redo = function(){
                 clean_selected();
+                var defer = $q.defer();
+                var promise = defer.promise;
+                defer.resolve("redo");
+                toggle_sidepane1_state(0);
             };
             var is_left_click = function(e){
                 return (e.which && e.which == 1) || (e.button && e.button == 1);
@@ -249,10 +252,10 @@ app.directive('inner', ['$window', function($window){
                         width : element.parent().width()
                     }
                 },
-                function(obj){//监听父窗口的高宽，并设置为相等。
+                function(obj){//监听父窗口的高宽，并设置为相等，而宽度与父窗口的父窗口相等。
                     console.log("inner ....");
                     element.height(obj.height);
-                    element.width(obj.width);
+                    element.width(element.parent().parent().width());
                 },
                 true
             );
@@ -318,16 +321,16 @@ app.controller('MarkerCtrl', function($scope){
         var doc = document.getElementById("modified_page").contentWindow.document;
         var ele = doc.elementFromPoint(point.x, point.y);
         console.log(ele);
-        if ( $scope.selected_ele !== ele){ // 应该允许选择body元素。
-            //console.log(ele);
-            $scope.selected_ele = ele;
-            var offset = jQuery(ele).offset();
-            //console.log(offset);
-            var obj = {width: jQuery(ele).outerWidth(), height : jQuery(ele).outerHeight(),
-                left:offset.left, top:offset.top};
-            $scope.$broadcast("selected_div",obj);
 
-        }
+        //console.log(ele);
+        $scope.selected_ele = ele;
+        var offset = jQuery(ele).offset();
+        //console.log(offset);
+        var obj = {width: jQuery(ele).outerWidth(), height : jQuery(ele).outerHeight(),
+            left:offset.left, top:offset.top};
+        $scope.$broadcast("selected_div",obj);
+        $scope.$emit("decide_sidepane",ele);
+
     });
 });
 
@@ -489,10 +492,8 @@ app.controller('MainCtrl', function($scope, $http, $q, kcSleep, $timeout){
         window.sidepane_state = 0; // 0 : 关闭 ,1 : 270px, 2: 520px
         window.sidepane2_state = 0;
         size();
-        window.ym.mos.SetupDOMSelection(document.getElementById("modified_page"))
-       // $scope.load_url($scope.get_visit_url());
+        $scope.player.stepForward();
     });
-
 
     $scope.get_visit_url = function(){
       return $scope.robot.steps[$scope.robot.first_step].value ;
@@ -636,9 +637,6 @@ app.controller('MainCtrl', function($scope, $http, $q, kcSleep, $timeout){
         $scope.$apply();
         toggle_sidepane2_state(0);
     });
-
-
-
     $scope.$on("play_start", function(e, node_id){
         console.log($scope.player);
         console.log(node_id);
@@ -653,7 +651,6 @@ app.controller('MainCtrl', function($scope, $http, $q, kcSleep, $timeout){
             svg.is_active = false;
             svg.init_color();
         });
-
 
     });
     $scope.$on("play_stop", function(e, node_id){
@@ -674,7 +671,10 @@ app.controller('MainCtrl', function($scope, $http, $q, kcSleep, $timeout){
         });
 
     });
-
+    $scope.$on("decide_sidepane",function(e,element){
+        toggle_sidepane1_state(1);
+        $scope.$apply();
+    });
 
     var player = new ym.rpa.Player($scope.robot);
     player.stepForward = function(){

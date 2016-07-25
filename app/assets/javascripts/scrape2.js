@@ -75,13 +75,13 @@ var toggle_sidepane2 = function () {
 };
 
 var toggle_sidepane1_state = function(state){
-    toggle_state(state, "#p1","#p2");
+    toggle_state(state, "#p1","#p2",1);
 };
 var toggle_sidepane2_state = function(state){
-    toggle_state(state, "#p3","#p4");
+    toggle_state(state, "#p3","#p4",2);
 };
 // 三种状态之间进行切换。
-var toggle_state = function(state, main_id, sidepane_id){
+var toggle_state = function(state, main_id, sidepane_id, flag){
     var main = $(main_id);
     var side = $(sidepane_id);
     var current_state ;
@@ -94,6 +94,13 @@ var toggle_state = function(state, main_id, sidepane_id){
             current_state = 0;
             console.log("current_sidepane_width = " + current_sidpane_width);
         }
+    }
+    if (flag == 1){
+        animate_sidepane_mainpane = animate_sidepane_mainpane1;
+    }else if(flag == 2){
+        animate_sidepane_mainpane = animate_sidepane_mainpane2;
+    }else{
+        throw "error flag";
     }
     var sidepane_width, main_width;
     if (current_state == 0) {
@@ -174,7 +181,14 @@ var toggle_state = function(state, main_id, sidepane_id){
         }
     }
 };
-var animate_sidepane_mainpane = function(main , side, target_main_width, target_side_width){
+var animate_sidepane_mainpane1 = function(main , side, target_main_width, target_side_width){
+    var speed = 50;
+    side.animate({width:target_side_width +"px"}, speed);
+    main.animate({width:target_main_width + "px", right : target_side_width + "px"},speed);
+    var inner_div = jQuery("p1-inner");
+    inner_div.animate({width:target_main_width + "px", right : target_side_width + "px"},speed);
+};
+var animate_sidepane_mainpane2 = function(main , side, target_main_width, target_side_width){
     var speed = 50;
     side.animate({width:target_side_width +"px"}, speed);
     main.animate({width:target_main_width + "px", right : target_side_width + "px"},speed);

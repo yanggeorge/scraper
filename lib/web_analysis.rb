@@ -11,6 +11,7 @@ class WebAnalysis
   def initialize
     Thread.new {`"d:\\work\\bin\\phantomjs.exe" --webdriver=9134`} # 首先运行phantomjs
     @driver = Selenium::WebDriver.for(:remote, :url => "http://localhost:9134")
+    puts "WebAnalysis is initializing."
   end
 
   def test
@@ -106,11 +107,10 @@ class HtmlAnalysis
   include Singleton
 
   def initialize(page_source=nil,start_url="")
-    @page_source = page_source
-    @page_source = init_with_file  if page_source == nil
-    @start_url = (start_url == "" ? "http://www.he-n-tax.gov.cn/hbgsww_new/hbgsgkml/ajxxgk/880/list.htm" : start_url)
-    @css_file = fetch_css_style
-    PageSourceManager.instance.add(@start_url, @page_source, @css_file)
+    # @page_source = page_source
+    # @start_url = (start_url == "" ? "http://www.he-n-tax.gov.cn/hbgsww_new/hbgsgkml/ajxxgk/880/list.htm" : start_url)
+    # @css_file = fetch_css_style
+    # PageSourceManager.instance.add(@start_url, @page_source, @css_file)
   end
 
   def analyze(start_url)
@@ -187,22 +187,7 @@ class HtmlAnalysis
     page.gsub(/<link.*?>/,"")
   end
 
-  def init_with_file
-    f = File.open(File.dirname(__FILE__) + "./sample.template" , "r:UTF-8")
-    puts f.path
-    page_source ||= ""
-    f.each do |line|
-      page_source += line
-    end
-    page_source.gsub!(/<!--.*?-->|<script.*?script>/m,"")
-    # page_source.gsub!(/<style.*?style>/m,"")
-    # page_source.gsub!(/<head.*?head>/m,"")
-    # page_source.gsub!(/<template.*?>/m,"")
-    # page_source.gsub!(/<body.*?>/m,"")
-    # page_source.gsub!(/<\/body>/m,"")
-    # page_source.gsub!(/<\/template>/m,"")
-    page_source
-  end
+
 
   def fetch_css_style
     css = ""
@@ -268,6 +253,7 @@ class HtmlAnalysis
 end
 
 if __FILE__==$0
+
 
   #s =  HtmlAnalysis.instance.page_source
 
