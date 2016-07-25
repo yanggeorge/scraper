@@ -164,7 +164,7 @@ app.directive('markerContainer', ['$window','$q','$timeout', function($window,$q
             var ele = element.find(".scroller");
             ele.bind('mousemove',function(e){
                 var point = {x: e.pageX - ele.scrollLeft() , y: e.pageY - ele.scrollTop() };
-                scope.$emit("trigger",point);
+                scope.$emit("trigger_mousemove",point);
             });
             ele.bind('mousedown',function(e){
                 if(is_left_click(e)) {
@@ -195,11 +195,13 @@ app.directive('markerContainer', ['$window','$q','$timeout', function($window,$q
                 scope.selected_div.forEach(function (e) {
                     e.remove()
                 });
+                scope.selected_div = [];
             }
             function clean_list() {
                 scope.list_div.forEach(function (e) {
                     e.remove()
                 });
+                scope.list_div = [];
             }
 
             element.bind('mouseout',function(e){
@@ -208,7 +210,7 @@ app.directive('markerContainer', ['$window','$q','$timeout', function($window,$q
 
 
             scope.$on("create_div",function(evt,obj){
-                console.log(obj);
+                //console.log(obj);
                 var div = jQuery('<div></div>');
                 div.width(obj.width);
                 div.height(obj.height);
@@ -237,6 +239,17 @@ app.directive('markerContainer', ['$window','$q','$timeout', function($window,$q
                 ele.append(div);
                 scope.selected_div.push(div);
             });
+
+            scope.$on("reposition_created_div",function(evt,ele_list){
+                console.log("reposition", scope.selected_div.length);
+                scope.selected_div.forEach(function(created_div,i){
+                    var ele = jQuery(ele_list[i]);
+                    var new_offset = ele.offset();
+                    console.log(new_offset);
+                    created_div.css('top',new_offset.top);
+                    created_div.css('left',new_offset.left);
+                });
+            });
         }
     }}]);
 app.directive('inner', ['$window', function($window){
@@ -260,7 +273,9 @@ app.directive('inner', ['$window', function($window){
                 true
             );
             w.bind('resize', function () {//监听window的resize事件。并重新检验与父窗口的高和宽。
+                console.log("resize ....");
                 scope.$apply();
+                scope.$emit("window_resize");
             });
         }
     }}]);
@@ -286,6 +301,7 @@ app.directive('iframeOnload',  ['$window', function($window){
                         var width = document.getElementById("modified_page").contentWindow.document.body.scrollWidth;
                         console.log("window resize ",height,width);
                         scope.$emit("iframe_resize",{height:height,width:width});
+
                     }, 250);
                 });
             });
@@ -308,11 +324,11 @@ app.controller('MarkerCtrl', function($scope){
     });
 
     $scope.tmp_ele = jQuery("<div></div>");
-    $scope.$on("trigger",function(evt,point){
-        console.log(point);
+    $scope.$on("trigger_mousemove",function(evt,point){
+        //console.log(point);
         var doc = document.getElementById("modified_page").contentWindow.document;
         var ele = doc.elementFromPoint(point.x, point.y);
-        console.log(ele);
+        //console.log(ele);
         if ( $scope.tmp_ele !== ele){
             //console.log(ele);
             $scope.tmp_ele = ele;
@@ -323,14 +339,15 @@ app.controller('MarkerCtrl', function($scope){
             $scope.$broadcast("create_div",obj);
         }
     });
-    $scope.selected_ele = jQuery("<div></div>");
+    $scope.selected_ele_list = [];
     $scope.$on("trigger_selected",function(evt,point){
         var doc = document.getElementById("modified_page").contentWindow.document;
         var ele = doc.elementFromPoint(point.x, point.y);
         console.log(ele);
 
         //console.log(ele);
-        $scope.selected_ele = ele;
+        $scope.selected_ele_list = [];
+        $scope.selected_ele_list.push(ele);
         var offset = jQuery(ele).offset();
         //console.log(offset);
         var obj = {width: jQuery(ele).outerWidth(), height : jQuery(ele).outerHeight(),
@@ -338,6 +355,10 @@ app.controller('MarkerCtrl', function($scope){
         $scope.$broadcast("selected_div",obj);
         $scope.$emit("decide_sidepane",ele);
 
+    });
+    $scope.$on("window_resize",function(evt){
+        //iframe中的元素的offset已经发生改变。
+        $scope.$broadcast("reposition_created_div",$scope.selected_ele_list);
     });
 });
 
@@ -499,7 +520,10 @@ app.controller('MainCtrl', function($scope, $http, $q, kcSleep, $timeout){
         window.sidepane_state = 0; // 0 : 关闭 ,1 : 270px, 2: 520px
         window.sidepane2_state = 0;
         size();
-        $scope.player.stepForward();
+        setTimeout(function(){
+            $scope.player.stepForward();//angular scope need time to initialize.
+        },300);
+
     });
 
     $scope.get_visit_url = function(){
