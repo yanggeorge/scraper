@@ -83,11 +83,11 @@ div {
   right: 0;
   top: 0;
   height: 100%;
-  z-index: 3;
+  z-index: 4;
   background-color: #F6F6F6;
-  -moz-box-shadow: 5px 0 6px 0 rgba(0, 0, 0, .3);
-  -webkit-box-shadow: 5px 0 6px 0 rgba(0, 0, 0, .3);
-  box-shadow: 5px 0 6px 0 rgba(0, 0, 0, .3);
+  -moz-box-shadow: -5px 0 6px 0 rgba(0, 0, 0, .3);
+  -webkit-box-shadow: -5px 0 6px 0 rgba(0, 0, 0, .3);
+  box-shadow: -5px 0 6px 0 rgba(0, 0, 0, .3);
 }
 
 h3 {
