@@ -51,7 +51,7 @@ class Player
     @next = @play_steps[1]
     @first = @play_steps[0]
     for id in Object.keys(robot.outputs)
-      @outputs[id] = ""
+      @outputs[id] = robot.outputs[id]
 
 
   #当robot更新的时候，需要刷新player
@@ -115,9 +115,9 @@ class Player
 
       @next = @play_steps[@play_step_ids.indexOf(@current.step.id) + 1]
       if @current.step.id != @play_steps[(@play_step_ids.length) - 1].step.id
-        @is_end = false
+        #@is_end = false   #无法通过current来判断是否end，因为当end的时候，current指向最后一个节点。
       else
-        @is_end = true
+        #@is_end = true
         @next = null
 
 

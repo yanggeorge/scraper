@@ -72,6 +72,7 @@
         <div id="p3" class="p3-4 main tab-pane">
           <div class="tab-buttons">
             <a class="button active" tab-id="steps">Steps<i class="fa fa-chevron-down collapsed"></i></a>
+            <a class="button " tab-id="Outputs">Outputs<i class="fa fa-chevron-down collapsed"></i></a>
             <a class="button " tab-id="Results">Results<i class="fa fa-chevron-down collapsed"></i></a>
             <a class="button " tab-id="new">new<i class="fa fa-chevron-down collapsed"></i></a>
 
@@ -142,6 +143,57 @@
 
             </div>
           </div>
+
+
+          <div class="tab-page fill padded " ng-controller="OutputsCtrl">
+            <!-- Outputs -->
+            <form ng-controller="fieldsCtrl" class="robot-field-list label-above ng-pristine ng-valid ng-scope ng-valid-fieldisuniquevalue ng-valid-required ng-valid-pattern">
+              <div ng-repeat="field in outputFields" class="robot-field form-row-line ng-scope" ng-controller="fieldCtrl">
+                <div class="actions">
+                  <a href="javascript:;" class="button mini danger" ng-click="remove(outputFields, field)">
+                    <i class="fa fa-times"></i>
+                  </a>
+                  <a ng-hide="$first" href="javascript:;" class="button mini ng-hide" ng-click="move(outputFields, field, -1)">
+                    <i class="fa fa-arrow-up"></i>
+                  </a>
+                  <a ng-hide="$last" href="javascript:;" class="button mini" ng-click="move(outputFields, field, 1)">
+                    <i class="fa fa-arrow-down"></i>
+                  </a>
+                </div>
+
+                <div class="form-row" label="Field name"><label class="field-label">Field name:</label>
+                  <input  ng-pattern="'[a-zA-Z_][a-zA-Z 0-9-_]*'" ng-model-options="{allowInvalid:false}" ng-blur="checkForChange()" required="true" name="fieldId" type="text" ng-model="field.id" placeholder="Field #1" class="ng-pristine ng-untouched ng-valid ng-valid-fieldisuniquevalue ng-valid-required ng-valid-pattern">
+                  <div class="help" title="Must start with a letter or underscore and only contain letters, numbers, spaces, dashes (-) and underscores (_) after the first letter">
+                    Must match: [a-zA-Z_][a-zA-Z 0-9-_]*
+                  </div>
+                  <div class="error" style="display: none;"></div></div>
+
+                <div class="form-row" label="Field type"><label class="field-label">Field type:</label>
+                  <select required="true" ng-model="field.type" name="fieldType" ng-options="type as name for (type,name) in fieldTypes" class="ng-pristine ng-untouched ng-valid ng-valid-required"><option value="" class="t">Select field type...</option><option value="boolean" label="True / False">True / False</option><option value="number" selected="selected" label="Number">Number</option><option value="string" label="Text">Text</option></select>
+                  <div class="error" style="display: none;"></div></div>
+
+                <div   class="form-row ng-scope" label="Default value" help="This value will be used if no valid value is provided.">
+                  <label class="field-label">Default value:</label>
+                  <input  name="defaultValue" auto-field="field" ng-model="field.defaultValue" class="ng-pristine ng-untouched ng-valid auto" style="display: none;">
+                  <input ng-if="!is_boolean(field.type)" type="{{field.type}}" ng-model="field.default_value" style="" class="auto ng-pristine ng-untouched ng-valid ng-scope">
+                  <div ng-if="is_boolean(field.type)" style="display:inline-block" class="ng-scope">
+                    <label style="width:auto; margin-right:10px;"><input type="radio" value="true" ng-model="field.default_value" style="" class="auto ng-pristine ng-untouched ng-valid" name="548"> True</label>
+                    <label style="width:auto;"><input type="radio" value="false" checked="checked" ng-model="field.default_value" style="" class="auto ng-pristine ng-untouched ng-valid" name="549"> False</label>
+                  </div>
+                  <div class="help">This value will be used if no valid value is provided.</div>
+                  <div class="error" style="display: none;"></div>
+                </div>
+
+              </div>
+            </form>
+            <a class="button secondary" href="javascript:;" ng-click="addOutputField()">
+              <i class="fa fa-plus"></i>
+              Add field
+            </a>
+          </div>
+
+
+
           <div class="tab-page fill padded " ng-controller="resultsCtrl">
             results
           </div>

@@ -605,11 +605,7 @@ a, body, h4, h5, h6, input {
   margin-top: 8px
 }
 
-.form-row {
-  margin-bottom: 11px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
+
 .accordion, .form-row {
   position: relative;
 }
@@ -1033,4 +1029,114 @@ button, input, select, textarea {
   box-shadow: 0 0 10px rgba(0,0,0,.8);
   position: absolute;
   z-index: 1;
+}
+blockquote, body, code, dd, div, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, html, input, legend, li, menu, ol, p, pre, td, textarea, th, ul {
+  padding: 0;
+  margin: 0;
+}
+.tab-pane>.tab-page>form {
+  margin-top: 0!important;
+  padding-top: 10px;
+}
+.robot-field-list .robot-field {
+  border-bottom: 1px solid #E4E7EA;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+.form-row-line {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-flex-direction: row;
+  -moz-box-flex-direction: row;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+ .robot-field-list .robot-field>.actions {
+  width: 90px;
+  vertical-align: middle;
+}
+
+ .robot-field-list .robot-field .form-row, .robot-field-list .robot-field>.actions {
+  -webkit-box-flex-grow: 0;
+  -moz-box-flex-grow: 0;
+  -webkit-flex-grow: 0;
+  -ms-flex-grow: 0;
+  flex-grow: 0;
+  margin: 0;
+}
+.form-row-line>* {
+  -webkit-box-flex-grow: 1;
+  -moz-box-flex-grow: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-grow: 1;
+  flex-grow: 1;
+  box-sizing: border-box;
+  padding-right: 15px;
+}
+.form-row {
+  margin-bottom: 11px;
+}
+.accordion, .form-row {
+  position: relative;
+}
+.padded {
+  box-sizing: border-box;
+  padding: 10px!important;
+}
+.form-row > .field-label {
+  width: auto;
+  display: block;
+  text-align: left;
+  padding: 0;
+  font-size: 12px;
+  font-weight: 500;
+}
+.form-row > .field-label {
+  width: auto;
+  display: block;
+  text-align: left;
+  padding: 0;
+  font-size: 12px;
+  font-weight: 500;
+}
+input, select {
+  padding: 2px 5px;
+  box-sizing: border-box;
+}
+input, select, textarea {
+  border: 1px solid #E4E7EA;
+}
+.input, input, select, textarea {
+  width: 240px;
+}
+button, input, select, textarea {
+  font: 99% arial,helvetica,clean,sans-serif;
+}
+a, body, h4, h5, h6, input {
+  font-family: Lato,"Helvetica Neue Light","Helvetica Neue",Verdana;
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 400;
+}
+
+label {
+  cursor: default;
+}
+ .robot-field-list input[type=number], .robot-field-list input[type=text],  .robot-field-list select,  .robot-field-list textarea {
+  width: 240px;
+}
+
+input.ng-invalid:not(.ng-pristine), select.ng-invalid:not(.ng-pristine), textarea.ng-invalid:not(.ng-pristine) {
+  background-color: #fee;
+  border-color: #f28f8c;
+}
+input.button, input.checkbox, input.radio, input.submit, input[type=button], input[type=checkbox], input[type=radio], input[type=submit] {
+  width: auto;
+  padding: inherit;
+  border: 0;
 }

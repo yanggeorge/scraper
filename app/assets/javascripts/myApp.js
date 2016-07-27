@@ -758,7 +758,10 @@ app.controller('MainCtrl', function($scope, $http, $q, kcSleep, $timeout){
 
         if(this.is_end == true){
             console.log("this is end.");
-            return;
+            var defer = $q.defer();
+            var promise = defer.promise;
+            defer.resolve("this is end.");
+            return promise;
         }
         console.log(this.current.pre);
         console.log(this.current.step);
@@ -988,6 +991,76 @@ var compute_node_position = function(nodes) {
 
 app.controller('resultsCtrl',function($scope){
 
+});
+app.controller('fieldsCtrl',function($scope){
+
+});
+app.controller('fieldCtrl',function($scope){
+
+});
+app.directive("csValidate", ["$parse", function (a) {
+    return {
+        restrict: "A", require: "ngModel", link: function (b, c, d, f) {
+            function g(a) {
+                try {
+                    return h(b, {$value: a})
+                } catch (c) {
+                    console.warn("Validator threw exception: ", c.stack || c)
+                }
+                return !1
+            }
+
+            var h = a(d.csValidate), i = d.csValidate.replace(/[^a-z0-9]+/gi, "").toLowerCase(), j = function (a) {
+                return g(a) ? f.$setValidity(i, !0) : f.$setValidity(i, !1), a
+            };
+            f.$parsers.unshift(j), f.$setValidity(i, !0), b.$on("$destroy", function () {
+                _.pull(f.$parsers, j)
+            })
+        }
+    }
+}]);
+app.controller('OutputsCtrl',function($scope){
+    $scope.fieldTypes = {string:'Text',number:'Number',boolean:'True / False'};
+
+    $scope.fieldIsUnique = function(field_name){
+        var flag = true;
+        _.forEach($scope.robot.outputs, function(n,key){
+           if (field_name == key ){
+               flag = false;
+           }
+        });
+        return flag
+    };
+
+    var field1 = ym.rpa.Output.from_hash({defaultValue: null,
+        title: "asbc",
+        type: "string",
+        options: [],
+        id: "asbc"
+    });
+
+
+    $scope.outputFields = [field1];
+    $scope.is_boolean = function(type){
+        return  type == 'boolean';
+    };
+    $scope.checkForChange = function(){
+        $scope.robot.outputs={};
+        _.forEach($scope.outputFields,function(ele){
+            $scope.robot.outputs[ele.id] = ele;
+        });
+    };
+    $scope.move = function(list, item, n){
+        var d = _.indexOf(list, item);
+        _.remove(list, item), list.splice(d + n, 0, item)
+    };
+    $scope.remove = function(list,item){
+        _.remove(list,item);
+    };
+    $scope.addOutputField = function(){
+        var field = new ym.rpa.Output("");
+        $scope.outputFields.push(field);
+    };
 });
 
 

@@ -331,7 +331,7 @@ class Output
     @title = ""
     @type = type
     @options = []
-    @default_value = ""
+    @default_value = null
 
   @from_hash : (hash) ->
     output = new Output(hash["id"])
@@ -362,6 +362,7 @@ class Output
       s += indent + INDENT+ "]\n"
     s += indent + "}"
     s
+
 ############### 以下为 测试 ################3
 test = ->
   console.log("test....")
@@ -447,7 +448,7 @@ namespace = (target, name, block) ->
 namespace "ym.rpa", (exports) ->
   exports.Robot = Robot
   exports.Step = Step
-  exports.Ouput = Output
+  exports.Output = Output
   exports.ACTION_VISIT = ACTION_VISIT
   exports.ACTION_EXTRACT = ACTION_EXTRACT
   exports.ACTION_CLICK = ACTION_CLICK
