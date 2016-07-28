@@ -271,7 +271,7 @@ a, body, h4, h5, h6, input {
   height: 100%;
   width: 1096px;
   top: 0;
-  box-shadow:  0 -3px 5px 0 rgba(0,0,0,.3);
+  box-shadow: 5px 0 6px 0 rgba(0,0,0,.3);
   background-color: #eee;
   overflow: auto;
 
@@ -695,7 +695,7 @@ button, input, select, textarea {
   padding: 0 5px;
 }
 
-.editor-container .devtools .step-form .form-buttons, .editor-container .devtools .step-form .form-row {
+ .step-form .form-buttons,  .step-form .form-row {
   padding-left: 15px;
   padding-right: 15px;
 }

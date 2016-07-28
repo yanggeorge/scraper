@@ -575,10 +575,12 @@ app.controller('MainCtrl', function($scope, $http, $q, kcSleep, $timeout){
 
     var menu1 = {'name':'Extract from element', 'invoke':function(){
         $scope.sidePaneView1 = 'fields.html';
+        toggle_sidepane1_state(2);
     } };
     $scope.contextMenu1 = [menu1];
     var menu2 = {'name':'Extract from element', 'invoke':function(){
         $scope.sidePaneView2 = 'fields.html';
+        toggle_sidepane1_state(2);
     } };
     $scope.contextMenu2 = [menu2];
 
