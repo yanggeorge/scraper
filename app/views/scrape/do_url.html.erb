@@ -27,7 +27,7 @@
         <div id="p2" class="p3-1 sidepane">
           <div class="content">
             <h3>
-              <span>1 element selected</span>
+              <span ng-bind="sidepane1_title"></span>
 
               <div class="actions">
                 <a href="javascript:;" ng-click="closeSidePane1()" class="button mini">
@@ -35,7 +35,7 @@
                 </a>
               </div>
             </h3>
-            <div class="body" ng-include="sidePaneView1">
+            <div class="body" ng-include="sidepane1_view">
 
             </div>
           </div>

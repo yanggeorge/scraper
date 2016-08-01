@@ -14,6 +14,23 @@ app.factory("kcSleep",function($timeout){
         };
     };
 });
+app.factory("getXpath",function(){
+    return function(element) {
+        console.log("in getXpath service:", element);
+        var xpath = '';
+        for ( ; element && element.nodeType == 1; element = element.parentNode )
+        {
+            var id = jQuery(element.parentNode).children(element.tagName).index(element) + 1;
+            id >= 1 ? (id = '[' + id + ']') : (id = '');
+            xpath = '/' + element.tagName.toLowerCase() + id + xpath;
+        }
+        console.log(xpath);
+        parts = xpath.split("/");
+        parts.shift() ; // 弹出 html
+        xpath = "//" + parts.join("/") ;  // 使用相对路径
+        return xpath;
+    };
+});
 
 
 app.directive("title",function(){
@@ -442,7 +459,7 @@ var refresh_robot = function($scope){
         case "0": // EXTRACT
         {
             step.tags[0] =$scope.stepData.tag ;
-            step.value = $scope.stepData.output ;
+            step.field = $scope.stepData.output ;
             step.action = ym.rpa.ACTION_EXTRACT ;
             break;
         }
@@ -493,7 +510,7 @@ var set_stepData = function($scope, node){
         case ym.rpa.ACTION_EXTRACT:
         {
             stepData.tag = step.tags[0];
-            stepData.output = step.value;
+            stepData.output = step.field;
             stepData.type = "0";
             $scope.has_tag = true;
             $scope.has_output = true;
@@ -515,7 +532,7 @@ var set_stepData = function($scope, node){
         }
     }
 };
-app.controller('MainCtrl', function($scope, $http, $q, kcSleep, $timeout){
+app.controller('MainCtrl', function($scope, $http, $q, getXpath, $timeout){
     angular.element(document).ready(function () {
         window.sidepane_state = 0; // 0 : 关闭 ,1 : 270px, 2: 520px
         window.sidepane2_state = 0;
@@ -596,6 +613,7 @@ app.controller('MainCtrl', function($scope, $http, $q, kcSleep, $timeout){
         $scope.svg_width = compute_svg_width($scope.svgs);
         $scope.player.fresh_with($scope.robot);
         $scope.render_color_before_current_play();
+        $scope.$broadcast("robot_change");
     }, true);
     $scope.render_color_before_current_play = function(){
         var current_id = $scope.player.current.step.id;
@@ -705,9 +723,36 @@ app.controller('MainCtrl', function($scope, $http, $q, kcSleep, $timeout){
 
     });
     $scope.$on("decide_sidepane",function(e,element){
+        var extract_xpath = $scope.getXpath_from_element(element);
+        console.log(extract_xpath);
+        $scope.extract_xpath = extract_xpath;
+        $scope.sidepane1_title = $scope.get_title_from_element(element);
+        $scope.sidepane1_view = 'contextmenu1.html';
+        $scope.contextMenu1 = $scope.get_contextmenu1(element);
         toggle_sidepane1_state(1);
         $scope.$apply();
     });
+    $scope.getXpath_from_element = function(element){
+        //计算element的xpath
+        return getXpath(element);
+    };
+    $scope.get_title_from_element = function(element){
+        return "1 element selected";
+    };
+    $scope.get_contextmenu1 = function(element) {
+        var menus = [];
+        var menu1 = {'name':'Extract from element', 'invoke':function(){
+            $scope.sidepane1_title = 'Configure step';
+            $scope.sidepane1_view = 'sidepane1_configure.html';
+            toggle_sidepane1_state(2);
+        } };
+        var menu2 = {'name':'Click element', 'invoke':function(){
+            // robot 增加一个step
+            toggle_sidepane1_state(0);
+        } };
+        menus.push(menu1,menu2);
+        return menus;
+    };
 
     var player = new ym.rpa.Player($scope.robot);
     player.stepForward = function(){
@@ -920,6 +965,8 @@ var init_robot = function() {
     //robot.outputs[output.id] = output;
     //robot.first_step = step1.id;
     var robot = ym.rpa.Robot.from_json_string(window.ym.robot_string);
+    var output = new ym.rpa.Output("test");
+    robot.outputs[output.id] = output;
     return robot;
 };
 
@@ -1041,8 +1088,18 @@ app.controller('OutputsCtrl',function($scope){
         id: "asbc"
     });
 
+    var init_outputFields = function(){
+        var list = [];
+        _.forEach($scope.robot.outputs,function(value,key){
+            list.push(value);
+        });
+        return list;
+    };
+    $scope.outputFields = init_outputFields() ;
+    $scope.$on("robot_change",function(evt){
+        $scope.outputFields = init_outputFields() ;
+    });
 
-    $scope.outputFields = [field1];
     $scope.is_boolean = function(type){
         return  type == 'boolean';
     };
@@ -1065,5 +1122,53 @@ app.controller('OutputsCtrl',function($scope){
     };
 });
 
+app.controller('fieldElementsCtrl',function($scope){
+    $scope.get_outputs = function(){
+        var steps = [];
+        var step = new ym.rpa.Step(ym.rpa.ACTION_EXTRACT);
+        step.tags.push($scope.extract_xpath);
 
+        steps.push(step);
+        return steps;
+    };
+    $scope.fieldSteps = $scope.get_outputs();
+
+
+
+    $scope.save = function(event){
+        var current_step = $scope.robot.steps[$scope.player.current.step.id];
+        if($scope.player.is_end) {
+            $scope.robot.add_step_after($scope.fieldSteps[0], current_step);
+        }else{
+            $scope.robot.add_step_before($scope.fieldSteps[0], current_step);
+        }
+        $scope.$broadcast("save_extract_field");
+        toggle_sidepane1_state(0);
+    };
+});
+
+app.controller('fieldCtrl',function($scope){
+    $scope.addField = false;
+    $scope.fieldTypes = {string:'Text',number:'Number',boolean:'True / False'};
+
+    $scope.fieldDef = new ym.rpa.Output("");
+    $scope.fields = (function(){
+        var map = {};
+        _.forEach($scope.robot.outputs,function(value,key){
+            map[key] = value.id;
+        });
+        return map;
+    })();
+
+    $scope.$on("save_extract_field",function(e){
+
+        if($scope.addField){
+            console.log($scope.fieldDef);
+            $scope.step.field = $scope.fieldDef.id;
+            $scope.robot.outputs[$scope.fieldDef.id]=$scope.fieldDef;
+        }else{
+
+        }
+    });
+});
 

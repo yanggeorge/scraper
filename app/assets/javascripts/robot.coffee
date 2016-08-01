@@ -196,6 +196,7 @@ class Step
   id: ""
   action: ""
   title : ""
+  field : ""
   value : ""
   tags : []
   next : []
@@ -206,6 +207,7 @@ class Step
     step = new Step(hash["action"])
     step.id = hash["id"]
     step.title = hash["title"]
+    step.field = hash["field"]
     step.value = hash["value"]
     step.tags = hash["tags"]
     step.next = hash["next"]
@@ -220,6 +222,7 @@ class Step
     else
       @action = ACTION_VISIT
     @title = @init_title(@action)
+    @field = ""
     @value = ""
     @tags = []
     @next = []
@@ -244,6 +247,7 @@ class Step
     s += indent + @id_to_s() + ",\n"
     s += indent + @action_to_s() + ",\n"
     s += indent + @title_to_s() + ",\n"
+    s += indent + @field_to_s() + ",\n"
     s += indent + @value_to_s() + ",\n"
     s += indent + @tags_to_s(indent + INDENT) + ",\n"
     s += indent + @next_to_s(indent + INDENT) + ",\n"
@@ -258,6 +262,9 @@ class Step
 
   title_to_s : ->
     "\"title\":\"#{@title}\""
+
+  field_to_s : ->
+    "\"field\":\"#{@field}\""
 
   next_to_s : (indent = INDENT) ->
     s = ""
@@ -454,6 +461,6 @@ namespace "ym.rpa", (exports) ->
   exports.ACTION_CLICK = ACTION_CLICK
   exports.ACTION_FLUSH = ACTION_FLUSH
   exports.ACTION_NOTHING = ACTION_NOTHING
-  #exports.test = test
+  exports.test = test
   #exports.test2 = test2
 

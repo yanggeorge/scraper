@@ -1,0 +1,57 @@
+<form ng-controller="fieldElementsCtrl" class="field-elements label-above ng-pristine ng-scope ng-invalid ng-invalid-required" ng-submit="save($event)">
+    <div class="info">
+        Fill out the form below to add the new steps to your robot.
+    </div>
+
+    <div class="step-row-container ng-scope last" ng-repeat="step in fieldSteps" ng-controller="fieldCtrl" >
+
+        <div class="step-row" >
+
+            <h4 class="ng-binding"># 1</h4>
+
+            <div class="form-row ng-scope" label="" help="Select the output field that this extractor should extract to." ng-if="!addField">
+
+                <select name="stepField" required="true" ng-model="step.field" ng-options="id as id for (id,field) in fields" class="ng-pristine ng-untouched ng-invalid ng-invalid-required">
+                    <option value="" class="t">Select field...</option>
+                </select>
+
+                <a class="button primary mini" ng-click="$parent.addField = true" title="Add new field">
+                    <i class="fa fa-plus"></i>
+                </a>
+                <div class="help">Select the output field that this extractor should extract to.</div><div class="error" style="display: none;"></div></div><!-- end ngIf: !addField -->
+
+            <!-- ngIf: addField -->
+            <div class="form-row-line ng-scope" ng-if="addField">
+                <div class="form-row" label="New field name"><label class="field-label">New field name:</label>
+
+                    <input  ng-pattern="'[a-zA-Z_][a-zA-Z 0-9-_]*'" ng-model-options="{allowInvalid:true}" required="true" name="fieldDefId" type="text" ng-model="fieldDef.id" class="ng-pristine ng-untouched ng-valid-fieldisuniquevalue ng-invalid ng-invalid-required ng-valid-pattern">
+                    <div class="help" title="Must start with a letter or underscore and only contain letters, numbers, spaces, dashes (-) and underscores (_) after the first letter">
+                        Must match: [a-zA-Z_][a-zA-Z 0-9-_]*
+                    </div>
+                    <div class="error" style="display: none;"></div></div>
+
+                <div class="form-row" label="New field type"><label class="field-label">New field type:</label>
+
+                    <select required="true" ng-model="fieldDef.type" name="fieldDefType" ng-options="type as name for (type,name) in fieldTypes" class="ng-pristine ng-untouched ng-valid ng-valid-required"><option value="" class="t">Select field type...</option><option value="boolean" label="True / False">True / False</option><option value="enum" label="Multiple-choice">Multiple-choice</option><option value="file" label="File">File</option><option value="image" label="Image">Image</option><option value="number" label="Number">Number</option><option value="string" selected="selected" label="Text">Text</option></select>
+                    <div class="error" style="display: none;"></div></div>
+
+                <div class="form-button">
+                    <a class="button danger mini" ng-click="$parent.addField = false" title="Cancel">
+                        <i class="fa fa-remove"></i>
+                    </a>
+                </div>
+            </div>
+            <!-- ngIf: addField && fieldDef.type == 'enum' -->
+
+            <!-- ngIf: addField && isInput && fieldDef.type -->
+
+        </div>
+
+    </div><!-- end ngRepeat: step in fieldSteps -->
+
+
+    <div class="form-buttons">
+        <button type="submit" class="button primary">Ok</button>
+        <button type="button" class="button warning" ng-click="closeSidePane()">Cancel</button>
+    </div>
+</form>

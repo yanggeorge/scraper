@@ -116,13 +116,14 @@ module RPA
   end
 
   class Step
-    attr_accessor :id, :action, :title, :value, :tags, :next
+    attr_accessor :id, :action, :title, :field, :value, :tags, :next
     attr_accessor :options, :error_message
 
     def initialize(action)
       @id = SecureRandom.uuid
       @action = (ACTIONS.include? action) ? action : ACTION_VISIT
       @title = ""
+      @field = ""
       @value = ""
       @tags = []
       @next = []
@@ -134,6 +135,7 @@ module RPA
       step = Step.new(hash["action"].to_sym)
       step.id = hash["id"]
       step.title = hash["title"]
+      step.field = hash["field"]
       step.value = hash["value"]
       step.tags = hash["tags"]
       step.next = hash["next"]
@@ -148,6 +150,7 @@ module RPA
       s += indent + id_to_s + ",\n"
       s += indent + action_to_s + ",\n"
       s += indent + title_to_s + ",\n"
+      s += indent + field_to_s + ",\n"
       s += indent + value_to_s + ",\n"
       s += indent + tags_to_s(indent + INDENT) + ",\n"
       s += indent + next_to_s(indent + INDENT) + ",\n"
@@ -159,6 +162,10 @@ module RPA
 
     def action_to_s
       %Q("action":"#{@action}")
+    end
+
+    def field_to_s
+      %Q("field":"#{@fie}")
     end
 
     def title_to_s

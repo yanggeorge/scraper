@@ -253,10 +253,10 @@ window.ym.mos = (function () {
         }
 
         parts = xpath.split("/");
-        parts.shift()  // 弹出 template
-        parts.shift()  // 弹出 body
-        parts.shift()  //  弹出 div[]
-        xpath = "//" + parts.join("/")   // 使用相对路径
+        parts.shift() ; // 弹出 template
+        parts.shift() ; // 弹出 body
+        parts.shift();  //  弹出 div[]
+        xpath = "//" + parts.join("/") ;  // 使用相对路径
         return xpath;
     }
 
@@ -297,7 +297,7 @@ window.ym.mos = (function () {
     return {
         SetupDOMSelection : SetupDOMSelection,
         CleanupDOMSelection : CleanupDOMSelection,
-        SetCallback :SetCallback
+        SetCallback :SetCallback,
     }
 
 })();

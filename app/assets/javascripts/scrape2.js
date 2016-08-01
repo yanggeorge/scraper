@@ -56,10 +56,10 @@ var toggle = function () {
     var state = window.sidepane_state;
     if (state == 0) {
         window.sidepane_state = 1;
-        toggle_state(1,"#p1", "#p2");
+        toggle_state(1,"#p1", "#p2",1);
     } else {
         window.sidepane_state = 0;
-        toggle_state(0,"#p1", "#p2");
+        toggle_state(0,"#p1", "#p2",1);
     }
 };
 
@@ -67,10 +67,10 @@ var toggle_sidepane2 = function () {
     var state = window.sidepane2_state;
     if (state == 0) {
         window.sidepane2_state = 1;
-        toggle_state(1,"#p3", "#p4");
+        toggle_state(1,"#p3", "#p4", 2);
     } else {
         window.sidepane2_state = 0;
-        toggle_state(0,"#p3", "#p4");
+        toggle_state(0,"#p3", "#p4", 2);
     }
 };
 

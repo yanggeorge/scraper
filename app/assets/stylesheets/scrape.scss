@@ -84,7 +84,7 @@ div {
   top: 0;
   height: 100%;
   z-index: 4;
-  background-color: #F6F6F6;
+  background-color: rgba(255,255,255,.8);
   -moz-box-shadow: -5px 0 6px 0 rgba(0, 0, 0, .3);
   -webkit-box-shadow: -5px 0 6px 0 rgba(0, 0, 0, .3);
   box-shadow: -5px 0 6px 0 rgba(0, 0, 0, .3);
@@ -258,9 +258,9 @@ a, body, h4, h5, h6, input {
   top: 0;
   height: 100%;
   background-color: #F6F6F6;
-  -moz-box-shadow: 5px 0 6px 0 rgba(0, 0, 0, .3);
-  -webkit-box-shadow: 5px 0 6px 0 rgba(0, 0, 0, .3);
-  box-shadow: 5px 0 6px 0 rgba(0, 0, 0, .3);
+  -moz-box-shadow: 5px -3px 6px 0 rgba(0, 0, 0, .3);
+  -webkit-box-shadow: 5px -3px 6px 0 rgba(0, 0, 0, .3);
+  box-shadow: 5px -3px 6px 0 rgba(0, 0, 0, .3);
   overflow: auto;
 }
 
@@ -271,7 +271,7 @@ a, body, h4, h5, h6, input {
   height: 100%;
   width: 1096px;
   top: 0;
-  box-shadow: 5px 0 6px 0 rgba(0,0,0,.3);
+  box-shadow: 5px -3px 6px 0 rgba(0,0,0,.3);
   background-color: #eee;
   overflow: auto;
 
@@ -1139,4 +1139,33 @@ input.button, input.checkbox, input.radio, input.submit, input[type=button], inp
   width: auto;
   padding: inherit;
   border: 0;
+}
+
+.p3-1 .body .field-elements{
+  padding: 0 15px;
+  overflow: auto;
+}
+
+.p3-1 .body .field-elements .info {
+  padding: 5px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #E4E7EA;
+}
+.p3-1 .body .step-row select {
+  width : auto;
+  vertical-align: middle;
+  height: 30px;
+  border: 1px solid #E4E7EA;
+}
+.p3-1 .body .step-row input {
+  width : auto;
+  vertical-align: middle;
+  height: 30px;
+  border: 1px solid #E4E7EA;
+}
+.p3-1 .body .step-row .form-button {
+  padding-top: 20px;
+}
+.p3-1  .form-buttons {
+  padding-left: 0;
 }
