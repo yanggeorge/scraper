@@ -192,10 +192,30 @@
             </a>
           </div>
 
-
-
           <div class="tab-page fill padded " ng-controller="resultsCtrl">
-            results
+            <div class="box info ng-hide" ng-hide="outputFields.length > 0">
+              You need to add output fields to see a result preview. Add output fields by going to the outputs tab.
+            </div>
+            <div ng-show="outputFields.length > 0" class="">
+              <div>
+                <button class="button" ng-click="player.resetOutput()">Reset results</button>
+
+              </div>
+
+              <!--<div class="box error margin-above ng-binding ng-hide" ng-show="formatterError">Output formatting failed: </div>-->
+
+              <table class="results">
+                <tr>
+                  <th ng-repeat="field in formattedOutput.header track by $index" ng-bind="field" class="ng-binding ng-scope">
+
+                  </th>
+                </tr>
+                <tr ng-repeat="row in formattedOutput.rows track by $index" class="ng-scope">
+                  <td ng-repeat="value in row.data track by $index" ng-bind="value" class="ng-binding ng-scope">
+                  </td>
+                </tr>
+              </table>
+            </div>
           </div>
           <div class="tab-page fill padded ">
             new <br>

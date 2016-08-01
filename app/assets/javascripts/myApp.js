@@ -579,6 +579,32 @@ app.controller('MainCtrl', function($scope, $http, $q, getXpath, $timeout){
         });
         return promise1;
     };
+    $scope.extract_data = function( url, tag){
+        console.log("extract_data");
+        var path = '/scrape/extract_data' ;
+        var ramdom = Math.uuid();
+        $scope.$broadcast("set_data_complete_false");
+        var promise = $http.post(path, {url: url, tag:tag, random : ramdom}, {timeout:50000})
+            .success(function(data, status, headers, config)
+            {
+                // results change
+                console.log(data);
+                return false;
+            })
+            .error(function(data, status, headers, config)
+            {
+                console.log("extract error ...");
+                return false;
+            }
+        );
+        promise.then(function(){
+            $scope.$broadcast("set_data_complete_true");
+        });
+        var promise1 = promise.then(function(){
+           return $timeout(1200); // 与关闭 elm.hide的等待时间相同。
+        });
+        return promise1;
+    };
 
     $scope.closeSidePane1 = function(){
         toggle_sidepane1_state(0);
@@ -831,6 +857,7 @@ app.controller('MainCtrl', function($scope, $http, $q, getXpath, $timeout){
             }
             case ym.rpa.ACTION_EXTRACT :
             {
+                play_promise = this.play_action_extract();
                 break;
             }
             case ym.rpa.ACTION_FLUSH :
@@ -877,6 +904,17 @@ app.controller('MainCtrl', function($scope, $http, $q, getXpath, $timeout){
         console.log(step.to_s());
         var url = step.value;
         var promise = $scope.load_url(url);
+
+        env.url = url;
+        this.current.post_state = env ;
+        return promise;
+    };
+    player.play_action_extract = function(){
+        var env = jQuery.extend(true,{},this.current.pre_state);
+        var step = this.current.step;
+        var field = step.field;
+        var tag = step.tags[0];
+        var promise = $scope.extract_data(env.url, tag);
 
         this.current.post_state = env ;
         return promise;
@@ -1037,10 +1075,6 @@ var compute_node_position = function(nodes) {
 
     return nodes;
 };
-
-app.controller('resultsCtrl',function($scope){
-
-});
 app.controller('fieldsCtrl',function($scope){
 
 });
@@ -1172,3 +1206,31 @@ app.controller('fieldCtrl',function($scope){
     });
 });
 
+app.controller('resultsCtrl',function($scope){
+    var init_outputFields = function(){
+        var list = [];
+        _.forEach($scope.robot.outputs,function(value,key){
+            list.push(value);
+        });
+        return list;
+    };
+    $scope.outputFields = init_outputFields() ;
+
+    var init_formattedOutput = function(){
+        var header = [];
+        var rows = [];
+        var data = [];
+        _.forEach($scope.robot.outputs,function(value,key){
+            header.push(value.id);
+            data.push("");
+        });
+        rows.push({data:data});
+        return {header:header, rows :rows};
+    };
+    $scope.formattedOutput = init_formattedOutput();
+    $scope.$on("robot_change",function(evt){
+        $scope.outputFields = init_outputFields() ;
+        $scope.formattedOutput = init_formattedOutput();
+    });
+
+});

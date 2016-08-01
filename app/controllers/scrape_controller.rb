@@ -26,6 +26,15 @@ class ScrapeController < ApplicationController
     render :json => {:page => @modified_page}
   end
 
+  def extract_data
+    p params
+    url = params[:url]
+    tag = params[:tag]
+    html = NokogiriParse.instance.get_html(url)
+    @data = NokogiriParse.instance.extract(url, tag)
+    render :json => {:data => @data}
+  end
+
   def valid?(url)
     begin
       uri = URI.parse(url)

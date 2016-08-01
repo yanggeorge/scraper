@@ -144,8 +144,7 @@ class NokogiriParse
   end
 
   def extract(url, xpath)
-
-
+    text = WebAnalysis.instance.extract(url, xpath)
   end
 
 end

@@ -1169,3 +1169,33 @@ input.button, input.checkbox, input.radio, input.submit, input[type=button], inp
 .p3-1  .form-buttons {
   padding-left: 0;
 }
+
+.tab-page table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  font: 100%;
+  width: 100%;
+}
+.tab-page table th {
+  border-bottom: 1px solid #E4E7EA;
+  font-weight: 200;
+  font-size: 14px;
+  text-align: left;
+}
+
+.tab-page table td, .tab-page table  th {
+  display: table-cell;
+  vertical-align: inherit;
+  padding: 5px;
+  box-sizing: border-box;
+}
+table .results  tr {
+  display: table-row;
+  vertical-align: inherit;
+  border-color: inherit;
+}
+.tab-page table td {
+  height: 38px;
+  border-bottom: 1px solid #EFEFEF;
+  border-left: 1px solid #EFEFEF;
+}
