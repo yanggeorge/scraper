@@ -11,10 +11,20 @@ class ScrapeController < ApplicationController
     @url = params[:url].strip
     @robot_name = params[:robot_name].strip
 
-    new_robot = RPA::RobotService.instance.get_new_robot(@robot_name, @url)
-    @robot_string = new_robot.to_one_line
-    puts @robot_string
-    return @robot_string
+    robot_data = RobotDataBase.find_by_robot_name(@robot_name)
+    p
+    if robot_data.nil?
+      new_robot = RPA::RobotService.instance.get_new_robot(@robot_name, @url)
+      @robot_string = new_robot.to_one_line
+      puts @robot_string
+      return @robot_string
+    else
+      @robot_string = robot_data.robot_def
+      robot = RPA::Robot.from_json_string(@robot_string)
+      puts robot.to_s
+      RPA::RobotService.instance.register(robot)
+      return @robot_string
+    end
   end
 
   def get_page
@@ -33,6 +43,39 @@ class ScrapeController < ApplicationController
     html = NokogiriParse.instance.get_html(url)
     @data = NokogiriParse.instance.extract(url, tag)
     render :json => {:result => @data}
+  end
+
+  def save_robot
+    p params
+    @status = "true"
+    robot_string = params[:robot_string]
+    robot =  RPA::Robot.from_json_string(robot_string)
+    RPA::RobotService.instance.register(robot)
+    begin
+      robot_data = RobotDataBase.find_by_robot_id(robot.id)
+      if robot_data == NIL
+        robot_data = RobotDataBase.new
+        robot_data.robot_id = robot.id
+        robot_data.robot_name = robot.name
+        robot_data.deleted = robot.deleted
+        robot_data.robot_def = robot.to_one_line
+      else
+        robot_data.robot_name = robot.name
+        robot_data.deleted = robot.deleted
+        robot_data.robot_def = robot.to_one_line
+      end
+      p robot_data
+      robot_data.save!
+    rescue
+      puts "!!!!!!!!!! 保存出错 !!!!!!!!!!!"
+      puts $!
+      puts $@
+      puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+      @status = "false"
+    end
+
+
+    render :json => {:result => @status}
   end
 
   def valid?(url)

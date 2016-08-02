@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/app/assets/javascripts/myApp.js" line="581" />
-    <bookmark url="file://$PROJECT_DIR$/app/assets/javascripts/myApp.js" line="913" />
+    <bookmark url="file://$PROJECT_DIR$/app/assets/javascripts/myApp.js" line="936" />
+    <bookmark url="file://$PROJECT_DIR$/app/assets/javascripts/myApp.js" line="534" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="658efde4-43d6-49dc-9ff7-88fa044941b2" name="Default" comment="" />
@@ -28,6 +28,7 @@
     <SUITE FILE_PATH="coverage/blog@robot.coverage" NAME="robot Coverage Results" MODIFIED="1470024188520" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/lib" MODULE_NAME="blog" />
     <SUITE FILE_PATH="coverage/blog@db_migrate__3_.coverage" NAME="db:migrate (3) Coverage Results" MODIFIED="1460358320605" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="blog" />
     <SUITE FILE_PATH="coverage/blog@Rails_console__blog.coverage" NAME="Rails console: blog Coverage Results" MODIFIED="1460706953420" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="blog" />
+    <SUITE FILE_PATH="coverage/blog@db_create__blog.coverage" NAME="db:create: blog Coverage Results" MODIFIED="1470125219311" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="blog" />
     <SUITE FILE_PATH="coverage/blog@item.coverage" NAME="item Coverage Results" MODIFIED="1460706758430" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app/models" MODULE_NAME="blog" />
     <SUITE FILE_PATH="coverage/blog@db_rollback__blog.coverage" NAME="db:rollback: blog Coverage Results" MODIFIED="1462262034168" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="blog" />
     <SUITE FILE_PATH="coverage/blog@test_helper.coverage" NAME="test_helper Coverage Results" MODIFIED="1460346503683" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" MODULE_NAME="blog" />
@@ -36,9 +37,9 @@
     <SUITE FILE_PATH="coverage/blog@runner.coverage" NAME="runner Coverage Results" MODIFIED="1460351352131" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="blog" />
     <SUITE FILE_PATH="coverage/blog@bower_install_production_options___blog.coverage" NAME="bower:install:production[options]: blog Coverage Results" MODIFIED="1463395568755" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="blog" />
     <SUITE FILE_PATH="coverage/blog@test__blog.coverage" NAME="test: blog Coverage Results" MODIFIED="1460432410839" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="blog" />
-    <SUITE FILE_PATH="coverage/blog@db_migrate__blog.coverage" NAME="db:migrate: blog Coverage Results" MODIFIED="1462329222013" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="blog" />
+    <SUITE FILE_PATH="coverage/blog@db_migrate__blog.coverage" NAME="db:migrate: blog Coverage Results" MODIFIED="1470127091561" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="blog" />
     <SUITE FILE_PATH="coverage/blog@bower_install_options___blog.coverage" NAME="bower:install[options]: blog Coverage Results" MODIFIED="1463395289486" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="blog" />
-    <SUITE FILE_PATH="coverage/blog@Development__blog.coverage" NAME="Development: blog Coverage Results" MODIFIED="1470117423159" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="blog" />
+    <SUITE FILE_PATH="coverage/blog@Development__blog.coverage" NAME="Development: blog Coverage Results" MODIFIED="1470130814792" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="blog" />
     <SUITE FILE_PATH="coverage/blog@web_analysis.coverage" NAME="web_analysis Coverage Results" MODIFIED="1469427832478" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/lib" MODULE_NAME="blog" />
   </component>
   <component name="CreatePatchCommitExecutor">
@@ -63,27 +64,47 @@
   <component name="FileEditorManager">
     <splitter split-orientation="horizontal" split-proportion="0.38817203">
       <split-first>
-        <splitter split-orientation="vertical" split-proportion="0.3144385">
+        <splitter split-orientation="vertical" split-proportion="0.72192514">
           <split-first>
             <leaf>
-              <file leaf-file-name="myApp.js" pinned="false" current-in-tab="true">
+              <file leaf-file-name="myApp.js" pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/app/assets/javascripts/myApp.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state vertical-scroll-proportion="1.6551725">
-                      <caret line="930" column="49" selection-start-line="930" selection-start-column="49" selection-end-line="930" selection-end-column="49" />
+                    <state vertical-scroll-proportion="0.0">
+                      <caret line="556" column="56" selection-start-line="556" selection-start-column="56" selection-end-line="556" selection-end-column="56" />
                       <folding>
                         <element signature="e#0#43#0" expanded="false" />
-                        <marker date="1470121212786" expanded="true" signature="22624:23426" placeholder="{...}" />
+                        <marker date="1470125014918" expanded="true" signature="23478:24280" placeholder="{...}" />
                       </folding>
                     </state>
                   </provider>
                 </entry>
               </file>
-              <file leaf-file-name="scrape_controller.rb" pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/app/controllers/scrape_controller.rb">
+              <file leaf-file-name="routes.rb" pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/config/routes.rb">
                   <provider selected="true" editor-type-id="text-editor">
                     <state vertical-scroll-proportion="0.0">
-                      <caret line="25" column="45" selection-start-line="25" selection-start-column="45" selection-end-line="25" selection-end-column="45" />
+                      <caret line="15" column="53" selection-start-line="15" selection-start-column="53" selection-end-line="15" selection-end-column="53" />
+                      <folding />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file leaf-file-name="scrape_controller.rb" pinned="false" current-in-tab="true">
+                <entry file="file://$PROJECT_DIR$/app/controllers/scrape_controller.rb">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state vertical-scroll-proportion="0.9314516">
+                      <caret line="27" column="5" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
+                      <folding />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file leaf-file-name="robot_data_base.rb" pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/app/models/robot_data_base.rb">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state vertical-scroll-proportion="0.0">
+                      <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
                       <folding />
                     </state>
                   </provider>
@@ -102,7 +123,7 @@
               <file leaf-file-name="node.coffee" pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/app/assets/javascripts/node.coffee">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state vertical-scroll-proportion="-1.0967742">
+                    <state vertical-scroll-proportion="-0.0">
                       <caret line="31" column="24" selection-start-line="31" selection-start-column="24" selection-end-line="31" selection-end-column="24" />
                       <folding />
                     </state>
@@ -112,8 +133,8 @@
               <file leaf-file-name="robot.coffee" pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/app/assets/javascripts/robot.coffee">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state vertical-scroll-proportion="-2.1290324">
-                      <caret line="135" column="47" selection-start-line="135" selection-start-column="47" selection-end-line="135" selection-end-column="47" />
+                    <state vertical-scroll-proportion="-4.967742">
+                      <caret line="397" column="18" selection-start-line="397" selection-start-column="18" selection-end-line="397" selection-end-column="18" />
                       <folding />
                     </state>
                   </provider>
@@ -122,7 +143,7 @@
               <file leaf-file-name="player.coffee" pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/app/assets/javascripts/player.coffee">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state vertical-scroll-proportion="-2.8387096">
+                    <state vertical-scroll-proportion="0.0">
                       <caret line="109" column="39" selection-start-line="109" selection-start-column="39" selection-end-line="109" selection-end-column="39" />
                       <folding />
                     </state>
@@ -136,7 +157,7 @@
               <file leaf-file-name="scrape.scss" pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/scrape.scss">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state vertical-scroll-proportion="0.0">
+                    <state vertical-scroll-proportion="-0.0">
                       <caret line="1197" column="15" selection-start-line="1197" selection-start-column="15" selection-end-line="1197" selection-end-column="15" />
                       <folding>
                         <marker date="1470046765714" expanded="true" signature="28592:28679" placeholder="{...}" />
@@ -145,15 +166,35 @@
                   </provider>
                 </entry>
               </file>
-              <file leaf-file-name="myApp.js" pinned="false" current-in-tab="true">
+              <file leaf-file-name="myApp.js" pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/app/assets/javascripts/myApp.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state vertical-scroll-proportion="0.8190789">
-                      <caret line="1304" column="13" selection-start-line="1304" selection-start-column="13" selection-end-line="1304" selection-end-column="13" />
+                    <state vertical-scroll-proportion="0.0">
+                      <caret line="1270" column="0" selection-start-line="1270" selection-start-column="0" selection-end-line="1270" selection-end-column="0" />
                       <folding>
                         <element signature="e#0#43#0" expanded="false" />
-                        <marker date="1470121212786" expanded="true" signature="22624:23426" placeholder="{...}" />
+                        <marker date="1470125014918" expanded="true" signature="23478:24280" placeholder="{...}" />
                       </folding>
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file leaf-file-name="20160503075834_create_ouput_results.rb" pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/db/migrate/20160503075834_create_ouput_results.rb">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state vertical-scroll-proportion="0.0">
+                      <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+                      <folding />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file leaf-file-name="ouput_result.rb" pinned="false" current-in-tab="true">
+                <entry file="file://$PROJECT_DIR$/app/models/ouput_result.rb">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state vertical-scroll-proportion="0.50574714">
+                      <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+                      <folding />
                     </state>
                   </provider>
                 </entry>
@@ -163,7 +204,7 @@
         </splitter>
       </split-first>
       <split-second>
-        <splitter split-orientation="vertical" split-proportion="0.42139038">
+        <splitter split-orientation="vertical" split-proportion="0.49304813">
           <split-first>
             <leaf>
               <file leaf-file-name="scrape2.js" pinned="false" current-in-tab="false">
@@ -192,10 +233,10 @@
                 <entry file="file://$PROJECT_DIR$/app/assets/javascripts/myApp.js">
                   <provider selected="true" editor-type-id="text-editor">
                     <state vertical-scroll-proportion="0.0">
-                      <caret line="627" column="8" selection-start-line="627" selection-start-column="8" selection-end-line="627" selection-end-column="8" />
+                      <caret line="650" column="8" selection-start-line="650" selection-start-column="8" selection-end-line="650" selection-end-column="8" />
                       <folding>
                         <element signature="e#0#43#0" expanded="false" />
-                        <marker date="1470121212786" expanded="true" signature="22624:23426" placeholder="{...}" />
+                        <marker date="1470125014918" expanded="true" signature="23478:24280" placeholder="{...}" />
                       </folding>
                     </state>
                   </provider>
@@ -231,16 +272,36 @@
                   </provider>
                 </entry>
               </file>
-              <file leaf-file-name="sidepane1_configure.html" pinned="false" current-in-tab="true">
+              <file leaf-file-name="sidepane1_configure.html" pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/app/assets/javascripts/templates/sidepane1_configure.html">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state vertical-scroll-proportion="0.6">
-                      <caret line="9" column="43" selection-start-line="9" selection-start-column="43" selection-end-line="9" selection-end-column="43" />
+                    <state vertical-scroll-proportion="-7.806452">
+                      <caret line="20" column="36" selection-start-line="20" selection-start-column="36" selection-end-line="20" selection-end-column="36" />
                       <folding>
                         <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#1;n#form#0;n#!!top" expanded="true" />
                         <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#1;n#form#0;n#!!top" expanded="true" />
                         <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#1;n#form#0;n#!!top" expanded="true" />
                       </folding>
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file leaf-file-name="robot_engine.rb" pinned="false" current-in-tab="true">
+                <entry file="file://$PROJECT_DIR$/lib/robot_engine.rb">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state vertical-scroll-proportion="0.43161094">
+                      <caret line="130" column="27" selection-start-line="130" selection-start-column="27" selection-end-line="130" selection-end-column="27" />
+                      <folding />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file leaf-file-name="robot.rb" pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/lib/robot.rb">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state vertical-scroll-proportion="0.0">
+                      <caret line="160" column="7" selection-start-line="160" selection-start-column="7" selection-end-line="160" selection-end-column="7" />
+                      <folding />
                     </state>
                   </provider>
                 </entry>
@@ -252,8 +313,8 @@
               <file leaf-file-name="do_url.html.erb" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/app/views/scrape/do_url.html.erb">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state vertical-scroll-proportion="0.4465409">
-                      <caret line="202" column="20" selection-start-line="202" selection-start-column="20" selection-end-line="202" selection-end-column="20" />
+                    <state vertical-scroll-proportion="0.13928571">
+                      <caret line="75" column="8" selection-start-line="75" selection-start-column="8" selection-end-line="75" selection-end-column="8" />
                       <folding />
                     </state>
                   </provider>
@@ -284,12 +345,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/controllers/item_controller.rb" />
-        <option value="$PROJECT_DIR$/app/views/item/show.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/item/index.html.erb" />
         <option value="$PROJECT_DIR$/app/models/item.rb" />
         <option value="$PROJECT_DIR$/app/models/robot_db.rb" />
-        <option value="$PROJECT_DIR$/db/migrate/20160427083521_create_robot_data_base.rb" />
         <option value="$PROJECT_DIR$/app/controllers/home_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/home/index.html.erb" />
         <option value="$PROJECT_DIR$/app/models/output.rb" />
@@ -317,7 +374,6 @@
         <option value="$PROJECT_DIR$/app/assets/javascripts/templates/edit_node.html" />
         <option value="$PROJECT_DIR$/app/views/index/index.html.erb" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/scrape.coffee" />
-        <option value="$PROJECT_DIR$/lib/robot_engine.rb" />
         <option value="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
         <option value="$PROJECT_DIR$/config/initializers/assets.rb" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/play_step.coffee" />
@@ -326,15 +382,20 @@
         <option value="$PROJECT_DIR$/app/assets/javascripts/scrape2.js" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/templates/sidepane1_configure.html" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/mouse_over_ele_select.js" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/robot.coffee" />
         <option value="$PROJECT_DIR$/lib/robot.rb" />
-        <option value="$PROJECT_DIR$/config/routes.rb" />
         <option value="$PROJECT_DIR$/lib/nokogiri_parse.rb" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/scrape.scss" />
-        <option value="$PROJECT_DIR$/app/controllers/scrape_controller.rb" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/player.coffee" />
         <option value="$PROJECT_DIR$/app/views/scrape/do_url.html.erb" />
+        <option value="$PROJECT_DIR$/config/routes.rb" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/robot.coffee" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/myApp.js" />
+        <option value="$PROJECT_DIR$/db/migrate/20160427083521_create_robot_data_base.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20160802080857_create_robot_data.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20160802082148_create_robot_data_bases.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20160802083712_create_robot_data_bases.rb" />
+        <option value="$PROJECT_DIR$/lib/robot_engine.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/scrape_controller.rb" />
       </list>
     </option>
   </component>
@@ -385,7 +446,6 @@
     </navigator>
     <panes>
       <pane id="RailsProjectView" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -428,7 +488,57 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="db" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="blog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scraper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="db" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="migrate" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="blog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scraper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="blog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scraper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -518,6 +628,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -528,7 +639,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="recentsLimit" value="5" />
     <property name="dynamic.classpath" value="false" />
-    <property name="SearchEverywhereHistoryKey" value="myapp&#9;FILE&#9;file://D:/work/rails/scraper/app/assets/javascripts/myApp.js&#10;player&#9;FILE&#9;file://D:/work/rails/scraper/app/assets/javascripts/player.coffee&#10;robot.co&#9;FILE&#9;file://D:/work/rails/scraper/app/assets/javascripts/robot.coffee&#10;scr&#9;FILE&#9;file://D:/work/rails/scraper/app/controllers/scrape_controller.rb&#10;robot&#9;FILE&#9;file://D:/work/rails/scraper/lib/robot_engine.rb&#10;rou&#9;FILE&#9;file://D:/work/rails/scraper/config/routes.rb&#10;robot.&#9;FILE&#9;file://D:/work/rails/scraper/lib/robot.rb&#10;mou&#9;FILE&#9;file://D:/work/rails/scraper/app/assets/javascripts/mouse_over_ele_select.js&#10;con&#9;FILE&#9;file://D:/work/rails/scraper/app/assets/javascripts/templates/sidepane1_configure.html&#10;scra&#9;FILE&#9;file://D:/work/rails/scraper/app/assets/stylesheets/scrape.scss&#10;sc&#9;FILE&#9;file://D:/work/rails/scraper/app/assets/stylesheets/scrape.scss&#10;do&#9;FILE&#9;file://D:/work/rails/scraper/app/views/scrape/do_url.html.erb&#10;pla&#9;FILE&#9;file://D:/work/rails/scraper/app/assets/javascripts/player.coffee&#10;rob&#9;FILE&#9;file://D:/work/rails/scraper/app/assets/javascripts/robot.coffee&#10;js&#9;FILE&#9;file://D:/work/rails/scraper/app/assets/javascripts/scrape2.js&#10;ass&#9;FILE&#9;file://D:/work/rails/scraper/config/initializers/assets.rb&#10;ro&#9;FILE&#9;file://D:/work/rails/scraper/app/assets/javascripts/robot.coffee&#10;node&#9;FILE&#9;file://D:/work/rails/scraper/app/assets/javascripts/node_svg.coffee&#10;css&#9;FILE&#9;file://D:/work/rails/scraper/app/assets/stylesheets/scrape.scss&#10;my&#9;FILE&#9;file://D:/work/rails/scraper/app/assets/javascripts/myApp.js&#10;s&#9;FILE&#9;file://D:/work/rails/scraper/app/controllers/scrape_controller.rb&#10;rout&#9;FILE&#9;file://D:/work/rails/scraper/config/routes.rb&#10;as&#9;FILE&#9;file://D:/work/rails/scraper/config/initializers/assets.rb&#10;set&#9;FILE&#9;file://D:/work/rails/scraper/config/initializers/assets.rb&#10;ge&#9;FILE&#9;file://D:/work/rails/blog/Gemfile&#10;robt&#9;null&#9;null&#10;app&#9;FILE&#9;file://D:/work/rails/blog/config/application.rb&#10;appli&#9;FILE&#9;file://D:/work/rails/blog/config/application.rb&#10;a&#9;FILE&#9;file://D:/work/rails/blog/config/initializers/assets.rb&#10;router&#9;FILE&#9;file://D:/work/rails/blog/config/routes.rb&#10;host&#9;null&#9;null" />
+    <property name="SearchEverywhereHistoryKey" value="robo&#9;FILE&#9;file://D:/work/rails/scraper/lib/robot_engine.rb&#10;my&#9;FILE&#9;file://D:/work/rails/scraper/app/assets/javascripts/myApp.js&#10;robot.co&#9;FILE&#9;file://D:/work/rails/scraper/app/assets/javascripts/robot.coffee&#10;robot&#9;FILE&#9;file://D:/work/rails/scraper/lib/robot.rb&#10;scr&#9;FILE&#9;file://D:/work/rails/scraper/app/controllers/scrape_controller.rb&#10;rou&#9;FILE&#9;file://D:/work/rails/scraper/config/routes.rb&#10;myapp&#9;FILE&#9;file://D:/work/rails/scraper/app/assets/javascripts/myApp.js&#10;player&#9;FILE&#9;file://D:/work/rails/scraper/app/assets/javascripts/player.coffee&#10;robot.&#9;FILE&#9;file://D:/work/rails/scraper/lib/robot.rb&#10;mou&#9;FILE&#9;file://D:/work/rails/scraper/app/assets/javascripts/mouse_over_ele_select.js&#10;con&#9;FILE&#9;file://D:/work/rails/scraper/app/assets/javascripts/templates/sidepane1_configure.html&#10;scra&#9;FILE&#9;file://D:/work/rails/scraper/app/assets/stylesheets/scrape.scss&#10;sc&#9;FILE&#9;file://D:/work/rails/scraper/app/assets/stylesheets/scrape.scss&#10;do&#9;FILE&#9;file://D:/work/rails/scraper/app/views/scrape/do_url.html.erb&#10;pla&#9;FILE&#9;file://D:/work/rails/scraper/app/assets/javascripts/player.coffee&#10;rob&#9;FILE&#9;file://D:/work/rails/scraper/app/assets/javascripts/robot.coffee&#10;js&#9;FILE&#9;file://D:/work/rails/scraper/app/assets/javascripts/scrape2.js&#10;ass&#9;FILE&#9;file://D:/work/rails/scraper/config/initializers/assets.rb&#10;ro&#9;FILE&#9;file://D:/work/rails/scraper/app/assets/javascripts/robot.coffee&#10;node&#9;FILE&#9;file://D:/work/rails/scraper/app/assets/javascripts/node_svg.coffee&#10;css&#9;FILE&#9;file://D:/work/rails/scraper/app/assets/stylesheets/scrape.scss&#10;s&#9;FILE&#9;file://D:/work/rails/scraper/app/controllers/scrape_controller.rb&#10;rout&#9;FILE&#9;file://D:/work/rails/scraper/config/routes.rb&#10;as&#9;FILE&#9;file://D:/work/rails/scraper/config/initializers/assets.rb&#10;set&#9;FILE&#9;file://D:/work/rails/scraper/config/initializers/assets.rb&#10;ge&#9;FILE&#9;file://D:/work/rails/blog/Gemfile&#10;robt&#9;null&#9;null&#10;app&#9;FILE&#9;file://D:/work/rails/blog/config/application.rb&#10;appli&#9;FILE&#9;file://D:/work/rails/blog/config/application.rb&#10;a&#9;FILE&#9;file://D:/work/rails/blog/config/initializers/assets.rb&#10;router&#9;FILE&#9;file://D:/work/rails/blog/config/routes.rb&#10;host&#9;null&#9;null" />
     <property name="FullScreen" value="false" />
     <property name="RailsGeneratorsPopup.hiddenIncluded" value="false" />
     <property name="restartRequiresConfirmation" value="true" />
@@ -556,22 +667,6 @@
     </key>
   </component>
   <component name="RunManager" selected="Rails.Development: blog">
-    <configuration default="false" name="robot" type="RubyRunConfigurationType" factoryName="Ruby" temporary="true">
-      <module name="blog" />
-      <RUBY_RUN_CONFIG NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
-      <RUBY_RUN_CONFIG NAME="WORK DIR" VALUE="$MODULE_DIR$/lib" />
-      <RUBY_RUN_CONFIG NAME="SHOULD_USE_SDK" VALUE="false" />
-      <RUBY_RUN_CONFIG NAME="ALTERN_SDK_NAME" VALUE="" />
-      <RUBY_RUN_CONFIG NAME="myPassParentEnvs" VALUE="true" />
-      <envs />
-      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="true" />
-      <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
-      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" track_test_folders="true" runner="rcov" />
-      <EXTENSION ID="org.jetbrains.plugins.ruby.motion.run.MotionSimulatorRunExtension" />
-      <RUBY_RUN_CONFIG NAME="SCRIPT_PATH" VALUE="$MODULE_DIR$/lib/robot.rb" />
-      <RUBY_RUN_CONFIG NAME="SCRIPT_ARGS" VALUE="" />
-      <method />
-    </configuration>
     <configuration default="false" name="robot_engine" type="RubyRunConfigurationType" factoryName="Ruby" temporary="true">
       <module name="blog" />
       <RUBY_RUN_CONFIG NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
@@ -618,6 +713,50 @@
       <EXTENSION ID="org.jetbrains.plugins.ruby.motion.run.MotionSimulatorRunExtension" />
       <RUBY_RUN_CONFIG NAME="SCRIPT_PATH" VALUE="$MODULE_DIR$/lib/web_analysis.rb" />
       <RUBY_RUN_CONFIG NAME="SCRIPT_ARGS" VALUE="" />
+      <method />
+    </configuration>
+    <configuration default="false" name="db:create: blog" type="RakeRunConfigurationType" factoryName="Rake" temporary="true">
+      <module name="blog" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$MODULE_DIR$" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
+      <envs>
+        <env name="RAILS_ENV" value="development" />
+      </envs>
+      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
+      <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" track_test_folders="true" runner="rcov" />
+      <EXTENSION ID="org.jetbrains.plugins.ruby.motion.run.MotionSimulatorRunExtension" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_NAME" VALUE="db:create" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_ARGS" VALUE="create_robot_data" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_ATTACHED_TEST_FRAMEWORKS" VALUE="" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_OPTION_TRACE" VALUE="false" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_OPTION_DRYRUN" VALUE="false" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_OPTION_PREREQS" VALUE="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="db:migrate: blog" type="RakeRunConfigurationType" factoryName="Rake" temporary="true">
+      <module name="blog" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$MODULE_DIR$" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
+      <envs>
+        <env name="RAILS_ENV" value="development" />
+      </envs>
+      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
+      <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" track_test_folders="true" runner="rcov" />
+      <EXTENSION ID="org.jetbrains.plugins.ruby.motion.run.MotionSimulatorRunExtension" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_NAME" VALUE="db:migrate" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_ARGS" VALUE="" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_ATTACHED_TEST_FRAMEWORKS" VALUE="" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_OPTION_TRACE" VALUE="false" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_OPTION_DRYRUN" VALUE="false" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_OPTION_PREREQS" VALUE="false" />
       <method />
     </configuration>
     <configuration default="true" type="CucumberRunConfigurationType" factoryName="Cucumber">
@@ -790,7 +929,7 @@
       <envs />
       <method />
     </configuration>
-    <list size="11">
+    <list size="12">
       <item index="0" class="java.lang.String" itemvalue="Rails.runner" />
       <item index="1" class="java.lang.String" itemvalue="Rails.Production: blog" />
       <item index="2" class="java.lang.String" itemvalue="Rails.Development: blog" />
@@ -798,17 +937,19 @@
       <item index="4" class="java.lang.String" itemvalue="Rake.spec: blog" />
       <item index="5" class="java.lang.String" itemvalue="Rake.db:migrate" />
       <item index="6" class="java.lang.String" itemvalue="Rake.db:migrate (2)" />
-      <item index="7" class="java.lang.String" itemvalue="Ruby.robot" />
-      <item index="8" class="java.lang.String" itemvalue="Ruby.robot_engine" />
-      <item index="9" class="java.lang.String" itemvalue="Ruby.nokogiri_parse" />
-      <item index="10" class="java.lang.String" itemvalue="Ruby.web_analysis" />
+      <item index="7" class="java.lang.String" itemvalue="Ruby.robot_engine" />
+      <item index="8" class="java.lang.String" itemvalue="Ruby.nokogiri_parse" />
+      <item index="9" class="java.lang.String" itemvalue="Ruby.web_analysis" />
+      <item index="10" class="java.lang.String" itemvalue="Rake.db:create: blog" />
+      <item index="11" class="java.lang.String" itemvalue="Rake.db:migrate: blog" />
     </list>
     <recent_temporary>
-      <list size="4">
-        <item index="0" class="java.lang.String" itemvalue="Ruby.web_analysis" />
-        <item index="1" class="java.lang.String" itemvalue="Ruby.nokogiri_parse" />
-        <item index="2" class="java.lang.String" itemvalue="Ruby.robot_engine" />
-        <item index="3" class="java.lang.String" itemvalue="Ruby.robot" />
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="Rake.db:migrate: blog" />
+        <item index="1" class="java.lang.String" itemvalue="Rake.db:create: blog" />
+        <item index="2" class="java.lang.String" itemvalue="Ruby.web_analysis" />
+        <item index="3" class="java.lang.String" itemvalue="Ruby.nokogiri_parse" />
+        <item index="4" class="java.lang.String" itemvalue="Ruby.robot_engine" />
       </list>
     </recent_temporary>
   </component>
@@ -836,7 +977,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1040" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3154574" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32912722" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -845,37 +986,37 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17473118" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.42797056" sideWeight="0.8191801" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2224599" sideWeight="0.5878477" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21283422" sideWeight="0.5878477" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32980332" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26435044" sideWeight="0.41215226" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3270242" sideWeight="0.48828697" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3270242" sideWeight="0.48828697" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24963397" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31611893" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3154574" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3270242" sideWeight="0.48828697" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295699" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.42797056" sideWeight="0.8191801" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32980332" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26435044" sideWeight="0.41215226" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32912722" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24963397" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24946696" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.13486141" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24963397" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17473118" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19873817" sideWeight="0.5878477" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24963397" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18074866" sideWeight="0.5878477" order="2" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -896,20 +1037,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/config/environment.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/boot.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/lib/rubymine.jar!/resources/html5-schema/html5/web-forms2.rnc">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3316062">
@@ -1043,13 +1170,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/robot_data_base.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://D:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/activesupport-4.2.6/lib/active_support/dependencies.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1068,13 +1188,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="16" column="20" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/ouput_result.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1260745">
-          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1136,13 +1249,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/robot.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.7252526">
-          <caret line="135" column="26" selection-start-line="135" selection-start-column="26" selection-end-line="135" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/templates/edit_node.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.37931034">
@@ -1175,10 +1281,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/routes.rb">
+    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/scrape.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8">
-          <caret line="18" column="29" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="29" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="1197" column="15" selection-start-line="1197" selection-start-column="15" selection-end-line="1197" selection-end-column="15" />
+          <folding>
+            <marker date="1470046765714" expanded="true" signature="28592:28679" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/nokogiri_parse.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6950495">
+          <caret line="242" column="0" selection-start-line="242" selection-start-column="0" selection-end-line="242" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/player.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="109" column="39" selection-start-line="109" selection-start-column="39" selection-end-line="109" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/node.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="31" column="24" selection-start-line="31" selection-start-column="24" selection-end-line="31" selection-end-column="24" />
           <folding />
         </state>
       </provider>
@@ -1191,79 +1323,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/scrape.scss">
+    <entry file="file://$PROJECT_DIR$/app/views/scrape/do_url.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="1197" column="15" selection-start-line="1197" selection-start-column="15" selection-end-line="1197" selection-end-column="15" />
-          <folding>
-            <marker date="1470046765714" expanded="true" signature="28592:28679" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/node.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.0967742">
-          <caret line="31" column="24" selection-start-line="31" selection-start-column="24" selection-end-line="31" selection-end-column="24" />
+          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/nokogiri_parse.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6950495">
-          <caret line="242" column="0" selection-start-line="242" selection-start-column="0" selection-end-line="242" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/robot_engine.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.7465346">
-          <caret line="16" column="33" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/scrape_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="25" column="45" selection-start-line="25" selection-start-column="45" selection-end-line="25" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/robot.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.1290324">
-          <caret line="135" column="47" selection-start-line="135" selection-start-column="47" selection-end-line="135" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/player.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.8387096">
-          <caret line="109" column="39" selection-start-line="109" selection-start-column="39" selection-end-line="109" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/myApp.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.6551725">
-          <caret line="930" column="49" selection-start-line="930" selection-start-column="49" selection-end-line="930" selection-end-column="49" />
-          <folding>
-            <element signature="e#0#43#0" expanded="false" />
-            <marker date="1470121212786" expanded="true" signature="22624:23426" placeholder="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/templates/sidepane1_configure.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6">
-          <caret line="9" column="43" selection-start-line="9" selection-start-column="43" selection-end-line="9" selection-end-column="43" />
+        <state vertical-scroll-proportion="-7.806452">
+          <caret line="20" column="36" selection-start-line="20" selection-start-column="36" selection-end-line="20" selection-end-column="36" />
           <folding>
             <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#1;n#form#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#1;n#form#0;n#!!top" expanded="true" />
@@ -1272,10 +1343,85 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/scrape/do_url.html.erb">
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/robot.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4465409">
-          <caret line="202" column="20" selection-start-line="202" selection-start-column="20" selection-end-line="202" selection-end-column="20" />
+        <state vertical-scroll-proportion="-4.967742">
+          <caret line="397" column="18" selection-start-line="397" selection-start-column="18" selection-end-line="397" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20160503075834_create_ouput_results.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20160802083712_create_robot_data_bases.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4345679">
+          <caret line="8" column="5" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/robot_data_base.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/robot.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="160" column="7" selection-start-line="160" selection-start-column="7" selection-end-line="160" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/robot_engine.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.43161094">
+          <caret line="130" column="27" selection-start-line="130" selection-start-column="27" selection-end-line="130" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/ouput_result.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.50574714">
+          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/myApp.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="556" column="56" selection-start-line="556" selection-start-column="56" selection-end-line="556" selection-end-column="56" />
+          <folding>
+            <element signature="e#0#43#0" expanded="false" />
+            <marker date="1470125014918" expanded="true" signature="23478:24280" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/routes.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="53" selection-start-line="15" selection-start-column="53" selection-end-line="15" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/scrape_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.9314516">
+          <caret line="27" column="5" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
           <folding />
         </state>
       </provider>

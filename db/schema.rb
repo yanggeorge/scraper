@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160503075834) do
+ActiveRecord::Schema.define(version: 20160802083712) do
 
   create_table "items", force: :cascade do |t|
     t.text "spider_name",  limit: 65535
@@ -31,10 +31,10 @@ ActiveRecord::Schema.define(version: 20160503075834) do
   end
 
   create_table "robot_data_bases", force: :cascade do |t|
-    t.text    "robot_id",   limit: 65535
-    t.text    "robot_name", limit: 65535
-    t.boolean "delete"
-    t.text    "robot_def",  limit: 65535
+    t.text "robot_id",   limit: 65535
+    t.text "robot_name", limit: 65535
+    t.text "deleted",    limit: 65535
+    t.text "robot_def",  limit: 65535
   end
 
   create_table "start_urls", force: :cascade do |t|

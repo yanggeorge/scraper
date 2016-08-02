@@ -127,6 +127,7 @@ module RPA
     end
 
     def register(robot)
+      un_register(robot)
       if not include? robot
         @robot_ids.append(robot.id)
         @robots[robot.id] = robot

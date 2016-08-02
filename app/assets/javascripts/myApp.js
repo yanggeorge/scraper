@@ -542,6 +542,29 @@ app.controller('MainCtrl', function($scope, $http, $q, getXpath, $timeout){
         },300);
 
     });
+    $scope.save = function(){
+        //保存当前的robot定义。
+        var robot_string = JSON.stringify(JSON.parse($scope.robot.to_s()));
+        console.log(robot_string);
+        var path = '/scrape/save_robot';
+        var ramdom = Math.uuid();
+        var promise = $http.post(path, {robot_string: robot_string, random : ramdom}, {timeout:50000})
+            .success(function(data, status, headers, config)
+            {
+                if( data.result == "true") {
+                    console.log("robot save succeffully.");
+                }else{
+                    console.log("robot save error....");
+                }
+                return false;
+            })
+            .error(function(data, status, headers, config)
+            {
+                console.log("robot save error ...");
+                return false;
+            }
+        );
+    };
 
     $scope.get_visit_url = function(){
       return $scope.robot.steps[$scope.robot.first_step].value ;

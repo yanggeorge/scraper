@@ -461,6 +461,6 @@ namespace "ym.rpa", (exports) ->
   exports.ACTION_CLICK = ACTION_CLICK
   exports.ACTION_FLUSH = ACTION_FLUSH
   exports.ACTION_NOTHING = ACTION_NOTHING
-  exports.test = test
+  #exports.test = test
   #exports.test2 = test2
 
