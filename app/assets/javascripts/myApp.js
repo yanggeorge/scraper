@@ -547,7 +547,7 @@ app.controller('MainCtrl', function($scope, $http, $q, getXpath, $timeout){
       return $scope.robot.steps[$scope.robot.first_step].value ;
     };
 
-    $scope.load_url = function( url){
+    $scope.load_url = function( url ,env){
         console.log("load_url");
         var path = '/scrape/get_page' ;
         var doc = document.getElementById('modified_page').contentWindow.document;
@@ -562,7 +562,7 @@ app.controller('MainCtrl', function($scope, $http, $q, getXpath, $timeout){
                 //doc.open();
                 doc.write(data.page);
                 doc.close();
-
+                env.url_page = data.page;
                 return false;
             })
             .error(function(data, status, headers, config)
@@ -579,7 +579,7 @@ app.controller('MainCtrl', function($scope, $http, $q, getXpath, $timeout){
         });
         return promise1;
     };
-    $scope.extract_data = function( url, tag){
+    $scope.extract_data = function( url, tag ,env, field){
         console.log("extract_data");
         var path = '/scrape/extract_data' ;
         var ramdom = Math.uuid();
@@ -589,6 +589,7 @@ app.controller('MainCtrl', function($scope, $http, $q, getXpath, $timeout){
             {
                 // results change
                 console.log(data);
+                env[field] = data.result;
                 return false;
             })
             .error(function(data, status, headers, config)
@@ -862,6 +863,7 @@ app.controller('MainCtrl', function($scope, $http, $q, getXpath, $timeout){
             }
             case ym.rpa.ACTION_FLUSH :
             {
+                play_promise = this.play_action_flush();
                 break;
             }
             case ym.rpa.ACTION_NOTHING :
@@ -903,7 +905,7 @@ app.controller('MainCtrl', function($scope, $http, $q, getXpath, $timeout){
         var step = this.current.step;
         console.log(step.to_s());
         var url = step.value;
-        var promise = $scope.load_url(url);
+        var promise = $scope.load_url(url , env);
 
         env.url = url;
         this.current.post_state = env ;
@@ -914,10 +916,32 @@ app.controller('MainCtrl', function($scope, $http, $q, getXpath, $timeout){
         var step = this.current.step;
         var field = step.field;
         var tag = step.tags[0];
-        var promise = $scope.extract_data(env.url, tag);
+        var promise = $scope.extract_data(env.url, tag, env, field);
 
         this.current.post_state = env ;
         return promise;
+    };
+    player.play_action_flush = function(){
+        var env = jQuery.extend(true,{},this.current.pre_state);
+        var defer = $q.defer();
+        var promise = defer.promise;
+        defer.resolve("flush");
+        promise.then(function(){
+            var row = {};
+            _.forEach($scope.robot.outputs,function(value,key){
+                var field = value.id;
+               if(env[field] || env[field] !== undefined){
+                   row[field] = env[field];
+                   delete env[field];
+               }
+            });
+            $scope.$broadcast("resultsCtrl_flush_data",row);
+        });
+        var promise1 =  promise.then(function(){
+            return $timeout(1000);
+        });
+        this.current.post_state = env ;
+        return promise1 ;
     };
     player.play_action_nothing = function(){
         var env = jQuery.extend(true,{},this.current.pre_state);
@@ -928,7 +952,7 @@ app.controller('MainCtrl', function($scope, $http, $q, getXpath, $timeout){
 
         var player = this;
         var promise1 =  promise.then(function(){
-             return $timeout(2000);
+             return $timeout(1000);
         });
 
         this.current.post_state = env ;
@@ -1207,6 +1231,12 @@ app.controller('fieldCtrl',function($scope){
 });
 
 app.controller('resultsCtrl',function($scope){
+    $scope.output_rows = [];
+    $scope.$on("resultsCtrl_flush_data",function(evt,row){
+        $scope.output_rows.push(row);
+        update_formattedOutput(row);
+    });
+
     var init_outputFields = function(){
         var list = [];
         _.forEach($scope.robot.outputs,function(value,key){
@@ -1227,10 +1257,67 @@ app.controller('resultsCtrl',function($scope){
         rows.push({data:data});
         return {header:header, rows :rows};
     };
+    var update_formattedOutput = function(row){
+        var header = $scope.formattedOutput.header;
+        var rows = $scope.formattedOutput.rows;
+        var last_row = _.last(rows); // 只更新最后一行数据
+        var data = [];
+        var i = 0;
+        _.forEach($scope.robot.outputs,function(value,key){
+            var field = value.id;
+            if ( row[field] || row[field] !== undefined){
+                last_row.data[i] = row[field]
+            }else{
+                last_row.data[i] = ""
+            }
+            data.push("");
+            i ++ ;
+        });
+        rows.push({data:data});
+        $scope.formattedOutput =  {header : header, rows : rows} ;
+    };
     $scope.formattedOutput = init_formattedOutput();
+    var update_formattedOutput_for_robot_change = function(){
+        var new_formattedOutput = init_formattedOutput();
+        var new_header = new_formattedOutput.header;
+        var new_rows = [];
+        var old_header = $scope.formattedOutput.header ;
+        var old_rows = $scope.formattedOutput.rows ;
+
+        var i = 0;
+        _.forEach(old_rows, function(row){
+            if(i < old_rows.length - 1) {
+                var map = {};
+                var j = 0;
+                _.forEach(old_header, function (field) {
+                    map[field] = row.data[j];
+                    j++;
+                });
+                var data = [];
+                _.forEach(new_header, function (new_field) {
+                    if (map[new_field] || map[new_field] !== undefined) {
+                        data.push(map[new_field]);
+                    } else {
+                        data.push("");
+                    }
+                });
+                new_rows.push({data: data});
+            }
+            i++;
+        });
+        var last_row = [];
+        _.forEach(new_header, function(new_field){
+            last_row.push("");
+        });
+        new_rows.push({data : last_row}); // 插入一个空行。
+        return {header : new_header, rows : new_rows};
+    };
     $scope.$on("robot_change",function(evt){
         $scope.outputFields = init_outputFields() ;
-        $scope.formattedOutput = init_formattedOutput();
+        $scope.formattedOutput = update_formattedOutput_for_robot_change();
     });
 
+    $scope.resetOutput = function(){
+      $scope.formattedOutput = init_formattedOutput();
+    };
 });

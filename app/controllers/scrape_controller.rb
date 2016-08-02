@@ -32,7 +32,7 @@ class ScrapeController < ApplicationController
     tag = params[:tag]
     html = NokogiriParse.instance.get_html(url)
     @data = NokogiriParse.instance.extract(url, tag)
-    render :json => {:data => @data}
+    render :json => {:result => @data}
   end
 
   def valid?(url)

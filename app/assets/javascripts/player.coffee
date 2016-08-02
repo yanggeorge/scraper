@@ -115,9 +115,9 @@ class Player
 
       @next = @play_steps[@play_step_ids.indexOf(@current.step.id) + 1]
       if @current.step.id != @play_steps[(@play_step_ids.length) - 1].step.id
-        #@is_end = false   #无法通过current来判断是否end，因为当end的时候，current指向最后一个节点。
+        @is_end = false   #可以判断是否是非结尾。
       else
-        #@is_end = true
+        #@is_end = true  #无法通过current来判断是否end，因为当end的时候，current指向最后一个节点
         @next = null
 
 
