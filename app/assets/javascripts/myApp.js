@@ -1000,8 +1000,11 @@ app.controller('MainCtrl', function($scope, $http, $q, getXpath, $timeout){
         var tag = step.tags[0];
         var promise = $scope.extract_data(env.url, tag, env, field);
 
+        var promise1 =  promise.then(function(){
+            return $timeout(1000);
+        });
         this.current.post_state = env ;
-        return promise;
+        return promise1;
     };
     player.play_action_click = function () {
         var env = jQuery.extend(true,{},this.current.pre_state);
@@ -1010,8 +1013,11 @@ app.controller('MainCtrl', function($scope, $http, $q, getXpath, $timeout){
         var tag = step.tags[0];
         var promise = $scope.click_element(tag, env);
 
+        var promise1 =  promise.then(function(){
+            return $timeout(1000);
+        });
         this.current.post_state = env ;
-        return promise;
+        return promise1;
     };
 
     player.play_action_flush = function(){
@@ -1120,8 +1126,6 @@ var init_robot = function() {
     //robot.outputs[output.id] = output;
     //robot.first_step = step1.id;
     var robot = ym.rpa.Robot.from_json_string(window.ym.robot_string);
-    var output = new ym.rpa.Output("test");
-    robot.outputs[output.id] = output;
     return robot;
 };
 

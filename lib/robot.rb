@@ -165,7 +165,7 @@ module RPA
     end
 
     def field_to_s
-      %Q("field":"#{@fie}")
+      %Q("field":"#{@field}")
     end
 
     def title_to_s
