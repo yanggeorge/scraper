@@ -115,11 +115,17 @@ app.directive('loading',   ['$http' ,function ($http)
                 scope.data_complete = false;
 
                 scope.$on("set_data_complete_true",function(){
+                    console.log("set_data_complete_true");
                     scope.data_complete = true;
                 });
 
                 scope.$on("set_data_complete_false",function(){
                     scope.data_complete = false;
+                });
+
+                scope.$on("set_loading_hide",function(){
+                    console.log("set_loading_hide");
+                    elm.hide();
                 });
 
                 scope.$watch(scope.data_complete, function(v){
@@ -331,7 +337,7 @@ app.controller('MarkerCtrl', function($scope){
        console.log(obj);
         $scope.iframe_height = obj.height + "px";
         $scope.iframe_width = obj.width + "px";
-        $scope.$apply(); // ng-style没有及时更新，需要强制更新。
+        //$scope.$apply(); // ng-style没有及时更新，需要强制更新。
     });
     // 实现iframe和上层的div联合滚动 sync scroll
     $scope.$on("scroller_event",function(evt, obj){
@@ -630,6 +636,41 @@ app.controller('MainCtrl', function($scope, $http, $q, getXpath, $timeout){
         return promise1;
     };
 
+    $scope.click_element = function(xpath, env){
+        console.log("click_element");
+        var path = '/scrape/click_element' ;
+        var doc = document.getElementById('modified_page').contentWindow.document;
+        var ramdom = Math.uuid();
+        $scope.$broadcast("set_data_complete_false");
+        var promise = $http.post(path, {url: env.url,xpath : xpath, random : ramdom}, {timeout:50000})
+            .success(function(data, status, headers, config)
+            {
+                if(data.status =="changed") {
+                    doc.open();
+                    doc.write(data.page);
+                    doc.close();
+                    env.url_page = data.page;
+                    env.url = data.new_url;
+                }else{
+                    // no change
+                }
+                return false;
+            })
+            .error(function(data, status, headers, config)
+            {
+                console.log("post error ...");
+                return false;
+            }
+        );
+        promise.then(function(){
+            $scope.$broadcast("set_data_complete_true");
+        });
+        var promise1 = promise.then(function(){
+            return $timeout(1200); // 与关闭 elm.hide的等待时间相同。
+        });
+        return promise1;
+    };
+
     $scope.closeSidePane1 = function(){
         toggle_sidepane1_state(0);
     };
@@ -798,13 +839,30 @@ app.controller('MainCtrl', function($scope, $http, $q, getXpath, $timeout){
         } };
         var menu2 = {'name':'Click element', 'invoke':function(){
             // robot 增加一个step
+            $scope.create_click_step(element);
             toggle_sidepane1_state(0);
         } };
         menus.push(menu1,menu2);
         return menus;
     };
 
+    $scope.create_click_step = function (element) {
+        var xpath = getXpath(element);
+        var step = new ym.rpa.Step(ym.rpa.ACTION_CLICK);
+        step.tags.push(xpath);
+        var current_step = $scope.robot.steps[$scope.player.current.step.id];
+        if($scope.player.is_end) {
+            $scope.robot.add_step_after(step, current_step);
+        }else{
+            $scope.robot.add_step_before(step, current_step);
+        }
+    };
+
     var player = new ym.rpa.Player($scope.robot);
+    player.abort = function(){
+        $scope.$broadcast("set_loading_hide");
+        this.playing = false;
+    };
     player.stepForward = function(){
         if(this.playing == false ){
             this.playing = true;
@@ -877,6 +935,7 @@ app.controller('MainCtrl', function($scope, $http, $q, getXpath, $timeout){
             }
             case ym.rpa.ACTION_CLICK :
             {
+                play_promise = this.play_action_click();
                 break;
             }
             case ym.rpa.ACTION_EXTRACT :
@@ -944,6 +1003,17 @@ app.controller('MainCtrl', function($scope, $http, $q, getXpath, $timeout){
         this.current.post_state = env ;
         return promise;
     };
+    player.play_action_click = function () {
+        var env = jQuery.extend(true,{},this.current.pre_state);
+        var step = this.current.step;
+        var field = step.field;
+        var tag = step.tags[0];
+        var promise = $scope.click_element(tag, env);
+
+        this.current.post_state = env ;
+        return promise;
+    };
+
     player.play_action_flush = function(){
         var env = jQuery.extend(true,{},this.current.pre_state);
         var defer = $q.defer();

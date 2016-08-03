@@ -45,6 +45,24 @@ class ScrapeController < ApplicationController
     render :json => {:result => @data}
   end
 
+  def click_element
+    p params
+    url = params[:url]
+    xpath = params[:xpath]
+    doc, @current_url = NokogiriParse.instance.click(url, xpath)
+    @status = "changed"
+    if url == @current_url
+      @status = "unchanged"
+      render :json => {:status => @status }
+    else
+      html = NokogiriParse.instance.get_html(@current_url)
+      @modified_page = html
+      puts html
+      render :json => {:page => @modified_page, :new_url => @current_url, :status => @status }
+    end
+
+  end
+
   def save_robot
     p params
     @status = "true"

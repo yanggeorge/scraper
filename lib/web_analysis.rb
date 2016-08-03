@@ -23,25 +23,41 @@ class WebAnalysis
   end
 
   def get_response(url=nil)
+    page_source = nil
     if url == nil
       @driver.navigate.to "http://www.he-n-tax.gov.cn/hbgsww_new/hbgsgkml/ajxxgk/880/list.htm"
     else
       @driver.navigate.to url
     end
-    @driver.page_source
+    page_source = @driver.page_source
+    page_source
   end
 
   def click(url , ele_xpath)
+    page_source = nil
+    current_url = nil
+
     @driver.navigate.to url
     element = @driver.find_element(:xpath,ele_xpath)
     element.click
-    return @driver.page_source, @driver.current_url
+    main_handle = @driver.window_handle
+    p main_handle
+    handles = @driver.window_handles
+    p handles
+    @driver.switch_to.window handles[-1]
+    page_source,current_url =  @driver.page_source, @driver.current_url
+    @driver.close
+    @driver.switch_to.window main_handle
+    return page_source,current_url
   end
 
   def extract(url, ele_xpath)
+    text = nil
     @driver.navigate.to url
     element = @driver.find_element(:xpath,ele_xpath)
-    element.text
+    text = element.text
+
+    text
   end
 
 end
@@ -252,17 +268,46 @@ class HtmlAnalysis
 
 end
 
-if __FILE__==$0
+def test
+  url = "http://www.he-n-tax.gov.cn/hbgsww_new/"
+  xpath = "//html[1]/body[1]/div[2]/div[2]/div[2]/div[2]/div[1]/div[1]/ul[1]/li[1]/a[1]"
+  _,current_url = WebAnalysis.instance.click(url, xpath)
+  puts current_url
+  url = "http://www.he-n-tax.gov.cn/hbgsww_new/"
+  xpath = "//html[1]/body[1]/div[2]/div[2]/div[2]/div[2]/div[1]/div[1]/ul[1]/li[1]/a[1]"
+  _,current_url = WebAnalysis.instance.click(url, xpath)
+  puts current_url
 
+end
 
-  #s =  HtmlAnalysis.instance.page_source
-
-  #puts HtmlAnalysis.instance.fetch_css_style
+def test1
   url = "http://www.baidu.com/"
 
   HtmlAnalysis.instance.analyze(url)
   page_source = HtmlAnalysis.instance.page_source
   puts page_source
+end
+
+def test2
+  base_url = "http://www.he-n-tax.gov.cn/hbgsww_new/"
+  path = "\"gdot_ico.jpg\""
+  if path.start_with?("\"")
+    path.reverse!.chop!
+    path.reverse!
+  end
+  if path.end_with? "\""
+    path.chop!
+  end
+
+  puts URI.join(base_url, path).to_s
+
+end
+
+
+if __FILE__==$0
+
+  test
+
 
 
 end

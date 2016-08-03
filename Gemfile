@@ -47,7 +47,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'mysql2', '~> 0.3.20'
 
-gem 'selenium-webdriver'
+gem 'selenium-webdriver', '~> 2.53', '>= 2.53.4'
 
 gem 'nokogiri'
 

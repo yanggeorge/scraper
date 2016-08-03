@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   post 'scrape/get_page' => 'scrape#get_page'
   post 'scrape/save_robot' => 'scrape#save_robot'
   post 'scrape/extract_data' => 'scrape#extract_data'
+  post 'scrape/click_element' => 'scrape#click_element'
   post 'scrape/save' => 'scrape#save'
   get 'item/index' => 'item#index'
   post 'item/index' => 'item#index'

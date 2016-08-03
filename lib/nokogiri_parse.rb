@@ -72,7 +72,14 @@ class NokogiriParse
       doc = complete_path(url, doc)
       doc = delete_tag(doc)
       html = doc.to_html
-      html = complete_other_url_path(url, html)
+      begin
+        html = complete_other_url_path(url, html)
+      rescue
+        puts "!!!!!!!!!! complete_other_url_path error !!!!!!!!!!!"
+        puts $!
+        puts $@
+        puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+      end
       HtmlManager.instance.add(url,html)
     end
     html
@@ -107,6 +114,13 @@ class NokogiriParse
   def complete_other_url_path(start_url, html)
     html.gsub!(/url\((.*?)\)/){ |m|
       tmp = $1
+      if tmp.start_with?("\"")
+        tmp.reverse!.chop!
+        tmp.reverse!
+      end
+      if tmp.end_with? "\""
+        tmp.chop!
+      end
       rep = get_full_path(start_url, tmp)
       m.sub!(tmp,rep)
       m
@@ -136,11 +150,21 @@ class NokogiriParse
   end
 
   def click(url, ele_xpath)
-    doc,current_url = Nokogiri::HTML(WebAnalysis.instance.click(url, ele_xpath))
-    doc = complete_path(current_url, doc)
+    doc,current_url = WebAnalysis.instance.click(url, ele_xpath)
+    doc = Nokogiri::HTML(doc)
+    doc = complete_path(url, doc)
     doc = delete_tag(doc)
-    HtmlManager.instance.add(current_url,doc)
-    doc
+    html = doc.to_html
+    begin
+      html = complete_other_url_path(url, html)
+    rescue
+      puts "!!!!!!!!!! complete_other_url_path error !!!!!!!!!!!"
+      puts $!
+      puts $@
+      puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+    end
+    HtmlManager.instance.add(url,html)
+    return doc,current_url
   end
 
   def extract(url, xpath)
@@ -148,81 +172,7 @@ class NokogiriParse
   end
 
 end
-class Rule
-  attr_accessor :name
-  def initialize(name)
-    @name = name
-  end
 
-  def analyze(doc)
-    puts "rule"
-  end
-end
-
-class Rule1 < Rule
-  def initialize
-    super("rule1")
-  end
-
-  # check dup tags from top to down, if found return tags list
-  def analyze(doc)
-    puts "rule 1"
-    results = []
-    check(doc, results)
-    results
-  end
-
-  def check(node, results)
-    if node and node.is_a? Nokogiri::XML::Node
-      elements = node.elements
-      if elements.size < 3
-        elements.each do |node|
-          check(node, results)
-        end
-      else
-        list = get_most_dups(elements)
-        if list and list.size > 3
-          results << list
-        else
-          elements.each do |node|
-            check(node , results)
-          end
-        end
-      end
-    end
-
-  end
-
-  def get_most_dups(nodes)
-    hash = {}
-    nodes.each do |node|
-      feature = get_feature(node)
-      if hash.keys.include? feature
-        hash[feature] << node
-      else
-        hash[feature]= [node]
-      end
-    end
-
-    max = 0
-    key = ""
-    hash.each do|k,v|
-      if v.length > max
-        key = k
-      end
-    end
-    hash[key]
-  end
-
-  def get_feature(node)
-    tag = node.name
-    values = node.values
-    keys = node.keys
-    attributes = node.attributes
-    tag
-  end
-
-end
 
 class Test
 
