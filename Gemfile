@@ -58,3 +58,5 @@ gem 'bower-rails'
 gem 'angular-rails-templates'
 
 gem 'sprockets', '2.12.3'
+
+gem 'ace-rails-ap'

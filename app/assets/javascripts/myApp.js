@@ -31,7 +31,72 @@ app.factory("getXpath",function(){
         return xpath;
     };
 });
+app.directive("dialog", ["$parse", function (a) {
+    return {
+        restrict: "A",
+        link: function (b, c, d) { // scope. element, attrs
+            var exp = d.ngShow;
+            var f = a(exp);
+            g = f.assign;
+            b.$watch(d.ngShow, function (a) {
+                console.log("dialog ...");
+                var i = c.view();
 
+                var h = b.buttons && b.buttons instanceof Array ? b.buttons : [];
+                var j = jQuery(i).height() - 100
+                    , k = jQuery(i).width() - 400
+                    , l = d.width ? parseInt(d.width, 10) : 650
+                    , m = d.closable ? "true" === d.closable : !0;
+
+                var n = {
+                    title: d.dialogTitle,
+                    resizable: d.resizable ? "true" === d.resizable : !0,
+                    closable: m,
+                    maxHeight: j,
+                    maxWidth: k,
+                    minWidth: l,
+                    position: {
+                        my: "center",
+                        at: "center",
+                        of: i
+                    },
+                    modal: !0,
+                    buttons: h,
+                    close: function (a) {
+                        console.log("close dialog");
+                        c.dialog("destroy");
+
+                        g(b, !1);
+                    }
+                };
+                d.height && (n.minHeight = parseInt(d.height, 10));
+                c.dialog(n);
+                //c.dialog("widget").css("visibility", "hidden");
+                //m ? c.dialog("widget").find(".ui-dialog-titlebar-close").show() : c.dialog("widget").find(".ui-dialog-titlebar-close").hide();
+                ////e.showOverlays(),
+                //setTimeout(function () {
+                //    try {
+                //        c.dialog("widget").css("visibility", "visible");
+                //        c.dialog("option", "position", {
+                //            my: "center",
+                //            at: "center",
+                //            of: i
+                //        })
+                //    } catch (a) {
+                //    }
+                //})
+            });
+            b.$on("$destroy", function () {
+                try {
+                    c.data("uiDialog") && (c.dialog("close"),
+                        c.dialog("destroy"))
+                } catch (a) {
+                }
+            })
+        }
+    }
+}
+]);
 
 app.directive("title",function(){
     return {
@@ -1063,6 +1128,41 @@ app.controller('MainCtrl', function($scope, $http, $q, getXpath, $timeout){
     $scope.player = player ;
 
 
+    // json editor
+    $scope.jsonEditor = {visible : false, data : '{ "firstStep": "5a68df9d-40d4-480c-9065-da9a6dd37a63", "steps": { "5a68df9d-40d4-480c-9065-da9a6dd37a63": { "id": "5a68df9d-40d4-480c-9065-da9a6dd37a63", "action": "VISIT", "title": null, "tags": [], "field": null, "value": "http://www.he-n-tax.gov.cn/hbgsww_new/hbgsgkml/ajxxgk/201511/t20151113_1014250.html", "next": [ "4dcb3f42-acc8-463c-8aa4-6d611f226ecf" ], "branchMode": "ALL", "errorMode": "REPORT_HERE", "errorMessage": null, "groupId": null, "snippetId": null, "snippetStepId": null, "waitAfter": -1, "timeout": -1, "formatters": [], "options": { "closest": false, "fixed": true, "focusBefore": true, "blurAfter": true } }, "fc76b460-b753-4f6a-a893-459c4bfeeea4": { "id": "fc76b460-b753-4f6a-a893-459c4bfeeea4", "action": "COUNTER", "title": null, "tags": [], "field": "counter", "value": null, "next": [ "ae12b5bf-1c28-4df3-b41a-c436fddad77c" ], "branchMode": "ALL", "errorMode": "REPORT_HERE", "errorMessage": null, "groupId": null, "snippetId": null, "snippetStepId": null, "waitAfter": -1, "timeout": -1, "formatters": [], "options": { "step": 1, "initialValue": 1 } }, "ae12b5bf-1c28-4df3-b41a-c436fddad77c": { "id": "ae12b5bf-1c28-4df3-b41a-c436fddad77c", "action": "PAGING", "title": null, "tags": [ "a:nth-child(14)" ], "field": null, "value": null, "next": [ "46a72e59-78c1-4197-96d6-eeaf6cf55e35" ], "branchMode": "ALL", "errorMode": "REPORT_HERE", "errorMessage": null, "groupId": null, "snippetId": null, "snippetStepId": null, "waitAfter": -1, "timeout": -1, "formatters": [], "options": { "totalPages": [ "div#ctl00_MainContent_AspNetPager1 > table > tbody > tr > td:nth-child(1)" ] } }, "46a72e59-78c1-4197-96d6-eeaf6cf55e35": { "id": "46a72e59-78c1-4197-96d6-eeaf6cf55e35", "action": "NONE", "title": null, "tags": [], "field": "url", "value": null, "next": [ "d3e571da-0ffb-4c25-9ed0-415d1b62d37b" ], "branchMode": "ALL", "errorMode": "REPORT_HERE", "errorMessage": null, "groupId": null, "snippetId": null, "snippetStepId": null, "waitAfter": -1, "timeout": -1, "formatters": [], "options": { "closest": false, "fixed": false, "focusBefore": true, "blurAfter": true } }, "570fd522-518d-4589-90cf-2ee841a5898d": { "id": "570fd522-518d-4589-90cf-2ee841a5898d", "action": "FLUSH", "title": "发打发手动阀手动阀阿道夫阿斯顿啊", "tags": [], "field": null, "value": null, "next": [], "branchMode": "ALL", "errorMode": "REPORT_HERE", "errorMessage": null, "groupId": null, "snippetId": null, "snippetStepId": null, "waitAfter": -1, "timeout": -1, "formatters": [], "options": {} }, "3bff1325-8356-42dd-9abb-ada7a7f1f3ed": { "id": "3bff1325-8356-42dd-9abb-ada7a7f1f3ed", "action": "EXTRACT", "title": null, "tags": [ "div.row:nth-child(21) > li.mc > div" ], "field": "asbc", "value": null, "next": [ "fc76b460-b753-4f6a-a893-459c4bfeeea4" ], "branchMode": "ALL", "errorMode": "REPORT_HERE", "errorMessage": null, "groupId": null, "snippetId": null, "snippetStepId": null, "waitAfter": -1, "timeout": -1, "formatters": [], "options": {} }, "ce88a750-5eb3-4578-9982-cbeedd38fc17": { "id": "ce88a750-5eb3-4578-9982-cbeedd38fc17", "action": "CLICK", "title": null, "tags": [ "iframe a#mynav1 > span" ], "field": null, "value": null, "next": [ "3bff1325-8356-42dd-9abb-ada7a7f1f3ed" ], "branchMode": "ALL", "errorMode": "REPORT_HERE", "errorMessage": null, "groupId": null, "snippetId": null, "snippetStepId": null, "waitAfter": -1, "timeout": -1, "formatters": [], "options": {} }, "d3e571da-0ffb-4c25-9ed0-415d1b62d37b": { "id": "d3e571da-0ffb-4c25-9ed0-415d1b62d37b", "action": "NONE", "title": null, "tags": [], "field": null, "value": null, "next": [ "570fd522-518d-4589-90cf-2ee841a5898d" ], "branchMode": "ALL", "errorMode": "REPORT_HERE", "errorMessage": null, "groupId": null, "snippetId": null, "snippetStepId": null, "waitAfter": -1, "timeout": -1, "formatters": [], "options": {} }, "4dcb3f42-acc8-463c-8aa4-6d611f226ecf": { "id": "4dcb3f42-acc8-463c-8aa4-6d611f226ecf", "action": "CLICK", "title": null, "tags": [ "tr:nth-child(3) > td:nth-child(2) > p.MsoNormal" ], "field": null, "value": null, "next": [ "ce88a750-5eb3-4578-9982-cbeedd38fc17" ], "branchMode": "ALL", "errorMode": "REPORT_HERE", "errorMessage": null, "groupId": null, "snippetId": null, "snippetStepId": null, "waitAfter": -1, "timeout": -1, "formatters": [], "options": {} } }, "functions": {}, "networkFilters": [ { "id": "95849c76-8d64-4669-85e6-329104ea56b3", "pattern": "http://210.75.203.37:82/JDGG/BACGList.aspx?CGLX=B1", "regex": false, "methods": [ "POST" ], "handling": "IGNORE" }, { "id": "e5007af0-9b77-47e4-a573-e6ae439071b9", "pattern": "http://210.75.203.37:82/JDGG/BACGList.aspx?CGLX=B1", "regex": false, "methods": [ "GET" ], "handling": "IGNORE" }, { "id": "dc050760-80b6-466e-a050-319f558150cc", "pattern": "http://210.75.203.37:82/JS/jquery/jquery-1.3.2.min.js", "regex": false, "methods": [ "GET" ], "handling": "IGNORE" }, { "id": "0e23b315-7065-4f24-a006-ad29b044a156", "pattern": "http://210.75.203.37:82/JS/Check.js", "regex": false, "methods": [ "GET" ], "handling": "IGNORE" }, { "id": "56ec0ca7-ed44-4383-ad60-c56192e722eb", "pattern": "http://210.75.203.37:82/WebResource.axd?d=ikAI06k7m2uUoqVv8SyNp9czcHj2xmQpsLCzbb-AN3Va0gn0y982eSH9d76j0oGEeoRzdz1aWBVCgzR-3ZW9K_QfQdg1&", "regex": false, "methods": [ "GET" ], "handling": "IGNORE" } ], "javascriptEnabled": true, "autoLoadImages": true, "stylesheetsEnabled": true, "formatter": null, "groupedOutput": false, "stepBreak": 0, "javascriptInjection": null, "userAgent": "Auto", "sslProtocol": "tls1.0", "accountId": "70e2d55a-6a23-47c9-8f45-e96d0bb17841", "categoryId": null, "type": "SCRAPER", "editorVersion": 2, "proxies": [], "output": { "af": { "defaultValue": "", "title": "page_no", "type": "boolean", "options": null, "id": "af" }, "asbc": { "defaultValue": "dfasdfas", "title": "asbc", "type": "image", "options": null, "id": "asbc" }, "dfasdfa": { "defaultValue": null, "title": "dfasdfa", "type": "string", "options": null, "id": "dfasdfa" } }, "input": { "page_no": { "defaultValue": null, "title": "page_no", "type": "number", "options": null, "id": "page_no" }, "url": { "defaultValue": null, "title": "url", "type": "string", "options": null, "id": "url" } }, "testInput": { "page_no": null }, "tags": [], "name": "210.75.203.37", "created": 1462961000708, "createdBy": "216dfbda-588d-442e-9cc0-eb21e23371bd", "lastModified": 1463213316883, "modifiedBy": "e46676c9-83a7-424a-a9c8-f25804f44699", "deleted": false, "_id": "10a08070-cee9-4c44-a924-03a27c8609a4" }'};
+    $scope.jsonEditor.show = function(){
+        console.log("jsonEditor show.");
+        this.visible = true;
+        var options = {
+            title: "Edit robot definition",
+            resizable: true,
+            closable: true,
+            minWidth: 650,
+            modal: true,
+            buttons: [],
+            close: function () {
+                console.log("close dialog");
+                $scope.jsonEditor.visible = false;
+                console.log($scope.jsonEditor);
+                $scope.$apply();
+                console.log("close dialog end.");
+
+            }
+        };
+        var c = jQuery("#dialog");
+            c.dialog(options);
+
+        var editor = ace.edit("editor");
+        console.log(editor);
+        editor.setTheme("ace/theme/xcode");
+        editor.getSession().setMode("ace/mode/javascript");
+        editor.setValue($scope.robot.to_s(), -1);
+        editor.selectAll();
+        editor.$clickSelection = editor.getSelectionRange();
+        editor.setState("selectAll");
+
+
+    };
 });
 
 var compute_svg_width = function(svgs){

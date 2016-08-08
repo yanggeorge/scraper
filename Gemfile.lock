@@ -1,6 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    ace-rails-ap (4.1.0)
     actionmailer (4.2.6)
       actionpack (= 4.2.6)
       actionview (= 4.2.6)
@@ -161,6 +162,7 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
+  ace-rails-ap
   angular-rails-templates
   bower-rails
   byebug

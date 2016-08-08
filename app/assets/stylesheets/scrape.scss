@@ -1199,3 +1199,150 @@ table .results  tr {
   border-bottom: 1px solid #EFEFEF;
   border-left: 1px solid #EFEFEF;
 }
+.ui-widget-overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 100;
+  opacity: .6;
+  background: #000;
+}
+.ui-dialog-content {
+  padding: 0 35px 35px;
+  overflow: auto;
+}
+.jsoneditor, .outputformatting {
+  z-index: 100;
+  width: 600px;
+}
+
+.ui-resizable-handle {
+  position: absolute;
+  min-width: 15px;
+  min-height: 15px
+}
+
+.ui-resizable-handle.ui-resizable-n {
+  top: 0;
+  left: 15px;
+  right: 15px;
+  cursor: n-resize
+}
+
+.ui-resizable-handle.ui-resizable-e {
+  top: 15px;
+  bottom: 15px;
+  right: 0;
+  cursor: e-resize
+}
+
+.ui-resizable-handle.ui-resizable-s {
+  bottom: 0;
+  left: 15px;
+  right: 15px;
+  cursor: s-resize
+}
+
+.ui-resizable-handle.ui-resizable-w {
+  top: 15px;
+  bottom: 15px;
+  left: 0;
+  cursor: w-resize
+}
+
+.ui-resizable-handle.ui-resizable-se {
+  right: 0;
+  bottom: 0;
+  cursor: se-resize
+}
+.ui-dialog .ui-dialog-titlebar {
+  padding: 35px 35px 20px;
+  cursor: move;
+  position: relative;
+}
+.ui-widget-header {
+  background: #fff;
+  border: 0;
+  font-weight: 100;
+  font-size: 24px;
+}
+
+.ui-resizable-handle.ui-resizable-sw {
+  bottom: 0;
+  left: 0;
+  cursor: sw-resize
+}
+
+.ui-resizable-handle.ui-resizable-ne {
+  top: 0;
+  right: 0;
+  cursor: ne-resize
+}
+
+.ui-resizable-handle.ui-resizable-nw {
+  top: 0;
+  left: 0;
+  cursor: nw-resize
+}
+.ui-dialog {
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  border-radius: 10px;
+  position: absolute;
+  border: 1px solid #E4E7EA;
+  background-color: #fff;
+  z-index: 100;
+  overflow: hidden;
+}
+.ui-dialog-titlebar-close {
+  position: absolute;
+  right: 35px;
+  top: 35px;
+  background-color: transparent;
+  border: none;
+  margin-top: 0;
+  font-size: 22px;
+}
+
+.ui-button {
+  border: 1px solid #E4E7EA;
+  background-color: #fff;
+  cursor: pointer;
+  outline: 0;
+}
+.ui-button-icon-only, .ui-icon {
+  padding: 0;
+}
+.ui-dialog-titlebar-close .ui-icon:before, .ui-icon-close:before {
+  content: "\f00d";
+}
+.ui-button-icon-only .ui-button-text {
+  display: none;
+}
+.ui-icon {
+  display: block;
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: inherit;
+}
+.ui-dialog-titlebar-close {
+  position: absolute;
+  right: 35px;
+  top: 35px;
+  background-color: transparent;
+  border: none;
+  margin-top: 0;
+  font-size: 22px;
+}
+.jsoneditor .javascript-editor, .outputformatting .javascript-editor {
+  min-height: 300px;
+  max-height: 300px;
+}
