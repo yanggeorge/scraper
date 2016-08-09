@@ -1143,10 +1143,6 @@ app.controller('MainCtrl', function($scope, $http, $q, getXpath, $timeout){
             close: function () {
                 console.log("close dialog");
                 $scope.jsonEditor.visible = false;
-                console.log($scope.jsonEditor);
-                $scope.$apply();
-                console.log("close dialog end.");
-
             }
         };
         var c = jQuery("#dialog");
@@ -1158,10 +1154,18 @@ app.controller('MainCtrl', function($scope, $http, $q, getXpath, $timeout){
         editor.getSession().setMode("ace/mode/javascript");
         editor.setValue($scope.robot.to_s(), -1);
         editor.selectAll();
-        editor.$clickSelection = editor.getSelectionRange();
-        editor.setState("selectAll");
-
-
+        this.editor = editor;
+        this.dialog = c;
+    };
+    $scope.jsonEditor.cancel = function(){
+        this.dialog.dialog("close");
+        $scope.jsonEditor.visible = false;
+    };
+    $scope.jsonEditor.save = function(){
+        var robot_string = this.editor.getValue();
+        $scope.robot = ym.rpa.Robot.from_json_string(robot_string);
+        this.dialog.dialog("close");
+        $scope.jsonEditor.visible = false;
     };
 });
 
