@@ -1,8 +1,12 @@
 // Place all the styles related to the scrape controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
 @charset "UTF-8";
 @import url(https://fonts.googleapis.com/css?family=Lato:300,400,700);
+html, legend {
+  color: #000
+}
 
 table.gridtable {
   font-family: verdana, arial, sans-serif;
@@ -438,7 +442,8 @@ a, body, h4, h5, h6, input {
   top: 0;
   left: 0;
   right: 0;
-  height: 38px
+  height: 38px;
+  background-color: #F6F6F6;
 }
 
 .tab-pane > .tab-buttons > .button {
@@ -1117,12 +1122,6 @@ input, select, textarea {
 button, input, select, textarea {
   font: 99% arial,helvetica,clean,sans-serif;
 }
-a, body, h4, h5, h6, input {
-  font-family: Lato,"Helvetica Neue Light","Helvetica Neue",Verdana;
-  font-size: 14px;
-  line-height: 22px;
-  font-weight: 400;
-}
 
 label {
   cursor: default;
@@ -1329,8 +1328,6 @@ table .results  tr {
   font-style: normal;
   font-weight: 400;
   line-height: 1;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   color: inherit;
 }
 .ui-dialog-titlebar-close {
@@ -1345,4 +1342,67 @@ table .results  tr {
 .jsoneditor .javascript-editor, .outputformatting .javascript-editor {
   min-height: 300px;
   max-height: 300px;
+}
+
+.dom-view {
+  background-color: #f7f7f7;
+  height: 100%;
+  overflow: auto;
+  padding: 5px;
+  box-sizing: border-box;
+  -webkit-filter: grayscale(0%); // trigger chrome using grayscale rendering
+}
+
+.dom-view .dom-tag-start-toggle {
+  user-select: none;
+  color: #666;
+  font-weight: 200;
+  font-size: 10px;
+  line-height: 14px;
+  width: 12px;
+  display: inline-block;
+  padding: 0 2px;
+}
+.dom-view .dom-tag-start-toggle, .folder-list .folder>.header, [flow-editor] {
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-touch-callout: none;
+}
+a, a:active, a:visited {
+  text-decoration: none;
+  color: #428bca;
+}
+a {
+  cursor: pointer;
+  font-weight: 400;
+}
+.dom-view .dom-tag-end, .dom-view .dom-tag-start {
+  color: #606;
+  //color : #000;
+}
+.dom-view .dom-tag-start {
+  cursor: pointer;
+}
+.dom-view .dom-folded {
+  display: inline;
+}
+.dom-view ul ul {
+  margin-left: 20px;
+}
+.dom-view .opened>.dom-tag-end {
+  padding-left: 14px;
+}
+li, menu, ol, ul {
+  list-style: none;
+}
+.dom-view .dom-content {
+  display: none;
+}
+.dom-view .dom-attr {
+  color: #960;
+}
+.dom-view .dom-attr-value {
+  color: #009;
 }

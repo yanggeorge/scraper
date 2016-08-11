@@ -51,6 +51,8 @@ class ScrapeController < ApplicationController
     xpath = params[:xpath]
     doc, @current_url = NokogiriParse.instance.click(url, xpath)
     @status = "changed"
+
+    # 以下这种情况无法处理ajax动态分页情况，即url地址不变，点击下一页ajax动态加载数据。
     if url == @current_url
       @status = "unchanged"
       render :json => {:status => @status }

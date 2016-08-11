@@ -250,10 +250,13 @@ app.directive('markerContainer', ['$window','$q','$timeout', function($window,$q
                 scope.$emit("scroller_event",{left:element.scrollLeft(),top:element.scrollTop()});
             });
             var ele = element.find(".scroller");
+            console.log("bind mousemove before");
             ele.bind('mousemove',function(e){
+
                 var point = {x: e.pageX - ele.scrollLeft() , y: e.pageY - ele.scrollTop() };
                 scope.$emit("trigger_mousemove",point);
             });
+            console.log("bind mousemove after");
             ele.bind('mousedown',function(e){
                 if(is_left_click(e)) {
                     var point = {x: e.pageX - ele.scrollLeft(), y: e.pageY - ele.scrollTop()};
@@ -402,7 +405,7 @@ app.controller('MarkerCtrl', function($scope){
        console.log(obj);
         $scope.iframe_height = obj.height + "px";
         $scope.iframe_width = obj.width + "px";
-        //$scope.$apply(); // ng-style没有及时更新，需要强制更新。
+        $scope.$apply(); // ng-style没有及时更新，需要强制更新。而且如果不运行$scope.$apply(),则无法出发mousemove事件，因而不会出现动态的选择框。
     });
     // 实现iframe和上层的div联合滚动 sync scroll
     $scope.$on("scroller_event",function(evt, obj){
@@ -608,10 +611,7 @@ app.controller('MainCtrl', function($scope, $http, $q, getXpath, $timeout){
         window.sidepane_state = 0; // 0 : 关闭 ,1 : 270px, 2: 520px
         window.sidepane2_state = 0;
         size();
-        setTimeout(function(){
-            $scope.player.stepForward();//angular scope need time to initialize.
-        },300);
-
+        var promise = $scope.player.stepForward();
     });
     $scope.save = function(){
         //保存当前的robot定义。
@@ -936,6 +936,7 @@ app.controller('MainCtrl', function($scope, $http, $q, getXpath, $timeout){
             play_promise.then(function(){
                 $scope.player.playing = false;
             });
+            return play_promise;
         }
     };
     player.stepBack = function(){
