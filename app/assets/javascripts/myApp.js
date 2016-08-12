@@ -31,72 +31,6 @@ app.factory("getXpath",function(){
         return xpath;
     };
 });
-app.directive("dialog", ["$parse", function (a) {
-    return {
-        restrict: "A",
-        link: function (b, c, d) { // scope. element, attrs
-            var exp = d.ngShow;
-            var f = a(exp);
-            g = f.assign;
-            b.$watch(d.ngShow, function (a) {
-                console.log("dialog ...");
-                var i = c.view();
-
-                var h = b.buttons && b.buttons instanceof Array ? b.buttons : [];
-                var j = jQuery(i).height() - 100
-                    , k = jQuery(i).width() - 400
-                    , l = d.width ? parseInt(d.width, 10) : 650
-                    , m = d.closable ? "true" === d.closable : !0;
-
-                var n = {
-                    title: d.dialogTitle,
-                    resizable: d.resizable ? "true" === d.resizable : !0,
-                    closable: m,
-                    maxHeight: j,
-                    maxWidth: k,
-                    minWidth: l,
-                    position: {
-                        my: "center",
-                        at: "center",
-                        of: i
-                    },
-                    modal: !0,
-                    buttons: h,
-                    close: function (a) {
-                        console.log("close dialog");
-                        c.dialog("destroy");
-
-                        g(b, !1);
-                    }
-                };
-                d.height && (n.minHeight = parseInt(d.height, 10));
-                c.dialog(n);
-                //c.dialog("widget").css("visibility", "hidden");
-                //m ? c.dialog("widget").find(".ui-dialog-titlebar-close").show() : c.dialog("widget").find(".ui-dialog-titlebar-close").hide();
-                ////e.showOverlays(),
-                //setTimeout(function () {
-                //    try {
-                //        c.dialog("widget").css("visibility", "visible");
-                //        c.dialog("option", "position", {
-                //            my: "center",
-                //            at: "center",
-                //            of: i
-                //        })
-                //    } catch (a) {
-                //    }
-                //})
-            });
-            b.$on("$destroy", function () {
-                try {
-                    c.data("uiDialog") && (c.dialog("close"),
-                        c.dialog("destroy"))
-                } catch (a) {
-                }
-            })
-        }
-    }
-}
-]);
 
 app.directive("title",function(){
     return {
@@ -611,7 +545,9 @@ app.controller('MainCtrl', function($scope, $http, $q, getXpath, $timeout){
         window.sidepane_state = 0; // 0 : 关闭 ,1 : 270px, 2: 520px
         window.sidepane2_state = 0;
         size();
-        var promise = $scope.player.stepForward();
+        setTimeout(function(){
+            var promise = $scope.player.stepForward();
+        },100);
     });
     $scope.save = function(){
         //保存当前的robot定义。
@@ -1167,6 +1103,119 @@ app.controller('MainCtrl', function($scope, $http, $q, getXpath, $timeout){
         $scope.robot = ym.rpa.Robot.from_json_string(robot_string);
         this.dialog.dialog("close");
         $scope.jsonEditor.visible = false;
+    };
+
+    $scope.test1 = function(){
+        var bb = document.body ;
+        var s = $scope.print(bb, function(node){return true;});
+        console.log(s);
+    };
+    $scope.print = function(node, is_deep){
+        var s = "<";
+        s += (node.tagName+"").toLowerCase() ;
+        _.forEach(node.attributes, function(value){
+            s += " ";
+            s += value.nodeName.toLowerCase() ;
+            s += "=";
+            s += '"';
+            s += value.nodeValue;
+            s += '"';
+        });
+        s += ">";
+
+        _.forEach(node.childNodes, function(c){
+            if(c.nodeType == 3){ // only text ,其它为 tag
+                s += c.nodeValue;
+            }else if(is_deep(c)){
+                s += $scope.print(c, is_deep);
+            }else{
+                s += "<";
+                s += (c.tagName+"").toLowerCase() ;
+                _.forEach(c.attributes, function(value){
+                    s += " ";
+                    s += (value.nodeName+"").toLowerCase() ;
+                    s += "=";
+                    s += '"';
+                    s += value.nodeValue;
+                    s += '"';
+                });
+                s += ">";
+                s += "...";
+                s += "</";
+                s += (c.tagName+"").toLowerCase() ;
+                s += ">";
+            }
+        });
+
+        s += "</";
+        s += (node.tagName+"").toLowerCase() ;
+        s += ">";
+        return s ;
+    };
+
+    $scope.test2 = function(){
+        var bb = document.body ;
+        var s = $scope.html(bb, function(node){
+            if (node.tagName == 'BODY' || node.tagName == 'HTML' ){
+                return true;
+            }else{
+                return false;
+            }
+        });
+        console.log(s);
+        jQuery("#dom-root").html(s);
+    };
+    $scope.html = function(node, is_deep){
+        var s = "";
+        if( is_deep(node)) {
+            //该节点进行展开
+
+            s += '<li class="opened">';
+            s += _.template('<a class="dom-tag-start-toggle" rel="<%= rel %>"><i class="fa dom-folded-closed fa-chevron-down"></i></a>')({'rel': (node.tagName + "").toLowerCase()});
+            s += '<a class="dom-tag-start">';
+            s += _.template('<span class="dom-tag-start-name">&lt;<%= tagName %></span>')({'tagName': (node.tagName + "").toLowerCase()});
+            // attributes
+            _.forEach(node.attributes, function (value) {
+                s += '<span class="dom-attr"> '; //末尾需要一个空格
+                s += _.template('<span class="dom-attr-name"><%= attr %></span>=<span class="dom-attr-value">"<%= val %>"</span></span>')({
+                    'attr': value.nodeName.toLowerCase(),
+                    'val': value.nodeValue
+                });
+            });
+            s += '<span class="dom-tag-start-end">&gt;</span></a>';
+
+            // node的子节点
+            s += '<ul class="dom-content" style="display: block;">';
+            _.forEach(node.childNodes, function (c) {
+                if (c.nodeType == 3 ) { // only text ,其它为 tag
+                    if( _.trim(c.nodeValue).length > 0) {
+                        s += _.template('<li class="dom-text"><%= text %></li>')({'text': c.nodeValue});
+                    }
+                } else {
+                    s += $scope.html(c, is_deep);
+                }
+            });
+            s += '</ul>';
+            s += _.template('<span class="dom-tag-end"><%= end %></span></li>')({ 'end' : '&lt;/'+ (node.tagName + "").toLowerCase() + '&gt;' });
+        }else{
+            s += '<li class="">';
+            s += _.template('<a class="dom-tag-start-toggle" rel="<%= rel %>"><i class="fa dom-folded-closed fa-chevron-right"></i></a>')({'rel': (node.tagName + "").toLowerCase()});
+            s += '<a class="dom-tag-start">';
+            s += _.template('<span class="dom-tag-start-name">&lt;<%= tagName %></span>')({'tagName': (node.tagName + "").toLowerCase()});
+            // attributes
+            _.forEach(node.attributes, function (value) {
+                s += '<span class="dom-attr"> '; //末尾需要一个空格
+                s += _.template('<span class="dom-attr-name"><%= attr %></span>=<span class="dom-attr-value">"<%= val %>"</span></span>')({
+                    'attr': value.nodeName.toLowerCase(),
+                    'val': value.nodeValue
+                });
+            });
+            s += '<span class="dom-tag-start-end">&gt;</span></a>';
+            s += _.template('<span class="dom-folded" style="display: inline;"><%= dot %></span><ul class="dom-content" style="display: none;"></ul>')({'gt':'&gt;','dot':'...'});
+            s += _.template('<span class="dom-tag-end"><%= end %></span></li>')({ 'end' : '&lt;/'+ (node.tagName + "").toLowerCase() + '&gt;' });
+
+        };
+        return s ;
     };
 });
 

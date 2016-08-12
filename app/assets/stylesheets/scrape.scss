@@ -1406,3 +1406,7 @@ li, menu, ol, ul {
 .dom-view .dom-attr-value {
   color: #009;
 }
+
+.dom-view .dom-text {
+  white-space: pre-wrap;
+}

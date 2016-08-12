@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/app/assets/javascripts/myApp.js" line="1061" />
-    <bookmark url="file://$PROJECT_DIR$/app/assets/javascripts/myApp.js" line="608" />
-    <bookmark url="file://$PROJECT_DIR$/app/assets/javascripts/myApp.js" line="1135" />
+    <bookmark url="file://$PROJECT_DIR$/app/assets/javascripts/myApp.js" line="997" />
+    <bookmark url="file://$PROJECT_DIR$/app/assets/javascripts/myApp.js" line="542" />
+    <bookmark url="file://$PROJECT_DIR$/app/assets/javascripts/myApp.js" line="1071" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="658efde4-43d6-49dc-9ff7-88fa044941b2" name="Default" comment="" />
@@ -40,7 +40,7 @@
     <SUITE FILE_PATH="coverage/blog@test__blog.coverage" NAME="test: blog Coverage Results" MODIFIED="1460432410839" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="blog" />
     <SUITE FILE_PATH="coverage/blog@db_migrate__blog.coverage" NAME="db:migrate: blog Coverage Results" MODIFIED="1470127091561" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="blog" />
     <SUITE FILE_PATH="coverage/blog@bower_install_options___blog.coverage" NAME="bower:install[options]: blog Coverage Results" MODIFIED="1463395289486" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="blog" />
-    <SUITE FILE_PATH="coverage/blog@Development__blog.coverage" NAME="Development: blog Coverage Results" MODIFIED="1470800567976" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="blog" />
+    <SUITE FILE_PATH="coverage/blog@Development__blog.coverage" NAME="Development: blog Coverage Results" MODIFIED="1470910868791" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="blog" />
     <SUITE FILE_PATH="coverage/blog@web_analysis.coverage" NAME="web_analysis Coverage Results" MODIFIED="1470216433412" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/lib" MODULE_NAME="blog" />
   </component>
   <component name="CreatePatchCommitExecutor">
@@ -63,19 +63,22 @@
     <favorites_list name="blog" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.43172044">
+    <splitter split-orientation="horizontal" split-proportion="0.19731183">
       <split-first>
-        <splitter split-orientation="vertical" split-proportion="0.54652405">
+        <splitter split-orientation="vertical" split-proportion="0.14973262">
           <split-first>
             <leaf>
               <file leaf-file-name="myApp.js" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/app/assets/javascripts/myApp.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state vertical-scroll-proportion="0.7379455">
-                      <caret line="384" column="28" selection-start-line="384" selection-start-column="28" selection-end-line="384" selection-end-column="28" />
+                    <state vertical-scroll-proportion="0.0">
+                      <caret line="338" column="24" selection-start-line="338" selection-start-column="24" selection-end-line="338" selection-end-column="24" />
                       <folding>
                         <element signature="e#0#43#0" expanded="false" />
-                        <marker date="1470800725053" expanded="true" signature="27489:28291" placeholder="{...}" />
+                        <marker date="1470997325135" expanded="true" signature="25097:25899" placeholder="{...}" />
+                        <marker date="1470997325135" expanded="true" signature="47155:47170" placeholder="..." />
+                        <marker date="1470997325135" expanded="true" signature="48724:48740" placeholder="..." />
+                        <marker date="1470997325135" expanded="true" signature="48790:48804" placeholder="..." />
                       </folding>
                     </state>
                   </provider>
@@ -148,22 +151,9 @@
               <file leaf-file-name="scrape.scss" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/scrape.scss">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state vertical-scroll-proportion="0.86404836">
-                      <caret line="221" column="1" selection-start-line="221" selection-start-column="1" selection-end-line="221" selection-end-column="1" />
+                    <state vertical-scroll-proportion="0.84931505">
+                      <caret line="1408" column="0" selection-start-line="1408" selection-start-column="0" selection-end-line="1408" selection-end-column="0" />
                       <folding />
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file leaf-file-name="myApp.js" pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/app/assets/javascripts/myApp.js">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state vertical-scroll-proportion="-6.2">
-                      <caret line="616" column="23" selection-start-line="616" selection-start-column="23" selection-end-line="616" selection-end-column="23" />
-                      <folding>
-                        <element signature="e#0#43#0" expanded="false" />
-                        <marker date="1470800725053" expanded="true" signature="27489:28291" placeholder="{...}" />
-                      </folding>
                     </state>
                   </provider>
                 </entry>
@@ -205,7 +195,7 @@
         </splitter>
       </split-first>
       <split-second>
-        <splitter split-orientation="vertical" split-proportion="0.5593583">
+        <splitter split-orientation="vertical" split-proportion="0.6042781">
           <split-first>
             <leaf>
               <file leaf-file-name="scrape2.js" pinned="false" current-in-tab="false">
@@ -220,15 +210,17 @@
                   </provider>
                 </entry>
               </file>
-              <file leaf-file-name="myApp.js" pinned="false" current-in-tab="false">
+              <file leaf-file-name="myApp.js" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/app/assets/javascripts/myApp.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state vertical-scroll-proportion="0.0">
-                      <caret line="756" column="8" selection-start-line="756" selection-start-column="8" selection-end-line="756" selection-end-column="8" />
+                    <state vertical-scroll-proportion="0.7056604">
+                      <caret line="1190" column="57" selection-start-line="1190" selection-start-column="57" selection-end-line="1190" selection-end-column="57" />
                       <folding>
                         <element signature="e#0#43#0" expanded="false" />
-                        <marker date="1470800725053" expanded="true" signature="21530:21581" placeholder="{...}" />
-                        <marker date="1470800725053" expanded="true" signature="27489:28291" placeholder="{...}" />
+                        <marker date="1470997325135" expanded="true" signature="25097:25899" placeholder="{...}" />
+                        <marker date="1470997325135" expanded="true" signature="47155:47170" placeholder="..." />
+                        <marker date="1470997325135" expanded="true" signature="48724:48740" placeholder="..." />
+                        <marker date="1470997325135" expanded="true" signature="48790:48804" placeholder="..." />
                       </folding>
                     </state>
                   </provider>
@@ -238,8 +230,23 @@
                 <entry file="file://$PROJECT_DIR$/app/views/scrape/do_url.html.erb">
                   <provider selected="true" editor-type-id="text-editor">
                     <state vertical-scroll-proportion="0.0">
-                      <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-                      <folding />
+                      <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+                      <folding>
+                        <marker date="1470996632257" expanded="true" signature="6119:9706" placeholder="..." />
+                        <marker date="1470996632257" expanded="false" signature="6535:6549" placeholder="..." />
+                        <marker date="1470996632257" expanded="false" signature="6618:6633" placeholder="..." />
+                        <marker date="1470996632257" expanded="true" signature="6634:9629" placeholder="..." />
+                        <marker date="1470996632257" expanded="true" signature="6675:7148" placeholder="..." />
+                        <marker date="1470996632257" expanded="false" signature="6958:6974" placeholder="..." />
+                        <marker date="1470996632257" expanded="false" signature="7047:7061" placeholder="..." />
+                        <marker date="1470996632257" expanded="true" signature="7196:9598" placeholder="..." />
+                        <marker date="1470996632257" expanded="false" signature="7736:7750" placeholder="..." />
+                        <marker date="1470996632257" expanded="false" signature="7823:7838" placeholder="..." />
+                        <marker date="1470996632257" expanded="true" signature="7839:9517" placeholder="..." />
+                        <marker date="1470996632257" expanded="true" signature="7875:8426" placeholder="..." />
+                        <marker date="1470996632257" expanded="true" signature="8464:8892" placeholder="..." />
+                        <marker date="1470996632257" expanded="true" signature="8928:9482" placeholder="..." />
+                      </folding>
                     </state>
                   </provider>
                 </entry>
@@ -288,10 +295,10 @@
                   </provider>
                 </entry>
               </file>
-              <file leaf-file-name="nokogiri_parse.rb" pinned="false" current-in-tab="true">
+              <file leaf-file-name="nokogiri_parse.rb" pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/lib/nokogiri_parse.rb">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state vertical-scroll-proportion="0.3149284">
+                    <state vertical-scroll-proportion="0.0">
                       <caret line="157" column="9" selection-start-line="157" selection-start-column="9" selection-end-line="157" selection-end-column="9" />
                       <folding />
                     </state>
@@ -312,33 +319,21 @@
           </split-first>
           <split-second>
             <leaf>
-              <file leaf-file-name="do_url.html.erb" pinned="false" current-in-tab="false">
+              <file leaf-file-name="do_url.html.erb" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/app/views/scrape/do_url.html.erb">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state vertical-scroll-proportion="24.508196">
-                      <caret line="165" column="0" selection-start-line="165" selection-start-column="0" selection-end-line="165" selection-end-column="0" />
-                      <folding>
-                        <element signature="n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="false" />
-                        <element signature="n#div#1;n#div#1;n#div#1;n#div#0;n#!!top" expanded="false" />
-                        <element signature="n#style#0;n#span#0;n#li#0;n#ul#0;n#div#0;n#div#2;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
-                        <element signature="n#style#0;n#ul#0;n#li#0;n#ul#0;n#div#0;n#div#2;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
-                        <element signature="n#style#0;n#span#0;n#li#0;n#ul#0;n#li#0;n#ul#0;n#div#0;n#div#2;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
-                        <element signature="n#style#0;n#ul#0;n#li#0;n#ul#0;n#li#0;n#ul#0;n#div#0;n#div#2;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
-                        <element signature="n#style#0;n#span#0;n#li#1;n#ul#0;n#li#0;n#ul#0;n#div#0;n#div#2;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
-                        <element signature="n#style#0;n#ul#0;n#li#1;n#ul#0;n#li#0;n#ul#0;n#div#0;n#div#2;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
-                        <element signature="n#div#3;n#div#1;n#div#1;n#div#0;n#!!top" expanded="false" />
-                        <element signature="n#div#4;n#div#1;n#div#1;n#div#0;n#!!top" expanded="false" />
-                        <element signature="n#div#5;n#div#1;n#div#1;n#div#0;n#!!top" expanded="false" />
-                      </folding>
+                    <state vertical-scroll-proportion="2.7857144">
+                      <caret line="179" column="18" selection-start-line="179" selection-start-column="18" selection-end-line="179" selection-end-column="18" />
+                      <folding />
                     </state>
                   </provider>
                 </entry>
               </file>
-              <file leaf-file-name="application.html.erb" pinned="false" current-in-tab="true">
+              <file leaf-file-name="application.html.erb" pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state vertical-scroll-proportion="0.9455587">
-                      <caret line="15" column="23" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
+                    <state vertical-scroll-proportion="-10.193548">
+                      <caret line="22" column="12" selection-start-line="22" selection-start-column="12" selection-end-line="22" selection-end-column="12" />
                       <folding />
                     </state>
                   </provider>
@@ -414,12 +409,12 @@
         <option value="$PROJECT_DIR$/config/initializers/assets.rb" />
         <option value="$PROJECT_DIR$/Gemfile" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/application.js" />
-        <option value="$PROJECT_DIR$/app/views/scrape/do_url.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/scrape_controller.rb" />
-        <option value="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
         <option value="$PROJECT_DIR$/lib/nokogiri_parse.rb" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/myApp.js" />
+        <option value="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/scrape.scss" />
+        <option value="$PROJECT_DIR$/app/views/scrape/do_url.html.erb" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/myApp.js" />
       </list>
     </option>
   </component>
@@ -469,7 +464,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="RailsProjectView" />
       <pane id="ProjectPane">
         <subPane>
@@ -719,6 +713,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -1240,7 +1235,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.4345679">
           <caret line="8" column="5" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1263,7 +1257,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1467,17 +1460,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/scrape/do_url.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/nokogiri_parse.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3149284">
+        <state vertical-scroll-proportion="0.0">
           <caret line="157" column="9" selection-start-line="157" selection-start-column="9" selection-end-line="157" selection-end-column="9" />
           <folding />
         </state>
@@ -1493,28 +1478,54 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9455587">
-          <caret line="15" column="23" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
+        <state vertical-scroll-proportion="-10.193548">
+          <caret line="22" column="12" selection-start-line="22" selection-start-column="12" selection-end-line="22" selection-end-column="12" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/myApp.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.2">
-          <caret line="616" column="23" selection-start-line="616" selection-start-column="23" selection-end-line="616" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#43#0" expanded="false" />
-            <marker date="1470800725053" expanded="true" signature="27489:28291" placeholder="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/scrape.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.86404836">
-          <caret line="221" column="1" selection-start-line="221" selection-start-column="1" selection-end-line="221" selection-end-column="1" />
+        <state vertical-scroll-proportion="0.84931505">
+          <caret line="1408" column="0" selection-start-line="1408" selection-start-column="0" selection-end-line="1408" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/scrape/do_url.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding>
+            <marker date="1470996632257" expanded="true" signature="6119:9706" placeholder="..." />
+            <marker date="1470996632257" expanded="false" signature="6535:6549" placeholder="..." />
+            <marker date="1470996632257" expanded="false" signature="6618:6633" placeholder="..." />
+            <marker date="1470996632257" expanded="true" signature="6634:9629" placeholder="..." />
+            <marker date="1470996632257" expanded="true" signature="6675:7148" placeholder="..." />
+            <marker date="1470996632257" expanded="false" signature="6958:6974" placeholder="..." />
+            <marker date="1470996632257" expanded="false" signature="7047:7061" placeholder="..." />
+            <marker date="1470996632257" expanded="true" signature="7196:9598" placeholder="..." />
+            <marker date="1470996632257" expanded="false" signature="7736:7750" placeholder="..." />
+            <marker date="1470996632257" expanded="false" signature="7823:7838" placeholder="..." />
+            <marker date="1470996632257" expanded="true" signature="7839:9517" placeholder="..." />
+            <marker date="1470996632257" expanded="true" signature="7875:8426" placeholder="..." />
+            <marker date="1470996632257" expanded="true" signature="8464:8892" placeholder="..." />
+            <marker date="1470996632257" expanded="true" signature="8928:9482" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/myApp.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7056604">
+          <caret line="1190" column="57" selection-start-line="1190" selection-start-column="57" selection-end-line="1190" selection-end-column="57" />
+          <folding>
+            <element signature="e#0#43#0" expanded="false" />
+            <marker date="1470997325135" expanded="true" signature="25097:25899" placeholder="{...}" />
+            <marker date="1470997325135" expanded="true" signature="47155:47170" placeholder="..." />
+            <marker date="1470997325135" expanded="true" signature="48724:48740" placeholder="..." />
+            <marker date="1470997325135" expanded="true" signature="48790:48804" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
