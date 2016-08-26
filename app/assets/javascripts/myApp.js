@@ -1163,11 +1163,95 @@ app.controller('MainCtrl', function($scope, $http, $q, getXpath, $timeout){
             }
         });
         console.log(s);
-        jQuery("#dom-root").html(s);
+        jQuery("#dom-root").append(s);
     };
-    $scope.html = function(node, is_deep){
+    $scope.test3 = function(){
+        var bb = document.body ;
+        var s = $scope.html(bb, function(node){
+            return false;
+        });
+        console.log(s);
+        var dom_root = jQuery(s);
+        console.log(dom_root);
+        //$scope.add_event(bb, dom_root);
+        jQuery("#dom-root").append(dom_root);
+    };
+
+    $scope.test4 = function() {
+        var src_root_node = document.body;
+        var closed_node = $scope.get_closed_node(src_root_node);
+        console.log(closed_node);
+        jQuery("#dom-root").append(closed_node);
+    };
+    $scope.get_closed_node = function(src_root_node){
+        var node_closed_html = $scope.get_closed_html(src_root_node);
+        var closed_node = jQuery(node_closed_html);
+        $scope.add_toggle_event(closed_node, src_root_node);
+        return closed_node ;
+    };
+
+    $scope.get_closed_html = function(src_root_node){
+        return $scope.html(src_root_node,function(){return false;});
+    };
+    $scope.get_opened_html = function(src_root_node) {
+        var closure = function(){
+            var a = 0 ;
+            return function(){
+                if(a >= 1) {
+                    return false;
+                }else{
+                    a += 1;
+                    return true;
+                }
+            }
+        };
+        var is_deep = closure(); // is_deep 第一次执行是true，第二次执行为false
+        return $scope.html(src_root_node, is_deep);
+    };
+
+    $scope.add_toggle_event = function(closed_node, src_root_node){
+        var toggle_node = jQuery(closed_node).find(".dom-tag-start-toggle")[0];
+        var tag_start_node = jQuery(closed_node).find(".dom-tag-start")[0];
+        var folded_node = jQuery(closed_node).find(".dom-folded")[0];
+        jQuery(toggle_node).click(function(){
+            var node = jQuery(this).find('i')[0];
+            if(jQuery(node).hasClass("fa-chevron-right") ){
+                //说明箭头向右
+                var content_node = jQuery(closed_node).find(".dom-content")[0];
+                var opened_node = jQuery($scope.get_opened_html(src_root_node));
+                var opened_content_node = jQuery(opened_node).find(".dom-content")[0];
+                jQuery(content_node).replaceWith(opened_content_node);
+                $scope.add_event_to_content_tags(opened_content_node, src_root_node);
+                jQuery(folded_node).css("display","none");
+                jQuery(node).removeClass("fa-chevron-right").addClass("fa-chevron-down");
+            }else {
+                //说明箭头向下
+                var content_node = jQuery(closed_node).find(".dom-content")[0];
+                jQuery(content_node).empty();
+                jQuery(content_node).css("display","none");
+                jQuery(folded_node).css("display","inline");
+                jQuery(node).removeClass("fa-chevron-down").addClass("fa-chevron-right");
+            }
+        });
+    };
+    $scope.add_event_to_content_tags = function(opened_content_node, src_root_node){
+        var nodes = jQuery(opened_content_node).children("li").not(".dom-text");
+        var src_nodes = [];
+        _.forEach(src_root_node.childNodes,function(node){
+            if (node.nodeType == 3 ) { // only text ,其它为 tag
+            } else {
+                src_nodes.push(node);
+            }
+        });
+        console.log(nodes.length);
+        console.log(src_nodes.length);
+        for(var i = 0; i < nodes.length ; i++){
+            $scope.add_toggle_event(nodes[i], src_nodes[i]);
+        }
+    };
+    $scope.html = function(node, is_open){
         var s = "";
-        if( is_deep(node)) {
+        if( is_open(node)) {
             //该节点进行展开
 
             s += '<li class="opened">';
@@ -1192,7 +1276,7 @@ app.controller('MainCtrl', function($scope, $http, $q, getXpath, $timeout){
                         s += _.template('<li class="dom-text"><%= text %></li>')({'text': c.nodeValue});
                     }
                 } else {
-                    s += $scope.html(c, is_deep);
+                    s += $scope.html(c, is_open);
                 }
             });
             s += '</ul>';
@@ -1217,6 +1301,8 @@ app.controller('MainCtrl', function($scope, $http, $q, getXpath, $timeout){
         };
         return s ;
     };
+
+
 });
 
 var compute_svg_width = function(svgs){

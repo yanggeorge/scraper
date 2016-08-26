@@ -27,7 +27,16 @@ class WebAnalysis
     if url == nil
       @driver.navigate.to "http://www.he-n-tax.gov.cn/hbgsww_new/hbgsgkml/ajxxgk/880/list.htm"
     else
-      @driver.navigate.to url
+      # 这里容易产生 ReadTimeout的问题
+      begin
+        @driver.navigate.to url
+      rescue
+        puts "!!!!!!!!!! get response error !!!!!!!!!!!"
+        puts $!
+        puts $@
+        puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+      end
+
     end
     page_source = @driver.page_source
     page_source
