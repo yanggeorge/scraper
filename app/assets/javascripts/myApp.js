@@ -233,6 +233,9 @@ app.directive('markerContainer', ['$window','$q','$timeout', function($window,$q
                 clean_list();
             });
 
+            scope.$on("delete_div",function(evt, obj){
+                clean_list();
+            });
 
             scope.$on("create_div",function(evt,obj){
                 //console.log(obj);
@@ -1224,6 +1227,7 @@ app.controller('MainCtrl', function($scope, $http, $q, getXpath, $timeout){
         return $scope.html(src_root_node, is_deep);
     };
 
+    $scope.selected_node = null;
     $scope.add_toggle_event = function(closed_node, src_root_node){
         var toggle_node = jQuery(closed_node).find(".dom-tag-start-toggle")[0];
         var tag_start_node = jQuery(closed_node).find(".dom-tag-start")[0];
@@ -1249,6 +1253,34 @@ app.controller('MainCtrl', function($scope, $http, $q, getXpath, $timeout){
                 jQuery(node).removeClass("fa-chevron-down").addClass("fa-chevron-right");
             }
         });
+        jQuery(tag_start_node).mouseover(function(){
+            jQuery(closed_node).addClass("marker");
+            var ele = src_root_node;
+            var offset = jQuery(ele).offset();
+            var obj = {width: jQuery(ele).outerWidth(), height : jQuery(ele).outerHeight(),
+                left:offset.left, top:offset.top};
+            $scope.$broadcast("create_div",obj);
+        });
+        jQuery(tag_start_node).mouseout(function(){
+            if (! jQuery(closed_node).hasClass("selected")) {
+                jQuery(closed_node).removeClass("marker");
+                $scope.$broadcast("delete_div");
+            }
+        });
+
+        jQuery(tag_start_node).click(function(){
+            if($scope.selected_node == closed_node){
+                jQuery($scope.selected_node).removeClass("selected");
+                $scope.selected_node = null;
+            }else{
+                if($scope.selected_node) {
+                    jQuery($scope.selected_node).removeClass("selected").removeClass("marker");
+                }
+                jQuery(closed_node).addClass("selected");
+                $scope.selected_node = closed_node;
+            }
+        });
+
     };
     $scope.add_event_to_content_tags = function(opened_content_node, src_root_node){
         var nodes = jQuery(opened_content_node).children("li").not(".dom-text");
@@ -1310,7 +1342,7 @@ app.controller('MainCtrl', function($scope, $http, $q, getXpath, $timeout){
                 return num_child != 0 ;
             };
 
-            if (has_child_tag(node)) {
+            if (has_child_tag(node)) {// 该节点是否包含子节点，包含的话，增加toggle
                 s += '<li class="">';
                 s += _.template('<a class="dom-tag-start-toggle" rel="<%= rel %>"><i class="fa dom-folded-closed fa-chevron-right"></i></a>')({'rel': (node.tagName + "").toLowerCase()});
                 s += '<a class="dom-tag-start">';
@@ -1341,7 +1373,7 @@ app.controller('MainCtrl', function($scope, $http, $q, getXpath, $timeout){
                         'val': value.nodeValue
                     });
                 });
-                s += '<span class="dom-tag-start-end">/&gt;</span></a>';
+                s += '<span class="dom-tag-start-end">&nbsp;/&gt;</span></a>';
             }
         };
         return s ;

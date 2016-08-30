@@ -138,7 +138,11 @@ class ScrapeController < ApplicationController
   def page
     puts params
     html = HtmlManager.instance.get_by_id(params[:id])
-    render html: html.html_safe
+    if html
+      render html: html.html_safe
+    else
+      render html: ''
+    end
   end
 
 end

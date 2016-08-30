@@ -1410,3 +1410,18 @@ li, menu, ol, ul {
 .dom-view .dom-text {
   white-space: pre-wrap;
 }
+
+.dom-view .marker {
+   box-sizing: border-box;
+   box-shadow: 0 0 10px rgba(0,0,0,.8);
+   z-index: 1;
+   -webkit-transition: box-shadow .2s ease-out;
+   -moz-transition: -moz-box-shadow .2s ease-out;
+   -o-transition: box-shadow .2s ease-out;
+   transition: box-shadow .2s ease-out
+ }
+
+.dom-view .marker.selected {
+  background-color: rgba(200,200,255,.4);
+  z-index: 2002
+}
