@@ -1178,7 +1178,8 @@ app.controller('MainCtrl', function($scope, $http, $q, getXpath, $timeout){
     };
 
     $scope.test4 = function() {
-        var src_root_node = document.body;
+        //var src_root_node = document.getElementById("modified_page").contentWindow.document.documentElement;
+        var src_root_node = document.documentElement;
         var closed_node = $scope.get_closed_node(src_root_node);
         console.log(closed_node);
         jQuery("#dom-root").append(closed_node);
@@ -1213,11 +1214,12 @@ app.controller('MainCtrl', function($scope, $http, $q, getXpath, $timeout){
         var toggle_node = jQuery(closed_node).find(".dom-tag-start-toggle")[0];
         var tag_start_node = jQuery(closed_node).find(".dom-tag-start")[0];
         var folded_node = jQuery(closed_node).find(".dom-folded")[0];
+        var content_node = null ;
         jQuery(toggle_node).click(function(){
             var node = jQuery(this).find('i')[0];
             if(jQuery(node).hasClass("fa-chevron-right") ){
                 //说明箭头向右
-                var content_node = jQuery(closed_node).find(".dom-content")[0];
+                content_node = jQuery(closed_node).find(".dom-content")[0];
                 var opened_node = jQuery($scope.get_opened_html(src_root_node));
                 var opened_content_node = jQuery(opened_node).find(".dom-content")[0];
                 jQuery(content_node).replaceWith(opened_content_node);
@@ -1226,7 +1228,7 @@ app.controller('MainCtrl', function($scope, $http, $q, getXpath, $timeout){
                 jQuery(node).removeClass("fa-chevron-right").addClass("fa-chevron-down");
             }else {
                 //说明箭头向下
-                var content_node = jQuery(closed_node).find(".dom-content")[0];
+                content_node = jQuery(closed_node).find(".dom-content")[0];
                 jQuery(content_node).empty();
                 jQuery(content_node).css("display","none");
                 jQuery(folded_node).css("display","inline");
@@ -1238,7 +1240,7 @@ app.controller('MainCtrl', function($scope, $http, $q, getXpath, $timeout){
         var nodes = jQuery(opened_content_node).children("li").not(".dom-text");
         var src_nodes = [];
         _.forEach(src_root_node.childNodes,function(node){
-            if (node.nodeType == 3 ) { // only text ,其它为 tag
+            if (node.nodeType == 3 || node.nodeType == 8) { // only text ,其它为 tag
             } else {
                 src_nodes.push(node);
             }
@@ -1271,7 +1273,9 @@ app.controller('MainCtrl', function($scope, $http, $q, getXpath, $timeout){
             // node的子节点
             s += '<ul class="dom-content" style="display: block;">';
             _.forEach(node.childNodes, function (c) {
-                if (c.nodeType == 3 ) { // only text ,其它为 tag
+                if (c.nodeType == 8 ){
+                    // comment node
+                }else if (c.nodeType == 3 ) { // only text ,其它为 tag
                     if( _.trim(c.nodeValue).length > 0) {
                         s += _.template('<li class="dom-text"><%= text %></li>')({'text': c.nodeValue});
                     }
