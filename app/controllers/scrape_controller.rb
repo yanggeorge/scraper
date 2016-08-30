@@ -27,13 +27,13 @@ class ScrapeController < ApplicationController
     end
   end
 
-  def get_page
+  def get_page_id
     p params
     url = params[:url]
     html = NokogiriParse.instance.get_html(url)
-    @modified_page = html
     puts html
-    render :json => {:page => @modified_page}
+    @id = HtmlManager.instance.get_id(url)
+    render :json => {:id => @id}
   end
 
   def extract_data
@@ -58,9 +58,9 @@ class ScrapeController < ApplicationController
       render :json => {:status => @status }
     else
       html = NokogiriParse.instance.get_html(@current_url)
-      @modified_page = html
       puts html
-      render :json => {:page => @modified_page, :new_url => @current_url, :status => @status }
+      @id = HtmlManager.instance.get_id(@current_url)
+      render :json => {:id => @id  , :new_url => @current_url, :status => @status }
     end
 
   end
@@ -135,5 +135,10 @@ class ScrapeController < ApplicationController
     render :json => {:status => @status}
   end
 
+  def page
+    puts params
+    html = HtmlManager.instance.get_by_id(params[:id])
+    render html: html.html_safe
+  end
 
 end

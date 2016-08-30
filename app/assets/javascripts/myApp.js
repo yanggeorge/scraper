@@ -577,22 +577,22 @@ app.controller('MainCtrl', function($scope, $http, $q, getXpath, $timeout){
       return $scope.robot.steps[$scope.robot.first_step].value ;
     };
 
+    $scope.set_iframe_src = function(src){
+        var iframe = jQuery("#modified_page");
+        jQuery(iframe).attr('src',src);
+    };
+
     $scope.load_url = function( url ,env){
         console.log("load_url");
-        var path = '/scrape/get_page' ;
-        var doc = document.getElementById('modified_page').contentWindow.document;
-        doc.open();
-        doc.write("<body></body>");
-        //doc.close();
-        var ramdom = Math.uuid();
+        var path = '/scrape/get_page_id' ;
+        var random = Math.uuid();
         $scope.$broadcast("set_data_complete_false");
-        var promise = $http.post(path, {url: url, random : ramdom}, {timeout:50000})
+        var promise = $http.post(path, {url: url, random : random}, {timeout:50000})
             .success(function(data, status, headers, config)
             {
-                //doc.open();
-                doc.write(data.page);
-                doc.close();
-                env.url_page = data.page;
+                var page_id = data.id;
+                env.url_page_id = data.id;
+                $scope.iframe_src_change(env);
                 return false;
             })
             .error(function(data, status, headers, config)
@@ -608,6 +608,13 @@ app.controller('MainCtrl', function($scope, $http, $q, getXpath, $timeout){
            return $timeout(1200); // 与关闭 elm.hide的等待时间相同。
         });
         return promise1;
+    };
+
+    $scope.iframe_src_change = function(env){
+        var src = '/scrape/page/' + env.url_page_id;
+        var iframe = jQuery("#modified_page");
+        jQuery(iframe).attr('src', src);
+        $scope.$emit("iframe_src_change");
     };
     $scope.extract_data = function( url, tag ,env, field){
         console.log("extract_data");
@@ -640,18 +647,15 @@ app.controller('MainCtrl', function($scope, $http, $q, getXpath, $timeout){
     $scope.click_element = function(xpath, env){
         console.log("click_element");
         var path = '/scrape/click_element' ;
-        var doc = document.getElementById('modified_page').contentWindow.document;
-        var ramdom = Math.uuid();
+        var random = Math.uuid();
         $scope.$broadcast("set_data_complete_false");
-        var promise = $http.post(path, {url: env.url,xpath : xpath, random : ramdom}, {timeout:50000})
+        var promise = $http.post(path, {url: env.url,xpath : xpath, random : random}, {timeout:50000})
             .success(function(data, status, headers, config)
             {
                 if(data.status =="changed") {
-                    doc.open();
-                    doc.write(data.page);
-                    doc.close();
-                    env.url_page = data.page;
+                    env.url_page_id = data.id;
                     env.url = data.new_url;
+                    $scope.iframe_src_change(env);
                 }else{
                     // no change
                 }
@@ -664,6 +668,7 @@ app.controller('MainCtrl', function($scope, $http, $q, getXpath, $timeout){
             }
         );
         promise.then(function(){
+
             $scope.$broadcast("set_data_complete_true");
         });
         var promise1 = promise.then(function(){
@@ -1177,13 +1182,22 @@ app.controller('MainCtrl', function($scope, $http, $q, getXpath, $timeout){
         jQuery("#dom-root").append(dom_root);
     };
 
-    $scope.test4 = function() {
-        //var src_root_node = document.getElementById("modified_page").contentWindow.document.documentElement;
-        var src_root_node = document.documentElement;
-        var closed_node = $scope.get_closed_node(src_root_node);
-        console.log(closed_node);
-        jQuery("#dom-root").append(closed_node);
-    };
+
+    $scope.$on("iframe_src_change" , function() {
+        var defer = $q.defer();
+        defer.resolve("nothing");
+        var promise = defer.promise;
+        var p = promise.then(function(){
+            return $timeout(1200);
+        });
+        p.then(function(){
+            var src_root_node = document.getElementById("modified_page").contentWindow.document.documentElement;
+            var closed_node = $scope.get_closed_node(src_root_node);
+            console.log(closed_node);
+            jQuery("#dom-root").append(closed_node);
+        });
+
+    });
     $scope.get_closed_node = function(src_root_node){
         var node_closed_html = $scope.get_closed_html(src_root_node);
         var closed_node = jQuery(node_closed_html);
@@ -1286,22 +1300,49 @@ app.controller('MainCtrl', function($scope, $http, $q, getXpath, $timeout){
             s += '</ul>';
             s += _.template('<span class="dom-tag-end"><%= end %></span></li>')({ 'end' : '&lt;/'+ (node.tagName + "").toLowerCase() + '&gt;' });
         }else{
-            s += '<li class="">';
-            s += _.template('<a class="dom-tag-start-toggle" rel="<%= rel %>"><i class="fa dom-folded-closed fa-chevron-right"></i></a>')({'rel': (node.tagName + "").toLowerCase()});
-            s += '<a class="dom-tag-start">';
-            s += _.template('<span class="dom-tag-start-name">&lt;<%= tagName %></span>')({'tagName': (node.tagName + "").toLowerCase()});
-            // attributes
-            _.forEach(node.attributes, function (value) {
-                s += '<span class="dom-attr"> '; //末尾需要一个空格
-                s += _.template('<span class="dom-attr-name"><%= attr %></span>=<span class="dom-attr-value">"<%= val %>"</span></span>')({
-                    'attr': value.nodeName.toLowerCase(),
-                    'val': value.nodeValue
+            var has_child_tag = function(node){
+                var num_child = 0 ;
+                _.forEach(node.childNodes, function (c) {
+                    if (c.nodeType != 8 ){
+                        num_child += 1;
+                    }
                 });
-            });
-            s += '<span class="dom-tag-start-end">&gt;</span></a>';
-            s += _.template('<span class="dom-folded" style="display: inline;"><%= dot %></span><ul class="dom-content" style="display: none;"></ul>')({'gt':'&gt;','dot':'...'});
-            s += _.template('<span class="dom-tag-end"><%= end %></span></li>')({ 'end' : '&lt;/'+ (node.tagName + "").toLowerCase() + '&gt;' });
+                return num_child != 0 ;
+            };
 
+            if (has_child_tag(node)) {
+                s += '<li class="">';
+                s += _.template('<a class="dom-tag-start-toggle" rel="<%= rel %>"><i class="fa dom-folded-closed fa-chevron-right"></i></a>')({'rel': (node.tagName + "").toLowerCase()});
+                s += '<a class="dom-tag-start">';
+                s += _.template('<span class="dom-tag-start-name">&lt;<%= tagName %></span>')({'tagName': (node.tagName + "").toLowerCase()});
+                // attributes
+                _.forEach(node.attributes, function (value) {
+                    s += '<span class="dom-attr"> '; //末尾需要一个空格
+                    s += _.template('<span class="dom-attr-name"><%= attr %></span>=<span class="dom-attr-value">"<%= val %>"</span></span>')({
+                        'attr': value.nodeName.toLowerCase(),
+                        'val': value.nodeValue
+                    });
+                });
+                s += '<span class="dom-tag-start-end">&gt;</span></a>';
+                s += _.template('<span class="dom-folded" style="display: inline;"><%= dot %></span><ul class="dom-content" style="display: none;"></ul>')({
+                    'gt': '&gt;',
+                    'dot': '...'
+                });
+                s += _.template('<span class="dom-tag-end"><%= end %></span></li>')({'end': '&lt;/' + (node.tagName + "").toLowerCase() + '&gt;'});
+            }else{
+                s += '<li class="">';
+                s += '<a class="dom-tag-start">';
+                s += _.template('<span class="dom-tag-start-name">&lt;<%= tagName %></span>')({'tagName': (node.tagName + "").toLowerCase()});
+                // attributes
+                _.forEach(node.attributes, function (value) {
+                    s += '<span class="dom-attr"> '; //末尾需要一个空格
+                    s += _.template('<span class="dom-attr-name"><%= attr %></span>=<span class="dom-attr-value">"<%= val %>"</span></span>')({
+                        'attr': value.nodeName.toLowerCase(),
+                        'val': value.nodeValue
+                    });
+                });
+                s += '<span class="dom-tag-start-end">/&gt;</span></a>';
+            }
         };
         return s ;
     };

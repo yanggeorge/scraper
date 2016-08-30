@@ -2,6 +2,7 @@ require 'singleton'
 require 'nokogiri'
 require 'open-uri'
 require 'uri'
+require 'securerandom'
 require  File.dirname(__FILE__) + '/web_analysis'
 
 class HtmlManager
@@ -10,6 +11,7 @@ class HtmlManager
   def initialize
     @links =[]
     @link_doc = {}
+    @link_id = {}
     @total_num = 0
     @max_num = 50
     @clear_num = 5
@@ -19,6 +21,7 @@ class HtmlManager
     unless include? link
       @links << link
       @link_doc[link] = doc
+      @link_id[link] = SecureRandom.uuid
       @total_num += 1
       clear_old if @total_num > @max_num
     end
@@ -28,6 +31,7 @@ class HtmlManager
     @clear_num.times do
       url = @links.shift
       @link_doc.delete(url)
+      @link_id.delete(url)
       @total_num -= 1
     end
   end
@@ -36,6 +40,7 @@ class HtmlManager
     if include? url
       @links.delete(url)
       @link_doc.delete(url)
+      @link_id.delete(url)
       @total_num -= 1
     end
   end
@@ -47,8 +52,26 @@ class HtmlManager
     end
   end
 
+  def get_id(url)
+    if include? url
+      @link_id[url]
+    end
+  end
+
   def include?(url)
     @links.include?url
+  end
+
+  def get_by_id(id)
+    url = nil
+    if @link_id.has_value? id
+      @link_id.each do |k, v|
+        if v == id
+          url = k
+        end
+      end
+    end
+    @link_doc[url]
   end
 
 end
