@@ -1206,6 +1206,8 @@ app.controller('MainCtrl', function($scope, $http, $q, getXpath, $timeout){
         jQuery("#dom-root").append(dom_root);
     };
 
+
+
     $scope.$on("elements_tab_pane_selected",function(evt,ele){
         console.log("elements_tab_pane_selected");
         var body = document.getElementById("modified_page").contentWindow.document.body;
@@ -1260,7 +1262,14 @@ app.controller('MainCtrl', function($scope, $http, $q, getXpath, $timeout){
         if(hierarchy_list.length > 0 ){
             var node = _.first(hierarchy_list);
             var dom_tag_start = jQuery(dom_node).find("a.dom-tag-start")[0];
-            if(dom_tag_start.get_iframe_dom_element() == node){
+            try {
+                var record_ele = dom_tag_start.get_iframe_dom_element();
+            }catch(err){
+                console.log(err);
+                console.log(node, dom_node, dom_tag_start);
+                throw Error("error from get_iframe_dom_element");
+            }
+            if(record_ele == node){
                 var tail_list = _.tail(hierarchy_list);
                 if(tail_list.length > 0 ){
                     if(!is_opened(dom_node)){
@@ -1435,7 +1444,11 @@ app.controller('MainCtrl', function($scope, $http, $q, getXpath, $timeout){
 
     $scope.$on("right_click_from_main_pane",function(evt){
         _.forEach($scope.dom_selected_node, function(n){
-            jQuery(n).removeClass("selected").removeClass("marker");
+            if(n == $scope.dom_mouseover_node){
+                jQuery(n).removeClass("selected");
+            }else {
+                jQuery(n).removeClass("selected").removeClass("marker");
+            }
         });
         $scope.dom_selected_node = [];
         $scope.selected_ele = [];
