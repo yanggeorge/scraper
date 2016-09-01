@@ -98,6 +98,15 @@ app.directive("tabPane",function(){
                 console.log(e.attr("tab-id"));
                 scope.hash[e.attr("tab-id")] = pages[i];
             }
+
+            scope.$on("reveal_in_elements_pane",function(){
+                console.log("reveal in tab-pane");
+                _.forEach(eles, function(e){
+                     if(angular.element(e).attr("tab-id") == "Elements"){
+                         jQuery(e).trigger("click");
+                     }
+                });
+            });
         }
     }
 });
@@ -235,6 +244,7 @@ app.directive('markerContainer', ['$window','$q','$timeout', function($window,$q
 
             element.bind('mouseout',function(e){
                 clean_list();
+                scope.$emit("mouseout_marker_container");
             });
 
             scope.$on("delete_div",function(evt, obj){
@@ -872,7 +882,12 @@ app.controller('MainCtrl', function($scope, $http, $q, getXpath, $timeout){
             $scope.create_click_step(element);
             toggle_sidepane1_state(0);
         } };
-        menus.push(menu1,menu2);
+        var menu3 = {'name':'Reveal in elements pane', 'invoke':function(){
+            // Elements tab pane 中居中显示selected
+            $scope.$broadcast("reveal_in_elements_pane"); //还得先click tab ，再滚动div
+            $scope.$emit("reveal_in_elements_pane");
+        } };
+        menus.push(menu1,menu2,menu3);
         return menus;
     };
 
@@ -1206,6 +1221,17 @@ app.controller('MainCtrl', function($scope, $http, $q, getXpath, $timeout){
         jQuery("#dom-root").append(dom_root);
     };
 
+    $scope.$on("reveal_in_elements_pane", function () {
+        var dom_view_div = jQuery("div.dom-view")[0];
+        var selected_div = _.last($scope.dom_selected_node);
+        dom_view_div.scrollTop = selected_div.offsetTop - 20;
+    });
+    $scope.$on("mouseout_marker_container", function () {
+        console.log("mouseout_marker_container");
+        if( $scope.dom_mouseover_node && _.indexOf($scope.dom_selected_node, $scope.dom_mouseover_node) == -1){
+            jQuery($scope.dom_mouseover_node).removeClass("marker");
+        }
+    });
 
 
     $scope.$on("elements_tab_pane_selected",function(evt,ele){
