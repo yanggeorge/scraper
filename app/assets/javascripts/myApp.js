@@ -179,7 +179,8 @@ app.directive('markerContainer', ['$window','$q','$timeout', function($window,$q
         scope: {},
         link: function(scope, element, attrs){
             scope.list_div = [];
-            scope.selected_div = [];
+            scope.selected_div = [] ;
+            scope.selected_ele = [] ;
             element.bind('scroll', function(){
                 scope.$emit("scroller_event",{left:element.scrollLeft(),top:element.scrollTop()});
             });
@@ -197,11 +198,13 @@ app.directive('markerContainer', ['$window','$q','$timeout', function($window,$q
                     scope.$emit("trigger_selected", point);
                 }else if(is_right_click(e)){
                     redo();
+                    scope.$emit("right_click_from_main_pane");
                 }
             });
             ele.bind("contextmenu",function(e){
                 e.preventDefault();
             });
+
             var redo = function(){
                 clean_selected();
                 var defer = $q.defer();
@@ -217,10 +220,11 @@ app.directive('markerContainer', ['$window','$q','$timeout', function($window,$q
             };
 
             function clean_selected() {
-                scope.selected_div.forEach(function (e) {
-                    e.remove()
+                _.forEach(scope.selected_div, function(v){
+                    v.remove();
                 });
                 scope.selected_div = [];
+                scope.selected_ele = [];
             }
             function clean_list() {
                 scope.list_div.forEach(function (e) {
@@ -237,7 +241,7 @@ app.directive('markerContainer', ['$window','$q','$timeout', function($window,$q
                 clean_list();
             });
 
-            scope.$on("create_div",function(evt,obj){
+            scope.$on("create_mouseover_div",function(evt,obj){
                 //console.log(obj);
                 var div = jQuery('<div></div>');
                 div.width(obj.width);
@@ -252,32 +256,56 @@ app.directive('markerContainer', ['$window','$q','$timeout', function($window,$q
                 ele.append(div);
                 scope.list_div.push(div);
             });
-            scope.$on("selected_div",function(evt,obj){
+            scope.$on("create_selected_div",function(evt,ele,data){
+                var offset = jQuery(ele).offset();
+                //console.log(offset);
+                var obj = {
+                    width: jQuery(ele).outerWidth(), height: jQuery(ele).outerHeight(),
+                    left: offset.left, top: offset.top, ele : ele
+                };
+                console.log(scope.selected_div);
                 console.log(obj);
-                var div = jQuery('<div></div>');
-                div.width(obj.width);
-                div.height(obj.height);
-                div.css('postion', 'absolute');
-                div.css('top',obj.top);
-                div.css('left',obj.left);
-                div.css('pointer-events','none');
-                div = angular.element(div).addClass('marker suggestion selected');
-                clean_selected();
-                var ele = element.find("> .container ,.scroll");
-                ele.append(div);
-                scope.selected_div.push(div);
+                if (_.indexOf(scope.selected_ele ,obj.ele) > -1){
+                    var index = _.indexOf(scope.selected_ele ,obj.ele);
+                    _.remove(scope.selected_ele, obj.ele);
+                    var a = scope.selected_div[index];
+                    _.remove(scope.selected_div,a);
+                    a.remove();
+                    if(_.isEmpty(scope.selected_ele)){
+                        redo();
+                    }
+                }else {
+                    if(data == "muti_selected"){
+
+                    }else{
+                        clean_selected();
+                    }
+                    var div = jQuery('<div></div>');
+                    div.width(obj.width);
+                    div.height(obj.height);
+                    div.css('postion', 'absolute');
+                    div.css('top', obj.top);
+                    div.css('left', obj.left);
+                    div.css('pointer-events', 'none');
+                    div = angular.element(div).addClass('marker suggestion selected');
+
+                    var container = element.find("> .container ,.scroll");
+                    container.append(div);
+                    scope.selected_div.push(div);
+                    scope.selected_ele.push(obj.ele);
+                    scope.$emit("decide_sidepane", obj.ele);
+                }
             });
 
-            scope.$on("reposition_created_div",function(evt,ele_list){
-                console.log("reposition", scope.selected_div.length);
-                scope.selected_div.forEach(function(created_div,i){
-                    var ele = jQuery(ele_list[i]);
-                    var new_offset = ele.offset();
-                    console.log(new_offset);
-                    created_div.css('top',new_offset.top);
-                    created_div.css('left',new_offset.left);
+            scope.$on("reposition_selected_div",function(evt){
+                console.log("reposition_selected_div");
+                _.forEach(scope.selected_div,function(v,k){
+                    var new_offset = jQuery(k);
+                    v.css('top',new_offset.top);
+                    v.css('left',new_offset.left);
                 });
             });
+
         }
     }}]);
 app.directive('inner', ['$window', function($window){
@@ -364,29 +392,22 @@ app.controller('MarkerCtrl', function($scope){
             //console.log(offset);
             var obj = {width: jQuery(ele).outerWidth(), height : jQuery(ele).outerHeight(),
                 left:offset.left, top:offset.top};
-            $scope.$broadcast("create_div",obj);
+            $scope.$broadcast("create_mouseover_div",obj);
+            $scope.$emit("elements_tab_pane_show",ele);
         }
     });
-    $scope.selected_ele_list = [];
     $scope.$on("trigger_selected",function(evt,point){
+        console.log("trigger_selected");
         var doc = document.getElementById("modified_page").contentWindow.document;
         var ele = doc.elementFromPoint(point.x, point.y);
         console.log(ele);
 
-        //console.log(ele);
-        $scope.selected_ele_list = [];
-        $scope.selected_ele_list.push(ele);
-        var offset = jQuery(ele).offset();
-        //console.log(offset);
-        var obj = {width: jQuery(ele).outerWidth(), height : jQuery(ele).outerHeight(),
-            left:offset.left, top:offset.top};
-        $scope.$broadcast("selected_div",obj);
-        $scope.$emit("decide_sidepane",ele);
-
+        $scope.$broadcast("create_selected_div", ele);
+        $scope.$emit("elements_tab_pane_selected",ele);
     });
     $scope.$on("window_resize",function(evt){
         //iframe中的元素的offset已经发生改变。
-        $scope.$broadcast("reposition_created_div",$scope.selected_ele_list);
+        $scope.$broadcast("reposition_selected_div");
     });
 });
 
@@ -1185,6 +1206,106 @@ app.controller('MainCtrl', function($scope, $http, $q, getXpath, $timeout){
         jQuery("#dom-root").append(dom_root);
     };
 
+    $scope.$on("elements_tab_pane_selected",function(evt,ele){
+        console.log("elements_tab_pane_selected");
+        var body = document.getElementById("modified_page").contentWindow.document.body;
+        var hierarchy_list = get_hierarchy_from_html_to_ele(body,ele);
+        var html_dom = jQuery("#dom-root").children()[0];
+        find_in_dom_view(html_dom, hierarchy_list);
+    });
+
+    var find_in_dom_view = function(dom_node, hierarchy_list){
+        if(hierarchy_list.length > 0 ){
+            var node = _.first(hierarchy_list);
+            var dom_tag_start = jQuery(dom_node).find("a.dom-tag-start")[0];
+            if(dom_tag_start.get_iframe_dom_element() == node){
+                var tail_list = _.tail(hierarchy_list);
+                if(tail_list.length > 0 ){
+                    if(!is_opened(dom_node)){
+                        var a =  jQuery(dom_node).find("a.dom-tag-start-toggle")[0];
+                        jQuery(a).trigger("click"); //用来展开
+                    }
+                    find_child_in_dom_view(dom_node, tail_list);
+                }else{
+                    //show mouseover
+                    var b =  jQuery(dom_node).find("a.dom-tag-start")[0];
+                    var data = "find_in_dom_view";
+                    jQuery(b).trigger("click",data);
+                }
+            }
+
+        }
+    };
+    var find_child_in_dom_view = function(parent_dom_node, tail_list) {
+        var child_node = jQuery(parent_dom_node).find("li");
+        while(child_node.length > 0){
+            find_in_dom_view(child_node[0],tail_list);
+            child_node = jQuery(child_node[0]).next();
+        }
+    };
+
+    $scope.$on("elements_tab_pane_show",function(evt, ele){
+        console.log("elements_tab_pane_show");
+        var body = document.getElementById("modified_page").contentWindow.document.body;
+        var hierarchy_list = get_hierarchy_from_html_to_ele(body,ele);
+        //console.log(hierarchy_list);
+        var html_dom = jQuery("#dom-root").children()[0];
+        if($scope.dom_mouseover_node && _.indexOf($scope.dom_selected_node, $scope.dom_mouseover_node) == -1) {
+            jQuery($scope.dom_mouseover_node).removeClass("marker");
+        }
+        show_in_dom_view(html_dom, hierarchy_list);
+
+    });
+    var show_in_dom_view = function(dom_node, hierarchy_list){
+        if(hierarchy_list.length > 0 ){
+            var node = _.first(hierarchy_list);
+            var dom_tag_start = jQuery(dom_node).find("a.dom-tag-start")[0];
+            if(dom_tag_start.get_iframe_dom_element() == node){
+                var tail_list = _.tail(hierarchy_list);
+                if(tail_list.length > 0 ){
+                    if(!is_opened(dom_node)){
+                        var a =  jQuery(dom_node).find("a.dom-tag-start-toggle")[0];
+                        jQuery(a).trigger("click"); //用来展开
+                    }
+                    show_child_in_dom_view(dom_node, tail_list);
+                }else{
+                    //show mouseover
+                    var b =  jQuery(dom_node).find("a.dom-tag-start")[0];
+                    var data = "show_in_dom_view";
+                    jQuery(b).trigger("mouseover", data);
+                }
+            }
+
+        }
+    };
+    var show_child_in_dom_view = function(parent_dom_node, tail_list){
+        var child_node = jQuery(parent_dom_node).find("li");
+        while(child_node.length > 0){
+            show_in_dom_view(child_node[0],tail_list);
+            child_node = jQuery(child_node[0]).next();
+        }
+    };
+
+
+    var is_opened = function(dom_node){
+        return jQuery(dom_node).hasClass("opened");
+    };
+    var get_hierarchy_from_html_to_ele = function(body, ele){
+        var list = [];
+        if (ele == body){
+            list.push(ele);
+            list.push(ele.parentNode);
+        }else{
+            while(ele != body){
+                list.push(ele);
+                ele = ele.parentNode;
+            }
+            list.push(ele);
+            list.push(ele.parentNode);
+        }
+        return _.reverse(list);
+    };
+
 
     $scope.$on("iframe_src_change" , function() {
         var defer = $q.defer();
@@ -1201,6 +1322,8 @@ app.controller('MainCtrl', function($scope, $http, $q, getXpath, $timeout){
         });
 
     });
+
+
     $scope.get_closed_node = function(src_root_node){
         var node_closed_html = $scope.get_closed_html(src_root_node);
         var closed_node = jQuery(node_closed_html);
@@ -1227,10 +1350,13 @@ app.controller('MainCtrl', function($scope, $http, $q, getXpath, $timeout){
         return $scope.html(src_root_node, is_deep);
     };
 
-    $scope.selected_node = null;
+    $scope.dom_selected_node = [];// 与iframe的element一一对应。
+    $scope.selected_ele = [];  //对应选中的iframe中的element
+    $scope.dom_mouseover_node = null;
     $scope.add_toggle_event = function(closed_node, src_root_node){
         var toggle_node = jQuery(closed_node).find(".dom-tag-start-toggle")[0];
         var tag_start_node = jQuery(closed_node).find(".dom-tag-start")[0];
+        $scope.add_get_node_function(tag_start_node, src_root_node);
         var folded_node = jQuery(closed_node).find(".dom-folded")[0];
         var content_node = null ;
         jQuery(toggle_node).click(function(){
@@ -1244,6 +1370,7 @@ app.controller('MainCtrl', function($scope, $http, $q, getXpath, $timeout){
                 $scope.add_event_to_content_tags(opened_content_node, src_root_node);
                 jQuery(folded_node).css("display","none");
                 jQuery(node).removeClass("fa-chevron-right").addClass("fa-chevron-down");
+                jQuery(closed_node).addClass("opened");
             }else {
                 //说明箭头向下
                 content_node = jQuery(closed_node).find(".dom-content")[0];
@@ -1251,36 +1378,74 @@ app.controller('MainCtrl', function($scope, $http, $q, getXpath, $timeout){
                 jQuery(content_node).css("display","none");
                 jQuery(folded_node).css("display","inline");
                 jQuery(node).removeClass("fa-chevron-down").addClass("fa-chevron-right");
+                jQuery(closed_node).removeClass("opened");
             }
         });
-        jQuery(tag_start_node).mouseover(function(){
+        jQuery(tag_start_node).mouseover(function(evt, data){
+            $scope.dom_mouseover_node = closed_node;
             jQuery(closed_node).addClass("marker");
             var ele = src_root_node;
             var offset = jQuery(ele).offset();
             var obj = {width: jQuery(ele).outerWidth(), height : jQuery(ele).outerHeight(),
                 left:offset.left, top:offset.top};
-            $scope.$broadcast("create_div",obj);
+
+            if(data && data == "show_in_dom_view") {
+                //说明来自main_pane的mouseover
+            }else {
+                $scope.$broadcast("create_mouseover_div", obj);
+            }
         });
         jQuery(tag_start_node).mouseout(function(){
-            if (! jQuery(closed_node).hasClass("selected")) {
+            if (_.indexOf($scope.selected_ele, src_root_node) == -1) {
                 jQuery(closed_node).removeClass("marker");
-                $scope.$broadcast("delete_div");
             }
+            $scope.$broadcast("delete_div");
         });
 
-        jQuery(tag_start_node).click(function(){
-            if($scope.selected_node == closed_node){
-                jQuery($scope.selected_node).removeClass("selected");
-                $scope.selected_node = null;
-            }else{
-                if($scope.selected_node) {
-                    jQuery($scope.selected_node).removeClass("selected").removeClass("marker");
-                }
+        jQuery(tag_start_node).click(function(evt, data){
+            if($scope.selected_ele.length == 0 || _.indexOf($scope.selected_ele, src_root_node) == -1){
+                clean_selected_ele();
                 jQuery(closed_node).addClass("selected");
-                $scope.selected_node = closed_node;
+                $scope.dom_selected_node.push(closed_node);
+                $scope.selected_ele.push(src_root_node);
+            }else{
+                _.remove($scope.selected_ele, src_root_node);
+                _.remove($scope.dom_selected_node, closed_node);
+                jQuery(closed_node).removeClass("selected");
+            }
+            if(data && data == "find_in_dom_view"){
+                //说明是先点击了main_pane上的。
+            }else {
+                $scope.$broadcast("create_selected_div", src_root_node);
             }
         });
 
+    };
+    var clean_selected_ele = function(){
+        _.forEach($scope.dom_selected_node, function(n){
+            if(n != $scope.dom_mouseover_node){
+                jQuery(n).removeClass("selected").removeClass("marker");
+            }else{
+                jQuery(n).removeClass("selected");
+            }
+        });
+        $scope.dom_selected_node = [];
+        $scope.selected_ele = [];
+    };
+
+    $scope.$on("right_click_from_main_pane",function(evt){
+        _.forEach($scope.dom_selected_node, function(n){
+            jQuery(n).removeClass("selected").removeClass("marker");
+        });
+        $scope.dom_selected_node = [];
+        $scope.selected_ele = [];
+    });
+
+    $scope.add_get_node_function = function(tag_start_node, iframe_dom_element){
+        var dom_node = jQuery(tag_start_node).get()[0];
+        dom_node.get_iframe_dom_element = function(){
+            return iframe_dom_element;
+        }
     };
     $scope.add_event_to_content_tags = function(opened_content_node, src_root_node){
         var nodes = jQuery(opened_content_node).children("li").not(".dom-text");
