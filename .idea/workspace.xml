@@ -40,7 +40,7 @@
     <SUITE FILE_PATH="coverage/blog@test__blog.coverage" NAME="test: blog Coverage Results" MODIFIED="1460432410839" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="blog" />
     <SUITE FILE_PATH="coverage/blog@db_migrate__blog.coverage" NAME="db:migrate: blog Coverage Results" MODIFIED="1470127091561" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="blog" />
     <SUITE FILE_PATH="coverage/blog@bower_install_options___blog.coverage" NAME="bower:install[options]: blog Coverage Results" MODIFIED="1463395289486" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="blog" />
-    <SUITE FILE_PATH="coverage/blog@Development__blog.coverage" NAME="Development: blog Coverage Results" MODIFIED="1472715726813" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="blog" />
+    <SUITE FILE_PATH="coverage/blog@Development__blog.coverage" NAME="Development: blog Coverage Results" MODIFIED="1472724275388" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="blog" />
     <SUITE FILE_PATH="coverage/blog@web_analysis.coverage" NAME="web_analysis Coverage Results" MODIFIED="1470216433412" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/lib" MODULE_NAME="blog" />
   </component>
   <component name="CreatePatchCommitExecutor">
@@ -63,7 +63,7 @@
     <favorites_list name="blog" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.30483872">
+    <splitter split-orientation="horizontal" split-proportion="0.16950959">
       <split-first>
         <splitter split-orientation="vertical" split-proportion="0.46524063">
           <split-first>
@@ -75,10 +75,10 @@
                       <caret line="391" column="16" selection-start-line="391" selection-start-column="16" selection-end-line="391" selection-end-column="16" />
                       <folding>
                         <element signature="e#0#43#0" expanded="false" />
-                        <marker date="1472723681991" expanded="true" signature="26544:27346" placeholder="{...}" />
-                        <marker date="1472723681991" expanded="true" signature="60649:60664" placeholder="..." />
-                        <marker date="1472723681991" expanded="true" signature="62744:62760" placeholder="..." />
-                        <marker date="1472723681991" expanded="true" signature="62810:62824" placeholder="..." />
+                        <marker date="1472783891524" expanded="true" signature="26544:27346" placeholder="{...}" />
+                        <marker date="1472783891524" expanded="true" signature="60649:60664" placeholder="..." />
+                        <marker date="1472783891524" expanded="true" signature="65068:65084" placeholder="..." />
+                        <marker date="1472783891524" expanded="true" signature="65134:65148" placeholder="..." />
                       </folding>
                     </state>
                   </provider>
@@ -203,14 +203,15 @@
               <file leaf-file-name="myApp.js" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/app/assets/javascripts/myApp.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state vertical-scroll-proportion="0.6831858">
-                      <caret line="895" column="56" selection-start-line="895" selection-start-column="56" selection-end-line="895" selection-end-column="56" />
+                    <state vertical-scroll-proportion="0.7042017">
+                      <caret line="1575" column="50" selection-start-line="1575" selection-start-column="50" selection-end-line="1575" selection-end-column="50" />
                       <folding>
                         <element signature="e#0#43#0" expanded="false" />
-                        <marker date="1472723681991" expanded="true" signature="26544:27346" placeholder="{...}" />
-                        <marker date="1472723681991" expanded="true" signature="60649:60664" placeholder="..." />
-                        <marker date="1472723681991" expanded="true" signature="62744:62760" placeholder="..." />
-                        <marker date="1472723681991" expanded="true" signature="62810:62824" placeholder="..." />
+                        <marker date="1472783891524" expanded="true" signature="26544:27346" placeholder="{...}" />
+                        <marker date="1472783891524" expanded="true" signature="60649:60664" placeholder="..." />
+                        <marker date="1472783891524" expanded="true" signature="63680:63695" placeholder="..." />
+                        <marker date="1472783891524" expanded="true" signature="65068:65084" placeholder="..." />
+                        <marker date="1472783891524" expanded="true" signature="65134:65148" placeholder="..." />
                       </folding>
                     </state>
                   </provider>
@@ -267,8 +268,8 @@
               <file leaf-file-name="do_url.html.erb" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/app/views/scrape/do_url.html.erb">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state vertical-scroll-proportion="0.33976835">
-                      <caret line="74" column="47" selection-start-line="74" selection-start-column="39" selection-end-line="74" selection-end-column="47" />
+                    <state vertical-scroll-proportion="0.42857143">
+                      <caret line="254" column="16" selection-start-line="254" selection-start-column="16" selection-end-line="254" selection-end-column="16" />
                       <folding />
                     </state>
                   </provider>
@@ -1042,11 +1043,11 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3262032" sideWeight="0.48828697" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3262032" sideWeight="0.48828697" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24963397" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1064,9 +1065,9 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17795698" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24963397" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21283422" sideWeight="0.5878477" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24963397" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -1456,22 +1457,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/scrape/do_url.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33976835">
-          <caret line="74" column="47" selection-start-line="74" selection-start-column="39" selection-end-line="74" selection-end-column="47" />
+        <state vertical-scroll-proportion="0.42857143">
+          <caret line="254" column="16" selection-start-line="254" selection-start-column="16" selection-end-line="254" selection-end-column="16" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/myApp.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6831858">
-          <caret line="895" column="56" selection-start-line="895" selection-start-column="56" selection-end-line="895" selection-end-column="56" />
+        <state vertical-scroll-proportion="0.7042017">
+          <caret line="1575" column="50" selection-start-line="1575" selection-start-column="50" selection-end-line="1575" selection-end-column="50" />
           <folding>
             <element signature="e#0#43#0" expanded="false" />
-            <marker date="1472723681991" expanded="true" signature="26544:27346" placeholder="{...}" />
-            <marker date="1472723681991" expanded="true" signature="60649:60664" placeholder="..." />
-            <marker date="1472723681991" expanded="true" signature="62744:62760" placeholder="..." />
-            <marker date="1472723681991" expanded="true" signature="62810:62824" placeholder="..." />
+            <marker date="1472783891524" expanded="true" signature="26544:27346" placeholder="{...}" />
+            <marker date="1472783891524" expanded="true" signature="60649:60664" placeholder="..." />
+            <marker date="1472783891524" expanded="true" signature="63680:63695" placeholder="..." />
+            <marker date="1472783891524" expanded="true" signature="65068:65084" placeholder="..." />
+            <marker date="1472783891524" expanded="true" signature="65134:65148" placeholder="..." />
           </folding>
         </state>
       </provider>

@@ -1527,7 +1527,7 @@ app.controller('MainCtrl', function($scope, $http, $q, getXpath, $timeout){
                     // comment node
                 }else if (c.nodeType == 3 ) { // only text ,其它为 tag
                     if( _.trim(c.nodeValue).length > 0) {
-                        s += _.template('<li class="dom-text"><%= text %></li>')({'text': c.nodeValue});
+                        s += _.template('<li class="dom-text"><%= text %></li>')({'text': _.trim(c.nodeValue)});
                     }
                 } else {
                     s += $scope.html(c, is_open);
@@ -1546,25 +1546,68 @@ app.controller('MainCtrl', function($scope, $http, $q, getXpath, $timeout){
                 return num_child != 0 ;
             };
 
-            if (has_child_tag(node)) {// 该节点是否包含子节点，包含的话，增加toggle
-                s += '<li class="">';
-                s += _.template('<a class="dom-tag-start-toggle" rel="<%= rel %>"><i class="fa dom-folded-closed fa-chevron-right"></i></a>')({'rel': (node.tagName + "").toLowerCase()});
-                s += '<a class="dom-tag-start">';
-                s += _.template('<span class="dom-tag-start-name">&lt;<%= tagName %></span>')({'tagName': (node.tagName + "").toLowerCase()});
-                // attributes
-                _.forEach(node.attributes, function (value) {
-                    s += '<span class="dom-attr"> '; //末尾需要一个空格
-                    s += _.template('<span class="dom-attr-name"><%= attr %></span>=<span class="dom-attr-value">"<%= val %>"</span></span>')({
-                        'attr': value.nodeName.toLowerCase(),
-                        'val': value.nodeValue
+            var has_only_one_text_child = function(node){
+                //an text length is not too long
+                var num_text_child = 0;
+                var num_other_tag_child = 0;
+                var text_node = 0;
+                var max_length = 180;
+                _.forEach(node.childNodes, function (c) {
+                    if (c.nodeType != 8 && c.nodeType == 3){
+                        num_text_child += 1;
+                        text_node = c;
+                    }else{
+                        num_other_tag_child += 1;
+                    }
+                });
+                return (num_other_tag_child == 0 && num_text_child == 1 && _.trim(text_node.nodeValue).length < max_length) ;
+            };
+
+            if (has_child_tag(node)) {// 该节点是否包含子节点，只包含一个text节点，且text不是很长的话展开。否则的增加toggle
+                if(has_only_one_text_child(node)){
+                    s += '<li class="">';
+                    s += '<a class="dom-tag-start">';
+                    s += _.template('<span class="dom-tag-start-name">&lt;<%= tagName %></span>')({'tagName': (node.tagName + "").toLowerCase()});
+                    // attributes
+                    _.forEach(node.attributes, function (value) {
+                        s += '<span class="dom-attr"> '; //末尾需要一个空格
+                        s += _.template('<span class="dom-attr-name"><%= attr %></span>=<span class="dom-attr-value">"<%= val %>"</span></span>')({
+                            'attr': value.nodeName.toLowerCase(),
+                            'val': value.nodeValue
+                        });
                     });
-                });
-                s += '<span class="dom-tag-start-end">&gt;</span></a>';
-                s += _.template('<span class="dom-folded" style="display: inline;"><%= dot %></span><ul class="dom-content" style="display: none;"></ul>')({
-                    'gt': '&gt;',
-                    'dot': '...'
-                });
-                s += _.template('<span class="dom-tag-end"><%= end %></span></li>')({'end': '&lt;/' + (node.tagName + "").toLowerCase() + '&gt;'});
+                    s += '<span class="dom-tag-start-end">&gt;</span></a>';
+
+                    var text_node = 0;
+                    _.forEach(node.childNodes, function (c) {
+                        if (c.nodeType != 8 && c.nodeType == 3){
+                            text_node = c;
+                        }
+                    });
+                    s += _.template('<ul class="dom-content" style="display: block;"><li class="dom-text"><%= text %></li></ul>')({
+                        'text': _.trim(text_node.nodeValue)
+                    });
+                    s += _.template('<span class="dom-tag-end"><%= end %></span></li>')({'end': '&lt;/' + (node.tagName + "").toLowerCase() + '&gt;'});
+                }else {
+                    s += '<li class="">';
+                    s += _.template('<a class="dom-tag-start-toggle" rel="<%= rel %>"><i class="fa dom-folded-closed fa-chevron-right"></i></a>')({'rel': (node.tagName + "").toLowerCase()});
+                    s += '<a class="dom-tag-start">';
+                    s += _.template('<span class="dom-tag-start-name">&lt;<%= tagName %></span>')({'tagName': (node.tagName + "").toLowerCase()});
+                    // attributes
+                    _.forEach(node.attributes, function (value) {
+                        s += '<span class="dom-attr"> '; //末尾需要一个空格
+                        s += _.template('<span class="dom-attr-name"><%= attr %></span>=<span class="dom-attr-value">"<%= val %>"</span></span>')({
+                            'attr': value.nodeName.toLowerCase(),
+                            'val': value.nodeValue
+                        });
+                    });
+                    s += '<span class="dom-tag-start-end">&gt;</span></a>';
+                    s += _.template('<span class="dom-folded" style="display: inline;"><%= dot %></span><ul class="dom-content" style="display: none;"></ul>')({
+                        'gt': '&gt;',
+                        'dot': '...'
+                    });
+                    s += _.template('<span class="dom-tag-end"><%= end %></span></li>')({'end': '&lt;/' + (node.tagName + "").toLowerCase() + '&gt;'});
+                }
             }else{
                 s += '<li class="">';
                 s += '<a class="dom-tag-start">';
