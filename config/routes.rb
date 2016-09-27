@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
   root 'index#index'
+  get 'index/projects' => 'index#projects'
   post 'scrape/do_url' => 'scrape#do_url'
   get 'scrape/do_url' => 'scrape#do_url'
   post 'scrape/get_page_id' => 'scrape#get_page_id'

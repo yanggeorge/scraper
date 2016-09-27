@@ -1,0 +1,103 @@
+<div id="application">
+  <div id="menu" >
+    <div class="current">
+      <div class="user">
+        <img class="rounded" src="/assets/anonymous.png">
+        <div class="details">
+          <a class="username" href="#">
+            <i class="fa fa-user"></i>
+            <span class="tst-userdetails-name">oo</span>
+          </a>
+          <a href="#">
+            <i class="fa fa-industry"></i>
+            <span class="tst-userdetails-accountname">oo</span>
+          </a>
+          <div class="account">
+            <a href="">
+              <i class="fa fa-clock-o"></i>
+                <span class="t">
+                    Hours left:
+                    <b ng-class="{red: accountUsage.hoursAvailable < 0}" class="ng-binding">2 h., 45
+                      min.</b>
+                </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <menu class="vertical no-deprecation">
+      <li>
+        <a class="t" href="#/" active-href="/">Dashboard</a>
+      </li>
+      <li>
+        <a class="t active" href="#/projects" active-href="/projects">Projects</a>
+      </li>
+      <li>
+        <a class="t" href="#/workers" active-href="/workers">Usage</a>
+      </li>
+      <li>
+        <a class="t" href="#/integrations" active-href="/integrations">Integrations</a>
+      </li>
+      <li>
+        <a class="t" href="#/users" active-href="/users">Users</a>
+      </li>
+      <li>
+        <a class="t" href="#/proxies" active-href="/proxies">Proxies</a>
+      </li>
+      <li>
+        <a class="t" href="#/api" active-href="/api">API</a>
+      </li>
+      <li>
+        <a class="t" href="http://support.dexi.io/" target="support">Help &amp; Support</a>
+      </li>
+      <li>
+        <a class="t" href="#/gettingstarted" active-href="/gettingstarted">Getting Started</a>
+      </li>
+
+      <li>
+        <a class="t" track-click="User logged out" href="/logout">Log out</a>
+      </li>
+
+      <li class="no-button padded-more">
+        <p class="centered-text margin-above t" style="color:white; font-size:12px;">
+          Do you need help creating your robots?
+        </p>
+        <a class="button orange" href="javascript:;" ng-click="showBuildMyRobotDialog()" track-click="User clicked Build my robot">
+          <span class="t">Build my robot</span>
+        </a>
+        <a class="button secondary" href="javascript:;" ng-click="showSupport()" track-click="User clicked Get Help">
+          <span class="t">Get help!</span>
+        </a>
+        <p class="centered-text t" style="color:#ccc; font-size:10px;">
+          dexi.io Certified
+        </p>
+      </li>
+    </menu>
+    <div class="logo">
+      <img src="/assets/dexi_white.svg" alt="dexi.io">
+    </div>
+  </div>
+  <div id="content" >
+    <section class="projects layout-header-body "   style="display: block;">
+      <h2>Projects</h2>
+      <div class="body">
+        <div class="tree-list-view vfs" >
+          <div class="header">
+            <div class="column name">Name
+              <input class="search" type="search"  placeholder="Type here to search..." >
+            </div>
+            <div class="column tags">Tags</div>
+            <div class="column kind">Kind</div>
+          </div>
+          <div class="rows">
+            <div class="row">
+              <div class="column name"></div>
+              <div class="column tags"></div>
+              <div class="column kind"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

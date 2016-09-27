@@ -16,10 +16,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body ng-controller="MainCtrl"  onresize="size();return false;">
-<% if controller_name != "scrape" %>
-    <%= link_to '首页', root_path %>
-    <%= link_to '数据项列表', item_index_path %>
-<% end %>
+
 <%= yield %>
 
 </body>

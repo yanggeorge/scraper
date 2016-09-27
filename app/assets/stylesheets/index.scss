@@ -1,3 +1,450 @@
 // Place all the styles related to the index controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Lato:300,400,700);
+
+html, legend {
+  color: #000
+}
+
+blockquote, body, code, dd, div, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, html, input, legend, li, menu, ol, p, pre, td, textarea, th, ul {
+  padding: 0;
+  margin: 0;
+}
+
+a, body, h4, h5, h6, input {
+  font-family: Lato, "Helvetica Neue Light", "Helvetica Neue", Verdana;
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 400;
+}
+
+body, html {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  font: 13px/1.231 arial, helvetica, clean, sans-serif;
+  background-color: #EFEFEF;
+  padding: 0;
+  overflow: hidden;
+}
+
+#application {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+#content, #deprecation {
+  position: absolute;
+  left: 280px;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  background-color: #EFEFEF;
+  overflow: auto;
+}
+#content {
+  padding-left: 10px;
+  background-color: #f6f6f6;
+}
+#application #menu .current {
+  padding: 12px;
+  text-align: center;
+}
+#application #menu>menu {
+  position: absolute;
+  top: 86px;
+  left: 0;
+  right: 0;
+  bottom: 48px;
+  overflow: auto;
+  z-index: 10;
+  background-color: #465a7d;
+  border: 0;
+  color: #CFCFCF;
+}
+
+menu.vertical {
+  width: 280px;
+}
+#menu {
+  background-color: #465a7d;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 280px;
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0);
+  z-index: 5;
+}
+li, menu, ol, ul {
+  list-style: none;
+}
+ul, menu, dir {
+  display: block;
+  list-style-type: disc;
+  -webkit-margin-before: 1em;
+  -webkit-margin-after: 1em;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
+  -webkit-padding-start: 40px;
+}
+#application #menu .logo {
+  box-sizing: border-box;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  padding: 6px 0 16px;
+  border-bottom: 0;
+}
+
+#application #menu .logo, menu>li:not(.no-button).emphasize {
+  border-top: 1px solid rgba(255,255,255,.2);
+}
+#application #menu .current .user {
+  font-size: 14px;
+  position: relative;
+  display: block;
+  padding: 0;
+  height: 60px;
+}
+#application #menu .current .user>.details {
+  position: absolute;
+  top: 0;
+  left: 65px;
+  right: 0;
+  bottom: 0;
+}
+#application #menu .current .user img {
+  height: 40px;
+  margin-top: 5px;
+  float: left;
+  margin-right: 20px;
+  margin-left: 5px;
+  background-color: #fff;
+  padding: 2px;
+}
+
+img.rounded {
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  -ms-border-radius: 100%;
+  -o-border-radius: 100%;
+  border-radius: 100%;
+}
+fieldset, img {
+  border: 0;
+}
+
+#application #menu .current .user a {
+  display: block;
+  line-height: 20px;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#application #menu .current a, #application #menu .current a:active, #application #menu .current a:visited {
+  color: #fff;
+}
+
+#application #menu .current .user a i {
+  width: 18px;
+}
+.fa {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+#application #menu>menu>li:not(.no-button) {
+  border-bottom: 0;
+  color: #CFCFCF;
+}
+menu>li:not(.no-button) {
+  border-bottom: 1px solid #E4E7EA;
+}
+
+blockquote, body, code, dd, div, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, html, input, legend, li, menu, ol, p, pre, td, textarea, th, ul {
+  padding: 0;
+  margin: 0;
+}
+li, menu, ol, ul {
+  list-style: none;
+}
+li {
+  display: list-item;
+  text-align: -webkit-match-parent;
+}
+
+#application #menu>menu>li:not(.no-button)>a, #application #menu>menu>li:not(.no-button)>a:active, #application #menu>menu>li:not(.no-button)>a:visited {
+  padding: 10px 20px;
+  color: #CFCFCF;
+  font-size: 14px;
+}
+menu>li:not(.no-button)>a, menu>li:not(.no-button)>a:visited {
+  display: block;
+  padding: 5px;
+}
+
+menu>li:not(.no-button)>a {
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  transform: translate3d(0,0,0);
+  perspective: 1000px;
+  -o-transition: all .1s ease-out;
+  transition: all .1s ease-out;
+}
+
+#application #menu>menu .no-button {
+  text-align: center;
+}
+.padded-more {
+  box-sizing: border-box;
+  padding: 15px!important;
+}
+.centered-text {
+  text-align: center!important;
+}
+
+.margin-above {
+  margin-top: 10px!important;
+}
+#application #menu>menu .no-button .button {
+  margin: 15px auto auto 5px;
+  font-weight: 400;
+}
+
+.button.orange, .wb-action.orange, .wb-button.orange, .wb-form-button.orange, button.orange, input.button.orange, input.submit.orange {
+  background-color: #f38109;
+  border-color: #f38109;
+  color: #fff;
+}
+
+.button.secondary, .wb-action.secondary, .wb-button.secondary, .wb-form-button.secondary, button.secondary, input.button.secondary, input.submit.secondary {
+  background-color: #2ecc71;
+  border-color: #29b765;
+  color: #fff;
+}
+
+.button>span, .wb-action>span, .wb-button>span, .wb-form-button>span, button>span, input.button>span, input.submit>span {
+  padding: 0 5px;
+}
+
+#application #menu>menu>li:not(.no-button)>a.active, #application #menu>menu>li:not(.no-button)>a:hover {
+  background-color: #3276b1;
+  color: #fff;
+}
+
+#application #menu .logo {
+  box-sizing: border-box;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  padding: 6px 0 16px;
+  border-bottom: 0;
+}
+
+#application #menu .logo img {
+  width: 50%;
+  height: 25px;
+  margin: 0 auto;
+  display: block;
+}
+.layout-header-body {
+  position: relative;
+  box-sizing: border-box;
+}
+section {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+}
+.layout-header-body>h2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+section>h2 {
+  position: relative;
+  box-sizing: border-box;
+  border-bottom: 1px solid #E4E7EA;
+  border-left: 0;
+  margin-bottom: 15px;
+  background-color: #FFF;
+  color: #465a7d;
+  padding: 10px;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 47px;
+}
+
+.projects .body, .tree-list-view>.rows>.row .column {
+  overflow: hidden;
+}
+
+.layout-header-body>.body {
+  position: absolute;
+  top: 67px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: auto;
+}
+.tree-list-view {
+  user-select: none;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 10px 0;
+  overflow: auto;
+  position: absolute;
+  background-color: #FEFEFE;
+}
+.accordion>.pane>h3, .tree-list-view {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.tree-list-view>.header, .tree-list-view>.rows>.row {
+  -webkit-box-flex-wrap: no-wrap;
+  -moz-box-flex-wrap: no-wrap;
+  -webkit-flex-wrap: no-wrap;
+  -ms-flex-wrap: no-wrap;
+  flex-wrap: no-wrap;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-flex-direction: row;
+  -moz-box-flex-direction: row;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+.tree-list-view>.header {
+  background-color: #efefef;
+  height: 35px;
+  box-sizing: border-box;
+}
+
+.tree-list-view>.header .column {
+  position: relative;
+}
+.tree-list-view .column {
+  box-sizing: border-box;
+  display: inline-block;
+  padding: 5px 10px;
+  white-space: nowrap;
+}
+.tree-list-view.vfs .column.kind, .tree-list-view.vfs .column.tags {
+  -webkit-box-flex-grow: 0;
+  -moz-box-flex-grow: 0;
+  -webkit-flex-grow: 0;
+  -ms-flex-grow: 0;
+  flex-grow: 0;
+  width: 190px;
+  color: #666;
+  min-width: 190px;
+  max-width: 190px;
+}
+.tree-list-view>.rows {
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  overflow: auto;
+  top: 35px;
+}
+.tree-list-view>.rows>.row:nth-child(2n) {
+  background-color: #fff;
+}
+
+.tree-list-view>.header, .tree-list-view>.rows>.row {
+  -webkit-box-flex-wrap: no-wrap;
+  -moz-box-flex-wrap: no-wrap;
+  -webkit-flex-wrap: no-wrap;
+  -ms-flex-wrap: no-wrap;
+  flex-wrap: no-wrap;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-flex-direction: row;
+  -moz-box-flex-direction: row;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+.tree-list-view>.rows>.row {
+  -webkit-transition: background-color .1s ease-out,color .1s ease-out;
+  -moz-transition: background-color .1s ease-out,color .1s ease-out;
+  -o-transition: background-color .1s ease-out,color .1s ease-out;
+  transition: background-color .1s ease-out,color .1s ease-out;
+  cursor: pointer;
+  background-color: #FAFAFA;
+}
+.tree-list-view.vfs>.header input.search {
+  width: 220px;
+}
+
+.tree-list-view>.header input.search {
+  margin-left: 15px;
+  height: 22px;
+  line-height: 22px;
+  font-size: 12px;
+}
+input.date, input.datetime, input.email, input.password, input.search, input.text, input.url, input[type=range], select {
+  vertical-align: middle;
+  height: 30px;
+}
+input, select, textarea {
+  border: 1px solid #E4E7EA;
+}
+.input, input, select, textarea {
+  width: 240px;
+}
+input, select {
+  padding: 2px 5px;
+  box-sizing: border-box;
+}
+a, body, h4, h5, h6, input {
+  font-family: Lato,"Helvetica Neue Light","Helvetica Neue",Verdana;
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 400;
+}
+button, input, select, textarea {
+  font: 99% arial,helvetica,clean,sans-serif;
+}
+.tree-list-view.vfs .column.name {
+  -webkit-box-flex-grow: 1;
+  -moz-box-flex-grow: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-grow: 1;
+  flex-grow: 1;
+  padding-left: 10px;
+  min-width: 290px;
+}
