@@ -83,15 +83,38 @@
       <div class="body">
         <div class="tree-list-view vfs" >
           <div class="header">
-            <div class="column name">Name
-              <input class="search" type="search"  placeholder="Type here to search..." >
+            <div class="column name" >Name
+              <input class="search" type="search "  placeholder="Type here to search..." >
             </div>
             <div class="column tags">Tags</div>
             <div class="column kind">Kind</div>
           </div>
           <div class="rows">
+            <div class="row active">
+              <div class="column name" style="padding-left: 0px;">
+                <span class="expander">
+                  <i class="fa fa-chevron-right" ng-class="{'fa-chevron-down': node.expanded,'fa-chevron-right':!node.expanded}"></i>
+                </span>
+                <span class="title ng-binding" tree-list-droppable="scraper">
+                        <i class="fa fa-share-square-o icon-share ng-hide"  title="Shared with you"></i>
+                        <i class="cs-icon-r2d2"></i>
+                        finance.sina.com.cn
+                    </span>
+              </div>
+              <div class="column tags"></div>
+              <div class="column kind"></div>
+            </div>
             <div class="row">
-              <div class="column name"></div>
+              <div class="column name" style="padding-left: 0px;">
+                <span class="expander">
+                  <i class="fa fa-chevron-right" ng-class="{'fa-chevron-down': node.expanded,'fa-chevron-right':!node.expanded}"></i>
+                </span>
+                <span class="title ng-binding" tree-list-droppable="scraper">
+                        <i class="fa fa-share-square-o icon-share ng-hide"  title="Shared with you"></i>
+                        <i class="cs-icon-r2d2"></i>
+                        finance.sina.com.cn
+                    </span>
+              </div>
               <div class="column tags"></div>
               <div class="column kind"></div>
             </div>

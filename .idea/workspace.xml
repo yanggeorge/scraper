@@ -40,7 +40,7 @@
     <SUITE FILE_PATH="coverage/blog@test__blog.coverage" NAME="test: blog Coverage Results" MODIFIED="1460432410839" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="blog" />
     <SUITE FILE_PATH="coverage/blog@db_migrate__blog.coverage" NAME="db:migrate: blog Coverage Results" MODIFIED="1470127091561" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="blog" />
     <SUITE FILE_PATH="coverage/blog@bower_install_options___blog.coverage" NAME="bower:install[options]: blog Coverage Results" MODIFIED="1463395289486" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="blog" />
-    <SUITE FILE_PATH="coverage/blog@Development__blog.coverage" NAME="Development: blog Coverage Results" MODIFIED="1474871085791" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="blog" />
+    <SUITE FILE_PATH="coverage/blog@Development__blog.coverage" NAME="Development: blog Coverage Results" MODIFIED="1475048417557" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="blog" />
     <SUITE FILE_PATH="coverage/blog@web_analysis.coverage" NAME="web_analysis Coverage Results" MODIFIED="1470216433412" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/lib" MODULE_NAME="blog" />
   </component>
   <component name="CreatePatchCommitExecutor">
@@ -63,7 +63,7 @@
     <favorites_list name="blog" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5314499">
+    <splitter split-orientation="horizontal" split-proportion="0.45506328">
       <split-first>
         <splitter split-orientation="vertical" split-proportion="0.26077813">
           <split-first>
@@ -71,7 +71,7 @@
               <file leaf-file-name="myApp.js" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/app/assets/javascripts/myApp.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state vertical-scroll-proportion="1.6256157">
+                    <state vertical-scroll-proportion="2.1019108">
                       <caret line="406" column="9" selection-start-line="406" selection-start-column="9" selection-end-line="406" selection-end-column="9" />
                       <folding>
                         <element signature="e#0#43#0" expanded="false" />
@@ -174,8 +174,8 @@
               <file leaf-file-name="projects.html.erb" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/app/views/index/projects.html.erb">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state vertical-scroll-proportion="0.47350994">
-                      <caret line="86" column="48" selection-start-line="86" selection-start-column="48" selection-end-line="86" selection-end-column="48" />
+                    <state vertical-scroll-proportion="0.30232558">
+                      <caret line="106" column="27" selection-start-line="106" selection-start-column="27" selection-end-line="106" selection-end-column="27" />
                       <folding>
                         <element signature="n#div#0;n#div#0;n#div#0;n#!!top" expanded="false" />
                         <element signature="n#menu#0;n#div#0;n#div#0;n#!!top" expanded="false" />
@@ -183,6 +183,8 @@
                         <element signature="n#style#0;n#p#1;n#li#10;n#menu#0;n#div#0;n#div#0;n#!!top" expanded="true" />
                         <element signature="n#div#1;n#div#0;n#div#0;n#!!top" expanded="false" />
                         <element signature="n#style#0;n#section#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+                        <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#section#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+                        <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#section#0;n#div#1;n#div#0;n#!!top" expanded="true" />
                       </folding>
                     </state>
                   </provider>
@@ -250,8 +252,8 @@
           <file leaf-file-name="index.scss" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/index.scss">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.4265403">
-                  <caret line="53" column="1" selection-start-line="53" selection-start-column="1" selection-end-line="53" selection-end-column="1" />
+                <state vertical-scroll-proportion="0.934033">
+                  <caret line="518" column="1" selection-start-line="518" selection-start-column="1" selection-end-line="518" selection-end-column="1" />
                   <folding />
                 </state>
               </provider>
@@ -329,8 +331,8 @@
         <option value="$PROJECT_DIR$/app/controllers/index_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/index/index.html.erb" />
         <option value="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/index/projects.html.erb" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/index.scss" />
+        <option value="$PROJECT_DIR$/app/views/index/projects.html.erb" />
       </list>
     </option>
   </component>
@@ -349,9 +351,9 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="654" />
-    <option name="y" value="10" />
-    <option name="width" value="1415" />
+    <option name="x" value="105" />
+    <option name="y" value="15" />
+    <option name="width" value="1640" />
     <option name="height" value="1009" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -718,17 +720,17 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\work\rails\scraper\app\assets\images" />
+      <recent name="D:\work\rails\scraper\app\assets\static" />
       <recent name="D:\work\rails\scraper\app\views\index" />
       <recent name="D:\work\rails\scraper\app\assets\javascripts\templates" />
       <recent name="D:\work\rails\blog\app\views\scrape" />
-      <recent name="D:\work\rails\blog" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\work\rails\scraper\app\assets\images" />
       <recent name="D:\work\rails\blog\app\assets\javascripts\templates" />
       <recent name="D:\work\rails\blog\app\assets\javascripts" />
       <recent name="D:\work\rails\blog\app\views\scrape" />
       <recent name="D:\work\rails\blog\app\assets\html" />
-      <recent name="D:\work\rails\blog\public\scripts" />
     </key>
   </component>
   <component name="RunManager" selected="Rails.Development: blog">
@@ -1041,17 +1043,17 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="654" y="10" width="1415" height="1009" extended-state="0" />
-    <editor active="true" />
+    <frame x="105" y="15" width="1640" height="1009" extended-state="0" />
+    <editor active="false" />
     <layout>
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3154574" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32912722" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295699" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24946696" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2494465" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1380597" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24556962" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.42797056" sideWeight="0.8191801" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27876106" sideWeight="0.5878477" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19579646" sideWeight="0.5878477" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32980332" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26417112" sideWeight="0.41215226" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -1468,8 +1470,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/myApp.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="1628" column="0" selection-start-line="1628" selection-start-column="0" selection-end-line="1628" selection-end-column="0" />
+        <state vertical-scroll-proportion="2.1019108">
+          <caret line="406" column="9" selection-start-line="406" selection-start-column="9" selection-end-line="406" selection-end-column="9" />
           <folding>
             <element signature="e#0#43#0" expanded="false" />
             <marker date="1472783891524" expanded="true" signature="26544:27346" placeholder="{...}" />
@@ -1481,10 +1483,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/index.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.934033">
+          <caret line="518" column="1" selection-start-line="518" selection-start-column="1" selection-end-line="518" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/index/projects.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.47350994">
-          <caret line="86" column="48" selection-start-line="86" selection-start-column="48" selection-end-line="86" selection-end-column="48" />
+        <state vertical-scroll-proportion="0.30232558">
+          <caret line="106" column="27" selection-start-line="106" selection-start-column="27" selection-end-line="106" selection-end-column="27" />
           <folding>
             <element signature="n#div#0;n#div#0;n#div#0;n#!!top" expanded="false" />
             <element signature="n#menu#0;n#div#0;n#div#0;n#!!top" expanded="false" />
@@ -1492,15 +1502,9 @@
             <element signature="n#style#0;n#p#1;n#li#10;n#menu#0;n#div#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#div#1;n#div#0;n#div#0;n#!!top" expanded="false" />
             <element signature="n#style#0;n#section#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#section#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#section#0;n#div#1;n#div#0;n#!!top" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/index.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4265403">
-          <caret line="53" column="1" selection-start-line="53" selection-start-column="1" selection-end-line="53" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>

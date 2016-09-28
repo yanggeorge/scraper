@@ -448,3 +448,72 @@ button, input, select, textarea {
   padding-left: 10px;
   min-width: 290px;
 }
+::-webkit-input-placeholder {
+  font-family: Lato,"Helvetica Neue Light","Helvetica Neue",Verdana;
+}
+.tree-list-view .expander, .tree-list-view .title, .tree-list-view i {
+  height: 22px;
+  display: inline-block;
+  text-align: center;
+  line-height: 22px;
+  vertical-align: bottom;
+}
+
+.tree-list-view>.rows>.row.active, .tree-list-view>.rows>.row.droppable-hover, .tree-list-view>.rows>.row.selected {
+  background-color: #3276b1;
+  color: #fff;
+}
+
+@font-face {
+  font-family: cloudscrape-icon-font;
+  src: url(/assets/cloudscrape-icon-font.eot);
+  src: url(/assets/cloudscrape-icon-font.eot?#iefix) format("embedded-opentype"),url(/assets/cloudscrape-icon-font.woff) format("woff"),url(/assets/cloudscrape-icon-font.ttf) format("truetype"),url(/assets/cloudscrape-icon-font.svg#cloudscrape-icon-font) format("svg");
+  font-weight: 400;
+  font-style: normal
+}
+[class*=" cs-icon-"]:before,[class^=cs-icon-]:before,[data-icon]:before {
+  font-family: cloudscrape-icon-font!important;
+  font-style: normal!important;
+  font-weight: 400!important;
+  font-variant: normal!important;
+  text-transform: none!important;
+
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale
+}
+
+[data-icon]:before {
+  content: attr(data-icon)
+}
+
+.cs-icon-r2d2:before {
+  content: "\e000"
+}
+.tree-list-view.vfs i {
+  color: #666;
+}
+.tree-list-view i {
+  width: 22px;
+  font-size: 16px;
+}
+
+.tree-list-view .expander, .tree-list-view .title, .tree-list-view i {
+  height: 22px;
+  display: inline-block;
+  text-align: center;
+  line-height: 22px;
+  vertical-align: bottom;
+}
+.tree-list-view .expander i {
+  visibility: visible;
+  color: #b0b0b0;
+  font-weight: 100;
+  font-size: 12px;
+}
+.tree-list-view>.rows>.row.active i, .tree-list-view>.rows>.row.droppable-hover i, .tree-list-view>.rows>.row.selected i {
+  color: #fff;
+}
+.tree-list-view>.rows>.row.active i, .tree-list-view>.rows>.row.droppable-hover i, .tree-list-view>.rows>.row.selected i {
+  color: #fff;
+}
