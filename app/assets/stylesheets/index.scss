@@ -517,3 +517,179 @@ button, input, select, textarea {
 .tree-list-view>.rows>.row.active i, .tree-list-view>.rows>.row.droppable-hover i, .tree-list-view>.rows>.row.selected i {
   color: #fff;
 }
+.projects .context-info.visible {
+  transform: translate(0,0);
+  -ms-transform: translate(0,0);
+  -webkit-transform: translate(0,0);
+  -moz-transform: translate(0,0);
+}
+.projects .context-info {
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -o-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translate3d(0,0,0);
+  -moz-transform: translate3d(0,0,0);
+  -ms-transform: translate3d(0,0,0);
+  -o-transform: translate3d(0,0,0);
+  transform: translate3d(0,0,0);
+  -webkit-perspective: 1000px;
+  -moz-perspective: 1000px;
+  -o-perspective: 1000px;
+  perspective: 1000px;
+  -webkit-transition: transform .1s ease-out;
+  -moz-transition: transform .1s ease-out;
+  -o-transition: transform .1s ease-out;
+  transition: transform .1s ease-out;
+  transform: translate(400px,0);
+  -ms-transform: translate(400px,0);
+  -webkit-transform: translate(400px,0);
+  -moz-transform: translate(400px,0);
+  -webkit-box-shadow: 0 5px 4px 2px rgba(0,0,0,.2);
+  -ms-box-shadow: 0 5px 4px 2px rgba(0,0,0,.2);
+  -moz-box-shadow: 0 5px 4px 2px rgba(0,0,0,.2);
+  -o-box-shadow: 0 5px 4px 2px rgba(0,0,0,.2);
+  box-shadow: 0 5px 4px 2px rgba(0,0,0,.2);
+  position: absolute;
+  right: 0;
+  top: 10px;
+  bottom: 0;
+  width: 380px;
+  background-color: #fff;
+  border-left: 1px solid #E4E7EA;
+  padding: 15px;
+  overflow: auto;
+}
+#account-picker, .projects .context-info {
+  -ms-perspective: 1000px;
+  box-sizing: border-box;
+}
+.projects .context-info .image {
+  text-align: center;
+  position: relative;
+}
+.projects .context-info .image i.icon-share {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  font-size: 36px;
+  line-height: 36px;
+}
+
+.projects .context-info .image i {
+  color: #ccc;
+  line-height: 130px;
+  font-size: 120px;
+  height: 130px;
+  display: block;
+}
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak, .ng-hide:not(.ng-hide-animate) {
+  display: none !important;
+}
+.projects .context-info .node-name-label {
+  margin-left: 1px;
+  display: block;
+}
+
+.execution-list-directive .execution .title, .projects .context-info h3 {
+  font-weight: 500;
+}
+.projects .context-info table.details {
+  margin: 15px 0;
+}
+table.details {
+  border: 1px solid #E4E7EA;
+}
+
+table.details tbody {
+  border: 0;
+}
+
+.projects .context-info table.details th {
+  width: 95px;
+  vertical-align: top;
+}
+
+tbody td {
+  height: 38px;
+  border-bottom: 1px solid #EFEFEF;
+  border-left: 1px solid #EFEFEF;
+}
+table.details td, table.details th {
+  padding: 5px;
+  border: 0;
+  border-bottom: 1px solid #E4E7EA;
+  line-height: 26px;
+}
+
+table {
+  width : 100%;
+}
+
+table.details tbody th {
+  text-align: right;
+}
+table.details th {
+  border-right: 1px solid #E4E7EA;
+}
+
+table.details td, table.details th {
+  padding: 5px;
+  border: 0;
+  border-bottom: 1px solid #E4E7EA;
+  line-height: 26px;
+}
+caption, th {
+  text-align: left;
+}
+tbody>tr.odd, tbody>tr:nth-child(2n) {
+  background-color: #f6f6f6;
+}
+address, caption, cite, code, dfn, em, strong, th, var {
+  font-style: normal;
+  font-weight: 400;
+}
+.button.right, .projects .context-info .context-actions .button-container:not(:nth-child(3n)) a, .wb-action.right, .wb-button.right, .wb-form-button.right, button.right, input.button.right, input.submit.right {
+  margin-right: 3px;
+}
+.projects .context-info .context-actions .button-container a {
+  display: inline-block;
+  padding: 2px 6px;
+  font-size: 12px;
+  line-height: 22px;
+  width: calc(100% - 9px);
+  text-align: center;
+}
+.button.primary, .button.wb-success, .wb-action.primary, .wb-action.wb-success, .wb-button.primary, .wb-button.wb-success, .wb-form-button.primary, .wb-form-button.wb-success, button.primary, button.wb-success, input.button.primary, input.button.wb-success, input.submit.primary, input.submit.wb-success {
+  border-color: #2c699d;
+  background-color: #3276b1;
+  color: #fff;
+}
+table.details th {
+  border-right: 1px solid #E4E7EA;
+  border-right-width: 1px;
+  border-right-style: solid;
+  border-right-color: rgb(228, 231, 234);
+}
+tbody td, thead th {
+  padding: 5px;
+  box-sizing: border-box;
+}
+.projects .context-info table.details th {
+  width: 95px;
+  vertical-align: top;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  font: 100%
+}
+.projects .context-info .context-actions .button-container {
+  display: inline-block;
+  width: 33.33333333%;
+  text-align: center;
+}

@@ -120,7 +120,57 @@
             </div>
           </div>
         </div>
+        <div class="context-info visible" >
+          <div class="header">
+            <button class="button small" title="Close">
+              <i class="fa fa-remove"></i>
+            </button>
+          </div>
+          <div class="image">
+            <i class="fa fa-share-square-o icon-share ng-hide" title="Shared with you" ng-show="activeNode.shared"></i>
+            <i  class="cs-icon-r2d2"></i>
+          </div>
+          <h3 class="node-name-label ">finance.sina.com.cn</h3>
+          <table class="details">
+            <tbody>
+            <tr>
+              <th class="t">Type</th>
+              <td ng-bind="activeNode.typeName" class="ng-binding">Extractor</td>
+            </tr>
+            <tr>
+              <th class="t">Last Modified</th>
+              <td class="ng-binding">2016-08-09 17:58</td>
+            </tr>
+            <tr>
+              <th class="t">Modified by</th>
+              <td user="activeNode.modifiedBy">oo</td>
+            </tr>
+            <tr>
+              <th class="t">Created</th>
+              <td class="ng-binding">2016-08-09 16:45</td>
+            </tr>
+            <tr>
+              <th class="t">Created by</th>
+              <td user="activeNode.createdBy">oo</td>
+            </tr>
+            <tr class="tags-row">
+              <th>
+                <a ng-click="tagsDialog.visible = true" title="Click here to edit the tags for this object" class="t" href="javascript:;">Tags</a>
+              </th>
+              <td>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+          <div class="context-actions">
+            <div class="button-container ">
+             <a class="button  primary"  ng-href="/#/robots/ac7ee478-3e20-4669-bf02-04173580effd/editor/scraper" ng-bind="action.name" >Open</a>
+            </div>
+
+          </div>
+        </div>
       </div>
+
     </section>
   </div>
 </div>
