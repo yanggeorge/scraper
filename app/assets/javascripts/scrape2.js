@@ -14,8 +14,11 @@ function size() {
     var p0 = document.getElementById("p0");
     var p1 = document.getElementById("p1");
     var p2 = document.getElementById("p2");
-    p0.style.width = String(winWidth) + "px";
-    p0.style.height = String(winHeight - 300) + "px";
+
+    //p0.style.width = String(winWidth) + "px";
+    //p0.style.height = String(winHeight - 300) + "px";
+    $('#p0').css("width", String(winWidth) + "px");
+    $('#p0').css("height", String(winHeight - 300) + "px");
 
     var p2_width = $("#p2").width();
     $('#p1').css("width", String(winWidth - p2_width) + "px");
