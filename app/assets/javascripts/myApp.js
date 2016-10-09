@@ -579,9 +579,11 @@ app.controller('MainCtrl', function($scope, $http, $q, getXpath, $timeout){
         window.sidepane_state = 0; // 0 : 关闭 ,1 : 270px, 2: 520px
         window.sidepane2_state = 0;
         size();
-        setTimeout(function(){
-            var promise = $scope.player.stepForward();
-        },100);
+        if($scope.robot !== null) {
+            setTimeout(function () {
+                var promise = $scope.player.stepForward();
+            }, 100);
+        }
     });
     $scope.save = function(){
         //保存当前的robot定义。
@@ -732,19 +734,25 @@ app.controller('MainCtrl', function($scope, $http, $q, getXpath, $timeout){
     } };
     $scope.contextMenu2 = [menu2];
 
+    // 以下代码应该放在初始化的方法里
     $scope.robot = init_robot();
-    $scope.svgs = init_svgs($scope.robot);
-    $scope.svg_width = compute_svg_width($scope.svgs);
-    $scope.nodes = init_nodes($scope.robot);
+    if( $scope.robot !== null) {
+        console.log("robot is not null.");
+        $scope.svgs = init_svgs($scope.robot);
+        $scope.svg_width = compute_svg_width($scope.svgs);
+        $scope.nodes = init_nodes($scope.robot);
+    }
 
     $scope.$watch("robot" , function () {
         console.log("robot change ...");
-        $scope.nodes = init_nodes($scope.robot);
-        $scope.svgs = init_svgs($scope.robot);
-        $scope.svg_width = compute_svg_width($scope.svgs);
-        $scope.player.fresh_with($scope.robot);
-        $scope.render_color_before_current_play();
-        $scope.$broadcast("robot_change");
+        if ($scope.robot !== null) {
+            $scope.nodes = init_nodes($scope.robot);
+            $scope.svgs = init_svgs($scope.robot);
+            $scope.svg_width = compute_svg_width($scope.svgs);
+            $scope.player.fresh_with($scope.robot);
+            $scope.render_color_before_current_play();
+            $scope.$broadcast("robot_change");
+        }
     }, true);
     $scope.render_color_before_current_play = function(){
         var current_id = $scope.player.current.step.id;
@@ -902,8 +910,10 @@ app.controller('MainCtrl', function($scope, $http, $q, getXpath, $timeout){
             $scope.robot.add_step_before(step, current_step);
         }
     };
-
-    var player = new ym.rpa.Player($scope.robot);
+    var player = {};
+    if($scope.robot !== null){
+        player = new ym.rpa.Player($scope.robot);
+    }
     player.abort = function(){
         $scope.$broadcast("set_loading_hide");
         this.playing = false;
@@ -1104,7 +1114,9 @@ app.controller('MainCtrl', function($scope, $http, $q, getXpath, $timeout){
         return promise1;
     };
     console.log(player);
-    player.fresh_with($scope.robot);
+    if ($scope.robot !== null) {
+        player.fresh_with($scope.robot);
+    }
     console.log(player);
     $scope.player = player ;
 
@@ -1699,7 +1711,7 @@ var init_robot = function() {
         if( window.ym.robot_string !== undefined) {
             robot = ym.rpa.Robot.from_json_string(window.ym.robot_string);
         }else{
-            robot = get_test_robot();
+            robot = null;
         }
     }catch(e){
         console.log(e);

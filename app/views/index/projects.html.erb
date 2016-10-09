@@ -77,7 +77,7 @@
       <img src="/assets/dexi_white.svg" alt="dexi.io">
     </div>
   </div>
-  <div id="content" >
+  <div id="content" ng-controller="indexController">
     <section class="projects layout-header-body "   style="display: block;">
       <h2>Projects</h2>
       <div class="body">
@@ -89,8 +89,8 @@
             <div class="column tags">Tags</div>
             <div class="column kind">Kind</div>
           </div>
-          <div class="rows">
-            <div class="row active">
+          <div class="rows" ng-repeat="node in treeNodes">
+            <div class="row" ng-class="node.style">
               <div class="column name" style="padding-left: 0px;">
                 <span class="expander">
                   <i class="fa fa-chevron-right" ng-class="{'fa-chevron-down': node.expanded,'fa-chevron-right':!node.expanded}"></i>
@@ -98,29 +98,29 @@
                 <span class="title ng-binding" tree-list-droppable="scraper">
                         <i class="fa fa-share-square-o icon-share ng-hide"  title="Shared with you"></i>
                         <i class="cs-icon-r2d2"></i>
-                        finance.sina.com.cn
+                        {{node.name}}
                     </span>
               </div>
-              <div class="column tags"></div>
-              <div class="column kind"></div>
+              <div class="column tags">{{node.tags}}</div>
+              <div class="column kind">{{node.kind}}</div>
             </div>
-            <div class="row">
-              <div class="column name" style="padding-left: 0px;">
-                <span class="expander">
-                  <i class="fa fa-chevron-right" ng-class="{'fa-chevron-down': node.expanded,'fa-chevron-right':!node.expanded}"></i>
-                </span>
-                <span class="title ng-binding" tree-list-droppable="scraper">
-                        <i class="fa fa-share-square-o icon-share ng-hide"  title="Shared with you"></i>
-                        <i class="cs-icon-r2d2"></i>
-                        finance.sina.com.cn
-                    </span>
-              </div>
-              <div class="column tags"></div>
-              <div class="column kind"></div>
-            </div>
+            <!--<div class="row">-->
+              <!--<div class="column name" style="padding-left: 0px;">-->
+                <!--<span class="expander">-->
+                  <!--<i class="fa fa-chevron-right" ng-class="{'fa-chevron-down': node.expanded,'fa-chevron-right':!node.expanded}"></i>-->
+                <!--</span>-->
+                <!--<span class="title ng-binding" tree-list-droppable="scraper">-->
+                        <!--<i class="fa fa-share-square-o icon-share ng-hide"  title="Shared with you"></i>-->
+                        <!--<i class="cs-icon-r2d2"></i>-->
+                        <!--finance.sina.com.cn-->
+                    <!--</span>-->
+              <!--</div>-->
+              <!--<div class="column tags"></div>-->
+              <!--<div class="column kind"></div>-->
+            <!--</div>-->
           </div>
         </div>
-        <div class="context-info visible" >
+        <div class="context-info" context-info>
           <div class="header">
             <button class="button small" title="Close">
               <i class="fa fa-remove"></i>

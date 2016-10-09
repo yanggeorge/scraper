@@ -21,6 +21,8 @@
 // Templates in app/assets/javascript/templates
 //= require_tree ./templates
 //= require lodash
+//= require node.coffee
+//= require myApp.js
 //= require_tree .
 
 
