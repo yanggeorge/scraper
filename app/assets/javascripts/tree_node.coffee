@@ -8,7 +8,7 @@ class TreeNode
   style : ""
 
   constructor : () ->
-    @id = ""
+    @id = Math.uuid();
     @name = ""
     @tags = ""
     @kind = ""

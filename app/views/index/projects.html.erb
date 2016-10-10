@@ -89,8 +89,8 @@
             <div class="column tags">Tags</div>
             <div class="column kind">Kind</div>
           </div>
-          <div class="rows" ng-repeat="node in treeNodes">
-            <div class="row" ng-class="node.style">
+          <div class="rows" >
+            <div class="row" ng-class="node.style" ng-repeat="node in treeNodes" ng-click="toggle_context_info(node);">
               <div class="column name" style="padding-left: 0px;">
                 <span class="expander">
                   <i class="fa fa-chevron-right" ng-class="{'fa-chevron-down': node.expanded,'fa-chevron-right':!node.expanded}"></i>
@@ -104,33 +104,19 @@
               <div class="column tags">{{node.tags}}</div>
               <div class="column kind">{{node.kind}}</div>
             </div>
-            <!--<div class="row">-->
-              <!--<div class="column name" style="padding-left: 0px;">-->
-                <!--<span class="expander">-->
-                  <!--<i class="fa fa-chevron-right" ng-class="{'fa-chevron-down': node.expanded,'fa-chevron-right':!node.expanded}"></i>-->
-                <!--</span>-->
-                <!--<span class="title ng-binding" tree-list-droppable="scraper">-->
-                        <!--<i class="fa fa-share-square-o icon-share ng-hide"  title="Shared with you"></i>-->
-                        <!--<i class="cs-icon-r2d2"></i>-->
-                        <!--finance.sina.com.cn-->
-                    <!--</span>-->
-              <!--</div>-->
-              <!--<div class="column tags"></div>-->
-              <!--<div class="column kind"></div>-->
-            <!--</div>-->
           </div>
         </div>
         <div class="context-info" context-info>
           <div class="header">
-            <button class="button small" title="Close">
+            <button class="button small" title="Close" ng-click="close_context_info()">
               <i class="fa fa-remove"></i>
             </button>
           </div>
           <div class="image">
-            <i class="fa fa-share-square-o icon-share ng-hide" title="Shared with you" ng-show="activeNode.shared"></i>
+            <i class="fa fa-share-square-o icon-share " title="Shared with you" ng-show="false;"></i>
             <i  class="cs-icon-r2d2"></i>
           </div>
-          <h3 class="node-name-label ">finance.sina.com.cn</h3>
+          <h3 class="node-name-label ">{{active_node.name}}</h3>
           <table class="details">
             <tbody>
             <tr>
