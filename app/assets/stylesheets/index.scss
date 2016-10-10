@@ -683,6 +683,9 @@ tbody td, thead th {
   width: 95px;
   vertical-align: top;
 }
+.projects .body, .tree-list-view>.rows>.row .column {
+  overflow: hidden;
+}
 table {
   border-collapse: collapse;
   border-spacing: 0;
