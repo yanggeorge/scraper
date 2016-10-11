@@ -79,7 +79,17 @@
   </div>
   <div id="content" ng-controller="indexController">
     <section class="projects layout-header-body "   style="display: block;">
-      <h2>Projects</h2>
+      <h2>Projects
+        <div class="actions" ng-click="create_robot_dialog.show()">
+          <dropdown classes="button wider secondary" icon="fa fa-plus" text="New..." class="ng-isolate-scope">
+            <div class="dropdown " id="elements-27769">
+            <a class="button wider secondary  with-icon" href="javascript:;" ng-click="dropdown.show = dropdown.show ? false : true">
+              <!-- ngIf: icon --><i  class="fa fa-plus"></i>&nbsp;New... <i class="fa fa-caret-down"></i>
+            </a>
+
+          </div></dropdown>
+        </div>
+      </h2>
       <div class="body">
         <div class="tree-list-view vfs" >
           <div class="header">
@@ -152,11 +162,33 @@
             <div class="button-container ">
              <a class="button  primary"  ng-href="/#/robots/ac7ee478-3e20-4669-bf02-04173580effd/editor/scraper" >Open</a>
             </div>
-
+            <div class="button-container" >
+              <a  class="button danger">Delete</a>
+            </div>
           </div>
         </div>
       </div>
 
     </section>
   </div>
+</div>
+
+<div id="new_dialog"  ng-show="create_robot_dialog.visible" style="display: block;width: auto;min-height: 71px;max-height: 799px;height: auto;">
+  <form id="create_robot_form" class="label-above ng-pristine ng-valid" novalidate method="post" action="/scrape/do_url">
+    <div class="box info grey">
+      Choose the type of robot you want to create. Choose type to see a detailed description below.
+    </div>
+    <div  class="form-row-line">
+      <div class="form-row" label="Url" help="Choose url to start from" ><label class="field-label">Url:</label>
+        <input type="text" name="url" ng-model="robot_url"  placeholder="http://www.somewhere.com" required="true" class="ng-pristine ng-untouched ng-valid ng-valid-required">
+        <div class="help">Choose url to start from</div><div class="error" style="display: none;"></div></div>
+      <div class="form-row" label="Name" help="Give your robot a name"><label class="field-label">Name:</label>
+        <input type="text" name="robot_name"  ng-model="robot_name"   placeholder="My Robot" class="ng-pristine ng-untouched ng-valid">
+        <div class="help">Give your robot a name</div><div class="error" style="display: none;"></div></div>
+    </div>
+    <div class="form-buttons">
+      <button type="button" class="button t" ng-click="create_robot_dialog.cancel()">Cancel</button>
+      <button type="submit" class="button t primary wider" ng-click="create_robot_dialog.create()">Create new robot</button>
+    </div>
+  </form>
 </div>

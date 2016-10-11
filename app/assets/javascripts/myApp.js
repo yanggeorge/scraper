@@ -575,6 +575,8 @@ var set_stepData = function($scope, node){
     }
 };
 app.controller('MainCtrl', function($scope, $http, $q, getXpath, $timeout){
+    console.log("myApp.js MainCtrl");
+    app.expand_controller_MainCtrl($scope, $http, $q, getXpath, $timeout);
     angular.element(document).ready(function () {
         window.sidepane_state = 0; // 0 : 关闭 ,1 : 270px, 2: 520px
         window.sidepane2_state = 0;

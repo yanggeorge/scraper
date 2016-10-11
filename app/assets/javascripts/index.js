@@ -72,3 +72,56 @@ app.controller('indexController', function($scope){
         }
     });
 });
+
+app.expand_controller_MainCtrl = function($scope, $http, $q, getXpath, $timeout){
+    console.log("expand MainCtrl in index.js");
+
+    $scope.create_robot_dialog = { visible : false };
+
+    $scope.create_robot_dialog.show = function() {
+        clear_input();
+        this.visible = true;
+        var options = {
+            title: "Create New Robot",
+            resizable: true,
+            closable: true,
+            minWidth: 650,
+            modal: true,
+            buttons: [],
+            close: function () {
+                console.log("close dialog");
+                $scope.create_robot_dialog.visible = false;
+            }
+        };
+        this.dlog = jQuery("#new_dialog");
+        this.dlog.dialog(options);
+    };
+
+    $scope.create_robot_dialog.cancel = function() {
+        this.visible = false;
+        this.dlog.dialog("close");
+    };
+
+    var clear_input = function(){
+        $scope.robot_url = "http://";
+        $scope.robot_name = "";
+    };
+    $scope.create_robot_dialog.create = function() {
+        this.visible = false;
+        this.dlog.dialog("close");
+        var form = jQuery("#create_robot_form");
+        form.submit();
+    };
+
+    $scope.$watch("robot_url", function(v){
+        console.log("change" + v);
+        var parser = document.createElement('a');
+        parser.href = v;
+        var host_name = parser.hostname;
+        var name = $scope.robot_name ;
+        if(v && (_.startsWith(host_name,name) ||  _.startsWith(name,host_name))) {
+            $scope.robot_name = host_name;
+        }
+    }, true);
+
+};

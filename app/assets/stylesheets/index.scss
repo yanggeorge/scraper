@@ -696,3 +696,88 @@ table {
   width: 33.33333333%;
   text-align: center;
 }
+
+.button.danger, .button.wb-warning, .wb-action.danger, .wb-action.wb-warning, .wb-button.danger, .wb-button.wb-warning, .wb-form-button.danger, .wb-form-button.wb-warning, button.danger, button.wb-warning, input.button.danger, input.button.wb-warning, input.submit.danger, input.submit.wb-warning {
+  background-color: #d9534f;
+  border-color: #d43f3a;
+  color: #fff;
+}
+
+section>h2>.actions {
+  transition: max-width .2s;
+  margin-top: 10px;
+  line-height: 20px;
+}
+
+h1>.actions, h2>.actions, h3>.actions, h4>.actions, h5>.actions {
+  float: right;
+  vertical-align: top;
+}
+.dropdown {
+  position: relative;
+}
+
+.button.wider.with-icon, .wb-action.wider.with-icon, .wb-button.wider.with-icon, .wb-form-button.wider.with-icon, button.wider.with-icon, input.button.wider.with-icon, input.submit.wider.with-icon {
+  padding-left: 15px;
+}
+
+.button.secondary, .wb-action.secondary, .wb-button.secondary, .wb-form-button.secondary, button.secondary, input.button.secondary, input.submit.secondary {
+  background-color: #2ecc71;
+  border-color: #29b765;
+  color: #fff;
+}
+.button.wider, .wb-action.wider, .wb-button.wider, .wb-form-button.wider, button.wider, input.button.wider, input.submit.wider {
+  padding-left: 25px;
+  padding-right: 25px;
+}
+h1 .button, h2 .button, h3 .button, h4 .button, h5 .button {
+  margin-top: 0;
+}
+.button>i, .wb-action>i, .wb-button>i, .wb-form-button>i, button>i, input.button>i, input.submit>i {
+  font-style: normal!important;
+  line-height: 20px;
+}
+.actions .button>i {
+  font-size: 14px;
+}
+
+.button.secondary.active, .button.secondary:hover:not(.loading), .wb-action.secondary.active, .wb-action.secondary:hover:not(.loading), .wb-button.secondary.active, .wb-button.secondary:hover:not(.loading), .wb-form-button.secondary.active, .wb-form-button.secondary:hover:not(.loading), button.secondary.active, button.secondary:hover:not(.loading), input.button.secondary.active, input.button.secondary:hover:not(.loading), input.submit.secondary.active, input.submit.secondary:hover:not(.loading) {
+  background: #29b765;
+  border-color: #25a25a;
+}
+
+.ui-dialog-content .form-buttons {
+  margin-left: -35px;
+  margin-right: -35px;
+  padding-bottom: 0;
+}
+.ui-dialog-content .form-buttons {
+  text-align: right;
+  padding-right: 35px;
+}
+.label-above .form-buttons, .label-above .form-indent {
+  padding-left: 0;
+}
+.form-buttons, .form-indent {
+  padding-left: 160px;
+}
+.form-buttons {
+  margin-top: 10px;
+  padding: 10px;
+  border-top: 1px solid #E4E7EA;
+  background-color: #fff;
+}
+
+.box.grey {
+  background-color: #EFEFEF;
+  margin-bottom: 25px;
+}
+.box.info {
+  padding: 25px;
+  background-color: #f6f6f6;
+  color: #666;
+}
+
+.box {
+  box-sizing: border-box;
+}
