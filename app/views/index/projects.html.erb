@@ -1,3 +1,7 @@
+<%= javascript_tag do %>
+    window.ym.all_robots = '<%= @robots.to_json.html_safe %>'
+<% end %>
+
 <div id="application">
   <div id="menu" >
     <div class="current">
@@ -160,7 +164,7 @@
           </table>
           <div class="context-actions">
             <div class="button-container ">
-             <a class="button  primary"  ng-href="/#/robots/ac7ee478-3e20-4669-bf02-04173580effd/editor/scraper" >Open</a>
+             <a class="button  primary"  ng-href="/scrape/do_url?robot_id={{active_node.id}}" >Open</a>
             </div>
             <div class="button-container" >
               <a  class="button danger">Delete</a>

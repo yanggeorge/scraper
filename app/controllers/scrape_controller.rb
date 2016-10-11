@@ -8,10 +8,10 @@ class ScrapeController < ApplicationController
 
   def do_url
     p params
-    @url = params[:url].strip
-    @robot_name = params[:robot_name].strip
-
-    robot_data = RobotDataBase.find_by_robot_name(@robot_name)
+    @url = params[:url].strip if params[:url]
+    @robot_name = params[:robot_name].strip if params[:robot_name]
+    @robot_id = params[:robot_id].strip if params[:robot_id]
+    robot_data = RobotDataBase.find_by_robot_id(@robot_id)
     p
     if robot_data.nil?
       new_robot = RPA::RobotService.instance.get_new_robot(@robot_name, @url)

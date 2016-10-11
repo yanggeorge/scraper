@@ -33,17 +33,23 @@ app.directive("contextInfo", function () {
     };
 });
 
+
 app.controller('indexController', function($scope){
 
-
-    var node1 = new ym.rpa.TreeNode();
-    node1.name = "finance.com.cn";
-
-    var node2 = new ym.rpa.TreeNode();
-    node2.name = "www.baidu.com";
-    var treeNodes = [node1, node2];
-
-    $scope.treeNodes = treeNodes ;
+    var init_treeNodes = function() {
+        var nodes = [];
+        var text = window.ym.all_robots;
+        console.log(text);
+        var robots = JSON.parse(text);
+        _.each(robots, function(r) {
+            var node = new ym.rpa.TreeNode();
+            node.id = r.robot_id;
+            node.name = r.robot_name;
+            nodes.push(node);
+        });
+        return nodes;
+    };
+    $scope.treeNodes = init_treeNodes() ;
 
     $scope.toggle_context_info = function(node) {
         $scope.$emit("toggle_context_info",node);
