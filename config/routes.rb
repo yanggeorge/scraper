@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   #root 'index#index'
   root 'index#projects'
   get 'index/projects' => 'index#projects'
+  post 'index/delete_robot' => 'index#delete_robot'
   post 'scrape/do_url' => 'scrape#do_url'
   get 'scrape/do_url' => 'scrape#do_url'
   post 'scrape/get_page_id' => 'scrape#get_page_id'

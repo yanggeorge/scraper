@@ -116,8 +116,8 @@ module RPA
       step1 = RPA::Step.new(RPA::ACTION_VISIT)
       step1.value = url
       step1.title = "Go to URL"
-      step2 = RPA::Step.new(RPA::ACTION_NOTHING)
-      step2.title = "Do nothing"
+      step2 = RPA::Step.new(RPA::ACTION_FLUSH)
+      step2.title = "Save"
       step1.next << step2.id
       robot.first_step = step1.id
       robot.steps[step1.id] = step1

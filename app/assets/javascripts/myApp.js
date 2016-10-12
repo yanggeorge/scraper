@@ -1287,7 +1287,7 @@ app.controller('MainCtrl', function($scope, $http, $q, getXpath, $timeout){
     };
 
     $scope.$on("elements_tab_pane_show",function(evt, ele){
-        console.log("elements_tab_pane_show");
+        //console.log("elements_tab_pane_show");
         var body = document.getElementById("modified_page").contentWindow.document.body;
         var hierarchy_list = get_hierarchy_from_html_to_ele(body,ele);
         //console.log(hierarchy_list);
@@ -1509,8 +1509,8 @@ app.controller('MainCtrl', function($scope, $http, $q, getXpath, $timeout){
                 src_nodes.push(node);
             }
         });
-        console.log(nodes.length);
-        console.log(src_nodes.length);
+        //console.log(nodes.length);
+        //console.log(src_nodes.length);
         for(var i = 0; i < nodes.length ; i++){
             $scope.add_toggle_event(nodes[i], src_nodes[i]);
         }

@@ -5,15 +5,8 @@
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:mysql://127.0.0.1:3306/scraper</jdbc-url>
-      <libraries>
-        <library>
-          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/mysql-connector-license.txt</url>
-        </library>
-        <library>
-          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/mysql-connector-java-5.1.35-bin.jar</url>
-        </library>
-      </libraries>
+      <jdbc-url>jdbc:sqlite:D:\work\rails\scraper\db\development.sqlite3</jdbc-url>
+      <libraries />
     </data-source>
   </component>
 </project>

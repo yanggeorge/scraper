@@ -34,13 +34,12 @@ app.directive("contextInfo", function () {
 });
 
 
-app.controller('indexController', function($scope){
+app.controller('indexController', function($scope, $http){
 
-    var init_treeNodes = function() {
+    var init_treeNodes = function(robots_json) {
+        console.log(robots_json);
         var nodes = [];
-        var text = window.ym.all_robots;
-        console.log(text);
-        var robots = JSON.parse(text);
+        var robots = JSON.parse(robots_json);
         _.each(robots, function(r) {
             var node = new ym.rpa.TreeNode();
             node.id = r.robot_id;
@@ -49,7 +48,7 @@ app.controller('indexController', function($scope){
         });
         return nodes;
     };
-    $scope.treeNodes = init_treeNodes() ;
+    $scope.treeNodes = init_treeNodes(window.ym.all_robots) ;
 
     $scope.toggle_context_info = function(node) {
         $scope.$emit("toggle_context_info",node);
@@ -77,6 +76,27 @@ app.controller('indexController', function($scope){
             }
         }
     });
+
+    $scope.delete_robot = function(robot_id) {
+        var path = '/index/delete_robot';
+        var ramdom = Math.uuid();
+        var promise = $http.post(path, {robot_id: robot_id, random : ramdom}, {timeout:5000})
+            .success(function(data, status, headers, config)
+            {
+                $scope.treeNodes = init_treeNodes(data.result);
+                return false;
+            })
+            .error(function(data, status, headers, config)
+            {
+                console.log("robot delete error ...");
+                return false;
+            }
+        );
+        promise.then(function(){
+            $scope.close_context_info();
+        });
+    };
+
 });
 
 app.expand_controller_MainCtrl = function($scope, $http, $q, getXpath, $timeout){
