@@ -1,0 +1,4 @@
+development:
+  phantomjs_full_path : d:/work/bin/phantomjs.exe
+test:
+  phantomjs_full_path : d:/work/bin/phantomjs.exe

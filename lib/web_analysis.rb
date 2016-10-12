@@ -9,9 +9,10 @@ class WebAnalysis
   attr_accessor :url , :body , :driver
 
   def initialize
-    Thread.new {`"d:\\work\\bin\\phantomjs.exe" --webdriver=9134`} # 首先运行phantomjs
+    phantomjs = Rails.configuration.scraper['phantomjs_full_path']
+    Thread.new {`#{phantomjs} --webdriver=9134`} # 首先运行phantomjs
     @driver = Selenium::WebDriver.for(:remote, :url => "http://localhost:9134")
-    puts "WebAnalysis is initializing."
+    puts "WebAnalysis is initializing.(#{phantomjs})"
   end
 
   def test
