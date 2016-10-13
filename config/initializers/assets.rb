@@ -11,6 +11,7 @@ Rails.application.config.assets.version = '1.0'
 # Rails.application.config.assets.precompile += %w( search.js )
 Rails.application.config.assets.precompile += %w( mouse_over_ele_select.js )
 Rails.application.config.assets.precompile += %w( Math.uuid.js )
+Rails.application.config.assets.precompile += %w( json_helper.js )
 Rails.application.config.assets.precompile += %w( robot.coffee )
 Rails.application.config.assets.precompile += %w( node.coffee )
 Rails.application.config.assets.precompile += %w( tree_node.coffee )

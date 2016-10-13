@@ -137,19 +137,11 @@ module RPA
       step.title = hash["title"]
       step.field = hash["field"]
       step.value = hash["value"]
-      step.tags = self.unescape_tags hash["tags"]
+      step.tags = hash["tags"]
       step.next = hash["next"]
       step.options = hash["options"]
       step.error_message = hash["error_message"]
       step
-    end
-
-    def self.unescape_tags(tags)
-      result = []
-      tags.each do |tag|
-        result << RPA.json_unescape(tag)
-      end
-      result
     end
 
     # step只是一部分
@@ -234,7 +226,7 @@ module RPA
         s += %Q("tags":[\n)
         i = 1
         @tags.each do |tag|
-          s += indent + %Q("#{RPA.json_escape(tag)}")
+          s += indent + %Q("#{tag}")
           if i == @tags.length
             s += "\n"
           else

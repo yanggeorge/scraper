@@ -209,17 +209,11 @@ class Step
     step.title = hash["title"]
     step.field = hash["field"]
     step.value = hash["value"]
-    step.tags = @unescape_tags(hash['tags'])
+    step.tags = hash["tags"]
     step.next = hash["next"]
     step.options = hash["options"]
     step.error_message = hash["error_message"]
     step
-
-  @unescape_tags:(tags) ->
-    result = []
-    for tag in tags
-      result.push(JSON.json_unescape(tag))
-    return result
 
   constructor: (action)->
     @id = Math.uuid()
@@ -317,7 +311,7 @@ class Step
       s += "\"tags\":[\n"
       i = 1
       for tag in @tags
-        s += indent + "\"#{JSON.json_escape(tag)}\""
+        s += indent + "\"#{tag}\""
         if i == Object.keys(@tags).length
           s += "\n"
         else

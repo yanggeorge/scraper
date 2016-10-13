@@ -78,6 +78,7 @@ app.controller('indexController', function($scope, $http){
     });
 
     $scope.delete_robot = function(robot_id) {
+        $scope.close_context_info();
         var path = '/index/delete_robot';
         var ramdom = Math.uuid();
         var promise = $http.post(path, {robot_id: robot_id, random : ramdom}, {timeout:5000})
@@ -92,9 +93,6 @@ app.controller('indexController', function($scope, $http){
                 return false;
             }
         );
-        promise.then(function(){
-            $scope.close_context_info();
-        });
     };
 
 });

@@ -5,6 +5,8 @@ var app = angular.module('myApp',['templates']);
 jQuery.fn.view = function() {
     return this[0].ownerDocument.defaultView
 };
+
+
 app.factory("kcSleep",function($timeout){
     return function(ms) {
         return function(value) {

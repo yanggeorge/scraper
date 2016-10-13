@@ -10,20 +10,22 @@ class ScrapeController < ApplicationController
     p params
     @url = params[:url].strip if params[:url]
     @robot_name = params[:robot_name].strip if params[:robot_name]
-    @robot_id = params[:robot_id].strip if params[:robot_id]
-    robot_data = RobotDataBase.find_by_robot_id(@robot_id)
+    robot_id = params[:robot_id].strip if params[:robot_id]
+    robot_data = RobotDataBase.find_by_robot_id(robot_id)
     p
     if robot_data.nil?
       new_robot = RPA::RobotService.instance.get_new_robot(@robot_name, @url)
-      @robot_string = new_robot.to_one_line
+      @robot_string = RPA.json_escape new_robot.to_s
       puts @robot_string
-      return @robot_string
     else
-      @robot_string = robot_data.robot_def
-      robot = RPA::Robot.from_json_string(@robot_string)
-      puts robot.to_s
+      robot_def = robot_data.robot_def
+      puts "robot_def"
+      puts robot_def
+      robot = RPA::Robot.from_json_string(robot_def)
       RPA::RobotService.instance.register(robot)
-      return @robot_string
+      @robot_string = RPA.json_escape robot.to_s
+      puts "robot_string"
+      puts @robot_string
     end
   end
 

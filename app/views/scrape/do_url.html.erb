@@ -1,277 +1,272 @@
-<% if @is_error %>
-    <br/>
-    <%= @error_content %>
-<% else %>
+<%= javascript_tag do %>
+    window.ym.robot_string = '<%= raw @robot_string %>'
+<% end %>
 
-    <%= javascript_tag do %>
-        window.ym.robot_string = '<%= @robot_string.html_safe %>'
-    <% end %>
+<div class="p1" >
+  <div id="p0" class="p2-1 main">
+    <div class="loader" data-loading>
+      <span>Please wait while processing step...</span>
 
-    <div class="p1" >
-      <div id="p0" class="p2-1 main">
-        <div class="loader" data-loading>
-          <span>Please wait while processing step...</span>
-
-          <div class="spinner-container">
-            <div class="sk-spinner sk-spinner-rotating-plane"></div>
-          </div>
-
-          <ul class="details ng-hide" ng-show="idleStates.length">
-            <li>Waiting for:</li>
-            <!-- ngRepeat: idleState in idleStates -->
-          </ul>
-
-          <a class="button big danger" ng-click="player.abort()">Abort execution</a>
-
-        </div>
-        <div id="p2" class="p3-1 sidepane">
-          <div class="content">
-            <h3>
-              <span ng-bind="sidepane1_title"></span>
-
-              <div class="actions">
-                <a href="javascript:;" ng-click="closeSidePane1()" class="button mini">
-                  <i class="fa fa-remove"></i>
-                </a>
-              </div>
-            </h3>
-            <div class="body" ng-include="sidepane1_view">
-
-            </div>
-          </div>
-        </div>
-        <div id="p1" class="p3-2 page" ng-controller="MarkerCtrl" >
-          <div id="p1-inner" class="p4-1 inner"   >
-            <div class="marker-container"  >
-                <div class="container scroll"  >
-                  <!-- 在这个元素下添加 selected div-->
-                  <div class="scroller" ng-style="{height:iframe_height,width:iframe_width}"></div>
-                  <!--<div style="top:362px;left:237px;width:710px;height:30px;right:947px;bottom:392px" class="marker selected suggestion"></div>-->
-                </div>
-            </div>
-            <iframe id="modified_page" class="iframe_class" iframe-onload  >
-            </iframe>
-          </div>
-        </div>
+      <div class="spinner-container">
+        <div class="sk-spinner sk-spinner-rotating-plane"></div>
       </div>
-      <div class="p2-2  mainpane">
-        <div id="p4" class="p3-3 sidepane">
-          <h3>
-            <span ng-bind="sidePane2Title"></span>
 
-            <div class="actions">
-              <a href="javascript:;" ng-click="closeSidePane2()" class="button mini">
-                <i class="fa fa-remove"></i>
-              </a>
-            </div>
-          </h3>
-          <div class="body" ng-include="sidePaneView2">
+      <ul class="details ng-hide" ng-show="idleStates.length">
+        <li>Waiting for:</li>
+        <!-- ngRepeat: idleState in idleStates -->
+      </ul>
 
-          </div>
-        </div>
-        <div id="p3" class="p3-4 main tab-pane">
-          <div class="tab-buttons">
-            <a class="button active" tab-id="steps">Steps<i class="fa fa-chevron-down collapsed"></i></a>
-            <a class="button " tab-id="Elements">Elements<i class="fa fa-chevron-down collapsed"></i></a>
-            <a class="button " tab-id="Outputs">Outputs<i class="fa fa-chevron-down collapsed"></i></a>
-            <a class="button " tab-id="Results">Results<i class="fa fa-chevron-down collapsed"></i></a>
-            <a class="button " tab-id="new">new<i class="fa fa-chevron-down collapsed"></i></a>
+      <a class="button big danger" ng-click="player.abort()">Abort execution</a>
 
-            <div class="actions">
-              <a class="button small t orange" ng-click="contactSupport()" title="Write a message to support">
-                Get help
-              </a>
+    </div>
+    <div id="p2" class="p3-1 sidepane">
+      <div class="content">
+        <h3>
+          <span ng-bind="sidepane1_title"></span>
 
-              <i class="separator"></i>
-
-              <a class="button small t" ng-href="/index/projects">
-                Close
-              </a>
-
-              <a ng-show="draft.exists" class="button danger small t" ng-click="discardDraft()"
-                 ng-confirm="This will cause all current changes to be lost. Continue?">
-                Discard draft
-              </a>
-
-              <a class="button small t" ng-click="jsonEditor.show()"
-                 title="Edit the raw robot definition in JSON format">
-                JSON
-              </a>
-
-              <a class="button primary small t" ng-click="save()">
-                Save
-              </a>
-
-              <i class="separator"></i>
-
-              <a class="button mini" title="Restart" ng-click="player.restart()">
-                <i class="fa fa-fast-backward"></i>
-              </a>
-              <a class="button mini" title="Step back" ng-click="player.stepBack()">
-                <i class="fa fa-step-backward"></i>
-              </a>
-              <a class="button mini" title="Step forward" ng-click="player.stepForward()">
-                <i class="fa fa-step-forward"></i>
-              </a>
-              <a class="button mini" title="Start / stop" ng-click="player.togglePlay()"
-                ng-class="{secondary : player.playing}">
-                <i ng-class="{fa : true, 'fa-play': !player.playing, 'fa-pause':player.playing}"></i>
-              </a>
-            </div>
-          </div>
-          <div class="tab-page fill padded active">
-            <div class="flow-editor" style="top:2px; left:10px;overflow:hidden; z-index:2;">
-              <svg width="{{svg_width}}" height="222" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
-                <g>
-                  <title>Layer 1</title>
-                  <g id="svg_7" class="line-weight:22px;" ng-include="'svg.html'">
-                  </g>
-                </g>
-              </svg>
-
-              <div  ng-repeat="node in nodes" title="{{node.desc}}" ng-class="node.style" ng-style="node.position" style="position:absolute;" class="flow-step tst-robot-scraper-devtools-timeline-step ng-scope  active " >
-                <div class="title-container"  ng-click="clickNode(node);$event.stopPropagation();">
-                  <div class="title">{{node.title}}</div>
-                </div>
-                <div class="step-adder after" ng-click="addStepAfter(node);$event.stopPropagation();" >
-                  <i class="fa fa-plus" ></i>
-                </div>
-                <div class="step-adder before" ng-click="addStepBefore(node);$event.stopPropagation();">
-                  <i class="fa fa-plus"></i>
-                </div>
-              </div>
-
-
-            </div>
-          </div>
-          <div class="tab-page fill padded ">
-            <div class="dom-view">
-              <ul id="dom-root" class="dom-root"></ul>
-              <!--<ul class="dom-root">-->
-                <!--<li class="opened">-->
-                  <!--<a class="dom-tag-start-toggle" rel="html"><i class="fa dom-folded-closed fa-chevron-down"></i></a><a class="dom-tag-start"><span class="dom-tag-start-name">&lt;html</span><span class="dom-attr"> <span class="dom-attr-name">xmlns</span>=<span class="dom-attr-value">"http://www.w3.org/1999/xhtml"</span></span><span class="dom-tag-start-end">&gt;</span></a><span class="dom-folded" style="display: none;">...</span>-->
-                  <!--<ul class="dom-content" style="display: block;">-->
-                    <!--<li class="">-->
-                      <!--<a class="dom-tag-start-toggle" rel="head"><i class="fa dom-folded-closed fa-chevron-right"></i></a><a class="dom-tag-start"><span class="dom-tag-start-name">&lt;head</span><span class="dom-tag-start-end">&gt;</span></a><span class="dom-folded" style="display: inline;">...</span>-->
-                      <!--<ul class="dom-content" style="display: none;"></ul>-->
-                      <!--<span class="dom-tag-end">&lt;/head&gt;</span></li>-->
-
-                    <!--<li class="opened">-->
-                      <!--<a class="dom-tag-start-toggle" rel="body"><i class="fa dom-folded-closed fa-chevron-down"></i></a><a class="dom-tag-start"><span class="dom-tag-start-name">&lt;body</span><span class="dom-attr"> <span class="dom-attr-name">style</span>=<span class="dom-attr-value">"background: url(../../images/stbybg.jpg) no-repeat scroll center top #FFFFFF;"</span></span><span class="dom-attr"> <span class="dom-attr-name">class</span></span><span class="dom-tag-start-end">&gt;</span></a><span class="dom-folded" style="display: none;">...</span>-->
-                      <!--<ul class="dom-content" style="display: block;">-->
-                        <!--<li>-->
-                          <!--<a class="dom-tag-start-toggle" rel="div"><i class="fa fa-chevron-right dom-folded-closed"></i></a><a class="dom-tag-start"><span class="dom-tag-start-name">&lt;div</span><span class="dom-attr"> <span class="dom-attr-name">class</span>=<span class="dom-attr-value">"wrapper"</span></span><span class="dom-tag-start-end">&gt;</span></a><span class="dom-folded">...</span>-->
-                          <!--<ul class="dom-content"></ul>-->
-                          <!--<span class="dom-tag-end">&lt;/div&gt;</span></li>-->
-
-
-                        <!--<li>-->
-                          <!--<a class="dom-tag-start-toggle" rel="a"><i class="fa fa-chevron-right dom-folded-closed"></i></a><a class="dom-tag-start"><span class="dom-tag-start-name">&lt;a</span><span class="dom-tag-start-end">&gt;</span></a><span class="dom-folded">...</span>-->
-                          <!--<ul class="dom-content"></ul>-->
-                          <!--<span class="dom-tag-end">&lt;/a&gt;</span></li>-->
-                        <!--<li>-->
-                          <!--<a class="dom-tag-start-toggle" rel="style"><i class="fa fa-chevron-right dom-folded-closed"></i></a><a class="dom-tag-start"><span class="dom-tag-start-name">&lt;style</span><span class="dom-attr"> <span class="dom-attr-name">style</span>=<span class="dom-attr-value">"true"</span></span><span class="dom-tag-start-end">&gt;</span></a><span class="dom-folded">...</span>-->
-                          <!--<ul class="dom-content"></ul>-->
-                          <!--<span class="dom-tag-end">&lt;/style&gt;</span></li>-->
-                      <!--</ul>-->
-                      <!--<span class="dom-tag-end">&lt;/body&gt;</span></li>-->
-                  <!--</ul>-->
-                  <!--<span class="dom-tag-end">&lt;/html&gt;</span></li>-->
-              <!--</ul>-->
-            </div>
-          </div>
-
-          <div class="tab-page fill padded " ng-controller="OutputsCtrl">
-            <!-- Outputs -->
-            <form ng-controller="fieldsCtrl" class="robot-field-list label-above ng-pristine ng-valid ng-scope ng-valid-fieldisuniquevalue ng-valid-required ng-valid-pattern">
-              <div ng-repeat="field in outputFields" class="robot-field form-row-line ng-scope" ng-controller="fieldCtrl">
-                <div class="actions">
-                  <a href="javascript:;" class="button mini danger" ng-click="remove(outputFields, field)">
-                    <i class="fa fa-times"></i>
-                  </a>
-                  <a ng-hide="$first" href="javascript:;" class="button mini ng-hide" ng-click="move(outputFields, field, -1)">
-                    <i class=" fa fa-arrow-up"></i>
-                  </a>
-                  <a ng-hide="$last" href="javascript:;" class="button mini" ng-click="move(outputFields, field, 1)">
-                    <i class="fa fa-arrow-down"></i>
-                  </a>
-                </div>
-
-                <div class="form-row" label="Field name"><label class="field-label">Field name:</label>
-                  <input  ng-pattern="'[a-zA-Z_][a-zA-Z 0-9-_]*'" ng-model-options="{allowInvalid:false}" ng-blur="checkForChange()" required="true" name="fieldId" type="text" ng-model="field.id" placeholder="Field #1" class="ng-pristine ng-untouched ng-valid ng-valid-fieldisuniquevalue ng-valid-required ng-valid-pattern">
-                  <div class="help" title="Must start with a letter or underscore and only contain letters, numbers, spaces, dashes (-) and underscores (_) after the first letter">
-                    Must match: [a-zA-Z_][a-zA-Z 0-9-_]*
-                  </div>
-                  <div class="error" style="display: none;"></div></div>
-
-                <div class="form-row" label="Field type"><label class="field-label">Field type:</label>
-                  <select required="true" ng-model="field.type" name="fieldType" ng-options="type as name for (type,name) in fieldTypes" class="ng-pristine ng-untouched ng-valid ng-valid-required"><option value="" class="t">Select field type...</option><option value="boolean" label="True / False">True / False</option><option value="number" selected="selected" label="Number">Number</option><option value="string" label="Text">Text</option></select>
-                  <div class="error" style="display: none;"></div></div>
-
-                <div   class="form-row ng-scope" label="Default value" help="This value will be used if no valid value is provided.">
-                  <label class="field-label">Default value:</label>
-                  <input  name="defaultValue" auto-field="field" ng-model="field.defaultValue" class="ng-pristine ng-untouched ng-valid auto" style="display: none;">
-                  <input ng-if="!is_boolean(field.type)" type="{{field.type}}" ng-model="field.default_value" style="" class="auto ng-pristine ng-untouched ng-valid ng-scope">
-                  <div ng-if="is_boolean(field.type)" style="display:inline-block" class="ng-scope">
-                    <label style="width:auto; margin-right:10px;"><input type="radio" value="true" ng-model="field.default_value" style="" class="auto ng-pristine ng-untouched ng-valid" name="548"> True</label>
-                    <label style="width:auto;"><input type="radio" value="false" checked="checked" ng-model="field.default_value" style="" class="auto ng-pristine ng-untouched ng-valid" name="549"> False</label>
-                  </div>
-                  <div class="help">This value will be used if no valid value is provided.</div>
-                  <div class="error" style="display: none;"></div>
-                </div>
-
-              </div>
-            </form>
-            <a class="button secondary" href="javascript:;" ng-click="addOutputField()">
-              <i class="fa fa-plus"></i>
-              Add field
+          <div class="actions">
+            <a href="javascript:;" ng-click="closeSidePane1()" class="button mini">
+              <i class="fa fa-remove"></i>
             </a>
           </div>
-
-          <div class="tab-page fill padded " ng-controller="resultsCtrl">
-            <div class="box info ng-hide" ng-hide="outputFields.length > 0">
-              You need to add output fields to see a result preview. Add output fields by going to the outputs tab.
-            </div>
-            <div ng-show="outputFields.length > 0" class="">
-              <div>
-                <button class="button" ng-click="resetOutput()">Reset results</button>
-
-              </div>
-
-              <!--<div class="box error margin-above ng-binding ng-hide" ng-show="formatterError">Output formatting failed: </div>-->
-
-              <table class="results">
-                <tr>
-                  <th ng-repeat="field in formattedOutput.header track by $index" ng-bind="field" class="ng-binding ng-scope">
-
-                  </th>
-                </tr>
-                <tr ng-repeat="row in formattedOutput.rows track by $index" class="ng-scope">
-                  <td ng-repeat="value in row.data track by $index" ng-bind="value" class="ng-binding ng-scope">
-                  </td>
-                </tr>
-              </table>
-            </div>
-          </div>
-          <div class="tab-page fill padded ">
-            new <br>
-            <input onclick="toggle();return false;" value="sidepane1" type="button">
-            <input onclick="toggle_sidepane2();return false;" value="sidepane2" type="button">
-          </div>
+        </h3>
+        <div class="body" ng-include="sidepane1_view">
 
         </div>
       </div>
     </div>
-
-    <div id="dialog" class="jsoneditor"  ng-show="jsonEditor.visible"
-        style="display: block;width: auto;min-height: 71px;max-height: 799px;height: auto;">
-      <form class="label-above ng-pristine ng-valid">
-        <div class="form-row jsonfield" label="Robot definition"><label class="field-label">Robot definition:</label>
-          <pre  id="editor" class="javascript-editor ace_editor ace-xcode"></pre>
+    <div id="p1" class="p3-2 page" ng-controller="MarkerCtrl" >
+      <div id="p1-inner" class="p4-1 inner"   >
+        <div class="marker-container"  >
+            <div class="container scroll"  >
+              <!-- 在这个元素下添加 selected div-->
+              <div class="scroller" ng-style="{height:iframe_height,width:iframe_width}"></div>
+              <!--<div style="top:362px;left:237px;width:710px;height:30px;right:947px;bottom:392px" class="marker selected suggestion"></div>-->
+            </div>
         </div>
-        <a class="button" href="javascript:;" ng-click="jsonEditor.save()">Save</a>
-        <a class="button" href="javascript:;" ng-click="jsonEditor.cancel()">Cancel</a>
-      </form>
+        <iframe id="modified_page" class="iframe_class" iframe-onload  >
+        </iframe>
+      </div>
     </div>
+  </div>
+  <div class="p2-2  mainpane">
+    <div id="p4" class="p3-3 sidepane">
+      <h3>
+        <span ng-bind="sidePane2Title"></span>
 
-<% end %>
+        <div class="actions">
+          <a href="javascript:;" ng-click="closeSidePane2()" class="button mini">
+            <i class="fa fa-remove"></i>
+          </a>
+        </div>
+      </h3>
+      <div class="body" ng-include="sidePaneView2">
+
+      </div>
+    </div>
+    <div id="p3" class="p3-4 main tab-pane">
+      <div class="tab-buttons">
+        <a class="button active" tab-id="steps">Steps<i class="fa fa-chevron-down collapsed"></i></a>
+        <a class="button " tab-id="Elements">Elements<i class="fa fa-chevron-down collapsed"></i></a>
+        <a class="button " tab-id="Outputs">Outputs<i class="fa fa-chevron-down collapsed"></i></a>
+        <a class="button " tab-id="Results">Results<i class="fa fa-chevron-down collapsed"></i></a>
+        <a class="button " tab-id="new">new<i class="fa fa-chevron-down collapsed"></i></a>
+
+        <div class="actions">
+          <a class="button small t orange" ng-click="contactSupport()" title="Write a message to support">
+            Get help
+          </a>
+
+          <i class="separator"></i>
+
+          <a class="button small t" ng-href="/index/projects">
+            Close
+          </a>
+
+          <a ng-show="draft.exists" class="button danger small t" ng-click="discardDraft()"
+             ng-confirm="This will cause all current changes to be lost. Continue?">
+            Discard draft
+          </a>
+
+          <a class="button small t" ng-click="jsonEditor.show()"
+             title="Edit the raw robot definition in JSON format">
+            JSON
+          </a>
+
+          <a class="button primary small t" ng-click="save()">
+            Save
+          </a>
+
+          <i class="separator"></i>
+
+          <a class="button mini" title="Restart" ng-click="player.restart()">
+            <i class="fa fa-fast-backward"></i>
+          </a>
+          <a class="button mini" title="Step back" ng-click="player.stepBack()">
+            <i class="fa fa-step-backward"></i>
+          </a>
+          <a class="button mini" title="Step forward" ng-click="player.stepForward()">
+            <i class="fa fa-step-forward"></i>
+          </a>
+          <a class="button mini" title="Start / stop" ng-click="player.togglePlay()"
+            ng-class="{secondary : player.playing}">
+            <i ng-class="{fa : true, 'fa-play': !player.playing, 'fa-pause':player.playing}"></i>
+          </a>
+        </div>
+      </div>
+      <div class="tab-page fill padded active">
+        <div class="flow-editor" style="top:2px; left:10px;overflow:hidden; z-index:2;">
+          <svg width="{{svg_width}}" height="222" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+            <g>
+              <title>Layer 1</title>
+              <g id="svg_7" class="line-weight:22px;" ng-include="'svg.html'">
+              </g>
+            </g>
+          </svg>
+
+          <div  ng-repeat="node in nodes" title="{{node.desc}}" ng-class="node.style" ng-style="node.position" style="position:absolute;" class="flow-step tst-robot-scraper-devtools-timeline-step ng-scope  active " >
+            <div class="title-container"  ng-click="clickNode(node);$event.stopPropagation();">
+              <div class="title">{{node.title}}</div>
+            </div>
+            <div class="step-adder after" ng-click="addStepAfter(node);$event.stopPropagation();" >
+              <i class="fa fa-plus" ></i>
+            </div>
+            <div class="step-adder before" ng-click="addStepBefore(node);$event.stopPropagation();">
+              <i class="fa fa-plus"></i>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+      <div class="tab-page fill padded ">
+        <div class="dom-view">
+          <ul id="dom-root" class="dom-root"></ul>
+          <!--<ul class="dom-root">-->
+            <!--<li class="opened">-->
+              <!--<a class="dom-tag-start-toggle" rel="html"><i class="fa dom-folded-closed fa-chevron-down"></i></a><a class="dom-tag-start"><span class="dom-tag-start-name">&lt;html</span><span class="dom-attr"> <span class="dom-attr-name">xmlns</span>=<span class="dom-attr-value">"http://www.w3.org/1999/xhtml"</span></span><span class="dom-tag-start-end">&gt;</span></a><span class="dom-folded" style="display: none;">...</span>-->
+              <!--<ul class="dom-content" style="display: block;">-->
+                <!--<li class="">-->
+                  <!--<a class="dom-tag-start-toggle" rel="head"><i class="fa dom-folded-closed fa-chevron-right"></i></a><a class="dom-tag-start"><span class="dom-tag-start-name">&lt;head</span><span class="dom-tag-start-end">&gt;</span></a><span class="dom-folded" style="display: inline;">...</span>-->
+                  <!--<ul class="dom-content" style="display: none;"></ul>-->
+                  <!--<span class="dom-tag-end">&lt;/head&gt;</span></li>-->
+
+                <!--<li class="opened">-->
+                  <!--<a class="dom-tag-start-toggle" rel="body"><i class="fa dom-folded-closed fa-chevron-down"></i></a><a class="dom-tag-start"><span class="dom-tag-start-name">&lt;body</span><span class="dom-attr"> <span class="dom-attr-name">style</span>=<span class="dom-attr-value">"background: url(../../images/stbybg.jpg) no-repeat scroll center top #FFFFFF;"</span></span><span class="dom-attr"> <span class="dom-attr-name">class</span></span><span class="dom-tag-start-end">&gt;</span></a><span class="dom-folded" style="display: none;">...</span>-->
+                  <!--<ul class="dom-content" style="display: block;">-->
+                    <!--<li>-->
+                      <!--<a class="dom-tag-start-toggle" rel="div"><i class="fa fa-chevron-right dom-folded-closed"></i></a><a class="dom-tag-start"><span class="dom-tag-start-name">&lt;div</span><span class="dom-attr"> <span class="dom-attr-name">class</span>=<span class="dom-attr-value">"wrapper"</span></span><span class="dom-tag-start-end">&gt;</span></a><span class="dom-folded">...</span>-->
+                      <!--<ul class="dom-content"></ul>-->
+                      <!--<span class="dom-tag-end">&lt;/div&gt;</span></li>-->
+
+
+                    <!--<li>-->
+                      <!--<a class="dom-tag-start-toggle" rel="a"><i class="fa fa-chevron-right dom-folded-closed"></i></a><a class="dom-tag-start"><span class="dom-tag-start-name">&lt;a</span><span class="dom-tag-start-end">&gt;</span></a><span class="dom-folded">...</span>-->
+                      <!--<ul class="dom-content"></ul>-->
+                      <!--<span class="dom-tag-end">&lt;/a&gt;</span></li>-->
+                    <!--<li>-->
+                      <!--<a class="dom-tag-start-toggle" rel="style"><i class="fa fa-chevron-right dom-folded-closed"></i></a><a class="dom-tag-start"><span class="dom-tag-start-name">&lt;style</span><span class="dom-attr"> <span class="dom-attr-name">style</span>=<span class="dom-attr-value">"true"</span></span><span class="dom-tag-start-end">&gt;</span></a><span class="dom-folded">...</span>-->
+                      <!--<ul class="dom-content"></ul>-->
+                      <!--<span class="dom-tag-end">&lt;/style&gt;</span></li>-->
+                  <!--</ul>-->
+                  <!--<span class="dom-tag-end">&lt;/body&gt;</span></li>-->
+              <!--</ul>-->
+              <!--<span class="dom-tag-end">&lt;/html&gt;</span></li>-->
+          <!--</ul>-->
+        </div>
+      </div>
+
+      <div class="tab-page fill padded " ng-controller="OutputsCtrl">
+        <!-- Outputs -->
+        <form ng-controller="fieldsCtrl" class="robot-field-list label-above ng-pristine ng-valid ng-scope ng-valid-fieldisuniquevalue ng-valid-required ng-valid-pattern">
+          <div ng-repeat="field in outputFields" class="robot-field form-row-line ng-scope" ng-controller="fieldCtrl">
+            <div class="actions">
+              <a href="javascript:;" class="button mini danger" ng-click="remove(outputFields, field)">
+                <i class="fa fa-times"></i>
+              </a>
+              <a ng-hide="$first" href="javascript:;" class="button mini ng-hide" ng-click="move(outputFields, field, -1)">
+                <i class=" fa fa-arrow-up"></i>
+              </a>
+              <a ng-hide="$last" href="javascript:;" class="button mini" ng-click="move(outputFields, field, 1)">
+                <i class="fa fa-arrow-down"></i>
+              </a>
+            </div>
+
+            <div class="form-row" label="Field name"><label class="field-label">Field name:</label>
+              <input  ng-pattern="'[a-zA-Z_][a-zA-Z 0-9-_]*'" ng-model-options="{allowInvalid:false}" ng-blur="checkForChange()" required="true" name="fieldId" type="text" ng-model="field.id" placeholder="Field #1" class="ng-pristine ng-untouched ng-valid ng-valid-fieldisuniquevalue ng-valid-required ng-valid-pattern">
+              <div class="help" title="Must start with a letter or underscore and only contain letters, numbers, spaces, dashes (-) and underscores (_) after the first letter">
+                Must match: [a-zA-Z_][a-zA-Z 0-9-_]*
+              </div>
+              <div class="error" style="display: none;"></div></div>
+
+            <div class="form-row" label="Field type"><label class="field-label">Field type:</label>
+              <select required="true" ng-model="field.type" name="fieldType" ng-options="type as name for (type,name) in fieldTypes" class="ng-pristine ng-untouched ng-valid ng-valid-required"><option value="" class="t">Select field type...</option><option value="boolean" label="True / False">True / False</option><option value="number" selected="selected" label="Number">Number</option><option value="string" label="Text">Text</option></select>
+              <div class="error" style="display: none;"></div></div>
+
+            <div   class="form-row ng-scope" label="Default value" help="This value will be used if no valid value is provided.">
+              <label class="field-label">Default value:</label>
+              <input  name="defaultValue" auto-field="field" ng-model="field.defaultValue" class="ng-pristine ng-untouched ng-valid auto" style="display: none;">
+              <input ng-if="!is_boolean(field.type)" type="{{field.type}}" ng-model="field.default_value" style="" class="auto ng-pristine ng-untouched ng-valid ng-scope">
+              <div ng-if="is_boolean(field.type)" style="display:inline-block" class="ng-scope">
+                <label style="width:auto; margin-right:10px;"><input type="radio" value="true" ng-model="field.default_value" style="" class="auto ng-pristine ng-untouched ng-valid" name="548"> True</label>
+                <label style="width:auto;"><input type="radio" value="false" checked="checked" ng-model="field.default_value" style="" class="auto ng-pristine ng-untouched ng-valid" name="549"> False</label>
+              </div>
+              <div class="help">This value will be used if no valid value is provided.</div>
+              <div class="error" style="display: none;"></div>
+            </div>
+
+          </div>
+        </form>
+        <a class="button secondary" href="javascript:;" ng-click="addOutputField()">
+          <i class="fa fa-plus"></i>
+          Add field
+        </a>
+      </div>
+
+      <div class="tab-page fill padded " ng-controller="resultsCtrl">
+        <div class="box info ng-hide" ng-hide="outputFields.length > 0">
+          You need to add output fields to see a result preview. Add output fields by going to the outputs tab.
+        </div>
+        <div ng-show="outputFields.length > 0" class="">
+          <div>
+            <button class="button" ng-click="resetOutput()">Reset results</button>
+
+          </div>
+
+          <!--<div class="box error margin-above ng-binding ng-hide" ng-show="formatterError">Output formatting failed: </div>-->
+
+          <table class="results">
+            <tr>
+              <th ng-repeat="field in formattedOutput.header track by $index" ng-bind="field" class="ng-binding ng-scope">
+
+              </th>
+            </tr>
+            <tr ng-repeat="row in formattedOutput.rows track by $index" class="ng-scope">
+              <td ng-repeat="value in row.data track by $index" ng-bind="value" class="ng-binding ng-scope">
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="tab-page fill padded ">
+        new <br>
+        <input onclick="toggle();return false;" value="sidepane1" type="button">
+        <input onclick="toggle_sidepane2();return false;" value="sidepane2" type="button">
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div id="dialog" class="jsoneditor"  ng-show="jsonEditor.visible"
+    style="display: block;width: auto;min-height: 71px;max-height: 799px;height: auto;">
+  <form class="label-above ng-pristine ng-valid">
+    <div class="form-row jsonfield" label="Robot definition"><label class="field-label">Robot definition:</label>
+      <pre  id="editor" class="javascript-editor ace_editor ace-xcode"></pre>
+    </div>
+    <a class="button" href="javascript:;" ng-click="jsonEditor.save()">Save</a>
+    <a class="button" href="javascript:;" ng-click="jsonEditor.cancel()">Cancel</a>
+  </form>
+</div>
+
+
