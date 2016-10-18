@@ -1,4 +1,8 @@
 development:
   phantomjs_full_path : d:/work/bin/phantomjs.exe
+  use_proxy : no
+  http_proxy :  127.0.0.1:8118
 test:
   phantomjs_full_path : d:/work/bin/phantomjs.exe
+  use_proxy : yes
+  http_proxy : 127.0.0.1:8118

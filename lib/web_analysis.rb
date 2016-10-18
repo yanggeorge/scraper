@@ -10,10 +10,26 @@ class WebAnalysis
 
   def initialize
     phantomjs = Rails.configuration.scraper['phantomjs_full_path']
+    use_proxy = Rails.configuration.scraper['use_proxy']
     Thread.new {`#{phantomjs} --webdriver=9134`} # 首先运行phantomjs
     sleep 0.5 #等待启动时间
-    @driver = Selenium::WebDriver.for(:remote, :url => "http://localhost:9134")
-    puts "WebAnalysis is initializing.(#{phantomjs})"
+    if use_proxy == 'no'
+      @driver = Selenium::WebDriver.for(:remote,
+                                        :url => "http://localhost:9134")
+    else
+      http_proxy = Rails.configuration.scraper['http_proxy']
+      puts "use #{http_proxy}"
+
+      proxy = Selenium::WebDriver::Proxy.new(
+          :http     =>  http_proxy
+      )
+      caps = Selenium::WebDriver::Remote::Capabilities.ie(:proxy => proxy)
+      @driver = Selenium::WebDriver.for(:remote,
+                                        :url => "http://localhost:9134",
+                                        :desired_capabilities => caps)
+    end
+
+      puts "WebAnalysis is initializing.(#{phantomjs})"
   end
 
   def test
