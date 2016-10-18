@@ -11,6 +11,7 @@ class WebAnalysis
   def initialize
     phantomjs = Rails.configuration.scraper['phantomjs_full_path']
     Thread.new {`#{phantomjs} --webdriver=9134`} # 首先运行phantomjs
+    sleep 0.5 #等待启动时间
     @driver = Selenium::WebDriver.for(:remote, :url => "http://localhost:9134")
     puts "WebAnalysis is initializing.(#{phantomjs})"
   end
