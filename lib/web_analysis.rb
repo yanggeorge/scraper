@@ -12,8 +12,9 @@ class WebAnalysis
     phantomjs = Rails.configuration.scraper['phantomjs_full_path']
     use_proxy = Rails.configuration.scraper['use_proxy']
     Thread.new {`#{phantomjs} --webdriver=9134`} # 首先运行phantomjs
-    sleep 0.5 #等待启动时间
-    if use_proxy == 'no'
+    sleep 5 #等待启动时间
+    if not use_proxy
+      puts 'not use proxy'
       @driver = Selenium::WebDriver.for(:remote,
                                         :url => "http://localhost:9134")
     else
