@@ -2,7 +2,8 @@
 require 'selenium-webdriver'
 require 'singleton'
 require 'fileutils'
-
+require 'socket'
+require 'timeout'
 
 class WebAnalysis
   include Singleton
@@ -11,8 +12,7 @@ class WebAnalysis
   def initialize
     phantomjs = Rails.configuration.scraper['phantomjs_full_path']
     use_proxy = Rails.configuration.scraper['use_proxy']
-    Thread.new {`#{phantomjs} --webdriver=9134`} # 首先运行phantomjs
-    sleep 5 #等待启动时间
+    run_phntomjs(phantomjs)
     if not use_proxy
       puts 'not use proxy'
       @driver = Selenium::WebDriver.for(:remote,
@@ -29,9 +29,44 @@ class WebAnalysis
                                         :url => "http://localhost:9134",
                                         :desired_capabilities => caps)
     end
-
       puts "WebAnalysis is initializing.(#{phantomjs})"
   end
+
+  def run_phntomjs(phantomjs)
+    Thread.new { `#{phantomjs} --webdriver=9134` } # 首先运行phantomjs
+    #sleep 5 #等待启动时间
+    print "Waiting"
+    for i in 1..30
+      print "."
+      sleep 1
+      if is_port_open?("127.0.0.1", "9134") == true
+        break
+      end
+    end
+    if is_port_open?("127.0.0.1", "9134") == false
+      puts "phantomjs has not opened port 9134!!!"
+    else
+      puts "phantomjs has opened port 9134."
+    end
+  end
+
+  def is_port_open?(ip, port)
+    begin
+      Timeout::timeout(1) do
+        begin
+          s = TCPSocket.new(ip, port)
+          s.close
+          return true
+        rescue Errno::ECONNREFUSED, Errno::EHOSTUNREACH
+          return false
+        end
+      end
+    rescue Timeout::Error
+    end
+
+    return false
+  end
+
 
   def test
     @driver.navigate.to "http://google.com"
