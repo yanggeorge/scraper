@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -60,3 +60,5 @@ gem 'angular-rails-templates'
 gem 'sprockets', '2.12.3'
 
 gem 'ace-rails-ap'
+
+gem 'os'

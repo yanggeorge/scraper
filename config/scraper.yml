@@ -1,3 +1,4 @@
+#when use proxy, make sure env http_proxy is not set.
 development:
   phantomjs_full_path : d:/work/bin/phantomjs.exe
   use_proxy : no

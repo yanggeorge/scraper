@@ -4,6 +4,7 @@ require 'singleton'
 require 'fileutils'
 require 'socket'
 require 'timeout'
+require 'os'
 
 class WebAnalysis
   include Singleton
@@ -13,6 +14,9 @@ class WebAnalysis
     phantomjs = Rails.configuration.scraper['phantomjs_full_path']
     use_proxy = Rails.configuration.scraper['use_proxy']
     run_phntomjs(phantomjs)
+    if OS.linux?
+      set_global_http_proxy_null
+    end
     if not use_proxy
       puts 'not use proxy'
       @driver = Selenium::WebDriver.for(:remote,
@@ -67,6 +71,15 @@ class WebAnalysis
     return false
   end
 
+  def set_global_http_proxy_null
+    # on linux, export http_proxy=""
+    env_http_proxy = ENV['http_proxy']
+    if env_http_proxy
+      puts "Set global http_proxy nil."
+      ENV['http_proxy'] = nil
+    end
+
+  end
 
   def test
     @driver.navigate.to "http://google.com"
