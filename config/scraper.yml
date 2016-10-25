@@ -1,4 +1,7 @@
-#when use proxy, make sure env http_proxy is not set.
+#when to use proxy to link some web, you should set your web browser use proxy also.
+#and make sure localhost is in no_proxy list.
+#so you can add this line below when using google_chrome on linux
+#     export no_proxy=http://127.0.0.1
 development:
   phantomjs_full_path : d:/work/bin/phantomjs.exe
   use_proxy : no
