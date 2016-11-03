@@ -40,6 +40,27 @@ For Mac, installing nokogiri gem may have some problem, but keep some patience.
 If you cannot link http://rubygems.org or https://rubygems.org, you had better use proxy to update.
 
 
+### Set path for phantomjs
+
+edit scraper.yml and modify the path. 
+
+The path must be like
+
+```
+#!ruby
+
+development:
+  phantomjs_full_path : /home/ym/ym/phantomjs/bin/phantomjs
+```
+
+for window, the path is like this
+```
+#!ruby
+
+development:
+  phantomjs_full_path : d:/work/bin/phantomjs.exe
+```
+
 
 # Start scraper
 
