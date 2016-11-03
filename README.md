@@ -65,6 +65,13 @@ then server will start successfully like this below.
 [2016-11-03 17:59:46] INFO  WEBrick::HTTPServer#start: pid=4052 port=3000
 ```
 
+Then you can open chrome browser(**not support IE or Firefox or Safari**), and open http://127.0.0.1:3000. 
+
+
+# Only support Chrome browser
+
+You know scraper is a toy, so I just develop it using my favorite browser.
+
 # Documentation and Help
 
 If you don't know how to play this little toy, you can search some document for [dexi.io](http://dexi.io).
