@@ -13,9 +13,9 @@
 
 Dexi.io provides such amazing tool, so I just want to make a little copy from it.
 
-Here is a gif to show my little toy.
+Here is a gif to show the little toy how to work.
 
-![Screenshot](./app/assets/show1.gif)
+![Screenshot](./app/assets/scraper_show1.gif)
 
 To see more screenshots of micro, showcasing all of the default colorschemes, see [here](http://zbyedidia.webfactional.com/micro/screenshots.html).
 
