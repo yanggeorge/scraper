@@ -53,7 +53,7 @@ development:
   phantomjs_full_path : /home/ym/ym/phantomjs/bin/phantomjs
 ```
 
-For window, the path is like this
+For Windows, the path is like this
 ```
 #!ruby
 
@@ -70,7 +70,7 @@ Enter scraper root directory, start server.
 cd <scraper root>
 rails server 
 ```
-For windows, you can use run cmd.exe to open a cmdline window.
+For Windows, you can run cmd.exe to open a cmdline window.
 
 then server will start successfully like this below.
 
