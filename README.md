@@ -5,15 +5,17 @@
 [![Join the chat at https://gitter.im/zyedidia/micro](https://badges.gitter.im/zyedidia/micro.svg)](https://gitter.im/zyedidia/micro?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/zyedidia/micro/blob/master/LICENSE)
 
-Micro is a terminal-based text editor that aims to be easy to use and intuitive, while also taking advantage of the full capabilities
-of modern terminals. It comes as one single, batteries-included, static binary with no dependencies, and you can download and use it right now.
+**Scraper** is a toy to extract web data just by mouse.
 
-As the name indicates, micro aims to be somewhat of a successor to the nano editor by being easy to install and use in a pinch, but micro also aims to be
-enjoyable to use full time, whether you work in the terminal because you prefer it (like me), or because you need to (over ssh).
+* All css styles and layouts come from [https://dexi.io](http://dexi.io).
+* All images including logo comes from  [https://dexi.io](http://dexi.io).
+* All functions come from  [https://dexi.io](http://dexi.io). but are self-implemented.
 
-Here is a picture of micro editing its source code.
+Dexi.io provides such amazing tool, so I just want to make a little copy from it.
 
-![Screenshot](./assets/micro-solarized.png)
+Here is a gif to show my little toy.
+
+![Screenshot](./app/assets/show1.gif)
 
 To see more screenshots of micro, showcasing all of the default colorschemes, see [here](http://zbyedidia.webfactional.com/micro/screenshots.html).
 
