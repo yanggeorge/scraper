@@ -74,4 +74,4 @@ If you don't know how to play this little toy, you can search some document for 
 
 # Contributing
 
-This project is just a little toy, so it has much more bugs. If you find it ,please let me know.
+This project is just a little toy, so it has much more bugs. If you find them ,please let me know.
