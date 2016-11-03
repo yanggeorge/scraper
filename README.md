@@ -15,52 +15,32 @@ Here is a gif to show the little toy how to work.
 
 ![Screenshot](./app/assets/images/scraper_baidu.gif)
 
-To see more screenshots of micro, showcasing all of the default colorschemes, see [here](http://zbyedidia.webfactional.com/micro/screenshots.html).
+To see more gif of Scraper, see [show1](./app/assets/images/scraper_show1.gif) and [show2](./app/assets/images/scraper_yahoo.gif).
 
 # Features
 
-* Not need coding, but need web concepts include html,xpath.
-* using Xpath selector , but dexi.io using CSS selector.
+* Not need coding, but need web concepts include html,XPath.
+* using XPath selector , but dexi.io using CSS selector.
 * using phantomjs engine at backend
 
 # Installation
 
-To install scraper, you can download a [prebuilt binary](https://github.com/zyedidia/micro/releases), or you can build it from source.
+To install scraper, you should install [rails](http://installrails.com/) and download [phantomjs](http://phantomjs.org/).
 
-If you want more information about ways to install micro, see this [wiki page](https://github.com/zyedidia/micro/wiki/Installing-Micro)
+### After install rails.
 
-### Prebuilt binaries
-
-All you need to install micro is one file, the binary itself. It's as simple as that!
-
-Download the binary from the [releases](https://github.com/zyedidia/micro/releases) page.
-
-On that page you'll see the nightly release, which contains binaries for micro which are built every night,
-and you'll see all the stable releases with the corresponding binaries.
-
-If you'd like to see more information after installing micro, run `micro -version`.
-
-### Building from source
-
-If your operating system does not have binary, but does run Go, you can build from source.
-
-Make sure that you have Go version 1.5 or greater (Go 1.4 will work if your version supports CGO).
+For Centos ,Mac and Windows, you should update scraper project
 
 ```sh
-go get -u github.com/zyedidia/micro/...
+cd <scraper root>
+bundle update
 ```
 
-### Linux clipboard support
+then all dependencies will be installed.
 
-On Linux, clipboard support requires 'xclip' or 'xsel' command to be installed.
+For Mac, installing nokogiri gem may have some problem, but keep some patience.
 
-For Ubuntu:
-
-```sh
-sudo apt-get install xclip
-```
-
-If you don't have xclip or xsel, micro will use an internal clipboard for copy and paste, but it won't work with external applications.
+If you cannot link http://rubygems.org or https://rubygems.org, you had better use proxy to update.
 
 ### Colors and syntax highlighting
 
