@@ -42,52 +42,36 @@ For Mac, installing nokogiri gem may have some problem, but keep some patience.
 
 If you cannot link http://rubygems.org or https://rubygems.org, you had better use proxy to update.
 
-### Colors and syntax highlighting
 
-If you open micro and it doesn't seem like syntax highlighting is working, this is probably because
-you are using a terminal which does not support 256 color. Try changing the colorscheme to `simple`
-by running `> set colorscheme simple`.
 
-If you are using the default ubuntu terminal, to enable 256 make sure your `TERM` variable is set
-to `xterm-256color`.
-
-Many of the Windows terminals don't support more than 16 colors, which means
-that micro's default colorscheme won't look very good. You can either set
-the colorscheme to `simple`, or download a better terminal emulator, like
-mintty.
-
-### Plan9, NaCl, Cygwin
-
-Please note that micro uses the amazing [tcell library](https://github.com/gdamore/tcell), but this
-means that micro is restricted to the platforms tcell supports. As a result, micro does not support
-Plan9, NaCl, and Cygwin (although this may change in the future).
-
-# Usage
+# Start scraper
 
 Once you have built the editor, simply start it by running `micro path/to/file.txt` or simply `micro` to open an empty buffer.
 
 Micro also supports creating buffers from `stdin`:
 
 ```sh
-ifconfig | micro
+cd <scraper root>
+rails server 
 ```
 
-You can move the cursor around with the arrow keys and mouse.
+then server will start successfully like this below.
 
-You can also use the mouse to manipulate the text. Simply clicking and dragging
-will select text. You can also double click to enable word selection, and triple
-click to enable line selection.
+```
+[ym@centos7 scraper]$ rails server
+=> Booting WEBrick
+=> Rails 4.2.6 application starting in development on http://localhost:3000
+=> Run `rails server -h` for more startup options
+=> Ctrl-C to shutdown server
+[2016-11-03 17:59:46] INFO  WEBrick 1.3.1
+[2016-11-03 17:59:46] INFO  ruby 2.2.1 (2015-02-26) [x86_64-linux]
+[2016-11-03 17:59:46] INFO  WEBrick::HTTPServer#start: pid=4052 port=3000
+```
 
 # Documentation and Help
 
-Micro has a built-in help system which you can access by pressing `CtrlE` and typing `help`. Additionally, you can
-view the help files online [here](https://github.com/zyedidia/micro/tree/master/runtime/help).
-
-I also recommend reading the [tutorial](https://github.com/zyedidia/micro/tree/master/runtime/help/tutorial.md) for
-a brief introduction to the more powerful configuration features micro offers.
+If you don't know how to play this little toy, you can search some document for [dexi.io](http://dexi.io).
 
 # Contributing
 
-If you find any bugs, please report them! I am also happy to accept pull requests from anyone.
-
-You can use the Github issue tracker to report bugs, ask questions, or suggest new features.
+This project is just a little toy, so it has much more bugs. If you find it ,please let me know.
