@@ -42,7 +42,7 @@ If you cannot link http://rubygems.org or https://rubygems.org, you had better u
 
 ### Set path for phantomjs
 
-edit scraper.yml and modify the path. 
+Edit `./config/scraper.yml` and modify the path. 
 
 The path must be like
 
@@ -53,7 +53,7 @@ development:
   phantomjs_full_path : /home/ym/ym/phantomjs/bin/phantomjs
 ```
 
-for window, the path is like this
+For window, the path is like this
 ```
 #!ruby
 
@@ -64,14 +64,13 @@ development:
 
 # Start scraper
 
-Once you have built the editor, simply start it by running `micro path/to/file.txt` or simply `micro` to open an empty buffer.
-
-Micro also supports creating buffers from `stdin`:
+Enter scraper root directory, start server.
 
 ```sh
 cd <scraper root>
 rails server 
 ```
+For windows, you can use run cmd.exe to open a cmdline window.
 
 then server will start successfully like this below.
 
