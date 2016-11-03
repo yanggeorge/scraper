@@ -1,5 +1,3 @@
-# ![Micro](./app/assets/images/projects.png)
-
 [![Build Status](https://travis-ci.org/zyedidia/micro.svg?branch=master)](https://travis-ci.org/zyedidia/micro)
 [![Go Report Card](https://goreportcard.com/badge/github.com/zyedidia/micro)](https://goreportcard.com/report/github.com/zyedidia/micro)
 [![Join the chat at https://gitter.im/zyedidia/micro](https://badges.gitter.im/zyedidia/micro.svg)](https://gitter.im/zyedidia/micro?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
@@ -15,40 +13,19 @@ Dexi.io provides such amazing tool, so I just want to make a little copy from it
 
 Here is a gif to show the little toy how to work.
 
-![Screenshot](./app/assets/scraper_show1.gif)
+![Screenshot](./app/assets/images/scraper_show1.gif)
 
 To see more screenshots of micro, showcasing all of the default colorschemes, see [here](http://zbyedidia.webfactional.com/micro/screenshots.html).
 
 # Features
 
-* Easy to use and to install
-* No dependencies or external files are needed -- just the binary you can download further down the page
-* Common keybindings (ctrl-s, ctrl-c, ctrl-v, ctrl-z...)
-    * Keybindings can be rebound to your liking
-* Sane defaults
-    * You shouldn't have to configure much out of the box (and it is extremely easy to configure)
-* Splits and tabs
-* Extremely good mouse support
-    * This means mouse dragging to create a selection, double click to select by word, and triple click to select by line
-* Cross platform (It should work on all the platforms Go runs on)
-    * Note that while Windows is supported, there are still some bugs that need to be worked out
-* Plugin system (plugins are written in Lua)
-* Persistent undo
-* Automatic linting and error notifications
-* Syntax highlighting (for over [75 languages](runtime/syntax)!)
-* Colorscheme support
-    * By default, micro comes with 16, 256, and true color themes.
-* True color support (set the `MICRO_TRUECOLOR` env variable to 1 to enable it)
-* Copy and paste with the system clipboard
-* Small and simple
-* Easily configurable
-* Common editor things such as undo/redo, line numbers, unicode support...
-
-Although not yet implemented, I hope to add more features such as autocompletion, and multiple cursors in the future.
+* Not need coding, but need web concepts include html,xpath.
+* using Xpath selector , but dexi.io using CSS selector.
+* using phantomjs engine at backend
 
 # Installation
 
-To install micro, you can download a [prebuilt binary](https://github.com/zyedidia/micro/releases), or you can build it from source.
+To install scraper, you can download a [prebuilt binary](https://github.com/zyedidia/micro/releases), or you can build it from source.
 
 If you want more information about ways to install micro, see this [wiki page](https://github.com/zyedidia/micro/wiki/Installing-Micro)
 
