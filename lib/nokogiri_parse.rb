@@ -93,7 +93,7 @@ class NokogiriParse
       #puts "using http"
       doc = Nokogiri::HTML(WebAnalysis.instance.get_response(url))
       doc = complete_path(url, doc)
-      #doc = delete_tag(doc)
+      doc = delete_tag(doc)
       html = doc.to_html
       begin
         html = complete_other_url_path(url, html)
@@ -176,7 +176,7 @@ class NokogiriParse
     doc,current_url = WebAnalysis.instance.click(url, ele_xpath)
     doc = Nokogiri::HTML(doc)
     doc = complete_path(url, doc)
-    #doc = delete_tag(doc)
+    doc = delete_tag(doc)
     html = doc.to_html
     begin
       html = complete_other_url_path(url, html)

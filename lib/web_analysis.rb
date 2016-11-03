@@ -12,7 +12,9 @@ class WebAnalysis
 
   def initialize
     phantomjs = Rails.configuration.scraper['phantomjs_full_path']
+    #phantomjs = 'd:/work/bin/phantomjs.exe'
     use_proxy = Rails.configuration.scraper['use_proxy']
+    #use_proxy = nil
     run_phntomjs(phantomjs)
     if OS.linux?
       set_global_http_proxy_null
@@ -115,15 +117,24 @@ class WebAnalysis
 
     @driver.navigate.to url
     element = @driver.find_element(:xpath,ele_xpath)
+    puts element.text
     element.click
     main_handle = @driver.window_handle
     p main_handle
     handles = @driver.window_handles
     p handles
-    @driver.switch_to.window handles[-1]
-    page_source,current_url =  @driver.page_source, @driver.current_url
-    @driver.close
-    @driver.switch_to.window main_handle
+    # 有的网站点击一次之后会弹出一个新的窗口，所以这时handles的长度是2
+    # 当长度大于1的时候，则在获取新打开窗口的page_source和之后，再切换回
+    # 原来的窗口。
+    if handles.length > 1
+      @driver.switch_to.window handles[-1]
+      page_source,current_url =  @driver.page_source, @driver.current_url
+      @driver.close
+      @driver.switch_to.window main_handle
+    else
+      page_source,current_url =  @driver.page_source, @driver.current_url
+    end
+
     return page_source,current_url
   end
 
@@ -351,6 +362,11 @@ def test
   puts current_url
   url = "http://www.he-n-tax.gov.cn/hbgsww_new/"
   xpath = "//html[1]/body[1]/div[2]/div[2]/div[2]/div[2]/div[1]/div[1]/ul[1]/li[1]/a[1]"
+  _,current_url = WebAnalysis.instance.click(url, xpath)
+  puts current_url
+
+  url = "http://www.baidu.com"
+  xpath = "//html[1]/body[1]/div[3]/div[1]/div[1]/div[3]/a[3]"
   _,current_url = WebAnalysis.instance.click(url, xpath)
   puts current_url
 
