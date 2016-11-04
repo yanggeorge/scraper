@@ -46,16 +46,14 @@ Edit `./config/scraper.yml` and modify the path.
 
 The path must be like
 
-```
-#!ruby
+```ruby
 
 development:
   phantomjs_full_path : /home/ym/ym/phantomjs/bin/phantomjs
 ```
 
 For Windows, the path is like this
-```
-#!ruby
+```ruby
 
 development:
   phantomjs_full_path : d:/work/bin/phantomjs.exe
