@@ -16,3 +16,43 @@
 /*
  require font-awesome
  */
+/*Style Promotion Disclaimer Text*/
+.w3-panel {
+  padding: 0.01em 16px;
+  margin-top: 16px !important;
+  margin-bottom: 16px !important
+}
+.w3-round, .w3-round-medium {
+  border-radius: 4px !important
+}
+.w3-display-middle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%)
+}
+.w3-yellow, .w3-hover-yellow:hover {
+  color: #000 !important;
+  background-color: #ffeb3b !important
+}
+.w3-red, .w3-hover-red:hover {
+  color: #fff !important;
+  background-color: #f44336 !important
+}
+.w3-green, .w3-hover-green:hover {
+  color: #fff !important;
+  background-color: #4CAF50 !important
+}
+
+.w3-card-2 {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important
+}
+.alert-font {
+  font-size: 24px;
+  box-sizing: inherit;
+  display: block;
+  margin: 0;
+  font-weight: 400;
+  line-height: 1.5;
+}

@@ -16,8 +16,14 @@
   <%= csrf_meta_tags %>
 </head>
 <body ng-controller="MainCtrl"  onresize="size();return false;">
-
-<%= yield %>
+<%if browser.chrome? %>
+    <%= yield %>
+<% else %>
+    <div class="w3-panel w3-green w3-round w3-display-middle w3-card-2 alert-font">
+      <p>Sorry!This browser is not support.</p>
+      <p>Please change to Chrome!</p>
+    </div>
+<%end%>
 
 </body>
 </html>

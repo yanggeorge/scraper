@@ -45,6 +45,7 @@ GEM
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     bower-rails (0.10.0)
+    browser (2.3.0)
     builder (3.2.2)
     byebug (9.0.4)
     childprocess (0.5.9)
@@ -166,6 +167,7 @@ DEPENDENCIES
   ace-rails-ap
   angular-rails-templates
   bower-rails
+  browser
   byebug
   coffee-rails (~> 4.1.0)
   jbuilder (~> 2.0)
