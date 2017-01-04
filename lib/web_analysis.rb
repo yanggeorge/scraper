@@ -12,7 +12,7 @@ class WebAnalysis
 
   def initialize
     phantomjs = Rails.configuration.scraper['phantomjs_full_path']
-    #phantomjs = 'd:/work/bin/phantomjs.exe'
+    #phantomjs = 'c:\mybin\phantomjs-2.1.1-windows\bin\phantomjs.exe'
     use_proxy = Rails.configuration.scraper['use_proxy']
     #use_proxy = nil
     run_phntomjs(phantomjs)
@@ -116,8 +116,12 @@ class WebAnalysis
     current_url = nil
 
     @driver.navigate.to url
+    @driver.manage.window.maximize # because some element not visible ,then cannot click
     element = @driver.find_element(:xpath,ele_xpath)
-    puts element.text
+    p element
+
+
+    puts "element.text = #{element.text}"
     element.click
     main_handle = @driver.window_handle
     p main_handle
@@ -395,10 +399,19 @@ def test2
 
 end
 
+def test3
+  url = "http://threelambda.com"
+  #url = "http://www.baidu.com"
+  xpath = "//html[1]/body[1]/header[1]/div[1]/nav[1]/div[1]/a[1]"
+  #xpath = "//html[1]/body[1]/main[1]/div[1]/div[1]/ul[1]/li[1]/h2[1]/a[1]"
+
+  _,current_url = WebAnalysis.instance.click(url, xpath)
+  puts current_url
+end
 
 if __FILE__==$0
 
-  test
+  test3
 
 
 
