@@ -1165,11 +1165,12 @@ app.controller('MainCtrl', function($scope, $http, $q, getXpath, $timeout){
         $scope.jsonEditor.visible = false;
     };
 
-    $scope.test1 = function(){
-        var bb = document.body ;
-        var s = $scope.print(bb, function(node){return true;});
-        console.log(s);
-    };
+    //$scope.test1 = function(){
+    //    console.log("test1..");
+    //    var bb = document.body ;
+    //    var s = $scope.print(bb, function(node){return true;});
+    //    console.log(s);
+    //};
     $scope.print = function(node, is_deep){
         var s = "<";
         s += (node.tagName+"").toLowerCase() ;
@@ -1213,29 +1214,32 @@ app.controller('MainCtrl', function($scope, $http, $q, getXpath, $timeout){
         return s ;
     };
 
-    $scope.test2 = function(){
-        var bb = document.body ;
-        var s = $scope.html(bb, function(node){
-            if (node.tagName == 'BODY' || node.tagName == 'HTML' ){
-                return true;
-            }else{
-                return false;
-            }
-        });
-        console.log(s);
-        jQuery("#dom-root").append(s);
-    };
-    $scope.test3 = function(){
-        var bb = document.body ;
-        var s = $scope.html(bb, function(node){
-            return false;
-        });
-        console.log(s);
-        var dom_root = jQuery(s);
-        console.log(dom_root);
-        //$scope.add_event(bb, dom_root);
-        jQuery("#dom-root").append(dom_root);
-    };
+    //$scope.test2 = function(){
+    //    console.log("test2..");
+    //    var bb = document.body ;
+    //    var s = $scope.html(bb, function(node){
+    //        if (node.tagName == 'BODY' || node.tagName == 'HTML' ){
+    //            return true;
+    //        }else{
+    //            return false;
+    //        }
+    //    });
+    //    console.log(s);
+    //    jQuery("#dom-root").append(s);
+    //};
+    //$scope.test3 = function(){
+    //    console.log("test3..");
+    //    var bb = document.body ;
+    //    var s = $scope.html(bb, function(node){
+    //        return false;
+    //    });
+    //    console.log(s);
+    //    var dom_root = jQuery(s);
+    //    console.log(dom_root);
+    //    //$scope.add_event(bb, dom_root);
+    //
+    //    jQuery("#dom-root").append(dom_root);
+    //};
 
     $scope.$on("reveal_in_elements_pane", function () {
         var dom_view_div = jQuery("div.dom-view")[0];
@@ -1369,6 +1373,8 @@ app.controller('MainCtrl', function($scope, $http, $q, getXpath, $timeout){
             var src_root_node = document.getElementById("modified_page").contentWindow.document.documentElement;
             var closed_node = $scope.get_closed_node(src_root_node);
             console.log(closed_node);
+            console.log("reomve #dom-root children.")
+            jQuery("#dom-root").empty();
             jQuery("#dom-root").append(closed_node);
         });
 
