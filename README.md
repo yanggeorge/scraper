@@ -9,6 +9,12 @@
 Dexi.io provides such amazing tool, so I just want to make a little copy from it.
 
 Here is a gif to show the little toy how to work.
+1. Open a web page in Scraper.
+2. Move mouse on the page to choose which part to extract.
+3. Or select DOM element in `Elements` tab like using Chrome Web Debug tool to select element.
+4. All these operations will be written out to a robot definition file.
+5. `Run` means running theses operations defined in robot JSON file.
+6. `Result` tab shows the extracted raw text.
 
 ![Screenshot](./app/assets/images/scraper_baidu.gif)
 
