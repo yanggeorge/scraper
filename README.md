@@ -16,9 +16,16 @@ Here is a gif to show the little toy how to work.
 5. `Run` means running theses operations defined in robot JSON file.
 6. `Result` tab shows the extracted raw text.
 
+example 1:
+
 ![Screenshot](./app/assets/images/scraper_baidu.gif)
 
-To see more gif of Scraper, see [show1](./app/assets/images/scraper_show1.gif) and [show2](./app/assets/images/scraper_yahoo.gif).
+example 2:
+![show1](./app/assets/images/scraper_show1.gif)
+
+example 3:
+![show2](./app/assets/images/scraper_yahoo.gif)
+
 
 # Features
 
